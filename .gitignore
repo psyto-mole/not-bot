@@ -369,4 +369,4 @@ FodyWeavers.xsd
 *.xlsx
 
 # directory for save data
-game_data
+game_data/
