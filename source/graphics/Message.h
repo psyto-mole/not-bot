@@ -124,6 +124,7 @@
 #define DetailLackOfTP			"TPが足りない!"
 #define DetailUnavilableMaxHP	"HPが最大では使えない"
 #define DetailUnavilableMaxMP	"MPが最大では使えない"
+#define DetailUnavilableNever	"すでに使用している"
 
 /* +++行動の内容(共通項目)  +++ */
 #define ActionNormalAttack		"の攻撃!"
@@ -239,37 +240,38 @@
 
 /* === ダイトメア === */
 /* +++ 選択肢(ダイトメア) +++ */
-#define OptionMagicSaros	""
-#define OptionMagicDeus		""
-#define OptionMagicEx		""
-#define OptionMagicMachina	""
+#define OptionMagicSaros	"サロス"
+#define OptionMagicDeus		"デウス"
+#define OptionMagicEx		"エクス"
+#define OptionMagicMachina	"マキナ"
 
-#define OptionImseti		""
-#define OptionHarpy			""
-#define OptionKebehsenuev	""
-#define OptionDuamtef		""
+#define OptionImseti		"イムセト"
+#define OptionHarpy			"ハーピ"
+#define OptionKebehsenuev	"ケベフス"
+#define OptionDuamtef		"ドゥアムタ"
 
 /* +++ 選択肢の説明(ダイトメア) +++ */
-#define DetailOfMagicSaros		"(MP: )"
-#define DetailOfMagicDeus		"(MP: )"
-#define DetailOfMagicEx			"(MP: )"
-#define DetailOfMagicMachina	"(MP: )"
+#define DetailOfMagicSaros		"1ターンチャージして放つ魔法攻撃(MP: 15)"
+#define DetailOfMagicDeus		"最大HPを増やし、HPも回復する(MP: 20)"
+#define DetailOfMagicEx			"攻撃しつつHPを回復する(MP: 25)"
+#define DetailOfMagicMachina	"攻撃力と魔力を上昇させる(MP: 30)"
 
-#define DetailOfImseti			"(TP: )"
-#define DetailOfHarpy			"(TP: )"
-#define DetailOfKebehsenuev		"(TP: )"
-#define DetailOfDuamtef			"(TP: )"
+#define DetailOfImseti			"2連続の物理攻撃(TP: 15)"
+#define DetailOfHarpy			"必ず先制攻撃できる物理攻撃(TP: 15)"
+#define DetailOfKebehsenuev		"魔力参照のブレス攻撃(TP: 15)"
+#define DetailOfDuamtef			"物理、魔法ブレスの同時攻撃(TP: 45)"
 
 /* +++ 行動の内容(ダイトメア) +++ */
-#define ActionMagicSaros	""
-#define ActionMagicDeus		""
-#define ActionMagicEx		""
-#define ActionMagicMachina	""
+#define ActionMagicSaros1	"は魔力を溜めている"
+#define ActionMagicSaros2	"は溜めた魔力を放出した!"
+#define ActionMagicDeus		"の生命力が高まる!"
+#define ActionMagicEx		"は生命力を吸収する魔法を放った!"
+#define ActionMagicMachina	"の身体が不気味に光る!"
 
-#define ActionImseti		""
-#define ActionHarpy			""
-#define ActionKebehsenuev	""
-#define ActionDuamtef		""
+#define ActionImseti		"は連続で打撃を放った!"
+#define ActionHarpy			"は姿を消しとびかかった!"
+#define ActionKebehsenuev	"は口から穢れた息を吐き出した!"
+#define ActionDuamtef		"は大地を轟かせる!"
 
 
 /* === shepp === */
