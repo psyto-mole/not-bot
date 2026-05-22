@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="source\character\Character.cpp" />
+    <ClCompile Include="source\character\Dightmare.cpp" />
+    <ClCompile Include="source\character\Dragon.cpp" />
+    <ClCompile Include="source\character\Human.cpp" />
+    <ClCompile Include="source\character\Robbot.cpp" />
+    <ClCompile Include="source\character\Shepp.cpp" />
+    <ClCompile Include="source\core\Font.cpp" />
+    <ClCompile Include="source\core\GameManager.cpp" />
+    <ClCompile Include="source\core\Image.cpp" />
+    <ClCompile Include="source\core\Key.cpp" />
+    <ClCompile Include="source\core\Mouse.cpp" />
+    <ClCompile Include="source\core\SaveLoad.cpp" />
+    <ClCompile Include="source\core\Sound.cpp" />
+    <ClCompile Include="source\graphics\Color.cpp" />
+    <ClCompile Include="source\graphics\Geometry.cpp" />
+    <ClCompile Include="source\graphics\Message.cpp" />
+    <ClCompile Include="source\Main.cpp" />
+    <ClCompile Include="source\scene\BattleScene.cpp" />
+    <ClCompile Include="source\scene\FakeScene.cpp" />
+    <ClCompile Include="source\scene\GameOver.cpp" />
+    <ClCompile Include="source\scene\Menu.cpp" />
+    <ClCompile Include="source\scene\Result.cpp" />
+    <ClCompile Include="source\scene\SceneManager.cpp" />
+    <ClCompile Include="source\scene\SelectScene.cpp" />
+    <ClCompile Include="source\scene\Title.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="source\character\Character.h" />
+    <ClInclude Include="source\character\Dightmare.h" />
+    <ClInclude Include="source\character\Dragon.h" />
+    <ClInclude Include="source\character\Human.h" />
+    <ClInclude Include="source\character\Robbot.h" />
+    <ClInclude Include="source\character\Shepp.h" />
+    <ClInclude Include="source\core\Font.h" />
+    <ClInclude Include="source\core\GameManager.h" />
+    <ClInclude Include="source\core\Image.h" />
+    <ClInclude Include="source\core\Key.h" />
+    <ClInclude Include="source\core\Mouse.h" />
+    <ClInclude Include="source\core\SaveLoad.h" />
+    <ClInclude Include="source\core\Sound.h" />
+    <ClInclude Include="source\graphics\Color.h" />
+    <ClInclude Include="source\graphics\Geometry.h" />
+    <ClInclude Include="source\graphics\Message.h" />
+    <ClInclude Include="source\parameter\CircleParameter.h" />
+    <ClInclude Include="source\parameter\LineParameter.h" />
+    <ClInclude Include="source\parameter\PointParameter.h" />
+    <ClInclude Include="source\parameter\RectParameter.h" />
+    <ClInclude Include="source\scene\BattleScene.h" />
+    <ClInclude Include="source\scene\FakeScene.h" />
+    <ClInclude Include="source\scene\GameOver.h" />
+    <ClInclude Include="source\scene\Menu.h" />
+    <ClInclude Include="source\scene\Result.h" />
+    <ClInclude Include="source\scene\SceneManager.h" />
+    <ClInclude Include="source\scene\SelectScene.h" />
+    <ClInclude Include="source\scene\Title.h" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{8d042fa2-9995-4c95-ac38-8c76921a8872}</ProjectGuid>
+    <RootNamespace>IamNotBot</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\woo09\Documents\DXlibrary\DxLib_VC\プロジェクトに追加すべきファイル_VC用;C:\Users\woo09\Desktop\DXlibrary\IamNotBot\source\character;C:\Users\woo09\Desktop\DXlibrary\IamNotBot\source\core;C:\Users\woo09\Desktop\DXlibrary\IamNotBot\source\graphics;C:\Users\woo09\Desktop\DXlibrary\IamNotBot\source\parameter;C:\Users\woo09\Desktop\DXlibrary\IamNotBot\source\scene</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\Users\woo09\Documents\DXlibrary\DxLib_VC\プロジェクトに追加すべきファイル_VC用</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\woo09\Documents\DXlibrary\DxLib_VC\プロジェクトに追加すべきファイル_VC用</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\Users\woo09\Documents\DXlibrary\DxLib_VC\プロジェクトに追加すべきファイル_VC用</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\woo09\Documents\DXlibrary\DxLib_VC\プロジェクトに追加すべきファイル_VC用;C:\Users\woo09\Desktop\DXlibrary\IamNotBot\source\character;C:\Users\woo09\Desktop\DXlibrary\IamNotBot\source\core;C:\Users\woo09\Desktop\DXlibrary\IamNotBot\source\graphics;C:\Users\woo09\Desktop\DXlibrary\IamNotBot\source\parameter;C:\Users\woo09\Desktop\DXlibrary\IamNotBot\source\scene</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\Users\woo09\Documents\DXlibrary\DxLib_VC\プロジェクトに追加すべきファイル_VC用</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\woo09\Documents\DXlibrary\DxLib_VC\プロジェクトに追加すべきファイル_VC用</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\Users\woo09\Documents\DXlibrary\DxLib_VC\プロジェクトに追加すべきファイル_VC用</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
