@@ -866,22 +866,22 @@ void Dightmare::BattleFase_Process()
 		case 21:
 			/* +++ アクションナンバーが21 +++ */
 
-			MagicA();	// を実行
+			MagicSaros();		// サロスを実行
 			break;
 		case 22:
 			/* +++ アクションナンバーが22 +++ */
 
-			MagicA();		// を実行
+			MagicDeus();		// デウスを実行
 			break;
 		case 23:
 			/* +++ アクションナンバーが23 +++ */
 
-			MagicA();		// を実行
+			MagicEx();			// エクスを実行
 			break;
 		case 24:
 			/* +++ アクションナンバーが24 +++ */
 
-			MagicA();	// を実行
+			MagicMachina();		// マキナを実行
 			break;
 		case 31:
 			/* +++ アクションナンバーが31 +++ */
@@ -896,12 +896,12 @@ void Dightmare::BattleFase_Process()
 		case 33:
 			/* +++ アクションナンバーが33 +++ */
 
-			A();		// ケベフスを実行
+			Kebehsenuev();	// ケベフスを実行
 			break;
 		case 34:
 			/* +++ アクションナンバーが34 +++ */
 
-			A();		// を実行
+			Duamtef();		// ドゥアムタを実行
 			break;
 		case 40:
 			/* +++ アクションナンバーが40 +++ */
@@ -961,11 +961,11 @@ void Dightmare::MagicSaros()
 
 		if (isPlayer)
 		{
-			sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Players, characterName, ActionMagicSaros);
+			sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Players, characterName, ActionMagicSaros1);
 		}
 		else
 		{
-			sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Enemys, characterName, ActionMagicSaros);
+			sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Enemys, characterName, ActionMagicSaros1);
 		}
 
 		Sound_Play(SE_MagicSaros1);
@@ -976,13 +976,13 @@ void Dightmare::MagicSaros()
 
 		if (isPlayer)
 		{
-			sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Players, characterName, ActionMagicSaros);
+			sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Players, characterName, ActionMagicSaros2);
 
 			Enemy->Damage_Calc(calcResult, Magical);
 		}
 		else
 		{
-			sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Enemys, characterName, ActionMagicSaros);
+			sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Enemys, characterName, ActionMagicSaros2);
 
 			Player->Damage_Calc(calcResult, Magical);
 		}
@@ -1010,8 +1010,8 @@ void Dightmare::MagicDeus()
 		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Enemys, characterName, ActionMagicDeus);
 	}
 
-	MaxHP_Calc(, ISENHANCE);
-	HP_Calc(, ISHEAL);
+	MaxHP_Calc(100, ISENHANCE);
+	HP_Calc(150, ISHEAL);
 
 	Sound_Play(SE_MagicDeus);
 
@@ -1043,7 +1043,7 @@ void Dightmare::MagicEx()
 		Player->Damage_Calc(calcResult, Magical);
 	}
 
-	HP_Calc(, ISHEAL);
+	HP_Calc(100, ISHEAL);
 
 	Sound_Play(SE_MagicEx);
 
@@ -1067,8 +1067,8 @@ void Dightmare::MagicMachina()
 		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Enemys, characterName, ActionMagicMachina);
 	}
 
-	Attack_Calc(, ISENHANCE);
-	Magic_Calc(, ISENHANCE);
+	Attack_Calc(30, ISENHANCE);
+	Magic_Calc(30, ISENHANCE);
 
 	Sound_Play(SE_MagicMachina);
 
