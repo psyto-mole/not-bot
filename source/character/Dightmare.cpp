@@ -13,7 +13,7 @@
 #include "Rectparameter.h"
 #include "BattleScene.h"
 
-Dightmare PlDightmare, EnDightmare;			// 人間クラスの変数
+Dightmare PlDightmare, EnDightmare;			// ダイトメアクラスの変数
 
 /* +++ 人間クラスのオーバーライド +++ */
 void Dightmare::Character_Init(bool isThisPlayer)

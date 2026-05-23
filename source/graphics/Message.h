@@ -75,7 +75,7 @@
 /* +++ 質問文 +++ */
 #define EnemyQuestionHead		"私は"				// 敵キャラについての質問の文章1
 #define EnemyQuestionBottom		"ではありません"	// 敵キャラについての質問の文章2
-#define BothQuestionNone		"実体を持つ存在"	// 両キャラ共通の質問文
+#define BothQuestionNone		"名もなき存在"		// 敵、自キャラ共通の質問文
 #define PlayerQuestionHead		"あなたは"			// 自キャラについての質問の文章1
 #define PlayerQuestionBottom	"ですか？"			// 自キャラについての質問の文章2
 
@@ -84,6 +84,7 @@
 #define CharacterNameHuman		"勇者"			// キャラクター名「勇者」
 #define CharacterNameDragon		"ドラゴン"		// キャラクター名「ドラゴン」
 #define CharacterNameDightmare	"ダイトメア"	// キャラクター名「ダイトメア」
+#define CharacterNameNoname		"-"				// キャラクター名「名無し」
 #define CharacterNameShepp		"Shepp"			// キャラクター名「Shepp」
 
 /* +++ 修飾 +++ */

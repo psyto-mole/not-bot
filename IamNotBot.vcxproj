@@ -23,6 +23,7 @@
     <ClCompile Include="source\character\Dightmare.cpp" />
     <ClCompile Include="source\character\Dragon.cpp" />
     <ClCompile Include="source\character\Human.cpp" />
+    <ClCompile Include="source\character\Noname.cpp" />
     <ClCompile Include="source\character\Robbot.cpp" />
     <ClCompile Include="source\character\Shepp.cpp" />
     <ClCompile Include="source\core\Font.cpp" />
@@ -50,6 +51,7 @@
     <ClInclude Include="source\character\Dightmare.h" />
     <ClInclude Include="source\character\Dragon.h" />
     <ClInclude Include="source\character\Human.h" />
+    <ClInclude Include="source\character\Noname.h" />
     <ClInclude Include="source\character\Robbot.h" />
     <ClInclude Include="source\character\Shepp.h" />
     <ClInclude Include="source\core\Font.h" />
