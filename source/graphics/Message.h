@@ -84,7 +84,7 @@
 #define CharacterNameHuman		"勇者"			// キャラクター名「勇者」
 #define CharacterNameDragon		"ドラゴン"		// キャラクター名「ドラゴン」
 #define CharacterNameDightmare	"ダイトメア"	// キャラクター名「ダイトメア」
-#define CharacterNameNoname		"-"				// キャラクター名「名無し」
+#define CharacterNameNoname		"名無し(仮)"	// キャラクター名「名無し(仮)」
 #define CharacterNameShepp		"Shepp"			// キャラクター名「Shepp」
 
 /* +++ 修飾 +++ */

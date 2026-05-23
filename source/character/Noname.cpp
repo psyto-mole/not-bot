@@ -909,14 +909,14 @@ void Human::BattleFase_Process()
 	return;
 }
 
-void Human::BattleFase_Draw()
+void Noname::BattleFase_Draw()
 {
 
 
 	return;
 }
 
-void Human::EndFase_Process()
+void Noname::EndFase_Process()
 {
 	if (actionFlag == false)	// ƒAƒNƒVƒ‡ƒ“ƒtƒ‰ƒO‚ªfalse‚È‚ç
 	{
@@ -933,109 +933,85 @@ void Human::EndFase_Process()
 	return;
 }
 
-void Human::EndFase_Draw()
+void Noname::EndFase_Draw()
 {
 
 
 	return;
 }
 
-/* --- ƒtƒ@ƒCƒA - –‚—ÍŽQÆ‚ÌUŒ‚(MP:5) --- */
-void Human::MagicFire()
+/* --- ƒ_[ƒN(‰¼) - ˆÅ‚Ì–‚—Í‚ÅUŒ‚‚µA‚½‚Ü‚É‘ŠŽè‚Ì–‚–@‚ð••‚¶‚é(MP: 10) --- */
+void Noname::MagicTentativeDark()
 {
 	int calcResult;		// ŒvŽZŒ‹‰Ê‚ÌŠi”[•Ï”
 
-	MP_Calc(MPofMagicFire, ISREDUCTION);	// MP‚ðÁ”ïMP•ªŒ¸‚ç‚·
+	MP_Calc(MPofMagicTentativeDark, ISREDUCTION);	// MP‚ðÁ”ïMP•ªŒ¸‚ç‚·
 
-	calcResult = (int)(Magic * 1.2);	// –‚—Í‚É•â³‚ð‚Ì‚¹‚é
+	calcResult = (int)(Magic * 1.1);	// –‚—Í‚É•â³‚ð‚Ì‚¹‚é
 
-	settingMessagePattern = Message2Line;
-	displayMessagePattern = Message2Line;
+	settingMessagePattern = Message3Line;
+	displayMessagePattern = Message3Line;
 
 	if (isPlayer)
 	{
-		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Players, characterName, ActionMagicFire);
+		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Players, characterName, ActionMagicTentativeDark);
 
 		Enemy->Damage_Calc(calcResult, Magical);
 	}
 	else
 	{
-		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Enemys, characterName, ActionMagicFire);
+		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Enemys, characterName, ActionMagicTentativeDark);
 
 		Player->Damage_Calc(calcResult, Magical);
 	}
 
-	Sound_Play(SE_MagicFire);
+	/* +++ ’¾–Ù‚Ì•t—^ˆ— +++ */
+	/* +++ ’¾–Ù‚Ì•t—^ˆ— +++ */
+
+	Sound_Play(SE_MagicTentativeDark);
 
 	return;
 }
 
-/* --- ƒTƒ“ƒ_[ - –‚—ÍŽQÆ‚Ìæ§UŒ‚(MP:5) --- */
-void Human::MagicThunder()
+/* --- ƒ‰ƒCƒg(‰¼) - Œõ‚Ì–‚—Í‚ð•ú‚¿‘ŠŽè‚Ì•¨—UŒ‚‚Ì–½’†—¦‚ð‰º‚°‚é(MP: 10) --- */
+void Noname::MagicTentativeLight()
 {
 	int calcResult;		// ŒvŽZŒ‹‰Ê‚ÌŠi”[•Ï”
 
-	MP_Calc(MPofMagicThunder, ISREDUCTION);	// MP‚ðÁ”ïMP•ªŒ¸‚ç‚·
+	MP_Calc(MPofMagicTentativeLight, ISREDUCTION);	// MP‚ðÁ”ïMP•ªŒ¸‚ç‚·
 
-	calcResult = (int)(Magic * 0.8);	// –‚—Í‚É•â³‚ð‚Ì‚¹‚é
+	calcResult = (int)(Magic * 1.1);	// –‚—Í‚É•â³‚ð‚Ì‚¹‚é
 
-	settingMessagePattern = Message2Line;
-	displayMessagePattern = Message2Line;
+	settingMessagePattern = Message3Line;
+	displayMessagePattern = Message3Line;
 
 	if (isPlayer)
 	{
-		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Players, characterName, ActionMagicThunder);
+		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Players, characterName, ActionMagicTentativeLight);
 
 		Enemy->Damage_Calc(calcResult, Magical);
 	}
 	else
 	{
-		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Enemys, characterName, ActionMagicThunder);
+		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Enemys, characterName, ActionMagicTentativeLight);
 
 		Player->Damage_Calc(calcResult, Magical);
 	}
 
-	Sound_Play(SE_MagicThunder);
+	/* +++ ˆÃˆÅ‚Ì•t—^ˆ— +++ */
+	/* +++ ˆÃˆÅ‚Ì•t—^ˆ— +++ */
+
+	Sound_Play(SE_MagicTentativeLight);
 
 	return;
 }
 
-/* --- ƒAƒCƒX - –‚—ÍŽQÆ‚ÌUŒ‚(MP:10) --- */
-void Human::MagicIce()
+/* --- ƒq[ƒ‹(‰¼) - –‚–@‚ð¥‚¦‚Äƒ_ƒ[ƒW‚ð‰ñ•œ‚·‚é(MP: 10) --- */
+void Noname::MagicTentativeHeal()
 {
 	int calcResult;		// ŒvŽZŒ‹‰Ê‚ÌŠi”[•Ï”
 
-	MP_Calc(MPofMagicIce, ISREDUCTION);	// MP‚ðÁ”ïMP•ªŒ¸‚ç‚·
-
-	calcResult = (int)(Magic * 2.0);	// –‚—Í‚É•â³‚ð‚Ì‚¹‚é
-
-	settingMessagePattern = Message2Line;
-	displayMessagePattern = Message2Line;
-
-	if (isPlayer)
-	{
-		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Players, characterName, ActionMagicIce);
-
-		Enemy->Damage_Calc(calcResult, Magical);
-	}
-	else
-	{
-		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Enemys, characterName, ActionMagicIce);
-
-		Player->Damage_Calc(calcResult, Magical);
-	}
-
-	Sound_Play(SE_MagicIce);
-
-	return;
-}
-
-/* --- ƒq[ƒ‹ - –‚—ÍŽQÆ‚Ì‰ñ•œ‹Z(MP:10) --- */
-void Human::MagicHeal()
-{
-	int calcResult;		// ŒvŽZŒ‹‰Ê‚ÌŠi”[•Ï”
-
-	MP_Calc(MPofMagicHeal, ISREDUCTION);	// MP‚ðÁ”ïMP•ªŒ¸‚ç‚·
+	MP_Calc(MPofMagicTentativeHeal, ISREDUCTION);	// MP‚ðÁ”ïMP•ªŒ¸‚ç‚·
 
 	calcResult = (int)(Magic * 1.1);	// –‚—Í‚É•â³‚ð‚Ì‚¹‚é
 
@@ -1044,116 +1020,175 @@ void Human::MagicHeal()
 
 	if (isPlayer)
 	{
-		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Players, characterName, ActionMagicHeal);
+		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Players, characterName, ActionMagicTentativeHeal);
 	}
 	else
 	{
-		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Enemys, characterName, ActionMagicHeal);
+		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Enemys, characterName, ActionMagicTentativeHeal);
 	}
 
 	HP_Calc(calcResult, ISHEAL);
 
-	Sound_Play(SE_MagicHeal);
+	Sound_Play(SE_MagicTentativeHeal);
 
 	return;
 }
 
-/* --- ¸_“ˆê - TP‚ð‰ñ•œ‚·‚é(TP:0) --- */
-void Human::TPCharge()
-{
-	displayMessagePattern = Message2Line;
-	settingMessagePattern = Message2Line;
-
-	if (isPlayer)
-	{
-		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Players, characterName, ActionTPCharge);
-	}
-	else
-	{
-		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Enemys, characterName, ActionTPCharge);
-	}
-
-	TP_Calc(15, ISENHANCE);						// Ž©g‚ÌTP‚ð15‘‰Á
-
-	Sound_Play(SE_TPCharge);
-
-	return;
-}
-
-/* --- ‘S—ìŽa‚è - UŒ‚—ÍŽQÆ‚ÌUŒ‚(TP:0) --- */
-void Human::AllHeartSoul()
+/* --- ƒƒbƒN(‰¼) - ‘å’n‚©‚çŠâÎ‚ðŒ@‚èo‚µ“Š‚°‚Â‚¯‚é(MP: 25) --- */
+void Noname::MagicTentativeRock()
 {
 	int calcResult;		// ŒvŽZŒ‹‰Ê‚ÌŠi”[•Ï”
 
-	TP_Calc(TPofAllHeartSoul, ISREDUCTION);		// TP‚ðÁ”ïTP•ªŒ¸‚ç‚·
+	MP_Calc(MPofMagicTentativeDark, ISREDUCTION);	// MP‚ðÁ”ïMP•ªŒ¸‚ç‚·
+
+	calcResult = (int)(Magic * 2.5);	// –‚—Í‚É•â³‚ð‚Ì‚¹‚é
 
 	settingMessagePattern = Message2Line;
 	displayMessagePattern = Message2Line;
 
-	calcResult = (int)(Attack * 1.5);	// UŒ‚—Í‚É•â³‚ð‚Ì‚¹‚é
+	if (isPlayer)
+	{
+		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Players, characterName, ActionMagicTentativeRock);
+
+		Enemy->Damage_Calc(calcResult, Magical);
+	}
+	else
+	{
+		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Enemys, characterName, ActionMagicTentativeRock);
+
+		Player->Damage_Calc(calcResult, Magical);
+	}
+
+	Sound_Play(SE_MagicTentativeRock);
+
+	return;
+}
+
+/* --- —‹n(‰¼) - —‹‚Ìn‚ÅUŒ‚‚µA‚½‚Ü‚É‘ŠŽè‚ðƒ}ƒq‚É‚·‚é(TP: 15) --- */
+void Noname::TentativeThunder()
+{
+	int calcResult;		// ŒvŽZŒ‹‰Ê‚ÌŠi”[•Ï”
+
+	MP_Calc(TPofTentativeThunder, ISREDUCTION);	// TP‚ðÁ”ïTP•ªŒ¸‚ç‚·
+
+	calcResult = (int)(Attack * 1.1);	// UŒ‚—Í‚É•â³‚ð‚Ì‚¹‚é
+
+	settingMessagePattern = Message3Line;
+	displayMessagePattern = Message3Line;
 
 	if (isPlayer)
 	{
-		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Players, characterName, ActionAllHeartSoul);
+		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Players, characterName, ActionTentativeThunder);
 
 		Enemy->Damage_Calc(calcResult, Physical);
 	}
 	else
 	{
-		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Enemys, characterName, ActionAllHeartSoul);
+		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Enemys, characterName, ActionTentativeThunder);
 
 		Player->Damage_Calc(calcResult, Physical);
 	}
 
-	Sound_Play(SE_AllHeartSoul);
+	/* +++ ƒ}ƒq‚Ì•t—^ˆ— +++ */
+	/* +++ ƒ}ƒq‚Ì•t—^ˆ— +++ */
+
+	Sound_Play(SE_TentativeThunder);
 
 	return;
 }
 
-/* --- –‚—Í•â‹‹ - MP‚ð‰ñ•œ‚·‚é(TP:15) --- */
-void Human::MPCharge()
+/* --- “Ån(‰¼) - “Å‚Ìn‚ÅUŒ‚‚µA‘ŠŽè‚ð“Åó‘Ô‚É‚·‚é(TP: 15) --- */
+void Noname::TentativePoison()
 {
-	displayMessagePattern = Message2Line;
-	settingMessagePattern = Message2Line;
+	int calcResult;		// ŒvŽZŒ‹‰Ê‚ÌŠi”[•Ï”
+
+	MP_Calc(TPofTentativePoison, ISREDUCTION);	// TP‚ðÁ”ïTP•ªŒ¸‚ç‚·
+
+	calcResult = (int)(Attack * 1.1);	// UŒ‚—Í‚É•â³‚ð‚Ì‚¹‚é
+
+	settingMessagePattern = Message3Line;
+	displayMessagePattern = Message3Line;
 
 	if (isPlayer)
 	{
-		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Players, characterName, ActionMPCharge);
-		sprintf_s(battleMessage2, sizeof(battleMessage2), "%s%s%s%d%s", Players, characterName, PhraseMP, 15, HealStatus);
+		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Players, characterName, ActionTentativePoison);
+
+		Enemy->Damage_Calc(calcResult, Physical);
 	}
 	else
 	{
-		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Enemys, characterName, ActionMPCharge);
-		sprintf_s(battleMessage2, sizeof(battleMessage2), "%s%s%s%d%s", Enemys, characterName, PhraseMP, 15, HealStatus);
+		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Enemys, characterName, ActionTentativePoison);
+
+		Player->Damage_Calc(calcResult, Physical);
 	}
 
-	MP_Calc(15, ISENHANCE);					// Ž©g‚ÌMP‚ð15‘‰Á
-	TP_Calc(TPofMPCharge, ISREDUCTION);		// TP‚ðÁ”ïTP•ªŒ¸‚ç‚·
+	/* +++ “Å‚Ì•t—^ˆ— +++ */
+	/* +++ “Å‚Ì•t—^ˆ— +++ */
 
-	Sound_Play(SE_MPCharge);
+	Sound_Play(SE_TentativePoison);
 
 	return;
 }
 
-/* --- ‹C‡ - UŒ‚—Í‚ðã‚°‚é(TP:15) --- */
-void Human::GatherEnergy()
+/* --- –³‚Ì‘§(‰¼) - ƒuƒŒƒX‚ÅUŒ‚(TP: 25) --- */
+void Noname::TentativeBreath()
 {
-	displayMessagePattern = Message2Line;
+	int calcResult;		// ŒvŽZŒ‹‰Ê‚ÌŠi”[•Ï”
+
+	MP_Calc(TPofTentativeBreath, ISREDUCTION);	// TP‚ðÁ”ïTP•ªŒ¸‚ç‚·
+
+	calcResult = (int)(Attack * 2.0);	// UŒ‚—Í‚É•â³‚ð‚Ì‚¹‚é
+
 	settingMessagePattern = Message2Line;
+	displayMessagePattern = Message2Line;
 
 	if (isPlayer)
 	{
-		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Players, characterName, ActionGatherEnergy);
+		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Players, characterName, ActionTentativeBreath);
+
+		Enemy->Damage_Calc(calcResult, Breath);
 	}
 	else
 	{
-		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Enemys, characterName, ActionGatherEnergy);
+		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Enemys, characterName, ActionTentativeBreath);
+
+		Player->Damage_Calc(calcResult, Breath);
 	}
 
-	Attack_Calc(40, ISENHANCE);					// Ž©g‚ÌUŒ‚—Í‚ð40‘‰Á
-	TP_Calc(TPofGatherEnergy, ISREDUCTION);		// TP‚ðÁ”ïTP•ªŒ¸‚ç‚·
+	Sound_Play(SE_TentativeBreath);
 
-	Sound_Play(SE_GatherEnergy);
+	return;
+}
+
+/* --- ÅIŒ‚(‰¼) - Žç‚è‚ð‹]µ‚ÉUŒ‚‚·‚é(TP: 40) --- */
+void Noname::TentativeFinal()
+{
+	int calcResult;		// ŒvŽZŒ‹‰Ê‚ÌŠi”[•Ï”
+
+	MP_Calc(TPofTentativeFinal, ISREDUCTION);	// TP‚ðÁ”ïTP•ªŒ¸‚ç‚·
+
+	calcResult = (int)(Attack * 3.0);	// UŒ‚—Í‚É•â³‚ð‚Ì‚¹‚é
+
+	settingMessagePattern = Message4Line;
+	displayMessagePattern = Message4Line;
+
+	if (isPlayer)
+	{
+		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Players, characterName, ActionTentativeFinal);
+
+		Enemy->Damage_Calc(calcResult, Physical);
+	}
+	else
+	{
+		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Enemys, characterName, ActionTentativeFinal);
+
+		Player->Damage_Calc(calcResult, Physical);
+	}
+
+	Defence_Calc(30, ISREDUCTION);
+	Prevent_Calc(30, ISREDUCTION);
+
+	Sound_Play(SE_TentativeFinal);
 
 	return;
 }
