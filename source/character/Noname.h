@@ -37,7 +37,7 @@ public:
 	void EndFase_Draw();						// エンドフェイズの描画関数
 
 	void MagicTentativeDark();		// ダーク(仮) - 闇の魔力で攻撃し、たまに相手の魔法を封じる(MP: 10)
-	void MagicTentativeLight();		// ライト(仮) - 光の魔力を放ち相手の物理攻撃の命中率を下げる(MP: 10)
+	void MagicTentativeLight();		// ライト(仮) - 光の魔力を放ち相手の特技を封じる(MP: 10)
 	void MagicTentativeHeal();		// ヒール(仮) - 魔法を唱えてダメージを回復する(MP: 10)
 	void MagicTentativeRock();		// ロック(仮) - 大地から岩石を掘り出し投げつける(MP: 25)
 

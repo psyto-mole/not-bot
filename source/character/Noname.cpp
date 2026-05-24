@@ -85,7 +85,7 @@ void Noname::MainFase_Process()
 				{
 					displayMessagePattern = Message1Line;	// 表示するメッセージを1行に設定
 
-					// ファイアの説明文をメッセージに設定
+					// の説明文をメッセージに設定
 					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s", DetailOfMagicFire);
 				}
 				else if (actionNumber == 30)

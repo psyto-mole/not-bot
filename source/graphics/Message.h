@@ -84,7 +84,7 @@
 #define CharacterNameHuman		"勇者"			// キャラクター名「勇者」
 #define CharacterNameDragon		"ドラゴン"		// キャラクター名「ドラゴン」
 #define CharacterNameDightmare	"ダイトメア"	// キャラクター名「ダイトメア」
-#define CharacterNameNoname		"名無し(仮)"	// キャラクター名「名無し(仮)」
+#define CharacterNameNoname		"キュー(仮)"	// キャラクター名「キュー(仮)」
 #define CharacterNameShepp		"Shepp"			// キャラクター名「Shepp」
 
 /* +++ 修飾 +++ */
@@ -273,6 +273,41 @@
 #define ActionHarpy			"は姿を消しとびかかった!"
 #define ActionKebehsenuev	"は口から穢れた息を吐き出した!"
 #define ActionDuamtef		"は大地を轟かせる!"
+
+
+/* === キュー(仮) === */
+/* +++ 選択肢(キュー(仮)) +++ */
+#define OptionMagicTentativeDark	""
+#define OptionMagicTentativeLight	""
+#define OptionMagicTentativeHeal	""
+#define OptionMagicTentativeRock	""
+
+#define OptionTentativeThunder	""
+#define OptionTentativePoison	""
+#define OptionTentativeBreath	""
+#define OptionTentativeFinal	""
+
+/* +++ 選択肢の説明(キュー(仮)) +++ */
+#define DetailOfMagicTentativeDark		"(MP: )"
+#define DetailOfMagicTentativeLight		"(MP: )"
+#define DetailOfMagicTentativeHeal		"(MP: )"
+#define DetailOfMagicTentativeRock		"(MP: )"
+
+#define DetailOfTentativeThunder	"(TP: )"
+#define DetailOfTentativePoison		"(TP: )"
+#define DetailOfTentativeBreath		"(TP: )"
+#define DetailOfTentativeFinal		"(TP: )"
+
+/* +++ 行動の内容(キュー(仮)) +++ */
+#define ActionMagicDark		""
+#define ActionMagicLight	""
+#define ActionMagicHeal		""
+#define ActionMagicRock		""
+
+#define ActionTentativeThunder		""
+#define ActionTentativePoison		""
+#define ActionTentativeBreath		""
+#define ActionTentativeFinal		""
 
 
 /* === shepp === */
