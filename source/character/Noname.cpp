@@ -85,15 +85,15 @@ void Noname::MainFase_Process()
 				{
 					displayMessagePattern = Message1Line;	// 表示するメッセージを1行に設定
 
-					// の説明文をメッセージに設定
-					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s", DetailOfMagicFire);
+					// ダーク(仮)の説明文をメッセージに設定
+					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s", DetailOfMagicTentativeDark);
 				}
 				else if (actionNumber == 30)
 				{
 					displayMessagePattern = Message1Line;	// 表示するメッセージを1行に設定
 
-					// 精神統一の説明文をメッセージに設定
-					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s", DetailOfTPCharge);
+					// 雷刃(仮)の説明文をメッセージに設定
+					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s", DetailOfTentativeThunder);
 				}
 
 				if (Mouse_Check_Click(MOUSE_INPUT_LEFT))	// マウスがクリックされた
@@ -108,7 +108,7 @@ void Noname::MainFase_Process()
 					}
 					else if (actionNumber == 20)		// アクションナンバーが20なら
 					{
-						if (MP >= MPofMagicFire)	// MPがファイアの消費MP以上なら
+						if (MP >= MPofMagicTentativeDark)	// MPがダーク(仮)の消費MP以上なら
 						{
 							Sound_Play(SE_Enter);
 
@@ -123,7 +123,7 @@ void Noname::MainFase_Process()
 					}
 					else if (actionNumber == 30)	// アクションナンバーが30なら
 					{
-						if (TP >= TPofTPCharge)	// TPが精神統一の消費TP以上なら
+						if (TP >= TPofTentativeThunder)	// TPが雷刃(仮)の消費TP以上なら
 						{
 							Sound_Play(SE_Enter);
 
@@ -149,18 +149,17 @@ void Noname::MainFase_Process()
 				}
 				else if (actionNumber == 20)
 				{
-					displayMessagePattern = Message2Line;	// 表示するメッセージを2行に設定
+					displayMessagePattern = Message1Line;	// 表示するメッセージを1行に設定
 
-					// サンダーの説明文をメッセージに設定
-					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s", DetailOfMagicThunder1);
-					sprintf_s(battleMessage2, sizeof(battleMessage2), "%s", DetailOfMagicThunder2);
+					// ライト(仮)の説明文をメッセージに設定
+					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s", DetailOfMagicTentativeLight);
 				}
 				else if (actionNumber == 30)
 				{
 					displayMessagePattern = Message1Line;	// 表示するメッセージを1行に設定
 
-					// 全霊斬りの説明文をメッセージに設定
-					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s", DetailOfAllHeartSoul);
+					// 毒刃(仮)の説明文をメッセージに設定
+					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s", DetailOfTentativePoison);
 				}
 
 				if (Mouse_Check_Click(MOUSE_INPUT_LEFT))	// マウスがクリックされた
@@ -173,13 +172,11 @@ void Noname::MainFase_Process()
 					}
 					else if (actionNumber == 20)		// アクションナンバーが20なら
 					{
-						if (MP >= MPofMagicThunder)		// MPがサンダーの消費MP以上なら
+						if (MP >= MPofMagicTentativeLight)		// MPがライト(仮)の消費MP以上なら
 						{
 							Sound_Play(SE_Enter);
 
 							actionNumber += 2;		// アクションナンバーに2を加える
-
-							MyAttackPreemptiveTrue();	// 先制攻撃フラグをtrueにする
 
 							MyActionFlagTrue();		// アクションフラグをtrueにする
 						}
@@ -190,7 +187,7 @@ void Noname::MainFase_Process()
 					}
 					else if (actionNumber == 30)		// アクションナンバーが30なら
 					{
-						if (TP >= TPofAllHeartSoul)		// TPが全霊斬りの消費TP以上なら
+						if (TP >= TPofTentativePoison)		// TPが毒刃(仮)の消費TP以上なら
 						{
 							Sound_Play(SE_Enter);
 
@@ -218,23 +215,23 @@ void Noname::MainFase_Process()
 				{
 					displayMessagePattern = Message1Line;	// 表示するメッセージを1行に設定
 
-					// アイスの説明文をメッセージに設定
-					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s", DetailOfMagicIce);
+					if (HP < MaxHP)
+					{
+						// ヒール(仮)の説明文をメッセージに設定
+						sprintf_s(battleMessage1, sizeof(battleMessage1), "%s", DetailOfMagicTentativeHeal);
+					}
+					else
+					{
+						// 使用不可の説明文をメッセージに設定
+						sprintf_s(battleMessage1, sizeof(battleMessage1), "%s", DetailUnavilableMaxHP);
+					}
 				}
 				else if (actionNumber == 30)
 				{
 					displayMessagePattern = Message1Line;	// 表示するメッセージを1行に設定
 
-					if (MaxMP > MP)
-					{
-						// 魔力補給の説明文をメッセージに設定
-						sprintf_s(battleMessage1, sizeof(battleMessage1), "%s", DetailOfMPCharge);
-					}
-					else
-					{
-						// 使用不可の説明文をメッセージに設定
-						sprintf_s(battleMessage1, sizeof(battleMessage1), "%s", DetailUnavilableMaxMP);
-					}
+					// 無の息(仮)の説明文をメッセージに設定
+					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s", DetailOfTentativeBreath);
 				}
 
 				if (Mouse_Check_Click(MOUSE_INPUT_LEFT))	// マウスがクリックされた
@@ -247,24 +244,9 @@ void Noname::MainFase_Process()
 					}
 					else if (actionNumber == 20)	// アクションナンバーが20なら
 					{
-						if (MP >= MPofMagicIce)		// MPがアイスの消費MP以上なら
+						if (MP >= MPofMagicTentativeHeal)	// MPがヒール(仮)の消費MP以上なら
 						{
-							Sound_Play(SE_Enter);
-
-							actionNumber += 3;	// アクションナンバーに3を加算する
-
-							MyActionFlagTrue();	// アクションフラグをtrueにする
-						}
-						else
-						{
-							Sound_Play(SE_Unavilable);
-						}
-					}
-					else if (actionNumber == 30)	// アクションナンバーが30なら
-					{
-						if (TP >= TPofMPCharge)		// TPが魔力補給の消費TP以上なら
-						{
-							if (MaxMP > MP)		// MPが減少していれば
+							if (HP < MaxHP)
 							{
 								Sound_Play(SE_Enter);
 
@@ -282,6 +264,17 @@ void Noname::MainFase_Process()
 							Sound_Play(SE_Unavilable);
 						}
 					}
+					else if (actionNumber == 30)	// アクションナンバーが30なら
+					{
+						if (TP >= TPofTentativeBreath)	// TPが無の息(仮)の消費TP以上なら
+						{
+							Sound_Play(SE_Enter);
+
+							actionNumber += 3;	// アクションナンバーに3を加算する
+
+							MyActionFlagTrue();	// アクションフラグをtrueにする
+						}
+					}
 				}
 			}
 			else if (CollisionRectToPoint(optionButton4, nowMousePoint))	// 選択肢4にカーソルがあっている
@@ -297,23 +290,15 @@ void Noname::MainFase_Process()
 				{
 					displayMessagePattern = Message1Line;	// 表示するメッセージを1行に設定
 
-					if (MaxHP > HP)
-					{
-						// ヒールの説明文をメッセージに設定
-						sprintf_s(battleMessage1, sizeof(battleMessage1), "%s", DetailOfMagicHeal);
-					}
-					else
-					{
-						// 使用不可の説明文をメッセージに設定
-						sprintf_s(battleMessage1, sizeof(battleMessage1), "%s", DetailUnavilableMaxHP);
-					}
+					// ロック(仮)の説明文をメッセージに設定
+					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s", DetailOfMagicTentativeRock);
 				}
 				else if (actionNumber == 30)		// アクションナンバーが30なら
 				{
 					displayMessagePattern = Message1Line;	// 表示するメッセージを1行に設定
 
-					// 気合の説明文をメッセージに設定
-					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s", DetailOfGatherEnergy);
+					// 最終撃(仮)の説明文をメッセージに設定
+					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s", DetailOfTentativeFinal);
 				}
 
 				if (Mouse_Check_Click(MOUSE_INPUT_LEFT))	// マウスがクリックされた
@@ -330,20 +315,13 @@ void Noname::MainFase_Process()
 					}
 					else if (actionNumber == 20)	// アクションナンバーが20なら
 					{
-						if (MP >= MPofMagicHeal)		// MPがヒールの消費MP以上なら
+						if (MP >= MPofMagicTentativeRock)	// MPがロック(仮)の消費MP以上なら
 						{
-							if (HP != MaxHP)	// 現在のHPが最大HPと異なるなら
-							{
-								Sound_Play(SE_Enter);
+							Sound_Play(SE_Enter);
 
-								actionNumber += 4;	// アクションナンバーに4を加算する
+							actionNumber += 4;	// アクションナンバーに4を加算する
 
-								MyActionFlagTrue();		// アクションフラグをtrueにする
-							}
-							else
-							{
-								Sound_Play(SE_Unavilable);
-							}
+							MyActionFlagTrue();		// アクションフラグをtrueにする
 						}
 						else
 						{
@@ -352,7 +330,7 @@ void Noname::MainFase_Process()
 					}
 					else if (actionNumber == 30)	// アクションナンバーが30なら
 					{
-						if (TP >= TPofGatherEnergy)	// TPが気合の消費TP以上なら
+						if (TP >= TPofTentativeFinal)	// TPが最終撃(仮)の消費TP以上なら
 						{
 							Sound_Play(SE_Enter);
 
@@ -403,7 +381,7 @@ void Noname::MainFase_Process()
 				case 1:
 					/* +++ 乱数の値が1 +++ */
 
-					if (MP < MPofMagicFire)	// MPがファイアの消費MP未満なら
+					if (MP < MPofMagicTentativeDark)	// MPがダーク(仮)の消費MP未満なら
 					{
 						actionNumber = 0;	// アクションナンバーをリセットする
 
@@ -413,7 +391,7 @@ void Noname::MainFase_Process()
 				case 2:
 					/* +++ 乱数の値が2 +++ */
 
-					if (MP < MPofMagicThunder)	// MPがサンダーの消費MP未満なら
+					if (MP < MPofMagicTentativeLight)	// MPがライト(仮)の消費MP未満なら
 					{
 						actionNumber = 0;	// アクションナンバーをリセットする
 
@@ -427,7 +405,7 @@ void Noname::MainFase_Process()
 				case 3:
 					/* +++ 乱数の値が3 +++ */
 
-					if (MP < MPofMagicIce)	// MPがアイスの消費MP未満なら
+					if (MP < MPofMagicTentativeHeal || HP >= MaxHP)		// MPがヒール(仮)の消費MP未満またはHPが最大HP以上なら
 					{
 						actionNumber = 0;	// アクションナンバーをリセットする
 
@@ -437,7 +415,7 @@ void Noname::MainFase_Process()
 				case 4:
 					/* +++ 乱数の値が4 +++ */
 
-					if (HP >= MaxHP || MP < MPofMagicHeal)	// MPがヒールの消費MP未満なら
+					if (MP < MPofMagicTentativeRock)	// MPがロック(仮)の消費MP未満なら
 					{
 						actionNumber = 0;	// アクションナンバーをリセットする
 
@@ -460,7 +438,7 @@ void Noname::MainFase_Process()
 				case 1:
 					/* +++ 乱数の値が1 +++ */
 
-					if (TP < TPofTPCharge)	// TPが精神統一の消費TP未満なら
+					if (TP < TPofTentativeThunder)	// TPが雷刃(仮)の消費TP未満なら
 					{
 						actionNumber = 0;	// アクションナンバーをリセットする
 
@@ -470,7 +448,7 @@ void Noname::MainFase_Process()
 				case 2:
 					/* +++ 乱数の値が2 +++ */
 
-					if (TP < TPofAllHeartSoul)	// TPが全霊斬りの消費TP未満なら
+					if (TP < TPofTentativePoison)	// TPが毒刃(仮)の消費TP未満なら
 					{
 						actionNumber = 0;	// アクションナンバーをリセットする
 
@@ -480,7 +458,7 @@ void Noname::MainFase_Process()
 				case 3:
 					/* +++ 乱数の値が3 +++ */
 
-					if (MP >= MaxMP || TP < TPofMPCharge)	// TPが魔力補給の消費TP未満なら
+					if (TP < TPofTentativeBreath)	// TPが無の息(仮)の消費TP未満なら
 					{
 						actionNumber = 0;	// アクションナンバーをリセットする
 
@@ -490,7 +468,7 @@ void Noname::MainFase_Process()
 				case 4:
 					/* +++ 乱数の値が4 +++ */
 
-					if (TP < TPofGatherEnergy)	// TPが気合の消費TP未満なら
+					if (TP < TPofTentativeFinal)	// TPが最終撃(仮)の消費TP未満なら
 					{
 						actionNumber = 0;	// アクションナンバーをリセットする
 
@@ -511,7 +489,7 @@ void Noname::MainFase_Process()
 	return;
 }
 
-void Human::MainFase_Draw()
+void Noname::MainFase_Draw()
 {
 	if (isPlayer)	// プレイヤーキャラなら
 	{
@@ -561,7 +539,7 @@ void Human::MainFase_Draw()
 		}
 		else if (actionNumber == 20)
 		{
-			if (MP < MPofMagicFire)
+			if (MP < MPofMagicTentativeHeal)
 			{
 				/* +++ 4つの選択肢のボタンを灰色枠で描画 +++ */
 				DrawRect(optionButton1, Color_Gray, false, 3);
@@ -570,12 +548,144 @@ void Human::MainFase_Draw()
 				DrawRect(optionButton4, Color_Gray, false, 3);
 
 				/* +++ 魔法の選択肢のテキストを灰色で描画 +++ */
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionMagicFire);
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionMagicThunder);
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionMagicIce);
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionMagicHeal);
+				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionMagicTentativeDark);
+				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionMagicTentativeLight);
+				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionMagicTentativeHeal);
+				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionMagicTentativeRock);
 			}
-			else if (MP < MPofMagicIce)
+			else if (MP < MPofMagicTentativeRock)
+			{
+				/* +++ 3つの選択肢のボタンを白または灰色枠で描画 +++ */
+				DrawRect(optionButton1, Color_White, false, 3);
+				DrawRect(optionButton2, Color_White, false, 3);
+				DrawRect(optionButton4, Color_Gray, false, 3);
+
+				/* +++ 魔法の選択肢のテキストを白または灰色で描画 +++ */
+				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionMagicTentativeDark);
+				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionMagicTentativeLight);
+				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionMagicTentativeRock);
+
+				/* +++ マウスカーソルが触れている選択肢のボタンによって処理を変える +++ */
+				if (CollisionRectToPoint(optionButton1, nowMousePoint))	// 選択肢1ボタンとマウスカーソルが接触している
+				{
+					DrawRect(optionButton1, Color_White, true, 3);		// 選択肢1ボタンを白で塗りつぶして描画
+
+					// 選択肢1のテキストを黒で描画
+					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionMagicTentativeDark);
+				}
+				else if (CollisionRectToPoint(optionButton2, nowMousePoint))	// 選択肢2のボタンとマウスカーソルが接触している
+				{
+					DrawRect(optionButton2, Color_White, true, 3);		// 選択肢2ボタンを白で塗りつぶして描画
+
+					// 選択肢2のテキストを黒で描画
+					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionMagicTentativeLight);
+				}
+
+				if (HP < MaxHP)
+				{
+					if (CollisionRectToPoint(optionButton3, nowMousePoint))		// 選択肢3のボタンとマウスカーソルが接触している
+					{
+						DrawRect(optionButton3, Color_White, true, 3);		// 選択肢3ボタンを白で塗りつぶして描画
+
+						// 選択肢3のテキストを黒で描画
+						DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionMagicTentativeHeal);
+					}
+					else
+					{
+						DrawRect(optionButton3, Color_White, false, 3);		// 選択肢3ボタンを白で描画
+
+						// 選択肢3のテキストを白で描画
+						DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionMagicTentativeHeal);
+					}
+				}
+				else
+				{
+					DrawRect(optionButton3, Color_Gray, false, 3);		// 選択肢3ボタンを灰色で描画
+
+					// 選択肢3のテキストを灰色で描画
+					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionMagicTentativeHeal);
+				}
+			}
+			else
+			{
+				/* +++ 3つの選択肢のボタンを白枠で描画 +++ */
+				DrawRect(optionButton1, Color_White, false, 3);
+				DrawRect(optionButton2, Color_White, false, 3);
+				DrawRect(optionButton4, Color_White, false, 3);
+
+				/* +++ 魔法の選択肢のテキストを白で描画 +++ */
+				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionMagicTentativeDark);
+				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionMagicTentativeLight);
+				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionMagicTentativeRock);
+
+				/* +++ マウスカーソルが触れている選択肢のボタンによって処理を変える +++ */
+				if (CollisionRectToPoint(optionButton1, nowMousePoint))	// 選択肢1ボタンとマウスカーソルが接触している
+				{
+					DrawRect(optionButton1, Color_White, true, 3);		// 選択肢1ボタンを白で塗りつぶして描画
+
+					// 選択肢1のテキストを黒で描画
+					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionMagicTentativeDark);
+				}
+				else if (CollisionRectToPoint(optionButton2, nowMousePoint))	// 選択肢2のボタンとマウスカーソルが接触している
+				{
+					DrawRect(optionButton2, Color_White, true, 3);		// 選択肢2ボタンを白で塗りつぶして描画
+
+					// 選択肢2のテキストを黒で描画
+					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionMagicTentativeLight);
+				}
+				else if (CollisionRectToPoint(optionButton4, nowMousePoint))	// 選択肢4のボタンとマウスカーソルが接触している
+				{
+					DrawRect(optionButton4, Color_White, true, 3);		// 選択肢2ボタンを白で塗りつぶして描画
+
+					// 選択肢4のテキストを黒で描画
+					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionMagicTentativeRock);
+				}
+
+				if (HP < MaxHP)
+				{
+					if (CollisionRectToPoint(optionButton3, nowMousePoint))		// 選択肢3のボタンとマウスカーソルが接触している
+					{
+						DrawRect(optionButton3, Color_White, true, 3);		// 選択肢3ボタンを白で塗りつぶして描画
+
+						// 選択肢3のテキストを黒で描画
+						DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionMagicTentativeHeal);
+					}
+					else
+					{
+						DrawRect(optionButton3, Color_White, false, 3);		// 選択肢3ボタンを白で描画
+
+						// 選択肢3のテキストを白で描画
+						DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionMagicTentativeHeal);
+					}
+				}
+				else
+				{
+					DrawRect(optionButton3, Color_Gray, false, 3);		// 選択肢3ボタンを灰色で描画
+
+					// 選択肢3のテキストを灰色で描画
+					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionMagicTentativeHeal);
+				}
+			}
+
+			DrawBackBottun();
+		}
+		else if (actionNumber == 30)	// アクションナンバーが30である
+		{
+			if (TP < TPofTentativePoison)
+			{
+				/* +++ 4つの選択肢のボタンを灰枠で描画 +++ */
+				DrawRect(optionButton1, Color_Gray, false, 3);
+				DrawRect(optionButton2, Color_Gray, false, 3);
+				DrawRect(optionButton3, Color_Gray, false, 3);
+				DrawRect(optionButton4, Color_Gray, false, 3);
+
+				/* +++ 特技の選択肢のテキストを灰色で描画 +++ */
+				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionTentativeThunder);
+				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionTentativePoison);
+				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionTentativeBreath);
+				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionTentativeFinal);
+			}
+			else if (TP < TPofTentativeBreath)
 			{
 				/* +++ 4つの選択肢のボタンを白または灰色枠で描画 +++ */
 				DrawRect(optionButton1, Color_White, false, 3);
@@ -584,252 +694,103 @@ void Human::MainFase_Draw()
 				DrawRect(optionButton4, Color_Gray, false, 3);
 
 				/* +++ 特技の選択肢のテキストを白または灰色で描画 +++ */
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionMagicFire);
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionMagicThunder);
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionMagicIce);
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionMagicHeal);
-
-				/* +++ マウスカーソルが触れている選択肢のボタンによって処理を変える +++ */
-				if (CollisionRectToPoint(optionButton1, nowMousePoint))	// 選択肢1ボタンとマウスカーソルが接触している
-				{
-					DrawRect(optionButton1, Color_White, true, 3);		// 選択肢1ボタンを白で塗りつぶして描画
-
-					// 選択肢1のテキストを黒で描画
-					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionMagicFire);
-				}
-				else if (CollisionRectToPoint(optionButton2, nowMousePoint))	// 選択肢2のボタンとマウスカーソルが接触している
-				{
-					DrawRect(optionButton2, Color_White, true, 3);		// 選択肢2ボタンを白で塗りつぶして描画
-
-					// 選択肢2のテキストを黒で描画
-					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionMagicThunder);
-				}
-			}
-			else
-			{
-				if (MaxHP > HP)
-				{
-					/* +++ 4つの選択肢のボタンを白枠で描画 +++ */
-					DrawRect(optionButton1, Color_White, false, 3);
-					DrawRect(optionButton2, Color_White, false, 3);
-					DrawRect(optionButton3, Color_White, false, 3);
-					DrawRect(optionButton4, Color_White, false, 3);
-
-					/* +++ 特技の選択肢のテキストを白で描画 +++ */
-					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionMagicFire);
-					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionMagicThunder);
-					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionMagicIce);
-					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionMagicHeal);
-
-					/* +++ マウスカーソルが触れている選択肢のボタンによって処理を変える +++ */
-					if (CollisionRectToPoint(optionButton1, nowMousePoint))	// 選択肢1ボタンとマウスカーソルが接触している
-					{
-						DrawRect(optionButton1, Color_White, true, 3);		// 選択肢1ボタンを白で塗りつぶして描画
-
-						// 選択肢1のテキストを黒で描画
-						DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionMagicFire);
-					}
-					else if (CollisionRectToPoint(optionButton2, nowMousePoint))	// 選択肢2のボタンとマウスカーソルが接触している
-					{
-						DrawRect(optionButton2, Color_White, true, 3);		// 選択肢2ボタンを白で塗りつぶして描画
-
-						// 選択肢2のテキストを黒で描画
-						DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionMagicThunder);
-					}
-					else if (CollisionRectToPoint(optionButton3, nowMousePoint))	// 選択肢3ボタンとマウスカーソルが接触している
-					{
-						DrawRect(optionButton3, Color_White, true, 3);		// 選択肢3ボタンを白で塗りつぶして描画
-
-						// 選択肢3のテキストを黒で描画
-						DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionMagicIce);
-					}
-					else if (CollisionRectToPoint(optionButton4, nowMousePoint))	// 選択肢4のボタンとマウスカーソルが接触している
-					{
-						DrawRect(optionButton4, Color_White, true, 3);		// 選択肢4ボタンを白で塗りつぶして描画
-
-						// 選択肢4のテキストを黒で描画
-						DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionMagicHeal);
-					}
-				}
-				else
-				{
-					/* +++ 4つの選択肢のボタンを白または灰枠で描画 +++ */
-					DrawRect(optionButton1, Color_White, false, 3);
-					DrawRect(optionButton2, Color_White, false, 3);
-					DrawRect(optionButton3, Color_White, false, 3);
-					DrawRect(optionButton4, Color_Gray, false, 3);
-
-					/* +++ 特技の選択肢のテキストを白または灰色で描画 +++ */
-					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionMagicFire);
-					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionMagicThunder);
-					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionMagicIce);
-					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionMagicHeal);
-
-					/* +++ マウスカーソルが触れている選択肢のボタンによって処理を変える +++ */
-					if (CollisionRectToPoint(optionButton1, nowMousePoint))	// 選択肢1ボタンとマウスカーソルが接触している
-					{
-						DrawRect(optionButton1, Color_White, true, 3);		// 選択肢1ボタンを白で塗りつぶして描画
-
-						// 選択肢1のテキストを黒で描画
-						DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionMagicFire);
-					}
-					else if (CollisionRectToPoint(optionButton2, nowMousePoint))	// 選択肢2のボタンとマウスカーソルが接触している
-					{
-						DrawRect(optionButton2, Color_White, true, 3);		// 選択肢2ボタンを白で塗りつぶして描画
-
-						// 選択肢2のテキストを黒で描画
-						DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionMagicThunder);
-					}
-					else if (CollisionRectToPoint(optionButton3, nowMousePoint))	// 選択肢3ボタンとマウスカーソルが接触している
-					{
-						DrawRect(optionButton3, Color_White, true, 3);		// 選択肢3ボタンを白で塗りつぶして描画
-
-						// 選択肢3のテキストを黒で描画
-						DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionMagicIce);
-					}
-				}
-			}
-
-			DrawBackBottun();
-		}
-		else if (actionNumber == 30)	// アクションナンバーが30である
-		{
-			if (TP < TPofAllHeartSoul)
-			{
-				/* +++ 3つの選択肢のボタンを白または灰色枠で描画 +++ */
-				DrawRect(optionButton2, Color_Gray, false, 3);
-				DrawRect(optionButton3, Color_Gray, false, 3);
-				DrawRect(optionButton4, Color_Gray, false, 3);
-
-				/* +++ 特技の選択肢のテキストを灰色で描画 +++ */
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionAllHeartSoul);
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionMPCharge);
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionGatherEnergy);
+				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionTentativeThunder);
+				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionTentativePoison);
+				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionTentativeBreath);
+				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionTentativeFinal);
 
 				if (CollisionRectToPoint(optionButton1, nowMousePoint))	// 選択肢1のボタンとマウスカーソルが接触している
 				{
 					DrawRect(optionButton1, Color_White, true, 3);		// 選択肢1ボタンを白で塗りつぶして描画
 
 					// 選択肢1のテキストを黒で描画
-					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionTPCharge);
+					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionTentativeThunder);
 				}
-				else
+				else if (CollisionRectToPoint(optionButton2, nowMousePoint))	// 選択肢2のボタンとマウスカーソルが接触している
 				{
-					DrawRect(optionButton1, Color_White, false, 3);		// 選択肢1ボタンを白枠で描画
+					DrawRect(optionButton2, Color_White, true, 3);		// 選択肢2ボタンを白で塗りつぶして描画
 
-					// 選択肢1のテキストを白で描画
-					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionTPCharge);
+					// 選択肢2のテキストを黒で描画
+					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionTentativePoison);
 				}
 			}
-			else if (TP < TPofMPCharge)
+			else if (TP < TPofTentativeFinal)
 			{
 				/* +++ 4つの選択肢のボタン白または灰色枠で描画 +++ */
 				DrawRect(optionButton1, Color_White, false, 3);
 				DrawRect(optionButton2, Color_White, false, 3);
-				DrawRect(optionButton3, Color_Gray, false, 3);
+				DrawRect(optionButton3, Color_White, false, 3);
 				DrawRect(optionButton4, Color_Gray, false, 3);
 
 				/* +++ 特技の選択肢のテキストを白または灰色で描画 +++ */
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionTPCharge);
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionAllHeartSoul);
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionMPCharge);
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionGatherEnergy);
+				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionTentativeThunder);
+				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionTentativePoison);
+				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionTentativeBreath);
+				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionTentativeFinal);
 
 				if (CollisionRectToPoint(optionButton1, nowMousePoint))	// 選択肢1のボタンとマウスカーソルが接触している
 				{
 					DrawRect(optionButton1, Color_White, true, 3);		// 選択肢1ボタンを白で塗りつぶして描画
 
 					// 選択肢1のテキストを黒で描画
-					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionTPCharge);
+					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionTentativeThunder);
 				}
 				else if (CollisionRectToPoint(optionButton2, nowMousePoint))	// 選択肢2のボタンとマウスカーソルが接触している
 				{
 					DrawRect(optionButton2, Color_White, true, 3);		// 選択肢2ボタンを白で塗りつぶして描画
 
 					// 選択肢2のテキストを黒で描画
-					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionAllHeartSoul);
+					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionTentativePoison);
+				}
+				else if (CollisionRectToPoint(optionButton3, nowMousePoint))	// 選択肢3のボタンとマウスカーソルが接触している
+				{
+					DrawRect(optionButton3, Color_White, true, 3);		// 選択肢3ボタンを白で塗りつぶして描画
+
+					// 選択肢3のテキストを黒で描画
+					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionTentativeBreath);
 				}
 			}
 			else
 			{
-				if (MaxMP > MP)
+				/* +++ 4つの選択肢のボタンを白枠で描画 +++ */
+				DrawRect(optionButton1, Color_White, false, 3);
+				DrawRect(optionButton2, Color_White, false, 3);
+				DrawRect(optionButton3, Color_White, false, 3);
+				DrawRect(optionButton4, Color_White, false, 3);
+
+				/* +++ 特技の選択肢のテキストを白で描画 +++ */
+				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionTentativeThunder);
+				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionTentativePoison);
+				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionTentativeBreath);
+				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionTentativeFinal);
+
+				if (CollisionRectToPoint(optionButton1, nowMousePoint))	// 選択肢1のボタンとマウスカーソルが接触している
 				{
-					/* +++ 4つの選択肢のボタンを白枠で描画 +++ */
-					DrawRect(optionButton1, Color_White, false, 3);
-					DrawRect(optionButton2, Color_White, false, 3);
-					DrawRect(optionButton3, Color_White, false, 3);
-					DrawRect(optionButton4, Color_White, false, 3);
+					DrawRect(optionButton1, Color_White, true, 3);		// 選択肢1ボタンを白で塗りつぶして描画
 
-					/* +++ 特技の選択肢のテキストを白で描画 +++ */
-					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionTPCharge);
-					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionAllHeartSoul);
-					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionMPCharge);
-					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionGatherEnergy);
-
-					if (CollisionRectToPoint(optionButton1, nowMousePoint))	// 選択肢1のボタンとマウスカーソルが接触している
-					{
-						DrawRect(optionButton1, Color_White, true, 3);		// 選択肢1ボタンを白で塗りつぶして描画
-
-						// 選択肢1のテキストを黒で描画
-						DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionTPCharge);
-					}
-					else if (CollisionRectToPoint(optionButton2, nowMousePoint))	// 選択肢2のボタンとマウスカーソルが接触している
-					{
-						DrawRect(optionButton2, Color_White, true, 3);		// 選択肢2ボタンを白で塗りつぶして描画
-
-						// 選択肢2のテキストを黒で描画
-						DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionAllHeartSoul);
-					}
-					else if (CollisionRectToPoint(optionButton3, nowMousePoint))	// 選択肢3のボタンとマウスカーソルが接触している
-					{
-						DrawRect(optionButton3, Color_White, true, 3);		// 選択肢3ボタンを白で塗りつぶして描画
-
-						// 選択肢3のテキストを黒で描画
-						DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionMPCharge);
-					}
-					else if (CollisionRectToPoint(optionButton4, nowMousePoint))	// 選択肢4のボタンとマウスカーソルが接触している
-					{
-						DrawRect(optionButton4, Color_White, true, 3);		// 選択肢4ボタンを白で塗りつぶして描画
-
-						// 選択肢4のテキストを黒で描画
-						DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionGatherEnergy);
-					}
+					// 選択肢1のテキストを黒で描画
+					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionTentativeThunder);
 				}
-				else
+				else if (CollisionRectToPoint(optionButton2, nowMousePoint))	// 選択肢2のボタンとマウスカーソルが接触している
 				{
-					/* +++ 4つの選択肢のボタンを白または灰枠で描画 +++ */
-					DrawRect(optionButton1, Color_White, false, 3);
-					DrawRect(optionButton2, Color_White, false, 3);
-					DrawRect(optionButton3, Color_Gray, false, 3);
-					DrawRect(optionButton4, Color_White, false, 3);
+					DrawRect(optionButton2, Color_White, true, 3);		// 選択肢2ボタンを白で塗りつぶして描画
 
-					/* +++ 特技の選択肢のテキストを白または灰で描画 +++ */
-					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionTPCharge);
-					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionAllHeartSoul);
-					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionMPCharge);
-					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionGatherEnergy);
+					// 選択肢2のテキストを黒で描画
+					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionTentativePoison);
+				}
+				else if (CollisionRectToPoint(optionButton3, nowMousePoint))	// 選択肢3のボタンとマウスカーソルが接触している
+				{
+					DrawRect(optionButton3, Color_White, true, 3);		// 選択肢3ボタンを白で塗りつぶして描画
 
-					if (CollisionRectToPoint(optionButton1, nowMousePoint))	// 選択肢1のボタンとマウスカーソルが接触している
-					{
-						DrawRect(optionButton1, Color_White, true, 3);		// 選択肢1ボタンを白で塗りつぶして描画
+					// 選択肢3のテキストを黒で描画
+					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionTentativeBreath);
+				}
+				else if (CollisionRectToPoint(optionButton4, nowMousePoint))	// 選択肢4のボタンとマウスカーソルが接触している
+				{
+					DrawRect(optionButton4, Color_White, true, 3);		// 選択肢4ボタンを白で塗りつぶして描画
 
-						// 選択肢1のテキストを黒で描画
-						DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionTPCharge);
-					}
-					else if (CollisionRectToPoint(optionButton2, nowMousePoint))	// 選択肢2のボタンとマウスカーソルが接触している
-					{
-						DrawRect(optionButton2, Color_White, true, 3);		// 選択肢2ボタンを白で塗りつぶして描画
-
-						// 選択肢2のテキストを黒で描画
-						DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionAllHeartSoul);
-					}
-					else if (CollisionRectToPoint(optionButton4, nowMousePoint))	// 選択肢4のボタンとマウスカーソルが接触している
-					{
-						DrawRect(optionButton4, Color_White, true, 3);		// 選択肢4ボタンを白で塗りつぶして描画
-
-						// 選択肢4のテキストを黒で描画
-						DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionGatherEnergy);
-					}
+					// 選択肢4のテキストを黒で描画
+					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionTentativeFinal);
 				}
 			}
 
@@ -841,7 +802,7 @@ void Human::MainFase_Draw()
 }
 
 
-void Human::BattleFase_Process()
+void Noname::BattleFase_Process()
 {
 	if (actionFlag == false)	// アクションフラグがfalseなら
 	{
@@ -856,42 +817,42 @@ void Human::BattleFase_Process()
 		case 21:
 			/* +++ アクションナンバーが21 +++ */
 
-			MagicFire();	// ファイアを実行
+			MagicTentativeDark();	// ダーク(仮)を実行
 			break;
 		case 22:
 			/* +++ アクションナンバーが22 +++ */
 
-			MagicThunder();		// サンダーを実行
+			MagicTentativeLight();		// ライト(仮)を実行
 			break;
 		case 23:
 			/* +++ アクションナンバーが23 +++ */
 
-			MagicIce();		// アイスを実行
+			MagicTentativeHeal();		// ヒール(仮)を実行
 			break;
 		case 24:
 			/* +++ アクションナンバーが24 +++ */
 
-			MagicHeal();	// ヒールを実行
+			MagicTentativeRock();	// ロック(仮)を実行
 			break;
 		case 31:
 			/* +++ アクションナンバーが31 +++ */
 
-			TPCharge();		// 精神統一を実行
+			TentativeThunder();		// 雷刃(仮)を実行
 			break;
 		case 32:
 			/* +++ アクションナンバーが32 +++ */
 
-			AllHeartSoul();		// 全霊斬りを実行
+			TentativePoison();		// 毒刃(仮)を実行
 			break;
 		case 33:
 			/* +++ アクションナンバーが33 +++ */
 
-			MPCharge();		// 魔力補給を実行
+			TentativeBreath();		// 無の息(仮)を実行
 			break;
 		case 34:
 			/* +++ アクションナンバーが34 +++ */
 
-			GatherEnergy();		// 気合を実行
+			TentativeFinal();		// 最終撃(仮)を実行
 			break;
 		case 40:
 			/* +++ アクションナンバーが40 +++ */

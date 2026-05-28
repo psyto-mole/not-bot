@@ -277,37 +277,37 @@
 
 /* === キュー(仮) === */
 /* +++ 選択肢(キュー(仮)) +++ */
-#define OptionMagicTentativeDark	""
-#define OptionMagicTentativeLight	""
-#define OptionMagicTentativeHeal	""
-#define OptionMagicTentativeRock	""
+#define OptionMagicTentativeDark	"ダーク(仮)"
+#define OptionMagicTentativeLight	"ライト(仮)"
+#define OptionMagicTentativeHeal	"ヒール(仮)"
+#define OptionMagicTentativeRock	"ロック(仮)"
 
-#define OptionTentativeThunder	""
-#define OptionTentativePoison	""
-#define OptionTentativeBreath	""
-#define OptionTentativeFinal	""
+#define OptionTentativeThunder	"雷刃(仮)"
+#define OptionTentativePoison	"毒刃(仮)"
+#define OptionTentativeBreath	"無の息(仮)"
+#define OptionTentativeFinal	"最終撃(仮)"
 
 /* +++ 選択肢の説明(キュー(仮)) +++ */
-#define DetailOfMagicTentativeDark		"(MP: )"
-#define DetailOfMagicTentativeLight		"(MP: )"
-#define DetailOfMagicTentativeHeal		"(MP: )"
-#define DetailOfMagicTentativeRock		"(MP: )"
+#define DetailOfMagicTentativeDark		"闇の魔力で攻撃し、たまに相手の魔法を封じるようだ(MP: 10)"
+#define DetailOfMagicTentativeLight		"光の魔力で攻撃し、たまに相手の特技を封じるようだ(MP: 10)"
+#define DetailOfMagicTentativeHeal		"光の魔力で自身の傷を回復するようだ(MP: 10)"
+#define DetailOfMagicTentativeRock		"魔石を生み出し攻撃するようだ(MP: 25)"
 
-#define DetailOfTentativeThunder	"(TP: )"
-#define DetailOfTentativePoison		"(TP: )"
-#define DetailOfTentativeBreath		"(TP: )"
-#define DetailOfTentativeFinal		"(TP: )"
+#define DetailOfTentativeThunder	"雷の刃で攻撃し、たまに相手をマヒさせるようだ(TP: 15)"
+#define DetailOfTentativePoison		"毒の刃で攻撃し、たまに相手を毒にするようだ(TP: 15)"
+#define DetailOfTentativeBreath		"ブレスのようなものを吐き出し攻撃するようだ(TP: 25)"
+#define DetailOfTentativeFinal		"腹部と頭部に致命の打撃を叩き込むようだ(TP: 40)"
 
 /* +++ 行動の内容(キュー(仮)) +++ */
-#define ActionMagicDark		""
-#define ActionMagicLight	""
-#define ActionMagicHeal		""
-#define ActionMagicRock		""
+#define ActionMagicTentativeDark		"は闇の魔力を放出した"
+#define ActionMagicTentativeLight	"は光の魔力を放出した"
+#define ActionMagicTentativeHeal		"は傷を癒した"
+#define ActionMagicTentativeRock		"は魔石を放った"
 
-#define ActionTentativeThunder		""
-#define ActionTentativePoison		""
-#define ActionTentativeBreath		""
-#define ActionTentativeFinal		""
+#define ActionTentativeThunder		"は雷の刃で斬り込んだ"
+#define ActionTentativePoison		"は毒の刃で斬り込んだ"
+#define ActionTentativeBreath		"はブレスのようなものを吐き出した"
+#define ActionTentativeFinal		"は腹部と頭部に打撃を叩き込んだ"
 
 
 /* === shepp === */
