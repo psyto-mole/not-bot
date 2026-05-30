@@ -1,17 +1,17 @@
 #pragma once
-/* === 「名無し」関連のヘッダファイル === */
+/* === キュー関連のヘッダファイル === */
 
 #include <DxLib.h>
 #include "Character.h"
 
-/* +++ 「名無し」のステータス +++ */
-#define NonameHP		500		// 「名無し」のHP
-#define NonameMP		150		// 「名無し」のMP
-#define NonameAttack	60		// 「名無し」の攻撃力
-#define NonameDefence	90		// 「名無し」の守備力
-#define NonameMagic		60		// 「名無し」の魔法攻撃力
-#define NonamePrevent	90		// 「名無し」の魔法守備力
-#define NonameSpeed		70		// 「名無し」の素早さ
+/* +++ キューのステータス +++ */
+#define NonameHP		500		// キューのHP
+#define NonameMP		150		// キューのMP
+#define NonameAttack	60		// キューの攻撃力
+#define NonameDefence	90		// キューの守備力
+#define NonameMagic		60		// キューの魔法攻撃力
+#define NonamePrevent	90		// キューの魔法守備力
+#define NonameSpeed		70		// キューの素早さ
 
 #define MPofMagicTentativeDark		10	// ダーク(仮)の消費MP
 #define MPofMagicTentativeLight		10	// ライト(仮)の消費MP
@@ -24,7 +24,7 @@
 #define TPofTentativeFinal		40	// 最終撃(仮)の消費TP
 
 
-/* --- 「名無し」のクラス(キャラクタークラスを継承) --- */
+/* --- キューのクラス(キャラクタークラスを継承) --- */
 class Noname : public Character
 {
 public:
@@ -47,4 +47,4 @@ public:
 	void TentativeFinal();		// 最終撃(仮) - 守りを犠牲に攻撃する(TP: 40)
 };
 
-extern Noname PlNoname, EnNoname;		// 「名無し」クラスの変数
+extern Noname PlNoname, EnNoname;		// キュークラスの変数

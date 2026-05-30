@@ -40,6 +40,7 @@ extern Sounds BGM_GameOver;		// ゲームオーバー画面のBGM
 extern Sounds BGM_Result;		// リザルト画面のBGM
 extern Sounds BGM_Battle;		// 対ロボットのバトル画面のBGM
 
+
 /* +++ 操作関連のSE +++ */
 #define PathSEMenu			".\\Sound\\Sound_Effect_Lab\\Menu4.mp3"
 #define PathSEClick			".\\Sound\\Sound_Effect_Lab\\Click.mp3"
@@ -53,12 +54,14 @@ extern Sounds SE_Enter;			// 決定ボタンのSE(バトルシーン用)
 extern Sounds SE_Back;			// 戻るボタンのSE(バトルシーン用)
 extern Sounds SE_Unavilable;	// 使用不可のSE(バトルシーン用)
 
+
 /* +++ 共通技のSE +++ */
 #define PathSENormalAttack		".\\Sound\\Sound_Effect_Lab\\Hitting2.mp3"
 #define PathSENormalDefence		".\\Sound\\Sound_Effect_Lab\\Warp.mp3"
 
 extern Sounds SE_NormalAttack;	// 通常攻撃のSE
 extern Sounds SE_NormalDefence;	// 通常防御のSE
+
 
 /* +++ ロボットの技のSE +++ */
 #define PathSEFlameThrower1		".\\Sound\\Sound_Effect_Lab\\Magic_Fire2.mp3"
@@ -72,6 +75,7 @@ extern Sounds SE_FlameThrower2;	// 火炎放射のSE(強版)
 extern Sounds SE_Steelization;	// 鋼鉄化のSE
 extern Sounds SE_MagicShut;		// 魔力遮断のSE
 extern Sounds SE_TripleBarrage;	// 三連砲撃のSE
+
 
 /* +++ 勇者の技のSE +++ */
 #define PathSEMagicFire		".\\Sound\\Sound_Effect_Lab\\Magic_Fire1.mp3"
@@ -94,6 +98,7 @@ extern Sounds SE_AllHeartSoul;	// 全霊斬りのSE
 extern Sounds SE_MPCharge;		// 魔力補給のSE
 extern Sounds SE_GatherEnergy;	// 気合のSE
 
+
 /* +++ ドラゴンの技のSE +++ */
 #define PathSEMagicPillar	".\\Sound\\Sound_Effect_Lab\\Beam_Cannon3.mp3"
 #define PathSEMagicFung		".\\Sound\\Sound_Effect_Lab\\Special_Move.mp3"
@@ -110,8 +115,55 @@ extern Sounds SE_MagicRecover;	// リカバーのSE
 
 extern Sounds SE_CurseBreath;		// 呪いの息のSE
 extern Sounds SE_ImmortalScale;		// 竜仙鱗のSE
-extern Sounds SE_DestructBreath;		// 破壊の息のSE
+extern Sounds SE_DestructBreath;	// 破壊の息のSE
 extern Sounds SE_AbsorbAtmosphere;	// 大気吸収のSE
+
+
+/* +++ ダイトメアの技のSE +++ */
+#define PathSEMagicSaros1	".\\Sound\\Sound_Effect_Lab\\Charge_Beam.mp3"
+#define PathSEMagicSaros2	".\\Sound\\Sound_Effect_Lab\\Beam_Cannon.mp3"
+#define PathSEMagicDeus		".\\Sound\\OtoLogic\\Magic2-3.mp3"
+#define PathSEMagicEx		".\\Sound\\Sound_Effect_Lab\\.mp3"
+#define PathSEMagicMachina  ".\\Sound\\Sound_Effect_Lab\\.mp3"
+
+#define PathSEImseti		".\\Sound\\Sound_Effect_Lab\\.mp3"
+#define PathSEHarpy			".\\Sound\\Sound_Effect_Lab\\.mp3"
+#define PathSEKebehsenuev	".\\Sound\\Sound_Effect_Lab\\.mp3"
+#define PathSEDuamtef		".\\Sound\\Sound_Effect_Lab\\.mp3"
+
+extern Sounds SE_MagicSaros1;	// サロスのSE1
+extern Sounds SE_MagicSaros2;	// サロスのSE2
+extern Sounds SE_MagicDeus;		// デウスのSE
+extern Sounds SE_MagicEx;		// エクスのSE
+extern Sounds SE_MagicMachina;	// マキナのSE
+
+extern Sounds SE_Imseti;		// イムセトのSE
+extern Sounds SE_Harpy;			// ハーピのSE
+extern Sounds SE_Kebehsenuev;	// ケベフスのSE
+extern Sounds SE_Duamtef;		// ドゥアムタのSE
+
+
+/* +++ キューの技のSE +++ */
+#define PathSEMagicTentativeDark	".\\Sound\\Sound_Effect_Lab\\.mp3"
+#define PathSEMagicTentativeLight	".\\Sound\\Sound_Effect_Lab\\.mp3"
+#define PathSEMagicTentativeHeal	".\\Sound\\Sound_Effect_Lab\\.mp3"
+#define PathSEMagicTentativeRock	".\\Sound\\Sound_Effect_Lab\\.mp3"
+
+#define PathSETentativeThunder	".\\Sound\\Sound_Effect_Lab\\Magic_Thunder1.mp3"
+#define PathSETentativePoison	".\\Sound\\Sound_Effect_Lab\\Impact7.mp3"
+#define PathSETentativeBreath	".\\Sound\\Sound_Effect_Lab\\.mp3"
+#define PathSETentativeFunal	".\\Sound\\Sound_Effect_Lab\\.mp3"
+
+extern Sounds SE_MagicTentativeDark;	// ダーク(仮)のSE
+extern Sounds SE_MagicTentativeLight;	// ライト(仮)のSE
+extern Sounds SE_MagicTentativeHeal;	// ヒール(仮)のSE
+extern Sounds SE_MagicTentativeRock;	// ロック(仮)のSE
+
+extern Sounds SE_TentativeThunder;	// 雷刃(仮)のSE
+extern Sounds SE_Tentativepoison;	// 毒刃(仮)のSE
+extern Sounds SE_TentativeBreath;	// 無の息(仮)のSE
+extern Sounds SE_TentativeFinal;	// 最終撃(仮)のSE
+
 
 /* +++ sheppの技のSE +++ */
 #define PathSEMagicMu		".\\Sound\\Sound_Effect_Lab\\Robot_Activation1.mp3"

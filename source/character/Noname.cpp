@@ -1,4 +1,4 @@
-/* === 「名無し」関連のソースファイル === */
+/* === キュー関連のソースファイル === */
 
 #include <string.h>
 #include "Noname.h"
@@ -13,7 +13,7 @@
 #include "Rectparameter.h"
 #include "BattleScene.h"
 
-Noname PlNoname, EnNoname;			// 「名無し」クラスの変数
+Noname PlNoname, EnNoname;			// キュークラスの変数
 
 /* +++ 人間クラスのオーバーライド +++ */
 void Noname::Character_Init(bool isThisPlayer)
