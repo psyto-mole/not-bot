@@ -146,9 +146,9 @@ extern Sounds SE_Duamtef;		// ドゥアムタのSE
 
 
 /* +++ キューの技のSE +++ */
-#define PathSEMagicTentativeDark	".\\Sound\\Sound_Effect_Lab\\.mp3"
-#define PathSEMagicTentativeLight	".\\Sound\\Sound_Effect_Lab\\.mp3"
-#define PathSEMagicTentativeHeal	".\\Sound\\Sound_Effect_Lab\\.mp3"
+#define PathSEMagicTentativeDark	".\\Sound\\OtoLogic\\Magic_Down1.mp3"
+#define PathSEMagicTentativeLight	".\\Sound\\Sound_Effect_Lab\\Magic_Ice3.mp3"
+#define PathSEMagicTentativeHeal	".\\Sound\\Sound_Effect_Lab\\Magic_Heal1.mp3"
 #define PathSEMagicTentativeRock	".\\Sound\\Sound_Effect_Lab\\.mp3"
 
 #define PathSETentativeThunder	".\\Sound\\Sound_Effect_Lab\\Magic_Thunder1.mp3"
