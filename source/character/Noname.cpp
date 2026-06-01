@@ -1030,7 +1030,7 @@ void Noname::TentativeThunder()
 {
 	int calcResult;		// ŒvŽZŒ‹‰Ê‚ÌŠi”[•Ï”
 
-	MP_Calc(TPofTentativeThunder, ISREDUCTION);	// TP‚ðÁ”ïTP•ªŒ¸‚ç‚·
+	TP_Calc(TPofTentativeThunder, ISREDUCTION);	// TP‚ðÁ”ïTP•ªŒ¸‚ç‚·
 
 	calcResult = (int)(Attack * 1.1);	// UŒ‚—Í‚É•â³‚ð‚Ì‚¹‚é
 
@@ -1063,7 +1063,7 @@ void Noname::TentativePoison()
 {
 	int calcResult;		// ŒvŽZŒ‹‰Ê‚ÌŠi”[•Ï”
 
-	MP_Calc(TPofTentativePoison, ISREDUCTION);	// TP‚ðÁ”ïTP•ªŒ¸‚ç‚·
+	TP_Calc(TPofTentativePoison, ISREDUCTION);	// TP‚ðÁ”ïTP•ªŒ¸‚ç‚·
 
 	calcResult = (int)(Attack * 1.1);	// UŒ‚—Í‚É•â³‚ð‚Ì‚¹‚é
 
@@ -1091,14 +1091,14 @@ void Noname::TentativePoison()
 	return;
 }
 
-/* --- –³‚Ì‘§(‰¼) - ƒuƒŒƒX‚ÅUŒ‚(TP: 25) --- */
-void Noname::TentativeBreath()
+/* --- \‚¦(‰¼) - Žg‚¤‚Ù‚Ç‚ÉŽç”õ—Í‚ªã‚ª‚é(TP: 25) --- */
+void Noname::TentativeStance()
 {
 	int calcResult;		// ŒvŽZŒ‹‰Ê‚ÌŠi”[•Ï”
 
-	MP_Calc(TPofTentativeBreath, ISREDUCTION);	// TP‚ðÁ”ïTP•ªŒ¸‚ç‚·
+	TP_Calc(TPofTentativeBreath, ISREDUCTION);	// TP‚ðÁ”ïTP•ªŒ¸‚ç‚·
 
-	calcResult = (int)(Attack * 2.0);	// UŒ‚—Í‚É•â³‚ð‚Ì‚¹‚é
+	calcResult = (int)( * );	// UŒ‚—Í‚É•â³‚ð‚Ì‚¹‚é
 
 	settingMessagePattern = Message2Line;
 	displayMessagePattern = Message2Line;
@@ -1106,27 +1106,23 @@ void Noname::TentativeBreath()
 	if (isPlayer)
 	{
 		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Players, characterName, ActionTentativeBreath);
-
-		Enemy->Damage_Calc(calcResult, Breath);
 	}
 	else
 	{
 		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Enemys, characterName, ActionTentativeBreath);
-
-		Player->Damage_Calc(calcResult, Breath);
 	}
 
-	Sound_Play(SE_TentativeBreath);
+	Sound_Play(SE_TentativeStance);
 
 	return;
 }
 
-/* --- ÅIŒ‚(‰¼) - Žç‚è‚ð‹]µ‚ÉUŒ‚‚·‚é(TP: 40) --- */
-void Noname::TentativeFinal()
+/* --- ’É‘Å(‰¼) - “–‚½‚ê‚Î’v–½‚ÌUŒ‚(TP: 40) --- */
+void Noname::TentativeSevereBlow()
 {
 	int calcResult;		// ŒvŽZŒ‹‰Ê‚ÌŠi”[•Ï”
 
-	MP_Calc(TPofTentativeFinal, ISREDUCTION);	// TP‚ðÁ”ïTP•ªŒ¸‚ç‚·
+	TP_Calc(TPofTentativeFinal, ISREDUCTION);	// TP‚ðÁ”ïTP•ªŒ¸‚ç‚·
 
 	calcResult = (int)(Attack * 3.0);	// UŒ‚—Í‚É•â³‚ð‚Ì‚¹‚é
 
@@ -1145,9 +1141,6 @@ void Noname::TentativeFinal()
 
 		Player->Damage_Calc(calcResult, Physical);
 	}
-
-	Defence_Calc(30, ISREDUCTION);
-	Prevent_Calc(30, ISREDUCTION);
 
 	Sound_Play(SE_TentativeFinal);
 

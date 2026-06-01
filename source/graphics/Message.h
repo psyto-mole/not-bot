@@ -130,6 +130,7 @@
 /* +++行動の内容(共通項目)  +++ */
 #define ActionNormalAttack		"の攻撃!"
 #define ActionNormalDefence		"は守りを固めている"
+#define ActionAttackMiss		"は攻撃を外した"
 #define TakeDamage				"のダメージを受けた"
 #define HealStatus				"回復した"
 #define DamageStatus			"のダメージを受けた"
@@ -284,8 +285,8 @@
 
 #define OptionTentativeThunder	"雷刃(仮)"
 #define OptionTentativePoison	"毒刃(仮)"
-#define OptionTentativeBreath	"無の息(仮)"
-#define OptionTentativeFinal	"最終撃(仮)"
+#define OptionTentativeBreath	"構え(仮)"
+#define OptionTentativeFinal	"痛打(仮)"
 
 /* +++ 選択肢の説明(キュー(仮)) +++ */
 #define DetailOfMagicTentativeDark		"闇の魔力で攻撃し、たまに相手の魔法を封じるようだ(MP: 10)"
@@ -295,18 +296,18 @@
 
 #define DetailOfTentativeThunder	"雷の刃で攻撃し、たまに相手をマヒさせるようだ(TP: 15)"
 #define DetailOfTentativePoison		"毒の刃で攻撃し、たまに相手を毒にするようだ(TP: 15)"
-#define DetailOfTentativeBreath		"ブレスのようなものを吐き出し攻撃するようだ(TP: 25)"
-#define DetailOfTentativeFinal		"腹部と頭部に致命の打撃を叩き込むようだ(TP: 40)"
+#define DetailOfTentativeBreath		"使うほどに守備力が上昇するようだ(TP: 25)"
+#define DetailOfTentativeFinal		"相手に致命の攻撃を叩き込むことがあるようだ(TP: 40)"
 
 /* +++ 行動の内容(キュー(仮)) +++ */
-#define ActionMagicTentativeDark		"は闇の魔力を放出した"
+#define ActionMagicTentativeDark	"は闇の魔力を放出した"
 #define ActionMagicTentativeLight	"は光の魔力を放出した"
-#define ActionMagicTentativeHeal		"は傷を癒した"
-#define ActionMagicTentativeRock		"は魔石を放った"
+#define ActionMagicTentativeHeal	"は傷を癒した"
+#define ActionMagicTentativeRock	"は魔石を放った"
 
 #define ActionTentativeThunder		"は雷の刃で斬り込んだ"
 #define ActionTentativePoison		"は毒の刃で斬り込んだ"
-#define ActionTentativeBreath		"はブレスのようなものを吐き出した"
+#define ActionTentativeBreath		"は構えた"
 #define ActionTentativeFinal		"は腹部と頭部に打撃を叩き込んだ"
 
 

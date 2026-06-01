@@ -58,9 +58,11 @@ extern Sounds SE_Unavilable;	// 使用不可のSE(バトルシーン用)
 /* +++ 共通技のSE +++ */
 #define PathSENormalAttack		".\\Sound\\Sound_Effect_Lab\\Hitting2.mp3"
 #define PathSENormalDefence		".\\Sound\\Sound_Effect_Lab\\Warp.mp3"
+#define PathSEAttackMiss		".\\Sound\\Sound_Effect_Lab\\.mp3"
 
 extern Sounds SE_NormalAttack;	// 通常攻撃のSE
-extern Sounds SE_NormalDefence;	// 通常防御のSE
+extern Sounds SE_NormalAttack;	// 通常攻撃のSE
+extern Sounds SE_AttackMiss;	// 技失敗のSE
 
 
 /* +++ ロボットの技のSE +++ */
@@ -151,20 +153,20 @@ extern Sounds SE_Duamtef;		// ドゥアムタのSE
 #define PathSEMagicTentativeHeal	".\\Sound\\Sound_Effect_Lab\\Magic_Heal1.mp3"
 #define PathSEMagicTentativeRock	".\\Sound\\Sound_Effect_Lab\\.mp3"
 
-#define PathSETentativeThunder	".\\Sound\\Sound_Effect_Lab\\Magic_Thunder1.mp3"
-#define PathSETentativePoison	".\\Sound\\Sound_Effect_Lab\\Impact7.mp3"
-#define PathSETentativeBreath	".\\Sound\\Sound_Effect_Lab\\.mp3"
-#define PathSETentativeFunal	".\\Sound\\Sound_Effect_Lab\\.mp3"
+#define PathSETentativeThunder		".\\Sound\\Sound_Effect_Lab\\Magic_Thunder1.mp3"
+#define PathSETentativePoison		".\\Sound\\Sound_Effect_Lab\\Impact7.mp3"
+#define PathSETentativeStance		".\\Sound\\Sound_Effect_Lab\\.mp3"
+#define PathSETentativeSevereBlow	".\\Sound\\Sound_Effect_Lab\\.mp3"
 
 extern Sounds SE_MagicTentativeDark;	// ダーク(仮)のSE
 extern Sounds SE_MagicTentativeLight;	// ライト(仮)のSE
 extern Sounds SE_MagicTentativeHeal;	// ヒール(仮)のSE
 extern Sounds SE_MagicTentativeRock;	// ロック(仮)のSE
 
-extern Sounds SE_TentativeThunder;	// 雷刃(仮)のSE
-extern Sounds SE_Tentativepoison;	// 毒刃(仮)のSE
-extern Sounds SE_TentativeBreath;	// 無の息(仮)のSE
-extern Sounds SE_TentativeFinal;	// 最終撃(仮)のSE
+extern Sounds SE_TentativeThunder;		// 雷刃(仮)のSE
+extern Sounds SE_Tentativepoison;		// 毒刃(仮)のSE
+extern Sounds SE_TentativeStance;		// 構え(仮)のSE
+extern Sounds SE_TentativeSevereBlow;	// 痛打(仮)のSE
 
 
 /* +++ sheppの技のSE +++ */

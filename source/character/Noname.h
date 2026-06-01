@@ -41,10 +41,10 @@ public:
 	void MagicTentativeHeal();		// ヒール(仮) - 魔法を唱えてダメージを回復する(MP: 10)
 	void MagicTentativeRock();		// ロック(仮) - 大地から岩石を掘り出し投げつける(MP: 25)
 
-	void TentativeThunder();	// 雷刃(仮) - 雷の刃で攻撃し、たまに相手をマヒにする(TP: 15)
-	void TentativePoison();		// 毒刃(仮) - 毒の刃で攻撃し、相手を毒状態にする(TP: 15)
-	void TentativeBreath();		// 無の息(仮) - 形容しがたいブレスの攻撃(TP: 25)
-	void TentativeFinal();		// 最終撃(仮) - 守りを犠牲に攻撃する(TP: 40)
+	void TentativeThunder();		// 雷刃(仮) - 雷の刃で攻撃し、たまに相手をマヒにする(TP: 15)
+	void TentativePoison();			// 毒刃(仮) - 毒の刃で攻撃し、相手を毒状態にする(TP: 15)
+	void TentativeStance();			// 構え(仮) - 使うほどに守備力を上昇させる(TP: 25)
+	void TentativeSevereBlow();		// 痛打(仮) - 当たれば致命の攻撃(TP: 40)
 };
 
 extern Noname PlNoname, EnNoname;		// キュークラスの変数
