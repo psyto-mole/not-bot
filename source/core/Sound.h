@@ -127,9 +127,11 @@ extern Sounds SE_AbsorbAtmosphere;	// 大気吸収のSE
 #define PathSEMagicMachina  ".\\Sound\\OtoLogic\\Shortbridge29-2.mp3"
 
 #define PathSEImseti		".\\Sound\\Sound_Effect_Lab\\Sword_Cut4.mp3"
-#define PathSEHarpy			".\\Sound\\Sound_Effect_Lab\\.mp3"
-#define PathSEKebehsenuev	".\\Sound\\Sound_Effect_Lab\\.mp3"
-#define PathSEDuamtef		".\\Sound\\Sound_Effect_Lab\\.mp3"
+#define PathSEHarpy			".\\Sound\\Sound_Effect_Lab\\Magic_Thunder2.mp3"
+#define PathSEKebehsenuev	".\\Sound\\Sound_Effect_Lab\\Pterosaur_Roar2.mp3"
+#define PathSEDuamtef1		".\\Sound\\Sound_Effect_Lab\\Sword_Cut3.mp3"
+#define PathSEDuamtef2		".\\Sound\\Sound_Effect_Lab\\Magic_Ice3.mp3"
+#define PathSEDuamtef3		".\\Sound\\Sound_Effect_Lab\\Magic_Fire2.mp3"
 
 extern Sounds SE_MagicSaros1;	// サロスのSE1
 extern Sounds SE_MagicSaros2;	// サロスのSE2
