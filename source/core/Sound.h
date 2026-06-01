@@ -123,10 +123,10 @@ extern Sounds SE_AbsorbAtmosphere;	// ‘å‹C‹zŽû‚ÌSE
 #define PathSEMagicSaros1	".\\Sound\\Sound_Effect_Lab\\Charge_Beam.mp3"
 #define PathSEMagicSaros2	".\\Sound\\Sound_Effect_Lab\\Beam_Cannon.mp3"
 #define PathSEMagicDeus		".\\Sound\\OtoLogic\\Magic2-3.mp3"
-#define PathSEMagicEx		".\\Sound\\Sound_Effect_Lab\\.mp3"
-#define PathSEMagicMachina  ".\\Sound\\Sound_Effect_Lab\\.mp3"
+#define PathSEMagicEx		".\\Sound\\Sound_Effect_Lab\\Robot_Conbination1.mp3"
+#define PathSEMagicMachina  ".\\Sound\\OtoLogic\\Shortbridge29-2.mp3"
 
-#define PathSEImseti		".\\Sound\\Sound_Effect_Lab\\.mp3"
+#define PathSEImseti		".\\Sound\\Sound_Effect_Lab\\Sword_Cut4.mp3"
 #define PathSEHarpy			".\\Sound\\Sound_Effect_Lab\\.mp3"
 #define PathSEKebehsenuev	".\\Sound\\Sound_Effect_Lab\\.mp3"
 #define PathSEDuamtef		".\\Sound\\Sound_Effect_Lab\\.mp3"
