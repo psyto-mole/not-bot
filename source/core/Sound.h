@@ -58,7 +58,7 @@ extern Sounds SE_Unavilable;	// 使用不可のSE(バトルシーン用)
 /* +++ 共通技のSE +++ */
 #define PathSENormalAttack		".\\Sound\\Sound_Effect_Lab\\Hitting2.mp3"
 #define PathSENormalDefence		".\\Sound\\Sound_Effect_Lab\\Warp.mp3"
-#define PathSEAttackMiss		".\\Sound\\Sound_Effect_Lab\\.mp3"
+#define PathSEAttackMiss		".\\Sound\\Sound_Effect_Lab\\Sound_Beep2.mp3"
 
 extern Sounds SE_NormalAttack;	// 通常攻撃のSE
 extern Sounds SE_NormalAttack;	// 通常攻撃のSE
@@ -144,19 +144,21 @@ extern Sounds SE_MagicMachina;	// マキナのSE
 extern Sounds SE_Imseti;		// イムセトのSE
 extern Sounds SE_Harpy;			// ハーピのSE
 extern Sounds SE_Kebehsenuev;	// ケベフスのSE
-extern Sounds SE_Duamtef;		// ドゥアムタのSE
+extern Sounds SE_Duamtef1;		// ドゥアムタのSE1
+extern Sounds SE_Duamtef2;		// ドゥアムタのSE2
+extern Sounds SE_Duamtef3;		// ドゥアムタのSE3
 
 
 /* +++ キューの技のSE +++ */
 #define PathSEMagicTentativeDark	".\\Sound\\OtoLogic\\Magic_Down1.mp3"
 #define PathSEMagicTentativeLight	".\\Sound\\Sound_Effect_Lab\\Magic_Ice3.mp3"
 #define PathSEMagicTentativeHeal	".\\Sound\\Sound_Effect_Lab\\Magic_Heal1.mp3"
-#define PathSEMagicTentativeRock	".\\Sound\\Sound_Effect_Lab\\.mp3"
+#define PathSEMagicTentativeRock	".\\Sound\\Sound_Effect_Lab\\Explode4.mp3"
 
 #define PathSETentativeThunder		".\\Sound\\Sound_Effect_Lab\\Magic_Thunder1.mp3"
 #define PathSETentativePoison		".\\Sound\\Sound_Effect_Lab\\Impact7.mp3"
-#define PathSETentativeStance		".\\Sound\\Sound_Effect_Lab\\.mp3"
-#define PathSETentativeSevereBlow	".\\Sound\\Sound_Effect_Lab\\.mp3"
+#define PathSETentativeStance		".\\Sound\\Sound_Effect_Lab\\Magic_Gravity1.mp3"
+#define PathSETentativeSevereBlow	".\\Sound\\Sound_Effect_Lab\\Heavy_Kick1.mp3"
 
 extern Sounds SE_MagicTentativeDark;	// ダーク(仮)のSE
 extern Sounds SE_MagicTentativeLight;	// ライト(仮)のSE
@@ -164,7 +166,7 @@ extern Sounds SE_MagicTentativeHeal;	// ヒール(仮)のSE
 extern Sounds SE_MagicTentativeRock;	// ロック(仮)のSE
 
 extern Sounds SE_TentativeThunder;		// 雷刃(仮)のSE
-extern Sounds SE_Tentativepoison;		// 毒刃(仮)のSE
+extern Sounds SE_TentativePoison;		// 毒刃(仮)のSE
 extern Sounds SE_TentativeStance;		// 構え(仮)のSE
 extern Sounds SE_TentativeSevereBlow;	// 痛打(仮)のSE
 

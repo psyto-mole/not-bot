@@ -18,8 +18,9 @@ Sounds SE_Back;			// 戻るボタンのSE(バトルシーン用)
 Sounds SE_Unavilable;	// 使用不可のSE(バトルシーン用)
 
 /* +++ 共通技のSE +++ */
-Sounds SE_NormalAttack;	// 通常攻撃のSE
+Sounds SE_NormalAttack;		// 通常攻撃のSE
 Sounds SE_NormalDefence;	// 通常防御のSE
+Sounds SE_AttackMiss;		// 技失敗のSE
 
 /* +++ ロボットの技のSE +++ */
 Sounds SE_FlameThrower1;	// 火炎放射のSE(弱版)
@@ -49,6 +50,31 @@ Sounds SE_ImmortalScale;		// 竜仙鱗のSE
 Sounds SE_DestructBreath;	// 破壊の息のSE
 Sounds SE_AbsorbAtmosphere;	// 大気吸収のSE
 
+/* +++ ダイトメア +++ */
+Sounds SE_MagicSaros1;		// サロスのSE1
+Sounds SE_MagicSaros2;		// サロスのSE2
+Sounds SE_MagicDeus;		// デウスのSE
+Sounds SE_MagicEx;			// エクスのSE
+Sounds SE_MagicMachina;		// マキナのSE
+
+Sounds SE_Imseti;		// イムセトのSE
+Sounds SE_Harpy;		// ハーピのSE
+Sounds SE_Kebehsenuev;	// ケベフスのSE
+Sounds SE_Duamtef1;		// ドゥアムタのSE1
+Sounds SE_Duamtef2;		// ドゥアムタのSE2
+Sounds SE_Duamtef3;		// ドゥアムタのSE3
+
+/* +++ キュー +++ */
+Sounds SE_MagicTentativeDark;	// ダーク(仮)のSE
+Sounds SE_MagicTentativeLight;	// ライト(仮)のSE
+Sounds SE_MagicTentativeHeal;	// ヒール(仮)のSE
+Sounds SE_MagicTentativeRock;	// ロック(仮)のSE
+
+Sounds SE_TentativeThunder;		// 雷刃(仮)のSE
+Sounds SE_TentativePoison;		// 毒刃(仮)のSE
+Sounds SE_TentativeStance;		// 構え(仮)のSE
+Sounds SE_TentativeSevereBlow;	// 痛打(仮)のSE
+
 /* +++ sheppの技のSE +++ */
 Sounds SE_MagicMu;		// μのSE
 Sounds SE_MagicNu;		// νのSE
@@ -65,510 +91,767 @@ Sounds SE_Eta;		// ηのSE
 int Sound_Init(void)
 {
 	/* +++ BGM +++ */
+	BGM_Fake = Sound_Load(PathBGMFake, VolumeQuiet, DX_PLAYTYPE_LOOP);
+	if (BGM_Fake.Handle == -1)
 	{
-		BGM_Fake = Sound_Load(PathBGMFake, VolumeQuiet, DX_PLAYTYPE_LOOP);
-		if (BGM_Fake.Handle == -1)
-		{
-			return -1;
-		}
-
-		BGM_Title = Sound_Load(PathBGMTitle, VolumeQuiet, DX_PLAYTYPE_LOOP);
-		if (BGM_Title.Handle == -1)
-		{
-			return -1;
-		}
-
-		BGM_GameOver = Sound_Load(PathBGMGameOver, VolumeQuiet, DX_PLAYTYPE_LOOP);
-		if (BGM_GameOver.Handle == -1)
-		{
-			return -1;
-		}
-
-		BGM_Result = Sound_Load(PathBGMResult, VolumeLoud, DX_PLAYTYPE_LOOP);
-		if (BGM_Result.Handle == -1)
-		{
-			return -1;
-		}
-
-		BGM_Battle = Sound_Load(PathBGMBattle, VolumeQuiet, DX_PLAYTYPE_LOOP);
-		if (BGM_Battle.Handle == -1)
-		{
-			return -1;
-		}
+		return -1;
 	}
+
+	BGM_Title = Sound_Load(PathBGMTitle, VolumeQuiet, DX_PLAYTYPE_LOOP);
+	if (BGM_Title.Handle == -1)
+	{
+		return -1;
+	}
+
+	BGM_GameOver = Sound_Load(PathBGMGameOver, VolumeQuiet, DX_PLAYTYPE_LOOP);
+	if (BGM_GameOver.Handle == -1)
+	{
+		return -1;
+	}
+
+	BGM_Result = Sound_Load(PathBGMResult, VolumeLoud, DX_PLAYTYPE_LOOP);
+	if (BGM_Result.Handle == -1)
+	{
+		return -1;
+	}
+
+	BGM_Battle = Sound_Load(PathBGMBattle, VolumeQuiet, DX_PLAYTYPE_LOOP);
+	if (BGM_Battle.Handle == -1)
+	{
+		return -1;
+	}
+
 
 	/* +++ 操作関連のSE +++ */
+	SE_Menu = Sound_Load(PathSEMenu, VolumeMax, DX_PLAYTYPE_BACK);
+	if (SE_Menu.Handle == -1)
 	{
-		SE_Menu = Sound_Load(PathSEMenu, VolumeMax, DX_PLAYTYPE_BACK);
-		if (SE_Menu.Handle == -1)
-		{
-			MessageBox(
-				GetMainWindowHandle(),		// ウィンドウハンドル
-				"Sound Menu",				// エラー内容
-				"Sound Error",				// エラータイトル
-				MB_OK						// OKボタンのみ表示
-			);
+		MessageBox(
+			GetMainWindowHandle(),		// ウィンドウハンドル
+			"Sound Menu",				// エラー内容
+			"Sound Error",				// エラータイトル
+			MB_OK						// OKボタンのみ表示
+		);
 
-			return -1;
-		}
-
-		SE_Click = Sound_Load(PathSEClick, VolumeMax, DX_PLAYTYPE_BACK);
-		if (SE_Click.Handle == -1)
-		{
-			MessageBox(
-				GetMainWindowHandle(),		// ウィンドウハンドル
-				"Sound Click",				// エラー内容
-				"Sound Error",				// エラータイトル
-				MB_OK						// OKボタンのみ表示
-			);
-
-			return -1;
-		}
-
-		SE_Enter = Sound_Load(PathSEEnter, VolumeMax, DX_PLAYTYPE_BACK);
-		if (SE_Enter.Handle == -1)
-		{
-			MessageBox(
-				GetMainWindowHandle(),		// ウィンドウハンドル
-				"Enter Selection",			// エラー内容
-				"Sound Error",				// エラータイトル
-				MB_OK						// OKボタンのみ表示
-			);
-
-			return -1;
-		}
-
-		SE_Back = Sound_Load(PathSEBack, VolumeMax, DX_PLAYTYPE_BACK);
-		if (SE_Back.Handle == -1)
-		{
-			MessageBox(
-				GetMainWindowHandle(),		// ウィンドウハンドル
-				"Back Selection",			// エラー内容
-				"Sound Error",				// エラータイトル
-				MB_OK						// OKボタンのみ表示
-			);
-
-			return -1;
-		}
-
-		SE_Unavilable = Sound_Load(PathSEUnavilable, VolumeMax, DX_PLAYTYPE_BACK);
-		if (SE_Unavilable.Handle == -1)
-		{
-			MessageBox(
-				GetMainWindowHandle(),		// ウィンドウハンドル
-				"Unavilable Selection",		// エラー内容
-				"Sound Error",				// エラータイトル
-				MB_OK						// OKボタンのみ表示
-			);
-
-			return -1;
-		}
+		return -1;
 	}
+
+	SE_Click = Sound_Load(PathSEClick, VolumeMax, DX_PLAYTYPE_BACK);
+	if (SE_Click.Handle == -1)
+	{
+		MessageBox(
+			GetMainWindowHandle(),		// ウィンドウハンドル
+			"Sound Click",				// エラー内容
+			"Sound Error",				// エラータイトル
+			MB_OK						// OKボタンのみ表示
+		);
+
+		return -1;
+	}
+
+	SE_Enter = Sound_Load(PathSEEnter, VolumeMax, DX_PLAYTYPE_BACK);
+	if (SE_Enter.Handle == -1)
+	{
+		MessageBox(
+			GetMainWindowHandle(),		// ウィンドウハンドル
+			"Enter Selection",			// エラー内容
+			"Sound Error",				// エラータイトル
+			MB_OK						// OKボタンのみ表示
+		);
+
+		return -1;
+	}
+
+	SE_Back = Sound_Load(PathSEBack, VolumeMax, DX_PLAYTYPE_BACK);
+	if (SE_Back.Handle == -1)
+	{
+		MessageBox(
+			GetMainWindowHandle(),		// ウィンドウハンドル
+			"Back Selection",			// エラー内容
+			"Sound Error",				// エラータイトル
+			MB_OK						// OKボタンのみ表示
+		);
+
+		return -1;
+	}
+
+	SE_Unavilable = Sound_Load(PathSEUnavilable, VolumeMax, DX_PLAYTYPE_BACK);
+	if (SE_Unavilable.Handle == -1)
+	{
+		MessageBox(
+			GetMainWindowHandle(),		// ウィンドウハンドル
+			"Unavilable Selection",		// エラー内容
+			"Sound Error",				// エラータイトル
+			MB_OK						// OKボタンのみ表示
+		);
+
+		return -1;
+	}
+
 
 	/* +++ 共通技のSE +++ */
+	SE_NormalAttack = Sound_Load(PathSENormalAttack, VolumeMax, DX_PLAYTYPE_BACK);
+	if (SE_NormalAttack.Handle == -1)
 	{
-		SE_NormalAttack = Sound_Load(PathSENormalAttack, VolumeMax, DX_PLAYTYPE_BACK);
-		if (SE_NormalAttack.Handle == -1)
-		{
-			MessageBox(
-				GetMainWindowHandle(),		// ウィンドウハンドル
-				"Normal Attack",			// エラー内容
-				"Sound Error",				// エラータイトル
-				MB_OK						// OKボタンのみ表示
-			);
+		MessageBox(
+			GetMainWindowHandle(),		// ウィンドウハンドル
+			"Normal Attack",			// エラー内容
+			"Sound Error",				// エラータイトル
+			MB_OK						// OKボタンのみ表示
+		);
 
-			return -1;
-		}
-
-		SE_NormalDefence = Sound_Load(PathSENormalDefence, VolumeMax, DX_PLAYTYPE_BACK);
-		if (SE_NormalDefence.Handle == -1)
-		{
-			MessageBox(
-				GetMainWindowHandle(),		// ウィンドウハンドル
-				"Normal Defence",			// エラー内容
-				"Sound Error",				// エラータイトル
-				MB_OK						// OKボタンのみ表示
-			);
-
-			return -1;
-		}
+		return -1;
 	}
+
+	SE_NormalDefence = Sound_Load(PathSENormalDefence, VolumeMax, DX_PLAYTYPE_BACK);
+	if (SE_NormalDefence.Handle == -1)
+	{
+		MessageBox(
+			GetMainWindowHandle(),		// ウィンドウハンドル
+			"Normal Defence",			// エラー内容
+			"Sound Error",				// エラータイトル
+			MB_OK						// OKボタンのみ表示
+		);
+
+		return -1;
+	}
+
+	SE_AttackMiss = Sound_Load(PathSEAttackMiss, VolumeMax, DX_PLAYTYPE_BACK);
+	if (SE_NormalDefence.Handle == -1)
+	{
+		MessageBox(
+			GetMainWindowHandle(),		// ウィンドウハンドル
+			"Attack Miss",			// エラー内容
+			"Sound Error",				// エラータイトル
+			MB_OK						// OKボタンのみ表示
+		);
+
+		return -1;
+	}
+
 
 	/* +++ ロボットの技のSE +++ */
+	SE_FlameThrower1 = Sound_Load(PathSEFlameThrower1, VolumeMax, DX_PLAYTYPE_BACK);
+	if (SE_FlameThrower1.Handle == -1)
 	{
-		SE_FlameThrower1 = Sound_Load(PathSEFlameThrower1, VolumeMax, DX_PLAYTYPE_BACK);
-		if (SE_FlameThrower1.Handle == -1)
-		{
-			MessageBox(
-				GetMainWindowHandle(),		// ウィンドウハンドル
-				"Flame Thr 1",				// エラー内容
-				"Sound Error",				// エラータイトル
-				MB_OK						// OKボタンのみ表示
-			);
+		MessageBox(
+			GetMainWindowHandle(),		// ウィンドウハンドル
+			"Flame Thr 1",				// エラー内容
+			"Sound Error",				// エラータイトル
+			MB_OK						// OKボタンのみ表示
+		);
 
-			return -1;
-		}
-
-		SE_FlameThrower2 = Sound_Load(PathSEFlameThrower2, VolumeMax, DX_PLAYTYPE_BACK);
-		if (SE_FlameThrower2.Handle == -1)
-		{
-			MessageBox(
-				GetMainWindowHandle(),		// ウィンドウハンドル
-				"Flame Thr 2",					// エラー内容
-				"Sound Error",				// エラータイトル
-				MB_OK						// OKボタンのみ表示
-			);
-
-			return -1;
-		}
-
-		SE_Steelization = Sound_Load(PathSESteelization, VolumeMax, DX_PLAYTYPE_BACK);
-		if (SE_Steelization.Handle == -1)
-		{
-			MessageBox(
-				GetMainWindowHandle(),		// ウィンドウハンドル
-				"Steelization",				// エラー内容
-				"Sound Error",				// エラータイトル
-				MB_OK						// OKボタンのみ表示
-			);
-
-			return -1;
-		}
-
-		SE_MagicShut = Sound_Load(PathSEMagicShut, VolumeMax, DX_PLAYTYPE_BACK);
-		if (SE_MagicShut.Handle == -1)
-		{
-			MessageBox(
-				GetMainWindowHandle(),		// ウィンドウハンドル
-				"Magic Shut",				// エラー内容
-				"Sound Error",				// エラータイトル
-				MB_OK						// OKボタンのみ表示
-			);
-
-			return -1;
-		}
-
-		SE_TripleBarrage = Sound_Load(PathSETripleBarrage, VolumeMax, DX_PLAYTYPE_BACK);
-		if (SE_TripleBarrage.Handle == -1)
-		{
-			MessageBox(
-				GetMainWindowHandle(),		// ウィンドウハンドル
-				"Triple Bar",				// エラー内容
-				"Sound Error",				// エラータイトル
-				MB_OK						// OKボタンのみ表示
-			);
-
-			return -1;
-		}
+		return -1;
 	}
+
+	SE_FlameThrower2 = Sound_Load(PathSEFlameThrower2, VolumeMax, DX_PLAYTYPE_BACK);
+	if (SE_FlameThrower2.Handle == -1)
+	{
+		MessageBox(
+			GetMainWindowHandle(),		// ウィンドウハンドル
+			"Flame Thr 2",					// エラー内容
+			"Sound Error",				// エラータイトル
+			MB_OK						// OKボタンのみ表示
+		);
+
+		return -1;
+	}
+
+	SE_Steelization = Sound_Load(PathSESteelization, VolumeMax, DX_PLAYTYPE_BACK);
+	if (SE_Steelization.Handle == -1)
+	{
+		MessageBox(
+			GetMainWindowHandle(),		// ウィンドウハンドル
+			"Steelization",				// エラー内容
+			"Sound Error",				// エラータイトル
+			MB_OK						// OKボタンのみ表示
+		);
+
+		return -1;
+	}
+
+	SE_MagicShut = Sound_Load(PathSEMagicShut, VolumeMax, DX_PLAYTYPE_BACK);
+	if (SE_MagicShut.Handle == -1)
+	{
+		MessageBox(
+			GetMainWindowHandle(),		// ウィンドウハンドル
+			"Magic Shut",				// エラー内容
+			"Sound Error",				// エラータイトル
+			MB_OK						// OKボタンのみ表示
+		);
+
+		return -1;
+	}
+
+	SE_TripleBarrage = Sound_Load(PathSETripleBarrage, VolumeMax, DX_PLAYTYPE_BACK);
+	if (SE_TripleBarrage.Handle == -1)
+	{
+		MessageBox(
+			GetMainWindowHandle(),		// ウィンドウハンドル
+			"Triple Bar",				// エラー内容
+			"Sound Error",				// エラータイトル
+			MB_OK						// OKボタンのみ表示
+		);
+
+		return -1;
+	}
+
 
 	/* +++ 勇者の技のSE +++ */
+	SE_MagicFire = Sound_Load(PathSEMagicFire, VolumeMax, DX_PLAYTYPE_BACK);
+	if (SE_MagicFire.Handle == -1)
 	{
-		SE_MagicFire = Sound_Load(PathSEMagicFire, VolumeMax, DX_PLAYTYPE_BACK);
-		if (SE_MagicFire.Handle == -1)
-		{
-			MessageBox(
-				GetMainWindowHandle(),		// ウィンドウハンドル
-				"MagicFire",				// エラー内容
-				"Sound Error",				// エラータイトル
-					MB_OK						// OKボタンのみ表示
-					);
-
-					return -1;
-		}
-
-		SE_MagicIce = Sound_Load(PathSEMagicIce, VolumeMax, DX_PLAYTYPE_BACK);
-		if (SE_MagicIce.Handle == -1)
-		{
-			MessageBox(
-				GetMainWindowHandle(),		// ウィンドウハンドル
-				"Magic Ice",				// エラー内容
-				"Sound Error",				// エラータイトル
+		MessageBox(
+			GetMainWindowHandle(),		// ウィンドウハンドル
+			"MagicFire",				// エラー内容
+			"Sound Error",				// エラータイトル
 				MB_OK						// OKボタンのみ表示
-			);
+				);
 
-			return -1;
-		}
-
-		SE_MagicThunder = Sound_Load(PathSEMagicThunder, VolumeMax, DX_PLAYTYPE_BACK);
-		if (SE_MagicThunder.Handle == -1)
-		{
-			MessageBox(
-				GetMainWindowHandle(),		// ウィンドウハンドル
-				"Magic Thunder",			// エラー内容
-				"Sound Error",				// エラータイトル
-				MB_OK						// OKボタンのみ表示
-			);
-
-			return -1;
-		}
-
-		SE_MagicHeal = Sound_Load(PathSEMagicHeal, VolumeMax, DX_PLAYTYPE_BACK);
-		if (SE_MagicHeal.Handle == -1)
-		{
-			MessageBox(
-				GetMainWindowHandle(),		// ウィンドウハンドル
-				"Magic Heal",				// エラー内容
-				"Sound Error",				// エラータイトル
-				MB_OK						// OKボタンのみ表示
-			);
-
-			return -1;
-		}
-
-		SE_TPCharge = Sound_Load(PathSETPCharge, VolumeMax, DX_PLAYTYPE_BACK);
-		if (SE_TPCharge.Handle == -1)
-		{
-			MessageBox(
-				GetMainWindowHandle(),		// ウィンドウハンドル
-				"TP Charge",				// エラー内容
-				"Sound Error",				// エラータイトル
-				MB_OK						// OKボタンのみ表示
-			);
-
-			return -1;
-		}
-
-		SE_AllHeartSoul = Sound_Load(PathSEAllHeartSoul, VolumeMax, DX_PLAYTYPE_BACK);
-		if (SE_AllHeartSoul.Handle == -1)
-		{
-			MessageBox(
-				GetMainWindowHandle(),		// ウィンドウハンドル
-				"All Heart Soul",			// エラー内容
-				"Sound Error",				// エラータイトル
-				MB_OK						// OKボタンのみ表示
-			);
-
-			return -1;
-		}
-
-		SE_MPCharge = Sound_Load(PathSEMPCharge, VolumeMax, DX_PLAYTYPE_BACK);
-		if (SE_MPCharge.Handle == -1)
-		{
-			MessageBox(
-				GetMainWindowHandle(),		// ウィンドウハンドル
-				"MP Charge",				// エラー内容
-				"Sound Error",				// エラータイトル
-				MB_OK						// OKボタンのみ表示
-			);
-
-			return -1;
-		}
-
-		SE_GatherEnergy = Sound_Load(PathSEGatherEnergy, VolumeMax, DX_PLAYTYPE_BACK);
-		if (SE_GatherEnergy.Handle == -1)
-		{
-			MessageBox(
-				GetMainWindowHandle(),		// ウィンドウハンドル
-				"Gather Energy",			// エラー内容
-				"Sound Error",				// エラータイトル
-				MB_OK						// OKボタンのみ表示
-			);
-
-			return -1;
-		}
+				return -1;
 	}
+
+	SE_MagicIce = Sound_Load(PathSEMagicIce, VolumeMax, DX_PLAYTYPE_BACK);
+	if (SE_MagicIce.Handle == -1)
+	{
+		MessageBox(
+			GetMainWindowHandle(),		// ウィンドウハンドル
+			"Magic Ice",				// エラー内容
+			"Sound Error",				// エラータイトル
+			MB_OK						// OKボタンのみ表示
+		);
+
+		return -1;
+	}
+
+	SE_MagicThunder = Sound_Load(PathSEMagicThunder, VolumeMax, DX_PLAYTYPE_BACK);
+	if (SE_MagicThunder.Handle == -1)
+	{
+		MessageBox(
+			GetMainWindowHandle(),		// ウィンドウハンドル
+			"Magic Thunder",			// エラー内容
+			"Sound Error",				// エラータイトル
+			MB_OK						// OKボタンのみ表示
+		);
+
+		return -1;
+	}
+
+	SE_MagicHeal = Sound_Load(PathSEMagicHeal, VolumeMax, DX_PLAYTYPE_BACK);
+	if (SE_MagicHeal.Handle == -1)
+	{
+		MessageBox(
+			GetMainWindowHandle(),		// ウィンドウハンドル
+			"Magic Heal",				// エラー内容
+			"Sound Error",				// エラータイトル
+			MB_OK						// OKボタンのみ表示
+		);
+
+		return -1;
+	}
+
+	SE_TPCharge = Sound_Load(PathSETPCharge, VolumeMax, DX_PLAYTYPE_BACK);
+	if (SE_TPCharge.Handle == -1)
+	{
+		MessageBox(
+			GetMainWindowHandle(),		// ウィンドウハンドル
+			"TP Charge",				// エラー内容
+			"Sound Error",				// エラータイトル
+			MB_OK						// OKボタンのみ表示
+		);
+
+		return -1;
+	}
+
+	SE_AllHeartSoul = Sound_Load(PathSEAllHeartSoul, VolumeMax, DX_PLAYTYPE_BACK);
+	if (SE_AllHeartSoul.Handle == -1)
+	{
+		MessageBox(
+			GetMainWindowHandle(),		// ウィンドウハンドル
+			"All Heart Soul",			// エラー内容
+			"Sound Error",				// エラータイトル
+			MB_OK						// OKボタンのみ表示
+		);
+
+		return -1;
+	}
+
+	SE_MPCharge = Sound_Load(PathSEMPCharge, VolumeMax, DX_PLAYTYPE_BACK);
+	if (SE_MPCharge.Handle == -1)
+	{
+		MessageBox(
+			GetMainWindowHandle(),		// ウィンドウハンドル
+			"MP Charge",				// エラー内容
+			"Sound Error",				// エラータイトル
+			MB_OK						// OKボタンのみ表示
+		);
+
+		return -1;
+	}
+
+	SE_GatherEnergy = Sound_Load(PathSEGatherEnergy, VolumeMax, DX_PLAYTYPE_BACK);
+	if (SE_GatherEnergy.Handle == -1)
+	{
+		MessageBox(
+			GetMainWindowHandle(),		// ウィンドウハンドル
+			"Gather Energy",			// エラー内容
+			"Sound Error",				// エラータイトル
+			MB_OK						// OKボタンのみ表示
+		);
+
+		return -1;
+	}
+
 
 	/* +++ ドラゴンの技のSE +++ */
+	SE_MagicPillar = Sound_Load(PathSEMagicPillar, VolumeMax, DX_PLAYTYPE_BACK);
+	if (SE_MagicPillar.Handle == -1)
 	{
-		SE_MagicPillar = Sound_Load(PathSEMagicPillar, VolumeMax, DX_PLAYTYPE_BACK);
-		if (SE_MagicPillar.Handle == -1)
-		{
-			MessageBox(
-				GetMainWindowHandle(),		// ウィンドウハンドル
-				"Magic Pillar",				// エラー内容
-				"Sound Error",				// エラータイトル
-				MB_OK						// OKボタンのみ表示
-			);
+		MessageBox(
+			GetMainWindowHandle(),		// ウィンドウハンドル
+			"Magic Pillar",				// エラー内容
+			"Sound Error",				// エラータイトル
+			MB_OK						// OKボタンのみ表示
+		);
 
-			return -1;
-		}
-
-		SE_MagicFung = Sound_Load(PathSEMagicFung, VolumeMax, DX_PLAYTYPE_BACK);
-		if (SE_MagicFung.Handle == -1)
-		{
-			MessageBox(
-				GetMainWindowHandle(),		// ウィンドウハンドル
-				"Magic Fung",				// エラー内容
-				"Sound Error",				// エラータイトル
-				MB_OK						// OKボタンのみ表示
-			);
-
-			return -1;
-		}
-
-		SE_MagicRecover = Sound_Load(PathSEMagicRecover, VolumeMax, DX_PLAYTYPE_BACK);
-		if (SE_MagicRecover.Handle == -1)
-		{
-			MessageBox(
-				GetMainWindowHandle(),		// ウィンドウハンドル
-				"Magic Recover",			// エラー内容
-				"Sound Error",				// エラータイトル
-				MB_OK						// OKボタンのみ表示
-			);
-
-			return -1;
-		}
-
-		SE_CurseBreath = Sound_Load(PathSECurseBreath, VolumeMax, DX_PLAYTYPE_BACK);
-		if (SE_CurseBreath.Handle == -1)
-		{
-			MessageBox(
-				GetMainWindowHandle(),		// ウィンドウハンドル
-				"Curse Breath",				// エラー内容
-				"Sound Error",				// エラータイトル
-				MB_OK						// OKボタンのみ表示
-			);
-
-			return -1;
-		}
-
-		SE_ImmortalScale = Sound_Load(PathSEImmortalScale, VolumeMax, DX_PLAYTYPE_BACK);
-		if (SE_ImmortalScale.Handle == -1)
-		{
-			MessageBox(
-				GetMainWindowHandle(),		// ウィンドウハンドル
-				"Immortal Scale",			// エラー内容
-				"Sound Error",				// エラータイトル
-				MB_OK						// OKボタンのみ表示
-			);
-
-			return -1;
-		}
-
-		SE_DestructBreath = Sound_Load(PathSEDestructBreath, VolumeMax, DX_PLAYTYPE_BACK);
-		if (SE_DestructBreath.Handle == -1)
-		{
-			MessageBox(
-				GetMainWindowHandle(),		// ウィンドウハンドル
-				"Destruct Breath",			// エラー内容
-				"Sound Error",				// エラータイトル
-				MB_OK						// OKボタンのみ表示
-			);
-
-			return -1;
-		}
-
-		SE_AbsorbAtmosphere = Sound_Load(PathSEAbsorbAtmosphere, VolumeMax, DX_PLAYTYPE_BACK);
-		if (SE_AbsorbAtmosphere.Handle == -1)
-		{
-			MessageBox(
-				GetMainWindowHandle(),		// ウィンドウハンドル
-				"Absorb Atmosphere",		// エラー内容
-				"Sound Error",				// エラータイトル
-				MB_OK						// OKボタンのみ表示
-			);
-
-			return -1;
-		}
+		return -1;
 	}
+
+	SE_MagicFung = Sound_Load(PathSEMagicFung, VolumeMax, DX_PLAYTYPE_BACK);
+	if (SE_MagicFung.Handle == -1)
+	{
+		MessageBox(
+			GetMainWindowHandle(),		// ウィンドウハンドル
+			"Magic Fung",				// エラー内容
+			"Sound Error",				// エラータイトル
+			MB_OK						// OKボタンのみ表示
+		);
+
+		return -1;
+	}
+
+	SE_MagicRecover = Sound_Load(PathSEMagicRecover, VolumeMax, DX_PLAYTYPE_BACK);
+	if (SE_MagicRecover.Handle == -1)
+	{
+		MessageBox(
+			GetMainWindowHandle(),		// ウィンドウハンドル
+			"Magic Recover",			// エラー内容
+			"Sound Error",				// エラータイトル
+			MB_OK						// OKボタンのみ表示
+		);
+
+		return -1;
+	}
+
+	SE_CurseBreath = Sound_Load(PathSECurseBreath, VolumeMax, DX_PLAYTYPE_BACK);
+	if (SE_CurseBreath.Handle == -1)
+	{
+		MessageBox(
+			GetMainWindowHandle(),		// ウィンドウハンドル
+			"Curse Breath",				// エラー内容
+			"Sound Error",				// エラータイトル
+			MB_OK						// OKボタンのみ表示
+		);
+
+		return -1;
+	}
+
+	SE_ImmortalScale = Sound_Load(PathSEImmortalScale, VolumeMax, DX_PLAYTYPE_BACK);
+	if (SE_ImmortalScale.Handle == -1)
+	{
+		MessageBox(
+			GetMainWindowHandle(),		// ウィンドウハンドル
+			"Immortal Scale",			// エラー内容
+			"Sound Error",				// エラータイトル
+			MB_OK						// OKボタンのみ表示
+		);
+
+		return -1;
+	}
+
+	SE_DestructBreath = Sound_Load(PathSEDestructBreath, VolumeMax, DX_PLAYTYPE_BACK);
+	if (SE_DestructBreath.Handle == -1)
+	{
+		MessageBox(
+			GetMainWindowHandle(),		// ウィンドウハンドル
+			"Destruct Breath",			// エラー内容
+			"Sound Error",				// エラータイトル
+			MB_OK						// OKボタンのみ表示
+		);
+
+		return -1;
+	}
+
+	SE_AbsorbAtmosphere = Sound_Load(PathSEAbsorbAtmosphere, VolumeMax, DX_PLAYTYPE_BACK);
+	if (SE_AbsorbAtmosphere.Handle == -1)
+	{
+		MessageBox(
+			GetMainWindowHandle(),		// ウィンドウハンドル
+			"Absorb Atmosphere",		// エラー内容
+			"Sound Error",				// エラータイトル
+			MB_OK						// OKボタンのみ表示
+		);
+
+		return -1;
+	}
+
+
+	/* +++ ダイトメアの技のSE +++ */
+	SE_MagicSaros1 = Sound_Load(PathSEMagicSaros1, VolumeMax, DX_PLAYTYPE_BACK);
+	if (SE_MagicMu.Handle == -1)
+	{
+		MessageBox(
+			GetMainWindowHandle(),		// ウィンドウハンドル
+			"Magic Saros1",				// エラー内容
+			"Sound Error",				// エラータイトル
+			MB_OK						// OKボタンのみ表示
+		);
+
+		return -1;
+	}
+
+	SE_MagicSaros2 = Sound_Load(PathSEMagicSaros2, VolumeMax, DX_PLAYTYPE_BACK);
+	if (SE_MagicMu.Handle == -1)
+	{
+		MessageBox(
+			GetMainWindowHandle(),		// ウィンドウハンドル
+			"Magic Saros2",				// エラー内容
+			"Sound Error",				// エラータイトル
+			MB_OK						// OKボタンのみ表示
+		);
+
+		return -1;
+	}
+
+	SE_MagicDeus = Sound_Load(PathSEMagicDeus, VolumeMax, DX_PLAYTYPE_BACK);
+	if (SE_MagicMu.Handle == -1)
+	{
+		MessageBox(
+			GetMainWindowHandle(),		// ウィンドウハンドル
+			"Magic Deus",				// エラー内容
+			"Sound Error",				// エラータイトル
+			MB_OK						// OKボタンのみ表示
+		);
+
+		return -1;
+	}
+
+	SE_MagicEx = Sound_Load(PathSEMagicEx, VolumeMax, DX_PLAYTYPE_BACK);
+	if (SE_MagicMu.Handle == -1)
+	{
+		MessageBox(
+			GetMainWindowHandle(),		// ウィンドウハンドル
+			"Magic Ex",					// エラー内容
+			"Sound Error",				// エラータイトル
+			MB_OK						// OKボタンのみ表示
+		);
+
+		return -1;
+	}
+
+	SE_MagicMachina = Sound_Load(PathSEMagicMachina, VolumeMax, DX_PLAYTYPE_BACK);
+	if (SE_MagicMu.Handle == -1)
+	{
+		MessageBox(
+			GetMainWindowHandle(),		// ウィンドウハンドル
+			"Magic Machina",			// エラー内容
+			"Sound Error",				// エラータイトル
+			MB_OK						// OKボタンのみ表示
+		);
+
+		return -1;
+	}
+
+	SE_Imseti = Sound_Load(PathSEImseti, VolumeMax, DX_PLAYTYPE_BACK);
+	if (SE_MagicMu.Handle == -1)
+	{
+		MessageBox(
+			GetMainWindowHandle(),		// ウィンドウハンドル
+			"Imseti",					// エラー内容
+			"Sound Error",				// エラータイトル
+			MB_OK						// OKボタンのみ表示
+		);
+
+		return -1;
+	}
+
+	SE_Harpy = Sound_Load(PathSEHarpy, VolumeMax, DX_PLAYTYPE_BACK);
+	if (SE_MagicMu.Handle == -1)
+	{
+		MessageBox(
+			GetMainWindowHandle(),		// ウィンドウハンドル
+			"Harpy",					// エラー内容
+			"Sound Error",				// エラータイトル
+			MB_OK						// OKボタンのみ表示
+		);
+
+		return -1;
+	}
+
+	SE_Kebehsenuev = Sound_Load(PathSEKebehsenuev, VolumeMax, DX_PLAYTYPE_BACK);
+	if (SE_MagicMu.Handle == -1)
+	{
+		MessageBox(
+			GetMainWindowHandle(),		// ウィンドウハンドル
+			"Kebehsenuev",				// エラー内容
+			"Sound Error",				// エラータイトル
+			MB_OK						// OKボタンのみ表示
+		);
+
+		return -1;
+	}
+
+	SE_Duamtef1 = Sound_Load(PathSEDuamtef1, VolumeMax, DX_PLAYTYPE_BACK);
+	if (SE_MagicMu.Handle == -1)
+	{
+		MessageBox(
+			GetMainWindowHandle(),		// ウィンドウハンドル
+			"Duamtef1",					// エラー内容
+			"Sound Error",				// エラータイトル
+			MB_OK						// OKボタンのみ表示
+		);
+
+		return -1;
+	}
+
+	SE_Duamtef2 = Sound_Load(PathSEDuamtef2, VolumeMax, DX_PLAYTYPE_BACK);
+	if (SE_MagicMu.Handle == -1)
+	{
+		MessageBox(
+			GetMainWindowHandle(),		// ウィンドウハンドル
+			"Duamtef2",					// エラー内容
+			"Sound Error",				// エラータイトル
+			MB_OK						// OKボタンのみ表示
+		);
+
+		return -1;
+	}
+
+	SE_Duamtef3 = Sound_Load(PathSEDuamtef3, VolumeMax, DX_PLAYTYPE_BACK);
+	if (SE_MagicMu.Handle == -1)
+	{
+		MessageBox(
+			GetMainWindowHandle(),		// ウィンドウハンドル
+			"Duamtef3",					// エラー内容
+			"Sound Error",				// エラータイトル
+			MB_OK						// OKボタンのみ表示
+		);
+
+		return -1;
+	}
+
+
+	/* +++ キューの技のSE +++ */
+	SE_MagicTentativeDark = Sound_Load(PathSEMagicTentativeDark, VolumeMax, DX_PLAYTYPE_BACK);
+	if (SE_MagicMu.Handle == -1)
+	{
+		MessageBox(
+			GetMainWindowHandle(),		// ウィンドウハンドル
+			"Magic Tentative Dark",		// エラー内容
+			"Sound Error",				// エラータイトル
+			MB_OK						// OKボタンのみ表示
+		);
+
+		return -1;
+	}
+
+	SE_MagicTentativeLight = Sound_Load(PathSEMagicTentativeLight, VolumeMax, DX_PLAYTYPE_BACK);
+	if (SE_MagicMu.Handle == -1)
+	{
+		MessageBox(
+			GetMainWindowHandle(),		// ウィンドウハンドル
+			"Magic Tentative Light",	// エラー内容
+			"Sound Error",				// エラータイトル
+			MB_OK						// OKボタンのみ表示
+		);
+
+		return -1;
+	}
+
+	SE_MagicTentativeHeal = Sound_Load(PathSEMagicTentativeHeal, VolumeMax, DX_PLAYTYPE_BACK);
+	if (SE_MagicMu.Handle == -1)
+	{
+		MessageBox(
+			GetMainWindowHandle(),		// ウィンドウハンドル
+			"Magic Tentative Heal",		// エラー内容
+			"Sound Error",				// エラータイトル
+			MB_OK						// OKボタンのみ表示
+		);
+
+		return -1;
+	}
+
+	SE_MagicTentativeRock = Sound_Load(PathSEMagicTentativeRock, VolumeMax, DX_PLAYTYPE_BACK);
+	if (SE_MagicMu.Handle == -1)
+	{
+		MessageBox(
+			GetMainWindowHandle(),		// ウィンドウハンドル
+			"Magic Tentative Rock",		// エラー内容
+			"Sound Error",				// エラータイトル
+			MB_OK						// OKボタンのみ表示
+		);
+
+		return -1;
+	}
+
+	SE_TentativeThunder = Sound_Load(PathSETentativeThunder, VolumeMax, DX_PLAYTYPE_BACK);
+	if (SE_MagicMu.Handle == -1)
+	{
+		MessageBox(
+			GetMainWindowHandle(),		// ウィンドウハンドル
+			"Tentative Thunder",		// エラー内容
+			"Sound Error",				// エラータイトル
+			MB_OK						// OKボタンのみ表示
+		);
+
+		return -1;
+	}
+
+	SE_TentativePoison = Sound_Load(PathSETentativePoison, VolumeMax, DX_PLAYTYPE_BACK);
+	if (SE_MagicMu.Handle == -1)
+	{
+		MessageBox(
+			GetMainWindowHandle(),		// ウィンドウハンドル
+			"Tentative Poison",			// エラー内容
+			"Sound Error",				// エラータイトル
+			MB_OK						// OKボタンのみ表示
+		);
+
+		return -1;
+	}
+
+	SE_TentativeStance = Sound_Load(PathSETentativeStance, VolumeMax, DX_PLAYTYPE_BACK);
+	if (SE_MagicMu.Handle == -1)
+	{
+		MessageBox(
+			GetMainWindowHandle(),		// ウィンドウハンドル
+			"Tentative Stance",			// エラー内容
+			"Sound Error",				// エラータイトル
+			MB_OK						// OKボタンのみ表示
+		);
+
+		return -1;
+	}
+
+	SE_TentativeSevereBlow = Sound_Load(PathSETentativeSevereBlow, VolumeMax, DX_PLAYTYPE_BACK);
+	if (SE_MagicMu.Handle == -1)
+	{
+		MessageBox(
+			GetMainWindowHandle(),		// ウィンドウハンドル
+			"Tentative Severe Blow",	// エラー内容
+			"Sound Error",				// エラータイトル
+			MB_OK						// OKボタンのみ表示
+		);
+
+		return -1;
+	}
+
 
 	/* +++ sheppの技のSE +++ */
+	SE_MagicMu = Sound_Load(PathSEMagicMu, VolumeMax, DX_PLAYTYPE_BACK);
+	if (SE_MagicMu.Handle == -1)
 	{
-		SE_MagicMu = Sound_Load(PathSEMagicMu, VolumeMax, DX_PLAYTYPE_BACK);
-		if (SE_MagicMu.Handle == -1)
-		{
-			MessageBox(
-				GetMainWindowHandle(),		// ウィンドウハンドル
-				"Magic Mu",					// エラー内容
-				"Sound Error",				// エラータイトル
-				MB_OK						// OKボタンのみ表示
-			);
+		MessageBox(
+			GetMainWindowHandle(),		// ウィンドウハンドル
+			"Magic Mu",					// エラー内容
+			"Sound Error",				// エラータイトル
+			MB_OK						// OKボタンのみ表示
+		);
 
-			return -1;
-		}
-
-		SE_MagicNu = Sound_Load(PathSEMagicNu, VolumeMax, DX_PLAYTYPE_BACK);
-		if (SE_MagicNu.Handle == -1)
-		{
-			MessageBox(
-				GetMainWindowHandle(),		// ウィンドウハンドル
-				"Magic Nu",					// エラー内容
-				"Sound Error",				// エラータイトル
-				MB_OK						// OKボタンのみ表示
-			);
-
-			return -1;
-		}
-
-		SE_MagicLambda = Sound_Load(PathSEMagicLambda, VolumeMax, DX_PLAYTYPE_BACK);
-		if (SE_MagicLambda.Handle == -1)
-		{
-			MessageBox(
-				GetMainWindowHandle(),		// ウィンドウハンドル
-				"Magic Lambda",				// エラー内容
-				"Sound Error",				// エラータイトル
-				MB_OK						// OKボタンのみ表示
-			);
-
-			return -1;
-		}
-
-		SE_MagicXi = Sound_Load(PathSEMagicXi, VolumeMax, DX_PLAYTYPE_BACK);
-		if (SE_MagicXi.Handle == -1)
-		{
-			MessageBox(
-				GetMainWindowHandle(),		// ウィンドウハンドル
-				"Magic Xi",					// エラー内容
-				"Sound Error",				// エラータイトル
-				MB_OK						// OKボタンのみ表示
-			);
-
-			return -1;
-		}
-
-		SE_Psi = Sound_Load(PathSEPsi, VolumeMax, DX_PLAYTYPE_BACK);
-		if (SE_Psi.Handle == -1)
-		{
-			MessageBox(
-				GetMainWindowHandle(),		// ウィンドウハンドル
-				"Psi",						// エラー内容
-				"Sound Error",				// エラータイトル
-				MB_OK						// OKボタンのみ表示
-			);
-
-			return -1;
-		}
-
-		SE_Sigma = Sound_Load(PathSESigma, VolumeMax, DX_PLAYTYPE_BACK);
-		if (SE_Sigma.Handle == -1)
-		{
-			MessageBox(
-				GetMainWindowHandle(),		// ウィンドウハンドル
-				"Sigma",					// エラー内容
-				"Sound Error",				// エラータイトル
-				MB_OK						// OKボタンのみ表示
-			);
-
-			return -1;
-		}
-
-		SE_Omega = Sound_Load(PathSEOmega, VolumeMax, DX_PLAYTYPE_BACK);
-		if (SE_Omega.Handle == -1)
-		{
-			MessageBox(
-				GetMainWindowHandle(),		// ウィンドウハンドル
-				"Omega",					// エラー内容
-				"Sound Error",				// エラータイトル
-				MB_OK						// OKボタンのみ表示
-			);
-
-			return -1;
-		}
-
-		SE_Eta = Sound_Load(PathSEEta, VolumeMax, DX_PLAYTYPE_BACK);
-		if (SE_Eta.Handle == -1)
-		{
-			MessageBox(
-				GetMainWindowHandle(),		// ウィンドウハンドル
-				"Eta",						// エラー内容
-				"Sound Error",				// エラータイトル
-				MB_OK						// OKボタンのみ表示
-			);
-
-			return -1;
-		}
+		return -1;
 	}
+
+	SE_MagicNu = Sound_Load(PathSEMagicNu, VolumeMax, DX_PLAYTYPE_BACK);
+	if (SE_MagicNu.Handle == -1)
+	{
+		MessageBox(
+			GetMainWindowHandle(),		// ウィンドウハンドル
+			"Magic Nu",					// エラー内容
+			"Sound Error",				// エラータイトル
+			MB_OK						// OKボタンのみ表示
+		);
+
+		return -1;
+	}
+
+	SE_MagicLambda = Sound_Load(PathSEMagicLambda, VolumeMax, DX_PLAYTYPE_BACK);
+	if (SE_MagicLambda.Handle == -1)
+	{
+		MessageBox(
+			GetMainWindowHandle(),		// ウィンドウハンドル
+			"Magic Lambda",				// エラー内容
+			"Sound Error",				// エラータイトル
+			MB_OK						// OKボタンのみ表示
+		);
+
+		return -1;
+	}
+
+	SE_MagicXi = Sound_Load(PathSEMagicXi, VolumeMax, DX_PLAYTYPE_BACK);
+	if (SE_MagicXi.Handle == -1)
+	{
+		MessageBox(
+			GetMainWindowHandle(),		// ウィンドウハンドル
+			"Magic Xi",					// エラー内容
+			"Sound Error",				// エラータイトル
+			MB_OK						// OKボタンのみ表示
+		);
+
+		return -1;
+	}
+
+	SE_Psi = Sound_Load(PathSEPsi, VolumeMax, DX_PLAYTYPE_BACK);
+	if (SE_Psi.Handle == -1)
+	{
+		MessageBox(
+			GetMainWindowHandle(),		// ウィンドウハンドル
+			"Psi",						// エラー内容
+			"Sound Error",				// エラータイトル
+			MB_OK						// OKボタンのみ表示
+		);
+
+		return -1;
+	}
+
+	SE_Sigma = Sound_Load(PathSESigma, VolumeMax, DX_PLAYTYPE_BACK);
+	if (SE_Sigma.Handle == -1)
+	{
+		MessageBox(
+			GetMainWindowHandle(),		// ウィンドウハンドル
+			"Sigma",					// エラー内容
+			"Sound Error",				// エラータイトル
+			MB_OK						// OKボタンのみ表示
+		);
+
+		return -1;
+	}
+
+	SE_Omega = Sound_Load(PathSEOmega, VolumeMax, DX_PLAYTYPE_BACK);
+	if (SE_Omega.Handle == -1)
+	{
+		MessageBox(
+			GetMainWindowHandle(),		// ウィンドウハンドル
+			"Omega",					// エラー内容
+			"Sound Error",				// エラータイトル
+			MB_OK						// OKボタンのみ表示
+		);
+
+		return -1;
+	}
+
+	SE_Eta = Sound_Load(PathSEEta, VolumeMax, DX_PLAYTYPE_BACK);
+	if (SE_Eta.Handle == -1)
+	{
+		MessageBox(
+			GetMainWindowHandle(),		// ウィンドウハンドル
+			"Eta",						// エラー内容
+			"Sound Error",				// エラータイトル
+			MB_OK						// OKボタンのみ表示
+		);
+
+		return -1;
+	}
+
 
 	return 0;
 }
@@ -593,6 +876,7 @@ void Sound_End(void)
 	/* +++ 共通技のSE +++ */
 	Sound_Delete(SE_NormalAttack);
 	Sound_Delete(SE_NormalDefence);
+	Sound_Delete(SE_AttackMiss);
 
 	/* +++ ロボットの技のSE +++ */
 	Sound_Delete(SE_FlameThrower1);
@@ -621,6 +905,31 @@ void Sound_End(void)
 	Sound_Delete(SE_ImmortalScale);
 	Sound_Delete(SE_DestructBreath);
 	Sound_Delete(SE_AbsorbAtmosphere);
+
+	/* +++ ダイトメアの技のSE +++ */
+	Sound_Delete(SE_MagicSaros1);
+	Sound_Delete(SE_MagicSaros2);
+	Sound_Delete(SE_MagicDeus);
+	Sound_Delete(SE_MagicEx);
+	Sound_Delete(SE_MagicMachina);
+
+	Sound_Delete(SE_Imseti);
+	Sound_Delete(SE_Harpy);
+	Sound_Delete(SE_Kebehsenuev);
+	Sound_Delete(SE_Duamtef1);
+	Sound_Delete(SE_Duamtef2);
+	Sound_Delete(SE_Duamtef3);
+
+	/* +++ キューの技のSE +++ */
+	Sound_Delete(SE_MagicTentativeDark);
+	Sound_Delete(SE_MagicTentativeLight);
+	Sound_Delete(SE_MagicTentativeHeal);
+	Sound_Delete(SE_MagicTentativeRock);
+
+	Sound_Delete(SE_TentativeThunder);
+	Sound_Delete(SE_TentativePoison);
+	Sound_Delete(SE_TentativeStance);
+	Sound_Delete(SE_TentativeSevereBlow);
 
 	/* +++ sheppの技のSE +++ */
 	Sound_Delete(SE_MagicMu);
