@@ -10,11 +10,23 @@
 #define ISENHANCE		true	// 数値の変動が増加である
 #define ISREDUCTION		false	// 数値の変動が減少である
 
+
+/* --- 攻撃の属性 --- */
 enum Context
 {
 	Physical,
 	Magical,
 	Breath
+};
+
+/* --- 状態異常 --- */
+enum Ailment
+{
+	Paralysis,	// マヒ
+	Poisoning,	// 毒
+	Silence,	// 沈黙(魔法使用不可)
+	Slump,		// 不調(特技使用不可)
+	Protection	// 保護(状態異常無効)
 };
 
 /* --- キャラクタークラス --- */
