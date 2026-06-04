@@ -1128,6 +1128,9 @@ void Dragon::ImmortalScale()
 
 	defenceCoefficient = 0.1;	// –hŒäŒW”‚ğ0.1‚É‚·‚é
 
+	/* +++ ó‘ÔˆÙí–³Œø‚Ì•t—^ˆ— +++ */
+	/* +++ ó‘ÔˆÙí–³Œø‚Ì•t—^ˆ— +++ */
+
 	Sound_Play(SE_ImmortalScale);
 
 	return;
