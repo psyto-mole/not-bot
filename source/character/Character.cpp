@@ -1513,3 +1513,20 @@ void Character::NormalDefence()
 
 	return;
 }
+
+/* --- –½’†‚µ‚½‚©‚ğ”»’è‚·‚éŠÖ” --- */
+bool Character::Judge_Hit(int hitProbability)
+{
+	int actionRandomNumber;
+
+	actionRandomNumber = GetRand(99) + 1;	// 1`100‚Ü‚Å‚Ì—”‚ğ¶¬
+
+	if (actionRandomNumber <= hitProbability)	// –½’†Šm—¦‚Ì‘å‚«‚³‚ª—”ˆÈã‚È‚ç
+	{
+		return true;	// –½’†(true‚ğ•Ô‚·)
+	}
+	else
+	{
+		return false;	// ¸”s(false‚ğ•Ô‚·)
+	}
+}

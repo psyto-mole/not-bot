@@ -61,7 +61,7 @@ public:
 	int GetMyMP();			// 自身のMPを取得する
 	int GetMyTP();			// 自身のTPを取得する
 	int GetMyAttack();		// 自身の攻撃力を取得する
-	int GetMyDefence();	// 自身の守備力を取得する
+	int GetMyDefence();		// 自身の守備力を取得する
 	int GetMyMagic();		// 自身の魔力を取得する
 	int GetMyPrevent();		// 自身の魔防を取得する
 	int GetMySpeed();		// 自身の速さを取得する
@@ -84,6 +84,8 @@ public:
 
 	void NormalAttack();	// 通常攻撃
 	void NormalDefence();	// 防御
+
+	bool Judge_Hit(int hitProbability);		// 命中したかを判定する関数
 
 
 	virtual void Character_Init(bool isThisPlayer) = 0;		// キャラクターの初期化関数(純粋仮想関数)

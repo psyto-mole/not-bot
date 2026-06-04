@@ -61,7 +61,7 @@ extern Sounds SE_Unavilable;	// 使用不可のSE(バトルシーン用)
 #define PathSEAttackMiss		".\\Sound\\Sound_Effect_Lab\\Sound_Beep2.mp3"
 
 extern Sounds SE_NormalAttack;	// 通常攻撃のSE
-extern Sounds SE_NormalAttack;	// 通常攻撃のSE
+extern Sounds SE_NormalDefence;	// 通常防御のSE
 extern Sounds SE_AttackMiss;	// 技失敗のSE
 
 

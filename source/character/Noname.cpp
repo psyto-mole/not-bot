@@ -1124,27 +1124,47 @@ void Noname::TentativeSevereBlow()
 {
 	int calcResult;		// ŒvŽZŒ‹‰Ê‚ÌŠi”[•Ï”
 
-	TP_Calc(TPofTentativeFinal, ISREDUCTION);	// TP‚ðÁ”ïTP•ªŒ¸‚ç‚·
+	TP_Calc(TPofTentativeSevereBlow, ISREDUCTION);	// TP‚ðÁ”ïTP•ªŒ¸‚ç‚·
 
 	calcResult = (int)(Attack * 3.0);	// UŒ‚—Í‚É•â³‚ð‚Ì‚¹‚é
 
-	settingMessagePattern = Message2Line;
-	displayMessagePattern = Message2Line;
 
-	if (isPlayer)
+	if (Judge_Hit(50))	// –½’†‚µ‚½‚È‚ç
 	{
-		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Players, characterName, ActionTentativeSevereBlow);
+		settingMessagePattern = Message2Line;
+		displayMessagePattern = Message2Line;
 
-		Enemy->Damage_Calc(calcResult, Physical);
+		if (isPlayer)
+		{
+			sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Players, characterName, ActionTentativeSevereBlow);
+
+			Enemy->Damage_Calc(calcResult, Physical);
+		}
+		else
+		{
+			sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Enemys, characterName, ActionTentativeSevereBlow);
+
+			Player->Damage_Calc(calcResult, Physical);
+		}
+
+		Sound_Play(SE_TentativeSevereBlow);
 	}
-	else
+	else@	// ŠO‚µ‚½‚È‚ç
 	{
-		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Enemys, characterName, ActionTentativeSevereBlow);
+		settingMessagePattern = Message1Line;
+		displayMessagePattern = Message1Line;
 
-		Player->Damage_Calc(calcResult, Physical);
+		if (isPlayer)
+		{
+			sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Players, characterName, ActionAttackMiss);
+		}
+		else
+		{
+			sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Enemys, characterName, ActionAttackMiss);
+		}
+
+		Sound_Play(SE_AttackMiss);
 	}
-
-	Sound_Play(SE_TentativeSevereBlow);
 
 	return;
 }
