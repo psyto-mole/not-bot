@@ -307,8 +307,8 @@
 
 #define ActionTentativeThunder		"‚Í—‹‚Ìn‚Åa‚è‚ñ‚¾"
 #define ActionTentativePoison		"‚Í“Å‚Ìn‚Åa‚è‚ñ‚¾"
-#define ActionTentativeBreath		"‚Í\‚¦‚½"
-#define ActionTentativeFinal		"‚Í• •”‚Æ“ª•”‚É‘ÅŒ‚‚ğ’@‚«‚ñ‚¾"
+#define ActionTentativeStance		"‚Í\‚¦‚½"
+#define ActionTentativeSevereBlow	"‚Í• •”‚Æ“ª•”‚É‘ÅŒ‚‚ğ’@‚«‚ñ‚¾"
 
 
 /* === shepp === */

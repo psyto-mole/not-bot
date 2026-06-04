@@ -1096,21 +1096,23 @@ void Noname::TentativeStance()
 {
 	int calcResult;		// ŒvŽZŒ‹‰Ê‚ÌŠi”[•Ï”
 
-	TP_Calc(TPofTentativeBreath, ISREDUCTION);	// TP‚ðÁ”ïTP•ªŒ¸‚ç‚·
+	TP_Calc(TPofTentativeStance, ISREDUCTION);	// TP‚ðÁ”ïTP•ªŒ¸‚ç‚·
 
-	calcResult = (int)( * );	// UŒ‚—Í‚É•â³‚ð‚Ì‚¹‚é
+	calcResult = (int)(Defence * 1.1);	// Žç”õ—Í‚É•â³‚ð‚Ì‚¹‚é
 
 	settingMessagePattern = Message2Line;
 	displayMessagePattern = Message2Line;
 
 	if (isPlayer)
 	{
-		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Players, characterName, ActionTentativeBreath);
+		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Players, characterName, ActionTentativeStance);
 	}
 	else
 	{
-		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Enemys, characterName, ActionTentativeBreath);
+		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Enemys, characterName, ActionTentativeStance);
 	}
+
+	Defence_Calc(calcResult, ISENHANCE);
 
 	Sound_Play(SE_TentativeStance);
 
@@ -1126,23 +1128,23 @@ void Noname::TentativeSevereBlow()
 
 	calcResult = (int)(Attack * 3.0);	// UŒ‚—Í‚É•â³‚ð‚Ì‚¹‚é
 
-	settingMessagePattern = Message4Line;
-	displayMessagePattern = Message4Line;
+	settingMessagePattern = Message2Line;
+	displayMessagePattern = Message2Line;
 
 	if (isPlayer)
 	{
-		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Players, characterName, ActionTentativeFinal);
+		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Players, characterName, ActionTentativeSevereBlow);
 
 		Enemy->Damage_Calc(calcResult, Physical);
 	}
 	else
 	{
-		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Enemys, characterName, ActionTentativeFinal);
+		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Enemys, characterName, ActionTentativeSevereBlow);
 
 		Player->Damage_Calc(calcResult, Physical);
 	}
 
-	Sound_Play(SE_TentativeFinal);
+	Sound_Play(SE_TentativeSevereBlow);
 
 	return;
 }

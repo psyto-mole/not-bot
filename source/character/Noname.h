@@ -18,10 +18,10 @@
 #define MPofMagicTentativeHeal		10	// ヒール(仮)の消費MP
 #define MPofMagicTentativeRock		10	// ロック(仮)の消費MP
 
-#define TPofTentativeThunder	15	// 雷刃(仮)の消費TP
-#define TPofTentativePoison		15	// 毒刃(仮)の消費TP
-#define TPofTentativeBreath		25	// 無の息(仮)の消費TP
-#define TPofTentativeFinal		40	// 最終撃(仮)の消費TP
+#define TPofTentativeThunder		15	// 雷刃(仮)の消費TP
+#define TPofTentativePoison			15	// 毒刃(仮)の消費TP
+#define TPofTentativeStance			25	// 構え(仮)の消費TP
+#define TPofTentativeSeverreBlow	40	// 痛打(仮)の消費TP
 
 
 /* --- キューのクラス(キャラクタークラスを継承) --- */
