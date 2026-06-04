@@ -1149,7 +1149,7 @@ void Noname::TentativeSevereBlow()
 
 		Sound_Play(SE_TentativeSevereBlow);
 	}
-	else@	// ŠO‚µ‚½‚È‚ç
+	else	// ŠO‚µ‚½‚È‚ç
 	{
 		settingMessagePattern = Message1Line;
 		displayMessagePattern = Message1Line;
