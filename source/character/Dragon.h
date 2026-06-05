@@ -26,6 +26,9 @@
 /* --- ドラゴンキャラクターのクラス(キャラクタークラスを継承) --- */
 class Dragon : public Character
 {
+private:
+	int randomDebuffNumber;		// 付与する状態異常についての乱数を保持する変数
+
 public:
 	void Character_Init(bool isThisPlayer);		// キャラクターの初期化関数
 	void MainFase_Process();					// メインフェイズの処理関数

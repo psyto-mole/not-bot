@@ -42,11 +42,14 @@ void Dragon::Character_Init(bool isThisPlayer)
 	actionFlag = false;
 	actionNumber = 0;
 	randomNumber = 0;
-	randomStatusNumber = 0;
+	randomDebuffNumber = 0;
 	attackPreemptive = false;
 	defencePreemptive = false;
 
 	defenceCoefficient = 1.0;		// –hŒäŒW”‚ð‰Šú‰»
+
+	statusAilment = Fine;
+	ailmentTurn = 0;
 
 	sprintf_s(characterName, sizeof(characterName),"%s", CharacterNameDragon);
 
@@ -1034,7 +1037,7 @@ void Dragon::CurseBreath()
 
 	calcResult = (int)(Attack * 1.1);	// UŒ‚—Í‚É•â³‚ðæ‚¹‚é
 
-	randomStatusNumber = GetRand(4) + 1;	// 1`5‚Ì—”‚ð”­¶‚³‚¹‚é
+	randomDebuffNumber = GetRand(4) + 1;	// 1`5‚Ì—”‚ð”­¶‚³‚¹‚é
 
 	settingMessagePattern = Message2Line;
 	displayMessagePattern = Message1Line;
@@ -1045,7 +1048,7 @@ void Dragon::CurseBreath()
 
 		Enemy->Damage_Calc(calcResult, Breath);
 
-		switch (randomStatusNumber)
+		switch (randomDebuffNumber)
 		{
 		case 1:
 
@@ -1077,7 +1080,7 @@ void Dragon::CurseBreath()
 
 		Player->Damage_Calc(calcResult, Breath);
 
-		switch (randomStatusNumber)
+		switch (randomDebuffNumber)
 		{
 		case 1:
 

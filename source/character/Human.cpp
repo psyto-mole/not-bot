@@ -46,6 +46,9 @@ void Human::Character_Init(bool isThisPlayer)
 
 	defenceCoefficient = 1.0;		// –hŒäŒW”‚ğ‰Šú‰»
 
+	statusAilment = Fine;
+	ailmentTurn = 0;
+
 	sprintf_s(characterName, sizeof(characterName),"%s", CharacterNameHuman);
 
 	if (isThisPlayer)

@@ -22,6 +22,7 @@ enum Context
 /* --- 状態異常 --- */
 enum Ailment
 {
+	Fine,		// 異常なし
 	Paralysis,	// マヒ
 	Poisoning,	// 毒
 	Silence,	// 沈黙(魔法使用不可)
@@ -34,7 +35,6 @@ class Character
 {
 protected:
 	int randomNumber;			// 行動選択についての乱数を保持する変数
-	int randomStatusNumber;		// 状態異常についての乱数を保持する変数
 
 	char characterName[64];		// 自身のキャラクター名を格納する配列
 
@@ -47,6 +47,9 @@ protected:
 	bool attackPreemptive;		// 先制攻撃フラグ
 
 	float defenceCoefficient;	// 防御係数(ダメージ計算時にダメージ量に乗算する)
+
+	int ailmentTurn;		// 状態異常が継続するターン数
+	Ailment statusAilment;	// 状態異常
 
 	int HP, MP, TP;						// HP、MPとTP(ヒットポイント、マジックポイント、テクニカルポイント)
 	int MaxHP, MaxMP;					// 最大HPと最大MP
@@ -98,6 +101,13 @@ public:
 	void NormalDefence();	// 防御
 
 	bool Judge_Hit(int hitProbability);		// 命中したかを判定する関数
+
+	void Become_Fine();							// 自身の状態を「状態異常なし」にする
+	void Become_Paralyzed(int continueTurn);	// 自身の状態を「マヒ」にする(継続ターンを引数で渡す)
+	void Become_Poisoning(int continueTurn);	// 自身の状態を「毒」にする(継続ターンを引数で渡す)
+	void Become_Silence(int continueTurn);		// 自身の状態を「沈黙」にする(継続ターンを引数で渡す)
+	void Become_Slump(int continueTurn);		// 自身の状態を「不調」にする(継続ターンを引数で渡す)
+	void Become_Protection(int continueTurn);	// 自身の状態を「保護」にする(継続ターンを引数で渡す)
 
 
 	virtual void Character_Init(bool isThisPlayer) = 0;		// キャラクターの初期化関数(純粋仮想関数)

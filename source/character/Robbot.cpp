@@ -47,6 +47,9 @@ void Robot::Character_Init(bool isThisPlayer)
 
 	defenceCoefficient = 1.0;		// 防御係数を初期化
 
+	statusAilment = Fine;
+	ailmentTurn = 0;
+
 	sprintf_s(characterName, sizeof(characterName),"%s", CharacterNameRobot);	// キャラクターの名前を設定
 
 	/* +++ キャラがプレイヤーキャラか敵キャラかを設定 +++ */
@@ -496,6 +499,10 @@ void Robot::BattleFase_Process()
 {
 	if (actionFlag == false)	// アクションフラグがfalseなら
 	{
+		if (statusAilment == Paralysis)
+		{
+
+		}
 		/* +++ アクションナンバーによって処理を変える +++ */
 		switch (actionNumber)
 		{

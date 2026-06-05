@@ -1530,3 +1530,69 @@ bool Character::Judge_Hit(int hitProbability)
 		return false;	// 失敗(falseを返す)
 	}
 }
+
+// 自身の状態を「状態異常なし」にする
+void Character::Become_Fine()
+{
+	statusAilment = Fine;	// 「状態異常なし」に設定
+	ailmentTurn = 0;		// 状態異常の継続ターンを0に戻す
+
+	return;
+}
+
+// 自身の状態を「マヒ」にする
+void Character::Become_Paralyzed(int continueTurn)
+{
+	if (statusAilment != Protection)	// 「保護」状態でないなら
+	{
+		statusAilment = Paralysis;		// 「マヒ」の状態異常を設定
+		ailmentTurn = continueTurn;		// 継続ターンをセット
+	}
+
+	return;
+}
+
+// 自身の状態を「毒」にする
+void Character::Become_Poisoning(int continueTurn)
+{
+	if (statusAilment != Protection)	// 「保護」状態でないなら
+	{
+		statusAilment = Poisoning;		// 「毒」の状態異常を設定
+		ailmentTurn = continueTurn;		// 継続ターンをセット
+	}
+
+	return;
+}
+
+// 自身の状態を「沈黙」にする
+void Character::Become_Silence(int continueTurn)
+{
+	if (statusAilment != Protection)	// 「保護」状態でないなら
+	{
+		statusAilment = Silence;		// 「沈黙」の状態異常を設定
+		ailmentTurn = continueTurn;		// 継続ターンをセット
+	}
+
+	return;
+}
+
+// 自身の状態を「不調」にする
+void Character::Become_Slump(int continueTurn)
+{
+	if (statusAilment != Protection)	// 「保護」状態でないなら
+	{
+		statusAilment = Slump;			// 「不調」の状態異常を設定
+		ailmentTurn = continueTurn;		// 継続ターンをセット
+	}
+
+	return;
+}
+
+// 自身の状態を「保護」にする
+void Character::Become_Protection(int continueTurn)
+{
+	statusAilment = Protection;		// 状態異常に「保護」を設定
+	ailmentTurn = continueTurn;		// 継続ターンをセット
+
+	return;
+}

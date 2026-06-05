@@ -48,6 +48,9 @@ void Dightmare::Character_Init(bool isThisPlayer)
 
 	chargeStep = 0;
 
+	statusAilment = Fine;
+	ailmentTurn = 0;
+
 	sprintf_s(characterName, sizeof(characterName), "%s", CharacterNameDightmare);
 
 	if (isThisPlayer)
