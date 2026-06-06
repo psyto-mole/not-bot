@@ -73,6 +73,13 @@ void Dightmare::MainFase_Process()
 	{
 		return;		// 何もせずに終了する
 	}
+	else if (statusAilment == Paralysis)	// 「マヒ」なら
+	{
+		MyActionFlagTrue();		// アクションフラグをtrueにする
+		actionNumber = 0;		// アクションナンバーをリセット
+
+		return;
+	}
 	else	// 行動済みでないなら
 	{
 		if (isPlayer)	// プレイヤーキャラなら
@@ -523,77 +530,21 @@ void Dightmare::MainFase_Draw()
 {
 	if (isPlayer)	// プレイヤーキャラなら
 	{
-		if (actionNumber < 10)	// アクションナンバーが10未満なら
+		if (statusAilment != Paralysis)
 		{
-			/* +++ 4つの選択肢のボタンを白枠で描画 +++ */
-			DrawRect(optionButton1, Color_White, false, 3);
-			DrawRect(optionButton2, Color_White, false, 3);
-			DrawRect(optionButton3, Color_White, false, 3);
-			DrawRect(optionButton4, Color_White, false, 3);
-
-			/* +++ 4つの基本選択肢のテキストを白で描画 +++ */
-			DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionAttack);
-			DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionMagic);
-			DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionSpecial);
-			DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionDefence);
-
-			/* +++ マウスカーソルが触れている選択肢のボタンによって処理を変える +++ */
-			if (CollisionRectToPoint(optionButton1, nowMousePoint))	// 選択肢1ボタンとマウスカーソルが接触している
+			if (actionNumber < 10)	// アクションナンバーが10未満なら
 			{
-				DrawRect(optionButton1, Color_White, true, 3);		// 選択肢1ボタンを白で塗りつぶして描画
+				/* +++ 4つの選択肢のボタンを白枠で描画 +++ */
+				DrawRect(optionButton1, Color_White, false, 3);
+				DrawRect(optionButton2, Color_White, false, 3);
+				DrawRect(optionButton3, Color_White, false, 3);
+				DrawRect(optionButton4, Color_White, false, 3);
 
-				// 選択肢1のテキストを黒で描画
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionAttack);
-			}
-			else if (CollisionRectToPoint(optionButton2, nowMousePoint))	// 選択肢2のボタンとマウスカーソルが接触している
-			{
-				DrawRect(optionButton2, Color_White, true, 3);		// 選択肢2ボタンを白で塗りつぶして描画
-
-				// 選択肢2のテキストを黒で描画
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionMagic);
-			}
-			else if (CollisionRectToPoint(optionButton3, nowMousePoint))	// 選択肢3のボタンとマウスカーソルが接触している
-			{
-				DrawRect(optionButton3, Color_White, true, 3);		// 選択肢3ボタンを白で塗りつぶして描画
-
-				// 選択肢3のテキストを黒で描画
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionSpecial);
-			}
-			else if (CollisionRectToPoint(optionButton4, nowMousePoint))	// 選択肢4のボタンとマウスカーソルが接触している
-			{
-				DrawRect(optionButton4, Color_White, true, 3);		// 選択肢4ボタンを白で塗りつぶして描画
-
-				// 選択肢4のテキストを黒で描画
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionDefence);
-			}
-		}
-		else if (actionNumber == 20)
-		{
-			if (MP < MPofMagicSaros)
-			{
-				/* +++ 4つの選択肢のボタンを灰色枠で描画 +++ */
-				DrawRect(optionButton1, Color_Gray, false, 3);
-				DrawRect(optionButton2, Color_Gray, false, 3);
-				DrawRect(optionButton3, Color_Gray, false, 3);
-				DrawRect(optionButton4, Color_Gray, false, 3);
-
-				/* +++ 魔法の選択肢のテキストを灰色で描画 +++ */
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionMagicSaros);
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionMagicDeus);
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionMagicEx);
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionMagicMachina);
-			}
-			else if (MP < MPofMagicDeus)
-			{
-				/* +++ 3つの選択肢のボタンを白または灰色枠で描画 +++ */
-				DrawRect(optionButton2, Color_Gray, false, 3);
-				DrawRect(optionButton3, Color_Gray, false, 3);
-				DrawRect(optionButton4, Color_Gray, false, 3);
-
-				/* +++ 魔法の選択肢のテキストを白または灰色で描画 +++ */
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionMagicDeus);
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionMagicEx);
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionMagicMachina);
+				/* +++ 4つの基本選択肢のテキストを白で描画 +++ */
+				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionAttack);
+				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionMagic);
+				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionSpecial);
+				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionDefence);
 
 				/* +++ マウスカーソルが触れている選択肢のボタンによって処理を変える +++ */
 				if (CollisionRectToPoint(optionButton1, nowMousePoint))	// 選択肢1ボタンとマウスカーソルが接触している
@@ -601,28 +552,54 @@ void Dightmare::MainFase_Draw()
 					DrawRect(optionButton1, Color_White, true, 3);		// 選択肢1ボタンを白で塗りつぶして描画
 
 					// 選択肢1のテキストを黒で描画
-					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionMagicSaros);
+					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionAttack);
 				}
-				else
+				else if (CollisionRectToPoint(optionButton2, nowMousePoint))	// 選択肢2のボタンとマウスカーソルが接触している
 				{
-					DrawRect(optionButton1, Color_White, false, 3);		// 選択肢1ボタンを白で描画
+					DrawRect(optionButton2, Color_White, true, 3);		// 選択肢2ボタンを白で塗りつぶして描画
 
-					// 選択肢1のテキストを白で描画
-					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionMagicSaros);
+					// 選択肢2のテキストを黒で描画
+					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionMagic);
+				}
+				else if (CollisionRectToPoint(optionButton3, nowMousePoint))	// 選択肢3のボタンとマウスカーソルが接触している
+				{
+					DrawRect(optionButton3, Color_White, true, 3);		// 選択肢3ボタンを白で塗りつぶして描画
+
+					// 選択肢3のテキストを黒で描画
+					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionSpecial);
+				}
+				else if (CollisionRectToPoint(optionButton4, nowMousePoint))	// 選択肢4のボタンとマウスカーソルが接触している
+				{
+					DrawRect(optionButton4, Color_White, true, 3);		// 選択肢4ボタンを白で塗りつぶして描画
+
+					// 選択肢4のテキストを黒で描画
+					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionDefence);
 				}
 			}
-			else if(MP < MPofMagicEx)
+			else if (actionNumber == 20)
 			{
-				if (MaxHP > DightmareHP)
+				if (MP < MPofMagicSaros)
 				{
-					/* +++ 4つの選択肢のボタンを白枠または灰枠で描画 +++ */
-					DrawRect(optionButton1, Color_White, false, 3);
+					/* +++ 4つの選択肢のボタンを灰色枠で描画 +++ */
+					DrawRect(optionButton1, Color_Gray, false, 3);
 					DrawRect(optionButton2, Color_Gray, false, 3);
 					DrawRect(optionButton3, Color_Gray, false, 3);
 					DrawRect(optionButton4, Color_Gray, false, 3);
 
-					/* +++ 魔法の選択肢のテキストを白または灰で描画 +++ */
-					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionMagicSaros);
+					/* +++ 魔法の選択肢のテキストを灰色で描画 +++ */
+					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionMagicSaros);
+					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionMagicDeus);
+					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionMagicEx);
+					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionMagicMachina);
+				}
+				else if (MP < MPofMagicDeus)
+				{
+					/* +++ 3つの選択肢のボタンを白または灰色枠で描画 +++ */
+					DrawRect(optionButton2, Color_Gray, false, 3);
+					DrawRect(optionButton3, Color_Gray, false, 3);
+					DrawRect(optionButton4, Color_Gray, false, 3);
+
+					/* +++ 魔法の選択肢のテキストを白または灰色で描画 +++ */
 					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionMagicDeus);
 					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionMagicEx);
 					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionMagicMachina);
@@ -635,19 +612,82 @@ void Dightmare::MainFase_Draw()
 						// 選択肢1のテキストを黒で描画
 						DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionMagicSaros);
 					}
+					else
+					{
+						DrawRect(optionButton1, Color_White, false, 3);		// 選択肢1ボタンを白で描画
+
+						// 選択肢1のテキストを白で描画
+						DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionMagicSaros);
+					}
 				}
-				else
+				else if (MP < MPofMagicEx)
+				{
+					if (MaxHP > DightmareHP)
+					{
+						/* +++ 4つの選択肢のボタンを白枠または灰枠で描画 +++ */
+						DrawRect(optionButton1, Color_White, false, 3);
+						DrawRect(optionButton2, Color_Gray, false, 3);
+						DrawRect(optionButton3, Color_Gray, false, 3);
+						DrawRect(optionButton4, Color_Gray, false, 3);
+
+						/* +++ 魔法の選択肢のテキストを白または灰で描画 +++ */
+						DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionMagicSaros);
+						DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionMagicDeus);
+						DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionMagicEx);
+						DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionMagicMachina);
+
+						/* +++ マウスカーソルが触れている選択肢のボタンによって処理を変える +++ */
+						if (CollisionRectToPoint(optionButton1, nowMousePoint))	// 選択肢1ボタンとマウスカーソルが接触している
+						{
+							DrawRect(optionButton1, Color_White, true, 3);		// 選択肢1ボタンを白で塗りつぶして描画
+
+							// 選択肢1のテキストを黒で描画
+							DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionMagicSaros);
+						}
+					}
+					else
+					{
+						/* +++ 4つの選択肢のボタンを白枠または灰枠で描画 +++ */
+						DrawRect(optionButton1, Color_White, false, 3);
+						DrawRect(optionButton2, Color_White, false, 3);
+						DrawRect(optionButton3, Color_Gray, false, 3);
+						DrawRect(optionButton4, Color_Gray, false, 3);
+
+						/* +++ 魔法の選択肢のテキストを白または灰で描画 +++ */
+						DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionMagicSaros);
+						DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionMagicDeus);
+						DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionMagicEx);
+						DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionMagicMachina);
+
+						/* +++ マウスカーソルが触れている選択肢のボタンによって処理を変える +++ */
+						if (CollisionRectToPoint(optionButton1, nowMousePoint))	// 選択肢1ボタンとマウスカーソルが接触している
+						{
+							DrawRect(optionButton1, Color_White, true, 3);		// 選択肢1ボタンを白で塗りつぶして描画
+
+							// 選択肢1のテキストを黒で描画
+							DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionMagicSaros);
+						}
+						else if (CollisionRectToPoint(optionButton2, nowMousePoint))	// 選択肢2ボタンとマウスカーソルが接触している
+						{
+							DrawRect(optionButton2, Color_White, true, 3);		// 選択肢2ボタンを白で塗りつぶして描画
+
+							// 選択肢2のテキストを黒で描画
+							DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionMagicDeus);
+						}
+					}
+				}
+				else if (MP < MPofMagicMachina)
 				{
 					/* +++ 4つの選択肢のボタンを白枠または灰枠で描画 +++ */
 					DrawRect(optionButton1, Color_White, false, 3);
 					DrawRect(optionButton2, Color_White, false, 3);
-					DrawRect(optionButton3, Color_Gray, false, 3);
+					DrawRect(optionButton3, Color_White, false, 3);
 					DrawRect(optionButton4, Color_Gray, false, 3);
 
 					/* +++ 魔法の選択肢のテキストを白または灰で描画 +++ */
 					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionMagicSaros);
 					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionMagicDeus);
-					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionMagicEx);
+					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionMagicEx);
 					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionMagicMachina);
 
 					/* +++ マウスカーソルが触れている選択肢のボタンによって処理を変える +++ */
@@ -665,189 +705,159 @@ void Dightmare::MainFase_Draw()
 						// 選択肢2のテキストを黒で描画
 						DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionMagicDeus);
 					}
+					else if (CollisionRectToPoint(optionButton3, nowMousePoint))	// 選択肢3ボタンとマウスカーソルが接触している
+					{
+						DrawRect(optionButton3, Color_White, true, 3);		// 選択肢3ボタンを白で塗りつぶして描画
+
+						// 選択肢3のテキストを黒で描画
+						DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionMagicEx);
+					}
 				}
+				else
+				{
+					/* +++ 4つの選択肢のボタンを白枠で描画 +++ */
+					DrawRect(optionButton1, Color_White, false, 3);
+					DrawRect(optionButton2, Color_White, false, 3);
+					DrawRect(optionButton3, Color_White, false, 3);
+					DrawRect(optionButton4, Color_White, false, 3);
+
+					/* +++ 魔法の選択肢のテキストを白で描画 +++ */
+					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionMagicSaros);
+					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionMagicDeus);
+					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionMagicEx);
+					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionMagicMachina);
+
+					/* +++ マウスカーソルが触れている選択肢のボタンによって処理を変える +++ */
+					if (CollisionRectToPoint(optionButton1, nowMousePoint))	// 選択肢1ボタンとマウスカーソルが接触している
+					{
+						DrawRect(optionButton1, Color_White, true, 3);		// 選択肢1ボタンを白で塗りつぶして描画
+
+						// 選択肢1のテキストを黒で描画
+						DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionMagicSaros);
+					}
+					else if (CollisionRectToPoint(optionButton2, nowMousePoint))	// 選択肢2のボタンとマウスカーソルが接触している
+					{
+						DrawRect(optionButton2, Color_White, true, 3);		// 選択肢2ボタンを白で塗りつぶして描画
+
+						// 選択肢2のテキストを黒で描画
+						DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionMagicDeus);
+					}
+					else if (CollisionRectToPoint(optionButton3, nowMousePoint))	// 選択肢3ボタンとマウスカーソルが接触している
+					{
+						DrawRect(optionButton3, Color_White, true, 3);		// 選択肢3ボタンを白で塗りつぶして描画
+
+						// 選択肢3のテキストを黒で描画
+						DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionMagicEx);
+					}
+					else if (CollisionRectToPoint(optionButton4, nowMousePoint))	// 選択肢4のボタンとマウスカーソルが接触している
+					{
+						DrawRect(optionButton4, Color_White, true, 3);		// 選択肢4ボタンを白で塗りつぶして描画
+
+						// 選択肢4のテキストを黒で描画
+						DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionMagicMachina);
+					}
+				}
+
+				DrawBackBottun();
 			}
-			else if (MP < MPofMagicMachina)
+			else if (actionNumber == 30)	// アクションナンバーが30である
 			{
-				/* +++ 4つの選択肢のボタンを白枠または灰枠で描画 +++ */
-				DrawRect(optionButton1, Color_White, false, 3);
-				DrawRect(optionButton2, Color_White, false, 3);
-				DrawRect(optionButton3, Color_White, false, 3);
-				DrawRect(optionButton4, Color_Gray, false, 3);
-
-				/* +++ 魔法の選択肢のテキストを白または灰で描画 +++ */
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionMagicSaros);
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionMagicDeus);
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionMagicEx);
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionMagicMachina);
-
-				/* +++ マウスカーソルが触れている選択肢のボタンによって処理を変える +++ */
-				if (CollisionRectToPoint(optionButton1, nowMousePoint))	// 選択肢1ボタンとマウスカーソルが接触している
+				if (TP < TPofKebehsenuev)	// TPがケベフスの消費TPより少ないなら
 				{
-					DrawRect(optionButton1, Color_White, true, 3);		// 選択肢1ボタンを白で塗りつぶして描画
+					/* +++ 3つの選択肢のボタンを白または灰色枠で描画 +++ */
+					DrawRect(optionButton1, Color_Gray, false, 3);
+					DrawRect(optionButton2, Color_Gray, false, 3);
+					DrawRect(optionButton3, Color_Gray, false, 3);
+					DrawRect(optionButton4, Color_Gray, false, 3);
 
-					// 選択肢1のテキストを黒で描画
-					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionMagicSaros);
+					/* +++ 特技の選択肢のテキストを灰色で描画 +++ */
+					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionImseti);
+					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionHarpy);
+					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionKebehsenuev);
+					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionDuamtef);
 				}
-				else if (CollisionRectToPoint(optionButton2, nowMousePoint))	// 選択肢2ボタンとマウスカーソルが接触している
+				else if (TP < TPofDuamtef)
 				{
-					DrawRect(optionButton2, Color_White, true, 3);		// 選択肢2ボタンを白で塗りつぶして描画
+					/* +++ 4つの選択肢のボタン白または灰色枠で描画 +++ */
+					DrawRect(optionButton1, Color_White, false, 3);
+					DrawRect(optionButton2, Color_White, false, 3);
+					DrawRect(optionButton3, Color_White, false, 3);
+					DrawRect(optionButton4, Color_Gray, false, 3);
 
-					// 選択肢2のテキストを黒で描画
-					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionMagicDeus);
+					/* +++ 特技の選択肢のテキストを白または灰色で描画 +++ */
+					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionImseti);
+					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionHarpy);
+					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionKebehsenuev);
+					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionDuamtef);
+
+					if (CollisionRectToPoint(optionButton1, nowMousePoint))	// 選択肢1のボタンとマウスカーソルが接触している
+					{
+						DrawRect(optionButton1, Color_White, true, 3);		// 選択肢1ボタンを白で塗りつぶして描画
+
+						// 選択肢1のテキストを黒で描画
+						DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionImseti);
+					}
+					else if (CollisionRectToPoint(optionButton2, nowMousePoint))	// 選択肢2のボタンとマウスカーソルが接触している
+					{
+						DrawRect(optionButton2, Color_White, true, 3);		// 選択肢2ボタンを白で塗りつぶして描画
+
+						// 選択肢2のテキストを黒で描画
+						DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionHarpy);
+					}
+					else if (CollisionRectToPoint(optionButton3, nowMousePoint))	// 選択肢3のボタンとマウスカーソルが接触している
+					{
+						DrawRect(optionButton3, Color_White, true, 3);		// 選択肢3ボタンを白で塗りつぶして描画
+
+						// 選択肢3のテキストを黒で描画
+						DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionKebehsenuev);
+					}
 				}
-				else if (CollisionRectToPoint(optionButton3, nowMousePoint))	// 選択肢3ボタンとマウスカーソルが接触している
+				else
 				{
-					DrawRect(optionButton3, Color_White, true, 3);		// 選択肢3ボタンを白で塗りつぶして描画
+					/* +++ 4つの選択肢のボタンを白枠で描画 +++ */
+					DrawRect(optionButton1, Color_White, false, 3);
+					DrawRect(optionButton2, Color_White, false, 3);
+					DrawRect(optionButton3, Color_White, false, 3);
+					DrawRect(optionButton4, Color_White, false, 3);
 
-					// 選択肢3のテキストを黒で描画
-					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionMagicEx);
+					/* +++ 特技の選択肢のテキストを白で描画 +++ */
+					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionImseti);
+					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionHarpy);
+					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionKebehsenuev);
+					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionDuamtef);
+
+					if (CollisionRectToPoint(optionButton1, nowMousePoint))	// 選択肢1のボタンとマウスカーソルが接触している
+					{
+						DrawRect(optionButton1, Color_White, true, 3);		// 選択肢1ボタンを白で塗りつぶして描画
+
+						// 選択肢1のテキストを黒で描画
+						DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionImseti);
+					}
+					else if (CollisionRectToPoint(optionButton2, nowMousePoint))	// 選択肢2のボタンとマウスカーソルが接触している
+					{
+						DrawRect(optionButton2, Color_White, true, 3);		// 選択肢2ボタンを白で塗りつぶして描画
+
+						// 選択肢2のテキストを黒で描画
+						DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionHarpy);
+					}
+					else if (CollisionRectToPoint(optionButton3, nowMousePoint))	// 選択肢3のボタンとマウスカーソルが接触している
+					{
+						DrawRect(optionButton3, Color_White, true, 3);		// 選択肢3ボタンを白で塗りつぶして描画
+
+						// 選択肢3のテキストを黒で描画
+						DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionKebehsenuev);
+					}
+					else if (CollisionRectToPoint(optionButton4, nowMousePoint))	// 選択肢4のボタンとマウスカーソルが接触している
+					{
+						DrawRect(optionButton4, Color_White, true, 3);		// 選択肢4ボタンを白で塗りつぶして描画
+
+						// 選択肢4のテキストを黒で描画
+						DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionDuamtef);
+					}
 				}
+
+				DrawBackBottun();
 			}
-			else
-			{
-				/* +++ 4つの選択肢のボタンを白枠で描画 +++ */
-				DrawRect(optionButton1, Color_White, false, 3);
-				DrawRect(optionButton2, Color_White, false, 3);
-				DrawRect(optionButton3, Color_White, false, 3);
-				DrawRect(optionButton4, Color_White, false, 3);
-
-				/* +++ 魔法の選択肢のテキストを白で描画 +++ */
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionMagicSaros);
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionMagicDeus);
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionMagicEx);
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionMagicMachina);
-
-				/* +++ マウスカーソルが触れている選択肢のボタンによって処理を変える +++ */
-				if (CollisionRectToPoint(optionButton1, nowMousePoint))	// 選択肢1ボタンとマウスカーソルが接触している
-				{
-					DrawRect(optionButton1, Color_White, true, 3);		// 選択肢1ボタンを白で塗りつぶして描画
-
-					// 選択肢1のテキストを黒で描画
-					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionMagicSaros);
-				}
-				else if (CollisionRectToPoint(optionButton2, nowMousePoint))	// 選択肢2のボタンとマウスカーソルが接触している
-				{
-					DrawRect(optionButton2, Color_White, true, 3);		// 選択肢2ボタンを白で塗りつぶして描画
-
-					// 選択肢2のテキストを黒で描画
-					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionMagicDeus);
-				}
-				else if (CollisionRectToPoint(optionButton3, nowMousePoint))	// 選択肢3ボタンとマウスカーソルが接触している
-				{
-					DrawRect(optionButton3, Color_White, true, 3);		// 選択肢3ボタンを白で塗りつぶして描画
-
-					// 選択肢3のテキストを黒で描画
-					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionMagicEx);
-				}
-				else if (CollisionRectToPoint(optionButton4, nowMousePoint))	// 選択肢4のボタンとマウスカーソルが接触している
-				{
-					DrawRect(optionButton4, Color_White, true, 3);		// 選択肢4ボタンを白で塗りつぶして描画
-
-					// 選択肢4のテキストを黒で描画
-					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionMagicMachina);
-				}
-			}
-
-			DrawBackBottun();
-		}
-		else if (actionNumber == 30)	// アクションナンバーが30である
-		{
-			if (TP < TPofKebehsenuev)	// TPがケベフスの消費TPより少ないなら
-			{
-				/* +++ 3つの選択肢のボタンを白または灰色枠で描画 +++ */
-				DrawRect(optionButton1, Color_Gray, false, 3);
-				DrawRect(optionButton2, Color_Gray, false, 3);
-				DrawRect(optionButton3, Color_Gray, false, 3);
-				DrawRect(optionButton4, Color_Gray, false, 3);
-
-				/* +++ 特技の選択肢のテキストを灰色で描画 +++ */
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionImseti);
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionHarpy);
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionKebehsenuev);
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionDuamtef);
-			}
-			else if (TP < TPofDuamtef)
-			{
-				/* +++ 4つの選択肢のボタン白または灰色枠で描画 +++ */
-				DrawRect(optionButton1, Color_White, false, 3);
-				DrawRect(optionButton2, Color_White, false, 3);
-				DrawRect(optionButton3, Color_White, false, 3);
-				DrawRect(optionButton4, Color_Gray, false, 3);
-
-				/* +++ 特技の選択肢のテキストを白または灰色で描画 +++ */
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionImseti);
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionHarpy);
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionKebehsenuev);
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionDuamtef);
-
-				if (CollisionRectToPoint(optionButton1, nowMousePoint))	// 選択肢1のボタンとマウスカーソルが接触している
-				{
-					DrawRect(optionButton1, Color_White, true, 3);		// 選択肢1ボタンを白で塗りつぶして描画
-
-					// 選択肢1のテキストを黒で描画
-					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionImseti);
-				}
-				else if (CollisionRectToPoint(optionButton2, nowMousePoint))	// 選択肢2のボタンとマウスカーソルが接触している
-				{
-					DrawRect(optionButton2, Color_White, true, 3);		// 選択肢2ボタンを白で塗りつぶして描画
-
-					// 選択肢2のテキストを黒で描画
-					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionHarpy);
-				}
-				else if (CollisionRectToPoint(optionButton3, nowMousePoint))	// 選択肢3のボタンとマウスカーソルが接触している
-				{
-					DrawRect(optionButton3, Color_White, true, 3);		// 選択肢3ボタンを白で塗りつぶして描画
-
-					// 選択肢3のテキストを黒で描画
-					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionKebehsenuev);
-				}
-			}
-			else
-			{
-				/* +++ 4つの選択肢のボタンを白枠で描画 +++ */
-				DrawRect(optionButton1, Color_White, false, 3);
-				DrawRect(optionButton2, Color_White, false, 3);
-				DrawRect(optionButton3, Color_White, false, 3);
-				DrawRect(optionButton4, Color_White, false, 3);
-
-				/* +++ 特技の選択肢のテキストを白で描画 +++ */
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionImseti);
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionHarpy);
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionKebehsenuev);
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionDuamtef);
-
-				if (CollisionRectToPoint(optionButton1, nowMousePoint))	// 選択肢1のボタンとマウスカーソルが接触している
-				{
-					DrawRect(optionButton1, Color_White, true, 3);		// 選択肢1ボタンを白で塗りつぶして描画
-
-					// 選択肢1のテキストを黒で描画
-					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionImseti);
-				}
-				else if (CollisionRectToPoint(optionButton2, nowMousePoint))	// 選択肢2のボタンとマウスカーソルが接触している
-				{
-					DrawRect(optionButton2, Color_White, true, 3);		// 選択肢2ボタンを白で塗りつぶして描画
-
-					// 選択肢2のテキストを黒で描画
-					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionHarpy);
-				}
-				else if (CollisionRectToPoint(optionButton3, nowMousePoint))	// 選択肢3のボタンとマウスカーソルが接触している
-				{
-					DrawRect(optionButton3, Color_White, true, 3);		// 選択肢3ボタンを白で塗りつぶして描画
-
-					// 選択肢3のテキストを黒で描画
-					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionKebehsenuev);
-				}
-				else if (CollisionRectToPoint(optionButton4, nowMousePoint))	// 選択肢4のボタンとマウスカーソルが接触している
-				{
-					DrawRect(optionButton4, Color_White, true, 3);		// 選択肢4ボタンを白で塗りつぶして描画
-
-					// 選択肢4のテキストを黒で描画
-					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionDuamtef);
-				}
-			}
-
-			DrawBackBottun();
 		}
 	}
 
@@ -859,61 +869,72 @@ void Dightmare::BattleFase_Process()
 {
 	if (actionFlag == false)	// アクションフラグがfalseなら
 	{
-		/* +++ アクションナンバーによって処理を変える +++ */
-		switch (actionNumber)
+		if (statusAilment == Paralysis)		// 「マヒ」なら
 		{
-		case 10:
-			/* +++ アクションナンバーが10 +++ */
+			ailmentTurn -= 1;	// 状態異常の継続ターンを1減らす
 
-			NormalAttack();		// 通常攻撃を実行
-			break;
-		case 21:
-			/* +++ アクションナンバーが21 +++ */
+			displayMessagePattern = Message1Line;	// 表示する行数を1行に設定
 
-			MagicSaros();		// サロスを実行
-			break;
-		case 22:
-			/* +++ アクションナンバーが22 +++ */
+			sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Players, characterName, ActionStatusParalysis);
+		}
+		else
+		{
+			/* +++ アクションナンバーによって処理を変える +++ */
+			switch (actionNumber)
+			{
+			case 10:
+				/* +++ アクションナンバーが10 +++ */
 
-			MagicDeus();		// デウスを実行
-			break;
-		case 23:
-			/* +++ アクションナンバーが23 +++ */
+				NormalAttack();		// 通常攻撃を実行
+				break;
+			case 21:
+				/* +++ アクションナンバーが21 +++ */
 
-			MagicEx();			// エクスを実行
-			break;
-		case 24:
-			/* +++ アクションナンバーが24 +++ */
+				MagicSaros();		// サロスを実行
+				break;
+			case 22:
+				/* +++ アクションナンバーが22 +++ */
 
-			MagicMachina();		// マキナを実行
-			break;
-		case 31:
-			/* +++ アクションナンバーが31 +++ */
+				MagicDeus();		// デウスを実行
+				break;
+			case 23:
+				/* +++ アクションナンバーが23 +++ */
 
-			Imseti();		// イムセトを実行
-			break;
-		case 32:
-			/* +++ アクションナンバーが32 +++ */
+				MagicEx();			// エクスを実行
+				break;
+			case 24:
+				/* +++ アクションナンバーが24 +++ */
 
-			Harpy();		// ハーピを実行
-			break;
-		case 33:
-			/* +++ アクションナンバーが33 +++ */
+				MagicMachina();		// マキナを実行
+				break;
+			case 31:
+				/* +++ アクションナンバーが31 +++ */
 
-			Kebehsenuev();	// ケベフスを実行
-			break;
-		case 34:
-			/* +++ アクションナンバーが34 +++ */
+				Imseti();		// イムセトを実行
+				break;
+			case 32:
+				/* +++ アクションナンバーが32 +++ */
 
-			Duamtef();		// ドゥアムタを実行
-			break;
-		case 40:
-			/* +++ アクションナンバーが40 +++ */
+				Harpy();		// ハーピを実行
+				break;
+			case 33:
+				/* +++ アクションナンバーが33 +++ */
 
-			NormalDefence();	// 通常防御を実行
-			break;
-		default:
-			break;
+				Kebehsenuev();	// ケベフスを実行
+				break;
+			case 34:
+				/* +++ アクションナンバーが34 +++ */
+
+				Duamtef();		// ドゥアムタを実行
+				break;
+			case 40:
+				/* +++ アクションナンバーが40 +++ */
+
+				NormalDefence();	// 通常防御を実行
+				break;
+			default:
+				break;
+			}
 		}
 
 		actionNumber = 0;	// アクションナンバーをリセット
@@ -933,6 +954,8 @@ void Dightmare::EndFase_Process()
 	if (actionFlag == false)	// アクションフラグがfalseなら
 	{
 		TP_Calc(10, ISENHANCE);
+
+		Check_Status();		// 状態異常からの復帰を確認する
 
 		if (defenceCoefficient != 1)
 		{
@@ -1201,7 +1224,9 @@ void Dightmare::Duamtef()
 		Player->Damage_Calc(calcResult1, Breath);
 	}
 
-	Sound_Play(SE_Duamtef);
+	Sound_Play(SE_Duamtef1);
+	Sound_Play(SE_Duamtef2);
+	Sound_Play(SE_Duamtef3);
 
 	return;
 }
