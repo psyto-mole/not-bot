@@ -48,8 +48,9 @@ void Dightmare::Character_Init(bool isThisPlayer)
 
 	chargeStep = 0;
 
-	statusAilment = Fine;
-	ailmentTurn = 0;
+	statusAilment = Fine;		// 状態を「異常なし」に設定
+	ailmentTurn = 0;			// 状態異常の継続ターンを0にする
+	ailmentPoisoning = false;	// 「毒」の状態異常を解除
 
 	sprintf_s(characterName, sizeof(characterName), "%s", CharacterNameDightmare);
 

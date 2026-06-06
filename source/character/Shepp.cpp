@@ -46,8 +46,9 @@ void Shepp::Character_Init(bool isThisPlayer)
 
 	defenceCoefficient = 1.0;	// 防御係数を初期化
 
-	statusAilment = Fine;
-	ailmentTurn = 0;
+	statusAilment = Fine;		// 状態を「異常なし」に設定
+	ailmentTurn = 0;			// 状態異常の継続ターンを0にする
+	ailmentPoisoning = false;	// 「毒」の状態異常を解除
 
 	sprintf_s(characterName, sizeof(characterName),"%s", CharacterNameShepp);
 

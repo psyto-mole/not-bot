@@ -1532,10 +1532,15 @@ bool Character::Judge_Hit(int hitProbability)
 }
 
 // 自身の状態を「状態異常なし」にする
-void Character::Become_Fine()
+void Character::Become_Fine(bool healPoison)
 {
 	statusAilment = Fine;	// 「状態異常なし」に設定
 	ailmentTurn = 0;		// 状態異常の継続ターンを0に戻す
+
+	if (healPoison)
+	{
+		ailmentPoisoning = false;
+	}
 
 	return;
 }

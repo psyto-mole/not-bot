@@ -46,8 +46,9 @@ void Noname::Character_Init(bool isThisPlayer)
 
 	defenceCoefficient = 1.0;		// 防御係数を初期化
 
-	statusAilment = Fine;
-	ailmentTurn = 0;
+	statusAilment = Fine;		// 状態を「異常なし」に設定
+	ailmentTurn = 0;			// 状態異常の継続ターンを0にする
+	ailmentPoisoning = false;	// 「毒」の状態異常を解除
 
 	sprintf_s(characterName, sizeof(characterName), "%s", CharacterNameNoname);
 
@@ -233,8 +234,8 @@ void Noname::MainFase_Process()
 				{
 					displayMessagePattern = Message1Line;	// 表示するメッセージを1行に設定
 
-					// 無の息(仮)の説明文をメッセージに設定
-					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s", DetailOfTentativeBreath);
+					// 構え(仮)の説明文をメッセージに設定
+					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s", DetailOfTentativeStance);
 				}
 
 				if (Mouse_Check_Click(MOUSE_INPUT_LEFT))	// マウスがクリックされた
@@ -269,7 +270,7 @@ void Noname::MainFase_Process()
 					}
 					else if (actionNumber == 30)	// アクションナンバーが30なら
 					{
-						if (TP >= TPofTentativeBreath)	// TPが無の息(仮)の消費TP以上なら
+						if (TP >= TPofTentativeStance)	// TPが構え(仮)の消費TP以上なら
 						{
 							Sound_Play(SE_Enter);
 
@@ -300,8 +301,8 @@ void Noname::MainFase_Process()
 				{
 					displayMessagePattern = Message1Line;	// 表示するメッセージを1行に設定
 
-					// 最終撃(仮)の説明文をメッセージに設定
-					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s", DetailOfTentativeFinal);
+					// 痛打(仮)の説明文をメッセージに設定
+					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s", DetailOfTentativeSevereBlow);
 				}
 
 				if (Mouse_Check_Click(MOUSE_INPUT_LEFT))	// マウスがクリックされた
@@ -333,7 +334,7 @@ void Noname::MainFase_Process()
 					}
 					else if (actionNumber == 30)	// アクションナンバーが30なら
 					{
-						if (TP >= TPofTentativeFinal)	// TPが最終撃(仮)の消費TP以上なら
+						if (TP >= TPofTentativeSevereBlow)	// TPが痛打(仮)の消費TP以上なら
 						{
 							Sound_Play(SE_Enter);
 
@@ -461,7 +462,7 @@ void Noname::MainFase_Process()
 				case 3:
 					/* +++ 乱数の値が3 +++ */
 
-					if (TP < TPofTentativeBreath)	// TPが無の息(仮)の消費TP未満なら
+					if (TP < TPofTentativeStance)	// TPが構え(仮)の消費TP未満なら
 					{
 						actionNumber = 0;	// アクションナンバーをリセットする
 
@@ -471,7 +472,7 @@ void Noname::MainFase_Process()
 				case 4:
 					/* +++ 乱数の値が4 +++ */
 
-					if (TP < TPofTentativeFinal)	// TPが最終撃(仮)の消費TP未満なら
+					if (TP < TPofTentativeSevereBlow)	// TPが痛打(仮)の消費TP未満なら
 					{
 						actionNumber = 0;	// アクションナンバーをリセットする
 
@@ -685,10 +686,10 @@ void Noname::MainFase_Draw()
 				/* +++ 特技の選択肢のテキストを灰色で描画 +++ */
 				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionTentativeThunder);
 				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionTentativePoison);
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionTentativeBreath);
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionTentativeFinal);
+				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionTentativeStance);
+				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionTentativeSevereBlow);
 			}
-			else if (TP < TPofTentativeBreath)
+			else if (TP < TPofTentativeStance)
 			{
 				/* +++ 4つの選択肢のボタンを白または灰色枠で描画 +++ */
 				DrawRect(optionButton1, Color_White, false, 3);
@@ -699,8 +700,8 @@ void Noname::MainFase_Draw()
 				/* +++ 特技の選択肢のテキストを白または灰色で描画 +++ */
 				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionTentativeThunder);
 				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionTentativePoison);
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionTentativeBreath);
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionTentativeFinal);
+				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionTentativeStance);
+				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionTentativeSevereBlow);
 
 				if (CollisionRectToPoint(optionButton1, nowMousePoint))	// 選択肢1のボタンとマウスカーソルが接触している
 				{
@@ -717,7 +718,7 @@ void Noname::MainFase_Draw()
 					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionTentativePoison);
 				}
 			}
-			else if (TP < TPofTentativeFinal)
+			else if (TP < TPofTentativeSevereBlow)
 			{
 				/* +++ 4つの選択肢のボタン白または灰色枠で描画 +++ */
 				DrawRect(optionButton1, Color_White, false, 3);
@@ -728,8 +729,8 @@ void Noname::MainFase_Draw()
 				/* +++ 特技の選択肢のテキストを白または灰色で描画 +++ */
 				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionTentativeThunder);
 				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionTentativePoison);
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionTentativeBreath);
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionTentativeFinal);
+				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionTentativeStance);
+				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionTentativeSevereBlow);
 
 				if (CollisionRectToPoint(optionButton1, nowMousePoint))	// 選択肢1のボタンとマウスカーソルが接触している
 				{
@@ -750,7 +751,7 @@ void Noname::MainFase_Draw()
 					DrawRect(optionButton3, Color_White, true, 3);		// 選択肢3ボタンを白で塗りつぶして描画
 
 					// 選択肢3のテキストを黒で描画
-					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionTentativeBreath);
+					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionTentativeStance);
 				}
 			}
 			else
@@ -764,8 +765,8 @@ void Noname::MainFase_Draw()
 				/* +++ 特技の選択肢のテキストを白で描画 +++ */
 				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionTentativeThunder);
 				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionTentativePoison);
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionTentativeBreath);
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionTentativeFinal);
+				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionTentativeStance);
+				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionTentativeSevereBlow);
 
 				if (CollisionRectToPoint(optionButton1, nowMousePoint))	// 選択肢1のボタンとマウスカーソルが接触している
 				{
@@ -786,14 +787,14 @@ void Noname::MainFase_Draw()
 					DrawRect(optionButton3, Color_White, true, 3);		// 選択肢3ボタンを白で塗りつぶして描画
 
 					// 選択肢3のテキストを黒で描画
-					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionTentativeBreath);
+					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionTentativeStance);
 				}
 				else if (CollisionRectToPoint(optionButton4, nowMousePoint))	// 選択肢4のボタンとマウスカーソルが接触している
 				{
 					DrawRect(optionButton4, Color_White, true, 3);		// 選択肢4ボタンを白で塗りつぶして描画
 
 					// 選択肢4のテキストを黒で描画
-					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionTentativeFinal);
+					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionTentativeSevereBlow);
 				}
 			}
 
@@ -850,12 +851,12 @@ void Noname::BattleFase_Process()
 		case 33:
 			/* +++ アクションナンバーが33 +++ */
 
-			TentativeBreath();		// 無の息(仮)を実行
+			TentativeStance();		// 構え(仮)を実行
 			break;
 		case 34:
 			/* +++ アクションナンバーが34 +++ */
 
-			TentativeFinal();		// 最終撃(仮)を実行
+			TentativeSevereBlow();		// 痛打(仮)を実行
 			break;
 		case 40:
 			/* +++ アクションナンバーが40 +++ */

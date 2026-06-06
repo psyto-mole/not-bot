@@ -103,7 +103,7 @@ public:
 
 	bool Judge_Hit(int hitProbability);		// 命中したかを判定する関数
 
-	void Become_Fine();							// 自身の状態を「状態異常なし」にする
+	void Become_Fine(bool healPoison);			// 自身の状態を「状態異常なし」にする
 	void Become_Paralyzed(int continueTurn);	// 自身の状態を「マヒ」にする(継続ターンを引数で渡す)
 	void Become_Poisoning(int continueTurn);	// 自身の状態を「毒」にする(継続ターンを引数で渡す)
 	void Become_Silence(int continueTurn);		// 自身の状態を「沈黙」にする(継続ターンを引数で渡す)

@@ -285,10 +285,10 @@
 #define OptionMagicTentativeHeal	"ƒq[ƒ‹(‰¼)"
 #define OptionMagicTentativeRock	"ƒƒbƒN(‰¼)"
 
-#define OptionTentativeThunder	"—‹n(‰¼)"
-#define OptionTentativePoison	"“Ån(‰¼)"
-#define OptionTentativeBreath	"\‚¦(‰¼)"
-#define OptionTentativeFinal	"’É‘Å(‰¼)"
+#define OptionTentativeThunder		"—‹n(‰¼)"
+#define OptionTentativePoison		"“Ån(‰¼)"
+#define OptionTentativeStance		"\‚¦(‰¼)"
+#define OptionTentativeSevereBlow	"’É‘Å(‰¼)"
 
 /* +++ ‘I‘ğˆ‚Ìà–¾(ƒLƒ…[(‰¼)) +++ */
 #define DetailOfMagicTentativeDark		"ˆÅ‚Ì–‚—Í‚ÅUŒ‚‚µA‚½‚Ü‚É‘Šè‚Ì–‚–@‚ğ••‚¶‚é‚æ‚¤‚¾(MP: 10)"
@@ -296,10 +296,10 @@
 #define DetailOfMagicTentativeHeal		"Œõ‚Ì–‚—Í‚Å©g‚Ì‚ğ‰ñ•œ‚·‚é‚æ‚¤‚¾(MP: 10)"
 #define DetailOfMagicTentativeRock		"–‚Î‚ğ¶‚İo‚µUŒ‚‚·‚é‚æ‚¤‚¾(MP: 25)"
 
-#define DetailOfTentativeThunder	"—‹‚Ìn‚ÅUŒ‚‚µA‚½‚Ü‚É‘Šè‚ğƒ}ƒq‚³‚¹‚é‚æ‚¤‚¾(TP: 15)"
-#define DetailOfTentativePoison		"“Å‚Ìn‚ÅUŒ‚‚µA‚½‚Ü‚É‘Šè‚ğ“Å‚É‚·‚é‚æ‚¤‚¾(TP: 15)"
-#define DetailOfTentativeBreath		"g‚¤‚Ù‚Ç‚Éç”õ—Í‚ªã¸‚·‚é‚æ‚¤‚¾(TP: 25)"
-#define DetailOfTentativeFinal		"‘Šè‚É’v–½‚ÌUŒ‚‚ğ’@‚«‚Ş‚±‚Æ‚ª‚ ‚é‚æ‚¤‚¾(TP: 40)"
+#define DetailOfTentativeThunder		"—‹‚Ìn‚ÅUŒ‚‚µA‚½‚Ü‚É‘Šè‚ğƒ}ƒq‚³‚¹‚é‚æ‚¤‚¾(TP: 15)"
+#define DetailOfTentativePoison			"“Å‚Ìn‚ÅUŒ‚‚µA‚½‚Ü‚É‘Šè‚ğ“Å‚É‚·‚é‚æ‚¤‚¾(TP: 15)"
+#define DetailOfTentativeStance			"g‚¤‚Ù‚Ç‚Éç”õ—Í‚ªã¸‚·‚é‚æ‚¤‚¾(TP: 25)"
+#define DetailOfTentativeSevereBlow		"‘Šè‚É’v–½‚ÌUŒ‚‚ğ’@‚«‚Ş‚±‚Æ‚ª‚ ‚é‚æ‚¤‚¾(TP: 40)"
 
 /* +++ s“®‚Ì“à—e(ƒLƒ…[(‰¼)) +++ */
 #define ActionMagicTentativeDark	"‚ÍˆÅ‚Ì–‚—Í‚ğ•úo‚µ‚½"
