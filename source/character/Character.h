@@ -36,7 +36,7 @@ class Character
 protected:
 	int randomNumber;			// 行動選択についての乱数を保持する変数
 
-	char characterName[64];		// 自身のキャラクター名を格納する配列
+	char characterName[128];		// 自身のキャラクター名を格納する配列
 
 	bool isPlayer;		// 自キャラがプレイヤーかを管理するフラグ
 

@@ -166,14 +166,16 @@ void Robot::MainFase_Process()
 			{
 				if (actionNumber < 10)	// アクションナンバーが10未満なら
 				{
+					displayMessagePattern = Message1Line;
+
 					if (statusAilment == Slump)
 					{
-						displayMessagePattern = Message1Line;
+						// 特技が封じられている旨をメッセージに設定
 						sprintf_s(battleMessage1, sizeof(battleMessage1), "%s", DetailSealedSpecial);
 					}
 					else
 					{
-						displayMessagePattern = Message1Line;
+						// 特技の説明文をメッセージに設定
 						sprintf_s(battleMessage1, sizeof(battleMessage1), "%s", DetailOfSpecial);
 					}
 				}
@@ -356,12 +358,12 @@ void Robot::MainFase_Draw()
 		{
 			if (actionNumber < 10)	// アクションナンバーが10未満なら
 			{
-				/* +++ 4つの選択肢のボタンを白枠で描画 +++ */
+				/* +++ 選択肢1と4のボタンを白枠で描画 +++ */
 				DrawRect(optionButton1, Color_White, false, 3);
 				DrawRect(optionButton2, Color_Gray, false, 3);
 				DrawRect(optionButton4, Color_White, false, 3);
 
-				/* +++ 4つの基本選択肢のテキストを白で描画 +++ */
+				/* +++ 選択肢1と4のテキストを白で描画 +++ */
 				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionAttack);
 				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionMagic);
 				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionDefence);

@@ -155,8 +155,16 @@ void Human::MainFase_Process()
 				{
 					displayMessagePattern = Message1Line;	// 表示するメッセージを1行に設定
 
-					// 魔法の説明文をメッセージに設定
-					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s", DetailOfMagic);
+					if (statusAilment == Silence)
+					{
+						// 魔法が封じられている旨をメッセージに設定
+						sprintf_s(battleMessage1, sizeof(battleMessage1), "%s", DetailSealedMagic);
+					}
+					else
+					{
+						// 魔法の説明文をメッセージに設定
+						sprintf_s(battleMessage1, sizeof(battleMessage1), "%s", DetailOfMagic);
+					}
 				}
 				else if(actionNumber == 20)
 				{
@@ -178,9 +186,16 @@ void Human::MainFase_Process()
 				{
 					if (actionNumber < 10)	// アクションナンバーが10未満なら
 					{
-						Sound_Play(SE_Enter);
+						if (statusAilment == Silence)	// 「沈黙」状態なら
+						{
+							Sound_Play(SE_Unavilable);
+						}
+						else
+						{
+							Sound_Play(SE_Enter);
 
-						actionNumber = 20;	// アクションナンバーに20を代入する
+							actionNumber = 20;	// アクションナンバーに20を代入する
+						}
 					}
 					else if (actionNumber == 20)		// アクションナンバーが20なら
 					{
@@ -222,8 +237,16 @@ void Human::MainFase_Process()
 				{
 					displayMessagePattern = Message1Line;	// 表示するメッセージを1行に設定
 
-					// 特技の説明文をメッセージに設定
-					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s", DetailOfSpecial);
+					if (statusAilment == Slump)
+					{
+						// 特技が封じられている旨をメッセージに設定
+						sprintf_s(battleMessage1, sizeof(battleMessage1), "%s", DetailSealedSpecial);
+					}
+					else
+					{
+						// 特技の説明文をメッセージに設定
+						sprintf_s(battleMessage1, sizeof(battleMessage1), "%s", DetailOfSpecial);
+					}
 				}
 				else if(actionNumber == 20)		// アクションナンバーが20なら
 				{
@@ -252,9 +275,16 @@ void Human::MainFase_Process()
 				{
 					if (actionNumber < 10)	// アクションナンバーが10未満なら
 					{
-						Sound_Play(SE_Enter);
+						if (statusAilment == Slump)
+						{
+							Sound_Play(SE_Unavilable);
+						}
+						else
+						{
+							Sound_Play(SE_Enter);
 
-						actionNumber = 30;	// アクションナンバーに30を代入
+							actionNumber = 30;	// アクションナンバーに30を代入
+						}
 					}
 					else if (actionNumber == 20)	// アクションナンバーが20なら
 					{
@@ -408,113 +438,119 @@ void Human::MainFase_Process()
 			}
 			else if (actionNumber == 20)	// アクションナンバーが20
 			{
-				/* +++ 乱数の値によって処理を変更 ++ */
-				switch (randomNumber)
+				if (statusAilment != Silence)
 				{
-				case 1:
-					/* +++ 乱数の値が1 +++ */
-
-					if (MP < MPofMagicFire)	// MPがファイアの消費MP未満なら
+					/* +++ 乱数の値によって処理を変更 ++ */
+					switch (randomNumber)
 					{
-						actionNumber = 0;	// アクションナンバーをリセットする
+					case 1:
+						/* +++ 乱数の値が1 +++ */
 
-						return;		// 処理を終了
+						if (MP < MPofMagicFire)	// MPがファイアの消費MP未満なら
+						{
+							actionNumber = 0;	// アクションナンバーをリセットする
+
+							return;		// 処理を終了
+						}
+						break;
+					case 2:
+						/* +++ 乱数の値が2 +++ */
+
+						if (MP < MPofMagicThunder)	// MPがサンダーの消費MP未満なら
+						{
+							actionNumber = 0;	// アクションナンバーをリセットする
+
+							return;		// 処理を終了
+						}
+						else
+						{
+							MyAttackPreemptiveTrue();	// 自身の先制攻撃をフラグをtrueにする
+						}
+						break;
+					case 3:
+						/* +++ 乱数の値が3 +++ */
+
+						if (MP < MPofMagicIce)	// MPがアイスの消費MP未満なら
+						{
+							actionNumber = 0;	// アクションナンバーをリセットする
+
+							return;		// 処理を終了
+						}
+						break;
+					case 4:
+						/* +++ 乱数の値が4 +++ */
+
+						if (HP >= MaxHP || MP < MPofMagicHeal)	// MPがヒールの消費MP未満なら
+						{
+							actionNumber = 0;	// アクションナンバーをリセットする
+
+							return;		// 処理を終了
+						}
+						break;
+					default:
+						break;
 					}
-					break;
-				case 2:
-					/* +++ 乱数の値が2 +++ */
 
-					if (MP < MPofMagicThunder)	// MPがサンダーの消費MP未満なら
-					{
-						actionNumber = 0;	// アクションナンバーをリセットする
+					actionNumber += randomNumber;	// アクションナンバーに乱数を加算
 
-						return;		// 処理を終了
-					}
-					else
-					{
-						MyAttackPreemptiveTrue();	// 自身の先制攻撃をフラグをtrueにする
-					}
-					break;
-				case 3:
-					/* +++ 乱数の値が3 +++ */
-
-					if (MP < MPofMagicIce)	// MPがアイスの消費MP未満なら
-					{
-						actionNumber = 0;	// アクションナンバーをリセットする
-
-						return;		// 処理を終了
-					}
-					break;
-				case 4:
-					/* +++ 乱数の値が4 +++ */
-
-					if (HP >= MaxHP || MP < MPofMagicHeal)	// MPがヒールの消費MP未満なら
-					{
-						actionNumber = 0;	// アクションナンバーをリセットする
-
-						return;		// 処理を終了
-					}
-					break;
-				default:
-					break;
+					MyActionFlagTrue();	// アクションフラグをtrueにする
 				}
-
-				actionNumber += randomNumber;	// アクションナンバーに乱数を加算
-
-				MyActionFlagTrue();	// アクションフラグをtrueにする
 			}
 			else if (actionNumber == 30)	// アクションナンバーが30
 			{
-				/* +++ 乱数の値によって処理を変更 ++ */
-				switch (randomNumber)
+				if (statusAilment != Slump)
 				{
-				case 1:
-					/* +++ 乱数の値が1 +++ */
-
-					if (TP < TPofTPCharge)	// TPが精神統一の消費TP未満なら
+					/* +++ 乱数の値によって処理を変更 ++ */
+					switch (randomNumber)
 					{
-						actionNumber = 0;	// アクションナンバーをリセットする
+					case 1:
+						/* +++ 乱数の値が1 +++ */
 
-						return;		// 処理を終了
+						if (TP < TPofTPCharge)	// TPが精神統一の消費TP未満なら
+						{
+							actionNumber = 0;	// アクションナンバーをリセットする
+
+							return;		// 処理を終了
+						}
+						break;
+					case 2:
+						/* +++ 乱数の値が2 +++ */
+
+						if (TP < TPofAllHeartSoul)	// TPが全霊斬りの消費TP未満なら
+						{
+							actionNumber = 0;	// アクションナンバーをリセットする
+
+							return;		// 処理を終了
+						}
+						break;
+					case 3:
+						/* +++ 乱数の値が3 +++ */
+
+						if (MP >= MaxMP || TP < TPofMPCharge)	// TPが魔力補給の消費TP未満なら
+						{
+							actionNumber = 0;	// アクションナンバーをリセットする
+
+							return;		// 処理を終了
+						}
+						break;
+					case 4:
+						/* +++ 乱数の値が4 +++ */
+
+						if (TP < TPofGatherEnergy)	// TPが気合の消費TP未満なら
+						{
+							actionNumber = 0;	// アクションナンバーをリセットする
+
+							return;		// 処理を終了
+						}
+						break;
+					default:
+						break;
 					}
-					break;
-				case 2:
-					/* +++ 乱数の値が2 +++ */
 
-					if (TP < TPofAllHeartSoul)	// TPが全霊斬りの消費TP未満なら
-					{
-						actionNumber = 0;	// アクションナンバーをリセットする
+					actionNumber += randomNumber;	// アクションナンバーに乱数を加算
 
-						return;		// 処理を終了
-					}
-					break;
-				case 3:
-					/* +++ 乱数の値が3 +++ */
-
-					if (MP >= MaxMP || TP < TPofMPCharge)	// TPが魔力補給の消費TP未満なら
-					{
-						actionNumber = 0;	// アクションナンバーをリセットする
-
-						return;		// 処理を終了
-					}
-					break;
-				case 4:
-					/* +++ 乱数の値が4 +++ */
-
-					if (TP < TPofGatherEnergy)	// TPが気合の消費TP未満なら
-					{
-						actionNumber = 0;	// アクションナンバーをリセットする
-
-						return;		// 処理を終了
-					}
-					break;
-				default:
-					break;
+					MyActionFlagTrue();	// アクションフラグをtrueにする
 				}
-
-				actionNumber += randomNumber;	// アクションナンバーに乱数を加算
-
-				MyActionFlagTrue();	// アクションフラグをtrueにする
 			}
 		}
 	}
@@ -530,16 +566,12 @@ void Human::MainFase_Draw()
 		{
 			if (actionNumber < 10)	// アクションナンバーが10未満なら
 			{
-				/* +++ 4つの選択肢のボタンを白枠で描画 +++ */
+				/* +++ 選択肢1と4のボタンを白枠で描画 +++ */
 				DrawRect(optionButton1, Color_White, false, 3);
-				DrawRect(optionButton2, Color_White, false, 3);
-				DrawRect(optionButton3, Color_White, false, 3);
 				DrawRect(optionButton4, Color_White, false, 3);
 
-				/* +++ 4つの基本選択肢のテキストを白で描画 +++ */
+				/* +++ 選択肢1と4のテキストを白で描画 +++ */
 				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionAttack);
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionMagic);
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionSpecial);
 				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionDefence);
 
 				/* +++ マウスカーソルが触れている選択肢のボタンによって処理を変える +++ */
@@ -550,26 +582,83 @@ void Human::MainFase_Draw()
 					// 選択肢1のテキストを黒で描画
 					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionAttack);
 				}
-				else if (CollisionRectToPoint(optionButton2, nowMousePoint))	// 選択肢2のボタンとマウスカーソルが接触している
-				{
-					DrawRect(optionButton2, Color_White, true, 3);		// 選択肢2ボタンを白で塗りつぶして描画
-
-					// 選択肢2のテキストを黒で描画
-					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionMagic);
-				}
-				else if (CollisionRectToPoint(optionButton3, nowMousePoint))	// 選択肢3のボタンとマウスカーソルが接触している
-				{
-					DrawRect(optionButton3, Color_White, true, 3);		// 選択肢3ボタンを白で塗りつぶして描画
-
-					// 選択肢3のテキストを黒で描画
-					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionSpecial);
-				}
 				else if (CollisionRectToPoint(optionButton4, nowMousePoint))	// 選択肢4のボタンとマウスカーソルが接触している
 				{
 					DrawRect(optionButton4, Color_White, true, 3);		// 選択肢4ボタンを白で塗りつぶして描画
 
 					// 選択肢4のテキストを黒で描画
 					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionDefence);
+				}
+
+				if (statusAilment == Silence)
+				{
+					DrawRect(optionButton2, Color_Gray, false, 3);	// 選択肢2のボタンを灰枠で描画
+
+					// 選択肢2のテキストを灰色で描画
+					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionMagic);
+
+					if (CollisionRectToPoint(optionButton3, nowMousePoint))	// 選択肢3のボタンとマウスカーソルが接触している
+					{
+						DrawRect(optionButton3, Color_White, true, 3);	// 選択肢3のボタンを白で塗りつぶして描画
+
+						// 選択肢3のテキストを黒で描画
+						DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionSpecial);
+					}
+					else
+					{
+						DrawRect(optionButton3, Color_White, false, 3);	// 選択肢3のボタンを白で描画
+
+						// 選択肢3のテキストを白で描画
+						DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionSpecial);
+					}
+				}
+				else if (statusAilment == Slump)
+				{
+					DrawRect(optionButton3, Color_Gray, false, 3);	// 選択肢3のボタンを灰枠で描画
+
+					// 選択肢3のテキストを灰色で描画
+					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionSpecial);
+
+					if (CollisionRectToPoint(optionButton2, nowMousePoint))	// 選択肢2のボタンとマウスカーソルが接触している
+					{
+						DrawRect(optionButton2, Color_White, true, 3);	// 選択肢2のボタンを白で塗りつぶして描画
+
+						// 選択肢2のテキストを黒で描画
+						DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionMagic);
+					}
+					else
+					{
+						DrawRect(optionButton2, Color_White, false, 3);	// 選択肢2のボタンを白で描画
+
+						// 選択肢2のテキストを白で描画
+						DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionMagic);
+					}
+				}
+				else
+				{
+					/* +++ 選択肢2と3のボタンを白枠で描画 +++ */
+					DrawRect(optionButton1, Color_White, false, 3);
+					DrawRect(optionButton4, Color_White, false, 3);
+
+					/* +++ 選択肢2と3のテキストを白で描画 +++ */
+					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionMagic);
+					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionSpecial);
+
+					/* +++ マウスカーソルが触れている選択肢のボタンによって処理を変える +++ */
+					if (CollisionRectToPoint(optionButton2, nowMousePoint))	// 選択肢2ボタンとマウスカーソルが接触している
+					{
+						DrawRect(optionButton2, Color_White, true, 3);		// 選択肢2ボタンを白で塗りつぶして描画
+
+						// 選択肢2のテキストを黒で描画
+						DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionMagic);
+					}
+					else if (CollisionRectToPoint(optionButton3, nowMousePoint))	// 選択肢3のボタンとマウスカーソルが接触している
+					{
+						DrawRect(optionButton3, Color_White, true, 3);		// 選択肢3ボタンを白で塗りつぶして描画
+
+						// 選択肢3のテキストを黒で描画
+						DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionSpecial);
+					}
 				}
 			}
 			else if (actionNumber == 20)
@@ -861,11 +950,7 @@ void Human::BattleFase_Process()
 	{
 		if (statusAilment == Paralysis)		// 「マヒ」なら
 		{
-			ailmentTurn -= 1;	// 状態異常の継続ターンを1減らす
-
-			displayMessagePattern = Message1Line;	// 表示する行数を1行に設定
-
-			sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Players, characterName, ActionStatusParalysis);
+			StatusProcess_Paralysis();
 		}
 		else
 		{
@@ -880,42 +965,98 @@ void Human::BattleFase_Process()
 			case 21:
 				/* +++ アクションナンバーが21 +++ */
 
-				MagicFire();	// ファイアを実行
+				if (statusAilment == Silence)		// 「沈黙」なら
+				{
+					StatusProcess_Paralysis();
+				}
+				else
+				{
+					MagicFire();	// ファイアを実行
+				}
 				break;
 			case 22:
 				/* +++ アクションナンバーが22 +++ */
 
-				MagicThunder();		// サンダーを実行
+				if (statusAilment == Silence)		// 「沈黙」なら
+				{
+					StatusProcess_Paralysis();
+				}
+				else
+				{
+					MagicThunder();		// サンダーを実行
+				}
 				break;
 			case 23:
 				/* +++ アクションナンバーが23 +++ */
 
-				MagicIce();		// アイスを実行
+				if (statusAilment == Silence)		// 「沈黙」なら
+				{
+					StatusProcess_Paralysis();
+				}
+				else
+				{
+					MagicIce();		// アイスを実行
+				}
 				break;
 			case 24:
 				/* +++ アクションナンバーが24 +++ */
 
-				MagicHeal();	// ヒールを実行
+				if (statusAilment == Silence)		// 「沈黙」なら
+				{
+					StatusProcess_Paralysis();
+				}
+				else
+				{
+					MagicHeal();	// ヒールを実行
+				}
 				break;
 			case 31:
 				/* +++ アクションナンバーが31 +++ */
 
-				TPCharge();		// 精神統一を実行
+				if (statusAilment == Slump)		// 「不調」なら
+				{
+					StatusProcess_Paralysis();
+				}
+				else
+				{
+					TPCharge();		// 精神統一を実行
+				}
 				break;
 			case 32:
 				/* +++ アクションナンバーが32 +++ */
 
-				AllHeartSoul();		// 全霊斬りを実行
+				if (statusAilment == Slump)		// 「不調」なら
+				{
+					StatusProcess_Paralysis();
+				}
+				else
+				{
+					AllHeartSoul();		// 全霊斬りを実行
+				}
 				break;
 			case 33:
 				/* +++ アクションナンバーが33 +++ */
 
-				MPCharge();		// 魔力補給を実行
+				if (statusAilment == Slump)		// 「不調」なら
+				{
+					StatusProcess_Paralysis();
+				}
+				else
+				{
+					MPCharge();		// 魔力補給を実行
+				}
 				break;
 			case 34:
 				/* +++ アクションナンバーが34 +++ */
 
-				GatherEnergy();		// 気合を実行
+				if (statusAilment == Slump)		// 「不調」なら
+				{
+					StatusProcess_Paralysis();
+				}
+				else
+				{
+					GatherEnergy();		// 気合を実行
+				}
 				break;
 			case 40:
 				/* +++ アクションナンバーが40 +++ */
