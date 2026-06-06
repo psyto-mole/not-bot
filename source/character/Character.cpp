@@ -1531,7 +1531,7 @@ bool Character::Judge_Hit(int hitProbability)
 	}
 }
 
-/* --- 自身の状態を確認する --- */
+/* --- 状態異常からの復帰を確認する --- */
 void Character::Check_Status()
 {
 	if (statusAilment != Fine)	// 状態異常になっているなら

@@ -947,7 +947,7 @@ void Human::EndFase_Process()
 	{
 		TP_Calc(10, ISENHANCE);
 
-		Check_Status();
+		Check_Status();		// ó‘ÔˆÙí‚©‚ç‚Ì•œ‹A‚ğŠm”F‚·‚é
 
 		if (defenceCoefficient != 1)
 		{
