@@ -166,8 +166,16 @@ void Robot::MainFase_Process()
 			{
 				if (actionNumber < 10)	// アクションナンバーが10未満なら
 				{
-					displayMessagePattern = Message1Line;
-					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s", DetailOfSpecial);
+					if (statusAilment == Slump)
+					{
+						displayMessagePattern = Message1Line;
+						sprintf_s(battleMessage1, sizeof(battleMessage1), "%s", DetailSealedSpecial);
+					}
+					else
+					{
+						displayMessagePattern = Message1Line;
+						sprintf_s(battleMessage1, sizeof(battleMessage1), "%s", DetailOfSpecial);
+					}
 				}
 				else
 				{
@@ -179,9 +187,16 @@ void Robot::MainFase_Process()
 				{
 					if (actionNumber < 10)	// アクションナンバーが10未満なら
 					{
-						Sound_Play(SE_Enter);
+						if (statusAilment == Slump)
+						{
+							Sound_Play(SE_Unavilable);
+						}
+						else
+						{
+							Sound_Play(SE_Enter);
 
-						actionNumber = 30;	// アクションナンバーに30を代入
+							actionNumber = 30;	// アクションナンバーに30を代入
+						}
 					}
 					else	// アクションナンバーが10以上なら
 					{
@@ -272,56 +287,59 @@ void Robot::MainFase_Process()
 			}
 			else if(actionNumber == 30)		// アクションナンバーが30
 			{
-				/* +++ 乱数の値によって処理を変更 ++ */
-				switch (randomNumber)
+				if (statusAilment != Slump)
 				{
-				case 1:
-					/* +++ 乱数の値が1 +++ */
-
-					if (TP < TPofFlameThrower)	// TPが火炎放射の消費TP未満なら
+					/* +++ 乱数の値によって処理を変更 ++ */
+					switch (randomNumber)
 					{
-						actionNumber = 0;
+					case 1:
+						/* +++ 乱数の値が1 +++ */
 
-						return;		// 処理を終了
+						if (TP < TPofFlameThrower)	// TPが火炎放射の消費TP未満なら
+						{
+							actionNumber = 0;
+
+							return;		// 処理を終了
+						}
+						break;
+					case 2:
+						/* +++ 乱数の値が2 +++ */
+
+						if (TP < TPofSteelization)	// TPが鋼鉄化の消費TP未満なら
+						{
+							actionNumber = 0;
+
+							return;		// 処理を終了
+						}
+						break;
+					case 3:
+						/* +++ 乱数の値が3 +++ */
+
+						if (TP < TPofMagicShut)	// TPが魔力遮断の消費TP未満なら
+						{
+							actionNumber = 0;
+
+							return;		// 処理を終了
+						}
+						break;
+					case 4:
+						/* +++ 乱数の値が4 +++ */
+
+						if (TP < TPofTripleBarrage)	// TPが三連砲撃の消費TP未満なら
+						{
+							actionNumber = 0;
+
+							return;		// 処理を終了
+						}
+						break;
+					default:
+						break;
 					}
-					break;
-				case 2:
-					/* +++ 乱数の値が2 +++ */
 
-					if (TP < TPofSteelization)	// TPが鋼鉄化の消費TP未満なら
-					{
-						actionNumber = 0;
+					actionNumber += randomNumber;	// アクションナンバーに乱数を加算
 
-						return;		// 処理を終了
-					}
-					break;
-				case 3:
-					/* +++ 乱数の値が3 +++ */
-
-					if (TP < TPofMagicShut)	// TPが魔力遮断の消費TP未満なら
-					{
-						actionNumber = 0;
-
-						return;		// 処理を終了
-					}
-					break;
-				case 4:
-					/* +++ 乱数の値が4 +++ */
-
-					if (TP < TPofTripleBarrage)	// TPが三連砲撃の消費TP未満なら
-					{
-						actionNumber = 0;
-
-						return;		// 処理を終了
-					}
-					break;
-				default:
-					break;
+					MyActionFlagTrue();	// アクションフラグをtrueにする
 				}
-
-				actionNumber += randomNumber;	// アクションナンバーに乱数を加算
-
-				MyActionFlagTrue();	// アクションフラグをtrueにする
 			}
 		}
 	}
@@ -341,13 +359,11 @@ void Robot::MainFase_Draw()
 				/* +++ 4つの選択肢のボタンを白枠で描画 +++ */
 				DrawRect(optionButton1, Color_White, false, 3);
 				DrawRect(optionButton2, Color_Gray, false, 3);
-				DrawRect(optionButton3, Color_White, false, 3);
 				DrawRect(optionButton4, Color_White, false, 3);
 
 				/* +++ 4つの基本選択肢のテキストを白で描画 +++ */
 				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionAttack);
 				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionMagic);
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionSpecial);
 				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionDefence);
 
 				/* +++ マウスカーソルが触れている選択肢のボタンによって処理を変える +++ */
@@ -358,19 +374,36 @@ void Robot::MainFase_Draw()
 					// 選択肢1のテキストを黒で描画
 					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionAttack);
 				}
-				else if (CollisionRectToPoint(optionButton3, nowMousePoint))	// 選択肢3のボタンとマウスカーソルが接触している
-				{
-					DrawRect(optionButton3, Color_White, true, 3);		// 選択肢3ボタンを白で塗りつぶして描画
-
-					// 選択肢3のテキストを黒で描画
-					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionSpecial);
-				}
 				else if (CollisionRectToPoint(optionButton4, nowMousePoint))	// 選択肢4のボタンとマウスカーソルが接触している
 				{
 					DrawRect(optionButton4, Color_White, true, 3);		// 選択肢4ボタンを白で塗りつぶして描画
 
 					// 選択肢4のテキストを黒で描画
 					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionDefence);
+				}
+
+				if (statusAilment == Slump)
+				{
+					DrawRect(optionButton3, Color_Gray, false, 3);	// 選択肢3のボタンを灰枠で描画
+
+					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionSpecial);
+				}
+				else
+				{
+					if (CollisionRectToPoint(optionButton3, nowMousePoint))	// 選択肢3のボタンとマウスカーソルが接触している
+					{
+						DrawRect(optionButton3, Color_White, true, 3);	// 選択肢3のボタンを白で塗りつぶして描画
+
+						// 選択肢3のテキストを黒で描画
+						DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionSpecial);
+					}
+					else
+					{
+						DrawRect(optionButton3, Color_White, false, 3);	// 選択肢3のボタンを白で描画
+
+						// 選択肢3のテキストを白で描画
+						DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionSpecial);
+					}
 				}
 			}
 			else if (actionNumber == 30)	// アクションナンバーが30である
