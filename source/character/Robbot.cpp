@@ -545,7 +545,7 @@ void Robot::BattleFase_Process()
 	{
 		if (statusAilment == Paralysis)		// 「マヒ」なら
 		{
-			
+			StatusProcess_Paralysis();
 		}
 		else
 		{
@@ -576,22 +576,50 @@ void Robot::BattleFase_Process()
 			case 31:
 				/* +++ アクションナンバーが31 +++ */
 
-				FlameThrower();		// 火炎放射を実行
+				if (statusAilment == Slump)		// 「不調」なら
+				{
+					StatusProcess_Slump();
+				}
+				else
+				{
+					FlameThrower();		// 火炎放射を実行
+				}
 				break;
 			case 32:
 				/* +++ アクションナンバーが32 +++ */
 
-				Steelization();		// 鋼鉄化を実行
+				if (statusAilment == Slump)		// 「不調」なら
+				{
+					StatusProcess_Slump();
+				}
+				else
+				{
+					Steelization();		// 鋼鉄化を実行
+				}
 				break;
 			case 33:
 				/* +++ アクションナンバーが33 +++ */
 
-				MagicShut();	// 魔力遮断を実行
+				if (statusAilment == Slump)		// 「不調」なら
+				{
+					StatusProcess_Slump();
+				}
+				else
+				{
+					MagicShut();	// 魔力遮断を実行
+				}
 				break;
 			case 34:
 				/* +++ アクションナンバーが34 +++ */
 
-				TripleBarrage();	// 三連砲撃を実行
+				if (statusAilment == Slump)		// 「不調」なら
+				{
+					StatusProcess_Slump();
+				}
+				else
+				{
+					TripleBarrage();	// 三連砲撃を実行
+				}
 				break;
 			case 40:
 				/* +++ アクションナンバーが40 +++ */
