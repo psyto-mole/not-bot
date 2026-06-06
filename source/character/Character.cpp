@@ -1536,9 +1536,9 @@ void Character::Check_Status()
 {
 	if (statusAilment != Fine)	// 状態異常になっているなら
 	{
-		if (statusAilment != Paralysis)		// 「マヒ」でないなら
+		if (statusAilment == Protection)	// 「保護」状態なら
 		{
-			ailmentTurn -= 1;	// 状態異常の継続ターンを1減らす(「マヒ」はBattleFase_Process()で減らす)
+			ailmentTurn -= 1;	// 状態異常の継続ターンを1減らす
 		}
 
 		if (ailmentTurn <= 0)	// 状態異常の継続ターンが0以下なら
