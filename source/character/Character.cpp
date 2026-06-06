@@ -1531,7 +1531,26 @@ bool Character::Judge_Hit(int hitProbability)
 	}
 }
 
-// 自身の状態を「状態異常なし」にする
+/* --- 自身の状態を確認する --- */
+void Character::Check_Status()
+{
+	if (statusAilment != Fine)	// 状態異常になっているなら
+	{
+		if (statusAilment != Paralysis)		// 「マヒ」でないなら
+		{
+			ailmentTurn -= 1;	// 状態異常の継続ターンを1減らす(「マヒ」はBattleFase_Process()で減らす)
+		}
+
+		if (ailmentTurn <= 0)	// 状態異常の継続ターンが0以下なら
+		{
+			Become_Fine(false);		// 状態を「状態異常なし」に設定する(毒は回復しない)
+		}
+	}
+
+	return;
+}
+
+/* --- 自身の状態を「状態異常なし」にする --- */
 void Character::Become_Fine(bool healPoison)
 {
 	statusAilment = Fine;	// 「状態異常なし」に設定
@@ -1545,7 +1564,7 @@ void Character::Become_Fine(bool healPoison)
 	return;
 }
 
-// 自身の状態を「マヒ」にする
+/* --- 自身の状態を「マヒ」にする --- */
 void Character::Become_Paralyzed()
 {
 	if (statusAilment != Protection)	// 「保護」状態でないなら
@@ -1557,7 +1576,7 @@ void Character::Become_Paralyzed()
 	return;
 }
 
-// 自身の状態を「毒」にする
+/* --- 自身の状態を「毒」にする --- */
 void Character::Become_Poisoning()
 {
 	if (statusAilment != Protection)	// 「保護」状態でないなら
@@ -1568,7 +1587,7 @@ void Character::Become_Poisoning()
 	return;
 }
 
-// 自身の状態を「沈黙」にする
+/* --- 自身の状態を「沈黙」にする --- */
 void Character::Become_Silence()
 {
 	if (statusAilment != Protection)	// 「保護」状態でないなら
@@ -1580,7 +1599,7 @@ void Character::Become_Silence()
 	return;
 }
 
-// 自身の状態を「不調」にする
+/* --- 自身の状態を「不調」にする --- */
 void Character::Become_Slump()
 {
 	if (statusAilment != Protection)	// 「保護」状態でないなら
@@ -1592,11 +1611,16 @@ void Character::Become_Slump()
 	return;
 }
 
-// 自身の状態を「保護」にする
+/* --- 自身の状態を「保護」にする --- */
 void Character::Become_Protection(int continueTurn)
 {
 	statusAilment = Protection;		// 状態異常に「保護」を設定
 	ailmentTurn = continueTurn;		// 継続ターンをセット
+
+	if (ailmentPoisoning)	// 「毒」状態なら
+	{
+		ailmentPoisoning = false;	// 「毒」を回復
+	}
 
 	return;
 }

@@ -596,6 +596,8 @@ void Robot::EndFase_Process()
 	{
 		TP_Calc(10, ISENHANCE);
 
+		Check_Status();
+
 		if (defenceCoefficient != 1)
 		{
 			defenceCoefficient = 1;
