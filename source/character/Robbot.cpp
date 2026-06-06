@@ -545,11 +545,7 @@ void Robot::BattleFase_Process()
 	{
 		if (statusAilment == Paralysis)		// 「マヒ」なら
 		{
-			ailmentTurn -= 1;	// 状態異常の継続ターンを1減らす
-
-			displayMessagePattern = Message1Line;	// 表示する行数を1行に設定
-
-			sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Players, characterName, ActionStatusParalysis);
+			
 		}
 		else
 		{

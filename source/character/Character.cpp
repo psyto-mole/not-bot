@@ -1624,3 +1624,72 @@ void Character::Become_Protection(int continueTurn)
 
 	return;
 }
+
+/* --- バトルフェイズにおける状態異常「マヒ」の処理 --- */
+void Character::StatusProcess_Paralysis()
+{
+	if (isPlayer)
+	{
+		ailmentTurn -= 1;	// 状態異常の継続ターンを1減らす
+
+		displayMessagePattern = Message1Line;	// 表示する行数を1行に設定
+
+		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Players, characterName, ActionStatusParalysis);
+	}
+	else
+	{
+		ailmentTurn -= 1;	// 状態異常の継続ターンを1減らす
+
+		displayMessagePattern = Message1Line;	// 表示する行数を1行に設定
+
+		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Enemys, characterName, ActionStatusParalysis);
+	}
+
+	return;
+}
+
+/* --- バトルフェイズにおける状態異常「沈黙」の処理 --- */
+void Character::StatusProcess_Silence()
+{
+	if (isPlayer)
+	{
+		ailmentTurn -= 1;	// 状態異常の継続ターンを1減らす
+
+		displayMessagePattern = Message1Line;	// 表示する行数を1行に設定
+
+		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Players, characterName, ActionStatusSilence);
+	}
+	else
+	{
+		ailmentTurn -= 1;	// 状態異常の継続ターンを1減らす
+
+		displayMessagePattern = Message1Line;	// 表示する行数を1行に設定
+
+		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Enemys, characterName, ActionStatusSilence);
+	}
+
+	return;
+}
+
+/* --- バトルフェイズにおける状態異常「不調」の処理 --- */
+void Character::StatusProcess_Slump()
+{
+	if (isPlayer)
+	{
+		ailmentTurn -= 1;	// 状態異常の継続ターンを1減らす
+
+		displayMessagePattern = Message1Line;	// 表示する行数を1行に設定
+
+		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Players, characterName, ActionStatusSlump);
+	}
+	else
+	{
+		ailmentTurn -= 1;	// 状態異常の継続ターンを1減らす
+
+		displayMessagePattern = Message1Line;	// 表示する行数を1行に設定
+
+		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Enemys, characterName, ActionStatusSlump);
+	}
+
+	return;
+}

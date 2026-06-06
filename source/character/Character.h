@@ -111,6 +111,10 @@ public:
 	void Become_Slump();						// 自身の状態を「不調」にする
 	void Become_Protection(int continueTurn);	// 自身の状態を「保護」にする(継続ターンを引数で渡す)
 
+	void StatusProcess_Paralysis();		// バトルフェイズにおける状態異常「マヒ」の処理
+	void StatusProcess_Silence();		// バトルフェイズにおける状態異常「沈黙」の処理
+	void StatusProcess_Slump();			// バトルフェイズにおける状態異常「不調」の処理
+
 
 	virtual void Character_Init(bool isThisPlayer) = 0;		// キャラクターの初期化関数(純粋仮想関数)
 	virtual void MainFase_Process() = 0;					// メインフェイズの処理関数(純粋仮想関数)
