@@ -24,7 +24,7 @@ enum Ailment
 {
 	Fine,		// 異常なし
 	Paralysis,	// マヒ
-	Poisoning,	// 毒
+	Poisoning,	// 毒(毒だけは専用の変数で管理する)
 	Silence,	// 沈黙(魔法使用不可)
 	Slump,		// 不調(特技使用不可)
 	Protection	// 保護(状態異常無効)
@@ -50,6 +50,7 @@ protected:
 
 	int ailmentTurn;		// 状態異常が継続するターン数
 	Ailment statusAilment;	// 状態異常
+	bool ailmentPoisoning;	// 毒の状態異常を保持する変数
 
 	int HP, MP, TP;						// HP、MPとTP(ヒットポイント、マジックポイント、テクニカルポイント)
 	int MaxHP, MaxMP;					// 最大HPと最大MP
