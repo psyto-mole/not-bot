@@ -1546,48 +1546,47 @@ void Character::Become_Fine(bool healPoison)
 }
 
 // 自身の状態を「マヒ」にする
-void Character::Become_Paralyzed(int continueTurn)
+void Character::Become_Paralyzed()
 {
 	if (statusAilment != Protection)	// 「保護」状態でないなら
 	{
-		statusAilment = Paralysis;		// 「マヒ」の状態異常を設定
-		ailmentTurn = continueTurn;		// 継続ターンをセット
+		statusAilment = Paralysis;	// 「マヒ」の状態異常を設定
+		ailmentTurn = 1;			// 継続ターンに1をセット
 	}
 
 	return;
 }
 
 // 自身の状態を「毒」にする
-void Character::Become_Poisoning(int continueTurn)
+void Character::Become_Poisoning()
 {
 	if (statusAilment != Protection)	// 「保護」状態でないなら
 	{
-		statusAilment = Poisoning;		// 「毒」の状態異常を設定
-		ailmentTurn = continueTurn;		// 継続ターンをセット
+		ailmentPoisoning = true;
 	}
 
 	return;
 }
 
 // 自身の状態を「沈黙」にする
-void Character::Become_Silence(int continueTurn)
+void Character::Become_Silence()
 {
 	if (statusAilment != Protection)	// 「保護」状態でないなら
 	{
-		statusAilment = Silence;		// 「沈黙」の状態異常を設定
-		ailmentTurn = continueTurn;		// 継続ターンをセット
+		statusAilment = Silence;	// 「沈黙」の状態異常を設定
+		ailmentTurn = 3;			// 継続ターンに3をセット
 	}
 
 	return;
 }
 
 // 自身の状態を「不調」にする
-void Character::Become_Slump(int continueTurn)
+void Character::Become_Slump()
 {
 	if (statusAilment != Protection)	// 「保護」状態でないなら
 	{
-		statusAilment = Slump;			// 「不調」の状態異常を設定
-		ailmentTurn = continueTurn;		// 継続ターンをセット
+		statusAilment = Slump;	// 「不調」の状態異常を設定
+		ailmentTurn = 3;		// 継続ターンに3をセット
 	}
 
 	return;

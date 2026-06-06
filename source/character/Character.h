@@ -23,11 +23,11 @@ enum Context
 enum Ailment
 {
 	Fine,		// 異常なし
-	Paralysis,	// マヒ
+	Paralysis,	// マヒ-1ターン行動不能
 	Poisoning,	// 毒(毒だけは専用の変数で管理する)
-	Silence,	// 沈黙(魔法使用不可)
-	Slump,		// 不調(特技使用不可)
-	Protection	// 保護(状態異常無効)
+	Silence,	// 沈黙-3ターン魔法使用不可
+	Slump,		// 不調-3ターン特技使用不可
+	Protection	// 保護-指定ターン数だけ状態異常無効
 };
 
 /* --- キャラクタークラス --- */
@@ -104,10 +104,10 @@ public:
 	bool Judge_Hit(int hitProbability);		// 命中したかを判定する関数
 
 	void Become_Fine(bool healPoison);			// 自身の状態を「状態異常なし」にする
-	void Become_Paralyzed(int continueTurn);	// 自身の状態を「マヒ」にする(継続ターンを引数で渡す)
-	void Become_Poisoning(int continueTurn);	// 自身の状態を「毒」にする(継続ターンを引数で渡す)
-	void Become_Silence(int continueTurn);		// 自身の状態を「沈黙」にする(継続ターンを引数で渡す)
-	void Become_Slump(int continueTurn);		// 自身の状態を「不調」にする(継続ターンを引数で渡す)
+	void Become_Paralyzed();					// 自身の状態を「マヒ」にする
+	void Become_Poisoning();					// 自身の状態を「毒」にする
+	void Become_Silence();						// 自身の状態を「沈黙」にする
+	void Become_Slump();						// 自身の状態を「不調」にする
 	void Become_Protection(int continueTurn);	// 自身の状態を「保護」にする(継続ターンを引数で渡す)
 
 
