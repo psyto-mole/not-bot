@@ -133,6 +133,7 @@
 #define ActionNormalAttack		"の攻撃!"
 #define ActionNormalDefence		"は守りを固めている"
 #define ActionAttackMiss		"は攻撃を外した"
+
 #define TakeDamage				"のダメージを受けた"
 #define HealStatus				"回復した"
 #define DamageStatus			"のダメージを受けた"

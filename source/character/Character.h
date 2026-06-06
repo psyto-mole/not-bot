@@ -103,6 +103,7 @@ public:
 
 	bool Judge_Hit(int hitProbability);		// 命中したかを判定する関数
 
+	
 	void Become_Fine(bool healPoison);			// 自身の状態を「状態異常なし」にする
 	void Become_Paralyzed();					// 自身の状態を「マヒ」にする
 	void Become_Poisoning();					// 自身の状態を「毒」にする
