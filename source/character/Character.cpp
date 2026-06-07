@@ -1635,17 +1635,6 @@ void Character::StatusProcess_Poisoning()
 
 	if (ailmentPoisoning)
 	{
-		settingMessagePattern = Message2Line;
-
-		if (isPlayer)
-		{
-			sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Players, characterName, ActionStatusPoisoning);
-		}
-		else
-		{
-			sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Enemys, characterName, ActionStatusPoisoning);
-		}
-
 		HP_Calc(calcResult, ISDAMAGE);
 	}
 

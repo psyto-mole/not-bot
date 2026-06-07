@@ -1062,6 +1062,8 @@ void Noname::EndFase_Process()
 
 		Check_Status();		// 状態異常からの復帰を確認する
 
+		StatusProcess_Poisoning();	// 「毒」状態の処理を行う
+
 		if (defenceCoefficient != 1)
 		{
 			defenceCoefficient = 1;
