@@ -425,7 +425,24 @@ void Human::MainFase_Process()
 			/* +++ アクションナンバーと乱数の値によって処理を変更 +++ */
 			if (actionNumber < 10)		// アクションナンバーが10未満
 			{
-				actionNumber = randomNumber * 10;	// アクションナンバーに乱数の10倍を代入
+				if (statusAilment == Silence)
+				{
+					if (actionNumber != 2)
+					{
+						actionNumber = randomNumber * 10;	// アクションナンバーに乱数の10倍を代入
+					}
+				}
+				else if (statusAilment == Slump)
+				{
+					if (actionNumber != 3)
+					{
+						actionNumber = randomNumber * 10;	// アクションナンバーに乱数の10倍を代入
+					}
+				}
+				else
+				{
+					actionNumber = randomNumber * 10;	// アクションナンバーに乱数の10倍を代入
+				}
 			}
 			else if (actionNumber == 10 || actionNumber == 40)	// アクションナンバーが10または40
 			{
@@ -438,119 +455,113 @@ void Human::MainFase_Process()
 			}
 			else if (actionNumber == 20)	// アクションナンバーが20
 			{
-				if (statusAilment != Silence)
+				/* +++ 乱数の値によって処理を変更 ++ */
+				switch (randomNumber)
 				{
-					/* +++ 乱数の値によって処理を変更 ++ */
-					switch (randomNumber)
+				case 1:
+					/* +++ 乱数の値が1 +++ */
+
+					if (MP < MPofMagicFire)	// MPがファイアの消費MP未満なら
 					{
-					case 1:
-						/* +++ 乱数の値が1 +++ */
+						actionNumber = 0;	// アクションナンバーをリセットする
 
-						if (MP < MPofMagicFire)	// MPがファイアの消費MP未満なら
-						{
-							actionNumber = 0;	// アクションナンバーをリセットする
-
-							return;		// 処理を終了
-						}
-						break;
-					case 2:
-						/* +++ 乱数の値が2 +++ */
-
-						if (MP < MPofMagicThunder)	// MPがサンダーの消費MP未満なら
-						{
-							actionNumber = 0;	// アクションナンバーをリセットする
-
-							return;		// 処理を終了
-						}
-						else
-						{
-							MyAttackPreemptiveTrue();	// 自身の先制攻撃をフラグをtrueにする
-						}
-						break;
-					case 3:
-						/* +++ 乱数の値が3 +++ */
-
-						if (MP < MPofMagicIce)	// MPがアイスの消費MP未満なら
-						{
-							actionNumber = 0;	// アクションナンバーをリセットする
-
-							return;		// 処理を終了
-						}
-						break;
-					case 4:
-						/* +++ 乱数の値が4 +++ */
-
-						if (HP >= MaxHP || MP < MPofMagicHeal)	// MPがヒールの消費MP未満なら
-						{
-							actionNumber = 0;	// アクションナンバーをリセットする
-
-							return;		// 処理を終了
-						}
-						break;
-					default:
-						break;
+						return;		// 処理を終了
 					}
+					break;
+				case 2:
+					/* +++ 乱数の値が2 +++ */
 
-					actionNumber += randomNumber;	// アクションナンバーに乱数を加算
+					if (MP < MPofMagicThunder)	// MPがサンダーの消費MP未満なら
+					{
+						actionNumber = 0;	// アクションナンバーをリセットする
 
-					MyActionFlagTrue();	// アクションフラグをtrueにする
+						return;		// 処理を終了
+					}
+					else
+					{
+						MyAttackPreemptiveTrue();	// 自身の先制攻撃をフラグをtrueにする
+					}
+					break;
+				case 3:
+					/* +++ 乱数の値が3 +++ */
+
+					if (MP < MPofMagicIce)	// MPがアイスの消費MP未満なら
+					{
+						actionNumber = 0;	// アクションナンバーをリセットする
+
+						return;		// 処理を終了
+					}
+					break;
+				case 4:
+					/* +++ 乱数の値が4 +++ */
+
+					if (HP >= MaxHP || MP < MPofMagicHeal)	// MPがヒールの消費MP未満なら
+					{
+						actionNumber = 0;	// アクションナンバーをリセットする
+
+						return;		// 処理を終了
+					}
+					break;
+				default:
+					break;
 				}
+
+				actionNumber += randomNumber;	// アクションナンバーに乱数を加算
+
+				MyActionFlagTrue();	// アクションフラグをtrueにする
 			}
 			else if (actionNumber == 30)	// アクションナンバーが30
 			{
-				if (statusAilment != Slump)
+				/* +++ 乱数の値によって処理を変更 ++ */
+				switch (randomNumber)
 				{
-					/* +++ 乱数の値によって処理を変更 ++ */
-					switch (randomNumber)
+				case 1:
+					/* +++ 乱数の値が1 +++ */
+
+					if (TP < TPofTPCharge)	// TPが精神統一の消費TP未満なら
 					{
-					case 1:
-						/* +++ 乱数の値が1 +++ */
+						actionNumber = 0;	// アクションナンバーをリセットする
 
-						if (TP < TPofTPCharge)	// TPが精神統一の消費TP未満なら
-						{
-							actionNumber = 0;	// アクションナンバーをリセットする
-
-							return;		// 処理を終了
-						}
-						break;
-					case 2:
-						/* +++ 乱数の値が2 +++ */
-
-						if (TP < TPofAllHeartSoul)	// TPが全霊斬りの消費TP未満なら
-						{
-							actionNumber = 0;	// アクションナンバーをリセットする
-
-							return;		// 処理を終了
-						}
-						break;
-					case 3:
-						/* +++ 乱数の値が3 +++ */
-
-						if (MP >= MaxMP || TP < TPofMPCharge)	// TPが魔力補給の消費TP未満なら
-						{
-							actionNumber = 0;	// アクションナンバーをリセットする
-
-							return;		// 処理を終了
-						}
-						break;
-					case 4:
-						/* +++ 乱数の値が4 +++ */
-
-						if (TP < TPofGatherEnergy)	// TPが気合の消費TP未満なら
-						{
-							actionNumber = 0;	// アクションナンバーをリセットする
-
-							return;		// 処理を終了
-						}
-						break;
-					default:
-						break;
+						return;		// 処理を終了
 					}
+					break;
+				case 2:
+					/* +++ 乱数の値が2 +++ */
 
-					actionNumber += randomNumber;	// アクションナンバーに乱数を加算
+					if (TP < TPofAllHeartSoul)	// TPが全霊斬りの消費TP未満なら
+					{
+						actionNumber = 0;	// アクションナンバーをリセットする
 
-					MyActionFlagTrue();	// アクションフラグをtrueにする
+						return;		// 処理を終了
+					}
+					break;
+				case 3:
+					/* +++ 乱数の値が3 +++ */
+
+					if (MP >= MaxMP || TP < TPofMPCharge)	// TPが魔力補給の消費TP未満なら
+					{
+						actionNumber = 0;	// アクションナンバーをリセットする
+
+						return;		// 処理を終了
+					}
+					break;
+				case 4:
+					/* +++ 乱数の値が4 +++ */
+
+					if (TP < TPofGatherEnergy)	// TPが気合の消費TP未満なら
+					{
+						actionNumber = 0;	// アクションナンバーをリセットする
+
+						return;		// 処理を終了
+					}
+					break;
+				default:
+					break;
 				}
+
+				actionNumber += randomNumber;	// アクションナンバーに乱数を加算
+
+				MyActionFlagTrue();	// アクションフラグをtrueにする
 			}
 		}
 	}

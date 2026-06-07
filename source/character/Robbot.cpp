@@ -276,7 +276,17 @@ void Robot::MainFase_Process()
 			/* +++ アクションナンバーと乱数の値によって処理を変更 +++ */
 			if (actionNumber < 10 && randomNumber != 2)		// アクションナンバーが10未満で乱数が2ではない
 			{
-				actionNumber = randomNumber * 10;	// アクションナンバーに乱数の10倍を代入
+				if (statusAilment == Slump)
+				{
+					if (actionNumber != 3)
+					{
+						actionNumber = randomNumber * 10;	// アクションナンバーに乱数の10倍を代入
+					}
+				}
+				else
+				{
+					actionNumber = randomNumber * 10;	// アクションナンバーに乱数の10倍を代入
+				}
 			}
 			else if (actionNumber == 10 || actionNumber == 40)	// アクションナンバーが10または40
 			{
@@ -289,59 +299,56 @@ void Robot::MainFase_Process()
 			}
 			else if(actionNumber == 30)		// アクションナンバーが30
 			{
-				if (statusAilment != Slump)
+				/* +++ 乱数の値によって処理を変更 ++ */
+				switch (randomNumber)
 				{
-					/* +++ 乱数の値によって処理を変更 ++ */
-					switch (randomNumber)
+				case 1:
+					/* +++ 乱数の値が1 +++ */
+
+					if (TP < TPofFlameThrower)	// TPが火炎放射の消費TP未満なら
 					{
-					case 1:
-						/* +++ 乱数の値が1 +++ */
+						actionNumber = 0;
 
-						if (TP < TPofFlameThrower)	// TPが火炎放射の消費TP未満なら
-						{
-							actionNumber = 0;
-
-							return;		// 処理を終了
-						}
-						break;
-					case 2:
-						/* +++ 乱数の値が2 +++ */
-
-						if (TP < TPofSteelization)	// TPが鋼鉄化の消費TP未満なら
-						{
-							actionNumber = 0;
-
-							return;		// 処理を終了
-						}
-						break;
-					case 3:
-						/* +++ 乱数の値が3 +++ */
-
-						if (TP < TPofMagicShut)	// TPが魔力遮断の消費TP未満なら
-						{
-							actionNumber = 0;
-
-							return;		// 処理を終了
-						}
-						break;
-					case 4:
-						/* +++ 乱数の値が4 +++ */
-
-						if (TP < TPofTripleBarrage)	// TPが三連砲撃の消費TP未満なら
-						{
-							actionNumber = 0;
-
-							return;		// 処理を終了
-						}
-						break;
-					default:
-						break;
+						return;		// 処理を終了
 					}
+					break;
+				case 2:
+					/* +++ 乱数の値が2 +++ */
 
-					actionNumber += randomNumber;	// アクションナンバーに乱数を加算
+					if (TP < TPofSteelization)	// TPが鋼鉄化の消費TP未満なら
+					{
+						actionNumber = 0;
 
-					MyActionFlagTrue();	// アクションフラグをtrueにする
+						return;		// 処理を終了
+					}
+					break;
+				case 3:
+					/* +++ 乱数の値が3 +++ */
+
+					if (TP < TPofMagicShut)	// TPが魔力遮断の消費TP未満なら
+					{
+						actionNumber = 0;
+
+						return;		// 処理を終了
+					}
+					break;
+				case 4:
+					/* +++ 乱数の値が4 +++ */
+
+					if (TP < TPofTripleBarrage)	// TPが三連砲撃の消費TP未満なら
+					{
+						actionNumber = 0;
+
+						return;		// 処理を終了
+					}
+					break;
+				default:
+					break;
 				}
+
+				actionNumber += randomNumber;	// アクションナンバーに乱数を加算
+
+				MyActionFlagTrue();	// アクションフラグをtrueにする
 			}
 		}
 	}
