@@ -425,16 +425,16 @@ void Human::MainFase_Process()
 			/* +++ アクションナンバーと乱数の値によって処理を変更 +++ */
 			if (actionNumber < 10)		// アクションナンバーが10未満
 			{
-				if (statusAilment == Silence)
+				if (statusAilment == Silence)	// 「沈黙」状態なら
 				{
-					if (actionNumber != 2)
+					if (actionNumber != 2)	// アクションナンバーが2でないなら
 					{
 						actionNumber = randomNumber * 10;	// アクションナンバーに乱数の10倍を代入
 					}
 				}
-				else if (statusAilment == Slump)
+				else if (statusAilment == Slump)	// 「不調」状態なら
 				{
-					if (actionNumber != 3)
+					if (actionNumber != 3)	// アクションナンバーが3でないなら
 					{
 						actionNumber = randomNumber * 10;	// アクションナンバーに乱数の10倍を代入
 					}
@@ -961,7 +961,7 @@ void Human::BattleFase_Process()
 	{
 		if (statusAilment == Paralysis)		// 「マヒ」なら
 		{
-			StatusProcess_Paralysis();
+			StatusProcess_Paralysis();	// 「マヒ」の処理を実行
 		}
 		else
 		{
@@ -978,7 +978,7 @@ void Human::BattleFase_Process()
 
 				if (statusAilment == Silence)		// 「沈黙」なら
 				{
-					StatusProcess_Paralysis();
+					StatusProcess_Silence();	// 「沈黙」の処理を実行
 				}
 				else
 				{
@@ -990,7 +990,7 @@ void Human::BattleFase_Process()
 
 				if (statusAilment == Silence)		// 「沈黙」なら
 				{
-					StatusProcess_Paralysis();
+					StatusProcess_Silence();	// 「沈黙」の処理を実行
 				}
 				else
 				{
@@ -1002,7 +1002,7 @@ void Human::BattleFase_Process()
 
 				if (statusAilment == Silence)		// 「沈黙」なら
 				{
-					StatusProcess_Paralysis();
+					StatusProcess_Silence();	// 「沈黙」の処理を実行
 				}
 				else
 				{
@@ -1014,7 +1014,7 @@ void Human::BattleFase_Process()
 
 				if (statusAilment == Silence)		// 「沈黙」なら
 				{
-					StatusProcess_Paralysis();
+					StatusProcess_Silence();	// 「沈黙」の処理を実行
 				}
 				else
 				{
@@ -1026,7 +1026,7 @@ void Human::BattleFase_Process()
 
 				if (statusAilment == Slump)		// 「不調」なら
 				{
-					StatusProcess_Paralysis();
+					StatusProcess_Slump();	// 「不調」の処理を実行
 				}
 				else
 				{
@@ -1038,7 +1038,7 @@ void Human::BattleFase_Process()
 
 				if (statusAilment == Slump)		// 「不調」なら
 				{
-					StatusProcess_Paralysis();
+					StatusProcess_Slump();	// 「不調」の処理を実行
 				}
 				else
 				{
@@ -1050,7 +1050,7 @@ void Human::BattleFase_Process()
 
 				if (statusAilment == Slump)		// 「不調」なら
 				{
-					StatusProcess_Paralysis();
+					StatusProcess_Slump();	// 「不調」の処理を実行
 				}
 				else
 				{
@@ -1062,7 +1062,7 @@ void Human::BattleFase_Process()
 
 				if (statusAilment == Slump)		// 「不調」なら
 				{
-					StatusProcess_Paralysis();
+					StatusProcess_Slump();	// 「不調」の処理を実行
 				}
 				else
 				{

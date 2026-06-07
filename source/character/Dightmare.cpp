@@ -166,8 +166,16 @@ void Dightmare::MainFase_Process()
 					{
 						displayMessagePattern = Message1Line;	// 表示するメッセージを1行に設定
 
-						// 魔法の説明文をメッセージに設定
-						sprintf_s(battleMessage1, sizeof(battleMessage1), "%s", DetailOfMagic);
+						if (statusAilment == Silence)
+						{
+							// 魔法が封じれれている旨をメッセージに設定
+							sprintf_s(battleMessage1, sizeof(battleMessage1), "%s", DetailSealedMagic);
+						}
+						else
+						{
+							// 魔法の説明文をメッセージに設定
+							sprintf_s(battleMessage1, sizeof(battleMessage1), "%s", DetailOfMagic);
+						}
 					}
 					else if (actionNumber == 20)
 					{
@@ -196,9 +204,16 @@ void Dightmare::MainFase_Process()
 					{
 						if (actionNumber < 10)	// アクションナンバーが10未満なら
 						{
-							Sound_Play(SE_Enter);
+							if (statusAilment == Silence)
+							{
+								Sound_Play(SE_Unavilable);
+							}
+							else
+							{
+								Sound_Play(SE_Enter);
 
-							actionNumber = 20;	// アクションナンバーに20を代入する
+								actionNumber = 20;	// アクションナンバーに20を代入する
+							}
 						}
 						else if (actionNumber == 20)		// アクションナンバーが20なら
 						{
@@ -246,8 +261,16 @@ void Dightmare::MainFase_Process()
 					{
 						displayMessagePattern = Message1Line;	// 表示するメッセージを1行に設定
 
-						// 特技の説明文をメッセージに設定
-						sprintf_s(battleMessage1, sizeof(battleMessage1), "%s", DetailOfSpecial);
+						if (statusAilment == Slump)
+						{
+							// 特技が封じれれている旨をメッセージに設定
+							sprintf_s(battleMessage1, sizeof(battleMessage1), "%s", DetailSealedSpecial);
+						}
+						else
+						{
+							// 特技の説明文をメッセージに設定
+							sprintf_s(battleMessage1, sizeof(battleMessage1), "%s", DetailOfSpecial);
+						}
 					}
 					else if (actionNumber == 20)		// アクションナンバーが20なら
 					{
@@ -268,9 +291,16 @@ void Dightmare::MainFase_Process()
 					{
 						if (actionNumber < 10)	// アクションナンバーが10未満なら
 						{
-							Sound_Play(SE_Enter);
+							if (statusAilment == Slump)
+							{
+								Sound_Play(SE_Unavilable);
+							}
+							else
+							{
+								Sound_Play(SE_Enter);
 
-							actionNumber = 30;	// アクションナンバーに30を代入
+								actionNumber = 30;	// アクションナンバーに30を代入
+							}
 						}
 						else if (actionNumber == 20)	// アクションナンバーが20なら
 						{
@@ -397,7 +427,24 @@ void Dightmare::MainFase_Process()
 				/* +++ アクションナンバーと乱数の値によって処理を変更 +++ */
 				if (actionNumber < 10)		// アクションナンバーが10未満
 				{
-					actionNumber = randomNumber * 10;	// アクションナンバーに乱数の10倍を代入
+					if (statusAilment == Silence)	// 「沈黙」状態なら
+					{
+						if (actionNumber != 2)	// アクションナンバーが2でないなら
+						{
+							actionNumber = randomNumber * 10;	// アクションナンバーに乱数の10倍を代入
+						}
+					}
+					else if (statusAilment == Slump)	// 「不調」状態なら
+					{
+						if (actionNumber != 3)	// アクションナンバーが3でないなら
+						{
+							actionNumber = randomNumber * 10;	// アクションナンバーに乱数の10倍を代入
+						}
+					}
+					else
+					{
+						actionNumber = randomNumber * 10;	// アクションナンバーに乱数の10倍を代入
+					}
 				}
 				else if (actionNumber == 10 || actionNumber == 40)	// アクションナンバーが10または40
 				{
@@ -534,16 +581,12 @@ void Dightmare::MainFase_Draw()
 		{
 			if (actionNumber < 10)	// アクションナンバーが10未満なら
 			{
-				/* +++ 4つの選択肢のボタンを白枠で描画 +++ */
+				/* +++ 選択肢1と4のボタンを白枠で描画 +++ */
 				DrawRect(optionButton1, Color_White, false, 3);
-				DrawRect(optionButton2, Color_White, false, 3);
-				DrawRect(optionButton3, Color_White, false, 3);
 				DrawRect(optionButton4, Color_White, false, 3);
 
-				/* +++ 4つの基本選択肢のテキストを白で描画 +++ */
+				/* +++ 選択肢1と4のテキストを白で描画 +++ */
 				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionAttack);
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionMagic);
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionSpecial);
 				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionDefence);
 
 				/* +++ マウスカーソルが触れている選択肢のボタンによって処理を変える +++ */
@@ -554,26 +597,83 @@ void Dightmare::MainFase_Draw()
 					// 選択肢1のテキストを黒で描画
 					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 930, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionAttack);
 				}
-				else if (CollisionRectToPoint(optionButton2, nowMousePoint))	// 選択肢2のボタンとマウスカーソルが接触している
-				{
-					DrawRect(optionButton2, Color_White, true, 3);		// 選択肢2ボタンを白で塗りつぶして描画
-
-					// 選択肢2のテキストを黒で描画
-					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionMagic);
-				}
-				else if (CollisionRectToPoint(optionButton3, nowMousePoint))	// 選択肢3のボタンとマウスカーソルが接触している
-				{
-					DrawRect(optionButton3, Color_White, true, 3);		// 選択肢3ボタンを白で塗りつぶして描画
-
-					// 選択肢3のテキストを黒で描画
-					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionSpecial);
-				}
 				else if (CollisionRectToPoint(optionButton4, nowMousePoint))	// 選択肢4のボタンとマウスカーソルが接触している
 				{
 					DrawRect(optionButton4, Color_White, true, 3);		// 選択肢4ボタンを白で塗りつぶして描画
 
 					// 選択肢4のテキストを黒で描画
 					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 1010, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionDefence);
+				}
+
+				if (statusAilment == Silence)
+				{
+					DrawRect(optionButton2, Color_Gray, false, 3);	// 選択肢2のボタンを灰枠で描画
+
+					// 選択肢2のテキストを灰色で描画
+					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionMagic);
+
+					if (CollisionRectToPoint(optionButton3, nowMousePoint))	// 選択肢3ボタンとマウスカーソルが接触している
+					{
+						DrawRect(optionButton3, Color_White, true, 3);		// 選択肢3ボタンを白で塗りつぶして描画
+
+						// 選択肢3のテキストを黒で描画
+						DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionSpecial);
+					}
+					else
+					{
+						DrawRect(optionButton3, Color_White, false, 3);		// 選択肢3ボタンを白で描画
+
+						// 選択肢3のテキストを白で描画
+						DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionSpecial);
+					}
+				}
+				else if (statusAilment == Slump)
+				{
+					DrawRect(optionButton3, Color_Gray, false, 3);	// 選択肢3のボタンを灰枠で描画
+
+					// 選択肢3のテキストを灰色で描画
+					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_Gray, MSMincho_40_1, OptionSpecial);
+
+					if (CollisionRectToPoint(optionButton2, nowMousePoint))	// 選択肢2ボタンとマウスカーソルが接触している
+					{
+						DrawRect(optionButton2, Color_White, true, 3);		// 選択肢2ボタンを白で塗りつぶして描画
+
+						// 選択肢2のテキストを黒で描画
+						DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionMagic);
+					}
+					else
+					{
+						DrawRect(optionButton2, Color_White, false, 3);		// 選択肢2ボタンを白で描画
+
+						// 選択肢2のテキストを白で描画
+						DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionMagic);
+					}
+				}
+				else
+				{
+					/* +++ 選択肢2と3のボタンを白枠で描画 +++ */
+					DrawRect(optionButton2, Color_White, false, 3);
+					DrawRect(optionButton3, Color_White, false, 3);
+
+					/* +++ 選択肢2と3のテキストを白で描画 +++ */
+					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionMagic);
+					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionSpecial);
+
+					/* +++ マウスカーソルが触れている選択肢のボタンによって処理を変える +++ */
+					if (CollisionRectToPoint(optionButton2, nowMousePoint))	// 選択肢2ボタンとマウスカーソルが接触している
+					{
+						DrawRect(optionButton2, Color_White, true, 3);		// 選択肢2ボタンを白で塗りつぶして描画
+
+						// 選択肢2のテキストを黒で描画
+						DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionMagic);
+					}
+					else if (CollisionRectToPoint(optionButton3, nowMousePoint))	// 選択肢3のボタンとマウスカーソルが接触している
+					{
+						DrawRect(optionButton3, Color_White, true, 3);		// 選択肢3ボタンを白で塗りつぶして描画
+
+						// 選択肢3のテキストを黒で描画
+						DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 860, 1010, FAlign_AllCenter, Color_Black, MSMincho_40_1, OptionSpecial);
+					}
 				}
 			}
 			else if (actionNumber == 20)
@@ -871,11 +971,7 @@ void Dightmare::BattleFase_Process()
 	{
 		if (statusAilment == Paralysis)		// 「マヒ」なら
 		{
-			ailmentTurn -= 1;	// 状態異常の継続ターンを1減らす
-
-			displayMessagePattern = Message1Line;	// 表示する行数を1行に設定
-
-			sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Players, characterName, ActionStatusParalysis);
+			StatusProcess_Paralysis();	// 「マヒ」の処理を実行
 		}
 		else
 		{
@@ -890,42 +986,98 @@ void Dightmare::BattleFase_Process()
 			case 21:
 				/* +++ アクションナンバーが21 +++ */
 
-				MagicSaros();		// サロスを実行
+				if (statusAilment == Silence)		// 「沈黙」なら
+				{
+					StatusProcess_Silence();	// 「沈黙」の処理を実行
+				}
+				else
+				{
+					MagicSaros();		// サロスを実行
+				}
 				break;
 			case 22:
 				/* +++ アクションナンバーが22 +++ */
 
-				MagicDeus();		// デウスを実行
+				if (statusAilment == Silence)		// 「沈黙」なら
+				{
+					StatusProcess_Silence();	// 「沈黙」の処理を実行
+				}
+				else
+				{
+					MagicDeus();		// デウスを実行
+				}
 				break;
 			case 23:
 				/* +++ アクションナンバーが23 +++ */
 
-				MagicEx();			// エクスを実行
+				if (statusAilment == Silence)		// 「沈黙」なら
+				{
+					StatusProcess_Silence();	// 「沈黙」の処理を実行
+				}
+				else
+				{
+					MagicEx();			// エクスを実行
+				}
 				break;
 			case 24:
 				/* +++ アクションナンバーが24 +++ */
 
-				MagicMachina();		// マキナを実行
+				if (statusAilment == Silence)		// 「沈黙」なら
+				{
+					StatusProcess_Silence();	// 「沈黙」の処理を実行
+				}
+				else
+				{
+					MagicMachina();		// マキナを実行
+				}
 				break;
 			case 31:
 				/* +++ アクションナンバーが31 +++ */
 
-				Imseti();		// イムセトを実行
+				if (statusAilment == Slump)		// 「不調」なら
+				{
+					StatusProcess_Slump();	// 「不調」の処理を実行
+				}
+				else
+				{
+					Imseti();		// イムセトを実行
+				}
 				break;
 			case 32:
 				/* +++ アクションナンバーが32 +++ */
 
-				Harpy();		// ハーピを実行
+				if (statusAilment == Slump)		// 「不調」なら
+				{
+					StatusProcess_Slump();	// 「不調」の処理を実行
+				}
+				else
+				{
+					Harpy();		// ハーピを実行
+				}
 				break;
 			case 33:
 				/* +++ アクションナンバーが33 +++ */
 
-				Kebehsenuev();	// ケベフスを実行
+				if (statusAilment == Slump)		// 「不調」なら
+				{
+					StatusProcess_Slump();	// 「不調」の処理を実行
+				}
+				else
+				{
+					Kebehsenuev();	// ケベフスを実行
+				}
 				break;
 			case 34:
 				/* +++ アクションナンバーが34 +++ */
 
-				Duamtef();		// ドゥアムタを実行
+				if (statusAilment == Slump)		// 「不調」なら
+				{
+					StatusProcess_Slump();	// 「不調」の処理を実行
+				}
+				else
+				{
+					Duamtef();		// ドゥアムタを実行
+				}
 				break;
 			case 40:
 				/* +++ アクションナンバーが40 +++ */
