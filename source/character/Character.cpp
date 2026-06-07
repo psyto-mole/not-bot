@@ -1625,6 +1625,22 @@ void Character::Become_Protection(int continueTurn)
 	return;
 }
 
+/* --- 状態異常「毒」の処理 --- */
+void Character::StatusProcess_Poisoning()
+{
+	int calcResult, nowHP;
+
+	nowHP = GetMyHP();
+	calcResult = (int)(nowHP * 0.1);
+
+	if (ailmentPoisoning)
+	{
+		HP_Calc(calcResult, ISDAMAGE);
+	}
+
+	return;
+}
+
 /* --- バトルフェイズにおける状態異常「マヒ」の処理 --- */
 void Character::StatusProcess_Paralysis()
 {

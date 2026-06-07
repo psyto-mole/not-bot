@@ -111,6 +111,7 @@ public:
 	void Become_Slump();						// 自身の状態を「不調」にする
 	void Become_Protection(int continueTurn);	// 自身の状態を「保護」にする(継続ターンを引数で渡す)
 
+	void StatusProcess_Poisoning();		// 状態異常「毒」の処理
 	void StatusProcess_Paralysis();		// バトルフェイズにおける状態異常「マヒ」の処理
 	void StatusProcess_Silence();		// バトルフェイズにおける状態異常「沈黙」の処理
 	void StatusProcess_Slump();			// バトルフェイズにおける状態異常「不調」の処理
