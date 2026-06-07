@@ -64,7 +64,7 @@ protected:
 public:
 	void Damage_Calc(int attackValue, Context context);					// ダメージの計算関数
 	void MaxHP_Calc(int Value, bool isEnhance);							// 最大HPの増減関数
-	void HP_Calc(int Value, bool isDamage);								// HPの増減関数
+	void HP_Calc(int Value, bool isDamage, bool isPoisoning);			// HPの増減関数
 	void MP_Calc(int Value, bool isEnhance);							// MPの増減関数
 	void TP_Calc(int Value, bool isEnhance, bool isDisplay = false);	// TPの増減関数
 	void Attack_Calc(int Value, bool isEnhance);						// 攻撃力の増減関数

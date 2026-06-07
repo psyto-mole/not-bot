@@ -148,6 +148,7 @@
 #define PhraseMagic				"の魔力が"
 #define PhrasePrevent			"の魔法守備力が"
 #define PhraseSpeed				"の素早さが"
+#define PhrasePoisoning			"毒により"
 
 
 /* === ロボット === */

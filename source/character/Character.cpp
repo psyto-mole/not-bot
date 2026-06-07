@@ -228,7 +228,7 @@ void Character::MaxHP_Calc(int Value, bool isEnhance)
 }
 
 /* --- HPの計算関数(引数は変化量と変化の種類) --- */
-void Character::HP_Calc(int Value, bool isDamage)
+void Character::HP_Calc(int Value, bool isDamage, bool isPoisoning)
 {
 	/* +++ HP増減の計算 +++ */
 	if (isDamage)	// ダメージの場合
@@ -247,11 +247,25 @@ void Character::HP_Calc(int Value, bool isDamage)
 
 			if (isPlayer)
 			{
-				sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s%d%s", Players, characterName, ParticleHA, Value, TakeDamage);
+				if (isPoisoning)
+				{
+					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s%s%d%s", PhrasePoisoning, Players, characterName, ParticleHA, Value, TakeDamage);
+				}
+				else
+				{
+					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s%d%s", Players, characterName, ParticleHA, Value, TakeDamage);
+				}
 			}
 			else
 			{
-				sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s%d%s", Enemys, characterName, ParticleHA, Value, TakeDamage);
+				if (isPoisoning)
+				{
+					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s%s%d%s", PhrasePoisoning, Enemys, characterName, ParticleHA, Value, TakeDamage);
+				}
+				else
+				{
+					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s%d%s", Enemys, characterName, ParticleHA, Value, TakeDamage);
+				}
 			}
 
 			settingMessagePattern = Message2Line;
@@ -261,11 +275,25 @@ void Character::HP_Calc(int Value, bool isDamage)
 
 			if (isPlayer)
 			{
-				sprintf_s(battleMessage2, sizeof(battleMessage1), "%s%s%s%d%s", Players, characterName, ParticleHA, Value, TakeDamage);
+				if (isPoisoning)
+				{
+					sprintf_s(battleMessage2, sizeof(battleMessage2), "%s%s%s%s%d%s", PhrasePoisoning, Players, characterName, ParticleHA, Value, TakeDamage);
+				}
+				else
+				{
+					sprintf_s(battleMessage2, sizeof(battleMessage2), "%s%s%s%d%s", Players, characterName, ParticleHA, Value, TakeDamage);
+				}
 			}
 			else
 			{
-				sprintf_s(battleMessage2, sizeof(battleMessage1), "%s%s%s%d%s", Enemys, characterName, ParticleHA, Value, TakeDamage);
+				if (isPoisoning)
+				{
+					sprintf_s(battleMessage2, sizeof(battleMessage2), "%s%s%s%s%d%s", PhrasePoisoning, Enemys, characterName, ParticleHA, Value, TakeDamage);
+				}
+				else
+				{
+					sprintf_s(battleMessage2, sizeof(battleMessage2), "%s%s%s%d%s", Enemys, characterName, ParticleHA, Value, TakeDamage);
+				}
 			}
 
 			settingMessagePattern = Message3Line;
@@ -275,11 +303,25 @@ void Character::HP_Calc(int Value, bool isDamage)
 
 			if (isPlayer)
 			{
-				sprintf_s(battleMessage3, sizeof(battleMessage1), "%s%s%s%d%s", Players, characterName, ParticleHA, Value, TakeDamage);
+				if (isPoisoning)
+				{
+					sprintf_s(battleMessage3, sizeof(battleMessage3), "%s%s%s%s%d%s", PhrasePoisoning, Players, characterName, ParticleHA, Value, TakeDamage);
+				}
+				else
+				{
+					sprintf_s(battleMessage3, sizeof(battleMessage3), "%s%s%s%d%s", Players, characterName, ParticleHA, Value, TakeDamage);
+				}
 			}
 			else
 			{
-				sprintf_s(battleMessage3, sizeof(battleMessage1), "%s%s%s%d%s", Enemys, characterName, ParticleHA, Value, TakeDamage);
+				if (isPoisoning)
+				{
+					sprintf_s(battleMessage3, sizeof(battleMessage3), "%s%s%s%s%d%s", PhrasePoisoning, Enemys, characterName, ParticleHA, Value, TakeDamage);
+				}
+				else
+				{
+					sprintf_s(battleMessage3, sizeof(battleMessage3), "%s%s%s%d%s", Enemys, characterName, ParticleHA, Value, TakeDamage);
+				}
 			}
 
 			settingMessagePattern = Message4Line;
@@ -289,11 +331,25 @@ void Character::HP_Calc(int Value, bool isDamage)
 
 			if (isPlayer)
 			{
-				sprintf_s(battleMessage4, sizeof(battleMessage1), "%s%s%s%d%s", Players, characterName, ParticleHA, Value, TakeDamage);
+				if (isPoisoning)
+				{
+					sprintf_s(battleMessage4, sizeof(battleMessage4), "%s%s%s%s%d%s", PhrasePoisoning, Players, characterName, ParticleHA, Value, TakeDamage);
+				}
+				else
+				{
+					sprintf_s(battleMessage4, sizeof(battleMessage4), "%s%s%s%d%s", Players, characterName, ParticleHA, Value, TakeDamage);
+				}
 			}
 			else
 			{
-				sprintf_s(battleMessage4, sizeof(battleMessage1), "%s%s%s%d%s", Enemys, characterName, ParticleHA, Value, TakeDamage);
+				if (isPoisoning)
+				{
+					sprintf_s(battleMessage4, sizeof(battleMessage4), "%s%s%s%s%d%s", PhrasePoisoning, Enemys, characterName, ParticleHA, Value, TakeDamage);
+				}
+				else
+				{
+					sprintf_s(battleMessage4, sizeof(battleMessage4), "%s%s%s%d%s", Enemys, characterName, ParticleHA, Value, TakeDamage);
+				}
 			}
 
 			settingMessagePattern = Message1Line;
