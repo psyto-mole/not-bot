@@ -105,7 +105,7 @@ public:
 
 	void Check_Status();						// 状態異常からの復帰を確認する
 	void Become_Fine(bool healPoison);			// 自身の状態を「状態異常なし」にする
-	void Become_Paralyzed(int probability);		// 自身の状態を確率で「マヒ」にする
+	void Become_Paralysis(int probability);		// 自身の状態を確率で「マヒ」にする
 	void Become_Poisoning(int probability);		// 自身の状態を確率で「毒」にする
 	void Become_Silence(int probability);		// 自身の状態を確率で「沈黙」にする
 	void Become_Slump(int probability);			// 自身の状態を確率で「不調」にする

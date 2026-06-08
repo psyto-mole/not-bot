@@ -50,6 +50,8 @@ void Noname::Character_Init(bool isThisPlayer)
 	ailmentTurn = 0;			// 状態異常の継続ターンを0にする
 	ailmentPoisoning = false;	// 「毒」の状態異常を解除
 
+	stanceTimes = 0;
+
 	sprintf_s(characterName, sizeof(characterName), "%s", CharacterNameNoname);
 
 	if (isThisPlayer)
@@ -1099,17 +1101,15 @@ void Noname::MagicTentativeDark()
 		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Players, characterName, ActionMagicTentativeDark);
 
 		Enemy->Damage_Calc(calcResult, Magical);
+		Enemy->Become_Silence(40);	// 40%で相手に「沈黙」を付与
 	}
 	else
 	{
 		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Enemys, characterName, ActionMagicTentativeDark);
 
 		Player->Damage_Calc(calcResult, Magical);
+		Player->Become_Silence(40);		// 40%で相手に「沈黙」を付与
 	}
-
-	/* +++ 沈黙の付与処理 +++ */
-
-	/* +++ 沈黙の付与処理 +++ */
 
 	Sound_Play(SE_MagicTentativeDark);
 
@@ -1133,16 +1133,15 @@ void Noname::MagicTentativeLight()
 		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Players, characterName, ActionMagicTentativeLight);
 
 		Enemy->Damage_Calc(calcResult, Magical);
+		Enemy->Become_Slump(40);	// 40%で相手に「不調」を付与
 	}
 	else
 	{
 		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Enemys, characterName, ActionMagicTentativeLight);
 
 		Player->Damage_Calc(calcResult, Magical);
+		Player->Become_Slump(40);	// 40%で相手に「不調」を付与
 	}
-
-	/* +++ 暗闇の付与処理 +++ */
-	/* +++ 暗闇の付与処理 +++ */
 
 	Sound_Play(SE_MagicTentativeLight);
 
@@ -1224,16 +1223,15 @@ void Noname::TentativeThunder()
 		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Players, characterName, ActionTentativeThunder);
 
 		Enemy->Damage_Calc(calcResult, Physical);
+		Enemy->Become_Paralysis(40);	// 40%で相手に「マヒ」を付与
 	}
 	else
 	{
 		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Enemys, characterName, ActionTentativeThunder);
 
 		Player->Damage_Calc(calcResult, Physical);
+		Player->Become_Paralysis(40);	// 40%で相手に「マヒ」を付与
 	}
-
-	/* +++ マヒの付与処理 +++ */
-	/* +++ マヒの付与処理 +++ */
 
 	Sound_Play(SE_TentativeThunder);
 
@@ -1257,16 +1255,15 @@ void Noname::TentativePoison()
 		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Players, characterName, ActionTentativePoison);
 
 		Enemy->Damage_Calc(calcResult, Physical);
+		Enemy->Become_Poisoning(100);	// 100%で相手に「毒」を付与
 	}
 	else
 	{
 		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Enemys, characterName, ActionTentativePoison);
 
 		Player->Damage_Calc(calcResult, Physical);
+		Player->Become_Poisoning(100);	// 100%で相手に「毒」を付与
 	}
-
-	/* +++ 毒の付与処理 +++ */
-	/* +++ 毒の付与処理 +++ */
 
 	Sound_Play(SE_TentativePoison);
 
@@ -1280,7 +1277,7 @@ void Noname::TentativeStance()
 
 	TP_Calc(TPofTentativeStance, ISREDUCTION);	// TPを消費TP分減らす
 
-	calcResult = (int)(Defence * 1.1);	// 守備力に補正をのせる
+	calcResult = (int)(Defence * 0.1 * stanceTimes);	// 守備力に補正をのせる
 
 	settingMessagePattern = Message2Line;
 	displayMessagePattern = Message2Line;
@@ -1295,6 +1292,8 @@ void Noname::TentativeStance()
 	}
 
 	Defence_Calc(calcResult, ISENHANCE);
+
+	Become_Protection(stanceTimes);		// 構え(仮)を行った回数と同じターン数だけ「保護」を得る
 
 	Sound_Play(SE_TentativeStance);
 

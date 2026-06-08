@@ -27,6 +27,9 @@
 /* --- キューのクラス(キャラクタークラスを継承) --- */
 class Noname : public Character
 {
+private:
+	int stanceTimes;	// 構え(仮)を行った回数
+
 public:
 	void Character_Init(bool isThisPlayer);		// キャラクターの初期化関数
 	void MainFase_Process();					// メインフェイズの処理関数
@@ -43,7 +46,7 @@ public:
 
 	void TentativeThunder();		// 雷刃(仮) - 雷の刃で攻撃し、たまに相手をマヒにする(TP: 15)
 	void TentativePoison();			// 毒刃(仮) - 毒の刃で攻撃し、相手を毒状態にする(TP: 15)
-	void TentativeStance();			// 構え(仮) - 使うほどに守備力を上昇させる(TP: 25)
+	void TentativeStance();			// 構え(仮) - 使うほどに守備力を上昇し「保護」を得る(TP: 25)
 	void TentativeSevereBlow();		// 痛打(仮) - 当たれば致命の攻撃(TP: 40)
 };
 

@@ -2146,7 +2146,7 @@ void Character::Become_Fine(bool healPoison)
 }
 
 /* --- 自身の状態を確率で「マヒ」にする --- */
-void Character::Become_Paralyzed(int probability)
+void Character::Become_Paralysis(int probability)
 {
 	int randomProbability;
 
