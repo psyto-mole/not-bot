@@ -43,7 +43,7 @@ public:
 	void MagicRecover();	// リカバー-魔力参照の回復魔法(MP:20)
 
 	void CurseBreath();			// 呪いの息-魔力参照のブレス攻撃、相手のステータスをランダムに下げる(TP:15)
-	void ImmortalScale();		// 竜仙鱗-発動したターンに受けるダメージを90%カットする(TP:20)
+	void ImmortalScale();		// 竜仙鱗-受けるダメージを90%カットし「保護」を得る(TP:20)
 	void DestructBreath();		// 破壊の息-攻撃力参照のブレス攻撃(TP:25)
 	void AbsorbAtmosphere();	// 大気吸収-自身のMPとTPを回復する(TP:40)
 };

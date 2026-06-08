@@ -1283,7 +1283,7 @@ void Dragon::CurseBreath()
 	return;
 }
 
-/* --- 竜仙鱗 - 発動したターンに受けるダメージを90 % カットする(TP:20) --- */
+/* --- 竜仙鱗 - 受けるダメージを90 % カットし「保護」を得る(TP:20) --- */
 void Dragon::ImmortalScale()
 {
 	TP_Calc(TPofImmortalScale, ISREDUCTION);	// TPを消費TP分減らす
@@ -1302,8 +1302,7 @@ void Dragon::ImmortalScale()
 
 	defenceCoefficient = 0.1;	// 防御係数を0.1にする
 
-	/* +++ 状態異常無効の付与処理 +++ */
-	/* +++ 状態異常無効の付与処理 +++ */
+	Become_Protection(3);	// 3ターンの「保護」状態を得る
 
 	Sound_Play(SE_ImmortalScale);
 
