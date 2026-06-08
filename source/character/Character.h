@@ -105,10 +105,10 @@ public:
 
 	void Check_Status();						// 状態異常からの復帰を確認する
 	void Become_Fine(bool healPoison);			// 自身の状態を「状態異常なし」にする
-	void Become_Paralyzed();					// 自身の状態を「マヒ」にする
-	void Become_Poisoning();					// 自身の状態を「毒」にする
-	void Become_Silence();						// 自身の状態を「沈黙」にする
-	void Become_Slump();						// 自身の状態を「不調」にする
+	void Become_Paralyzed(int probability);		// 自身の状態を確率で「マヒ」にする
+	void Become_Poisoning(int probability);		// 自身の状態を確率で「毒」にする
+	void Become_Silence(int probability);		// 自身の状態を確率で「沈黙」にする
+	void Become_Slump(int probability);			// 自身の状態を確率で「不調」にする
 	void Become_Protection(int continueTurn);	// 自身の状態を「保護」にする(継続ターンを引数で渡す)
 
 	void StatusProcess_Poisoning();		// 状態異常「毒」の処理

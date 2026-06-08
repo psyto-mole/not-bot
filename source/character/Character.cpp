@@ -2145,48 +2145,76 @@ void Character::Become_Fine(bool healPoison)
 	return;
 }
 
-/* --- 自身の状態を「マヒ」にする --- */
-void Character::Become_Paralyzed()
+/* --- 自身の状態を確率で「マヒ」にする --- */
+void Character::Become_Paralyzed(int probability)
 {
-	if (statusAilment != Protection)	// 「保護」状態でないなら
+	int randomProbability;
+
+	randomProbability = GetRand(99) + 1;
+
+	if (probability >= randomProbability)
 	{
-		statusAilment = Paralysis;	// 「マヒ」の状態異常を設定
-		ailmentTurn = 1;			// 継続ターンに1をセット
+		if (statusAilment != Protection)	// 「保護」状態でないなら
+		{
+			statusAilment = Paralysis;	// 「マヒ」の状態異常を設定
+			ailmentTurn = 1;			// 継続ターンに1をセット
+		}
 	}
 
 	return;
 }
 
-/* --- 自身の状態を「毒」にする --- */
-void Character::Become_Poisoning()
+/* --- 自身の状態を確率で「毒」にする --- */
+void Character::Become_Poisoning(int probability)
 {
-	if (statusAilment != Protection)	// 「保護」状態でないなら
+	int randomProbability;
+
+	randomProbability = GetRand(99) + 1;
+
+	if (probability >= randomProbability)
 	{
-		ailmentPoisoning = true;
+		if (statusAilment != Protection)	// 「保護」状態でないなら
+		{
+			ailmentPoisoning = true;
+		}
 	}
 
 	return;
 }
 
-/* --- 自身の状態を「沈黙」にする --- */
-void Character::Become_Silence()
+/* --- 自身の状態を確率で「沈黙」にする --- */
+void Character::Become_Silence(int probability)
 {
-	if (statusAilment != Protection)	// 「保護」状態でないなら
+	int randomProbability;
+
+	randomProbability = GetRand(99) + 1;
+
+	if (probability >= randomProbability)
 	{
-		statusAilment = Silence;	// 「沈黙」の状態異常を設定
-		ailmentTurn = 3;			// 継続ターンに3をセット
+		if (statusAilment != Protection)	// 「保護」状態でないなら
+		{
+			statusAilment = Silence;	// 「沈黙」の状態異常を設定
+			ailmentTurn = 3;			// 継続ターンに3をセット
+		}
 	}
 
 	return;
 }
 
-/* --- 自身の状態を「不調」にする --- */
-void Character::Become_Slump()
+/* --- 自身の状態を確率で「不調」にする --- */
+void Character::Become_Slump(int probability)
 {
-	if (statusAilment != Protection)	// 「保護」状態でないなら
+	int randomProbability;
+
+	randomProbability = GetRand(99) + 1;
+
+	if (probability >= randomProbability)
 	{
-		statusAilment = Slump;	// 「不調」の状態異常を設定
-		ailmentTurn = 3;		// 継続ターンに3をセット
+		if (statusAilment != Protection)	// 「保護」状態でないなら
+		{
+			statusAilment = Slump;	// 「不調」の状態異常を設定
+			ailmentTurn = 3;		// 継続ターンに3をセット
+		}
 	}
 
 	return;

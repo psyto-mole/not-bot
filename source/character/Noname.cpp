@@ -1108,6 +1108,7 @@ void Noname::MagicTentativeDark()
 	}
 
 	/* +++ ’¾–Ù‚Ì•t—^ˆ— +++ */
+
 	/* +++ ’¾–Ù‚Ì•t—^ˆ— +++ */
 
 	Sound_Play(SE_MagicTentativeDark);
