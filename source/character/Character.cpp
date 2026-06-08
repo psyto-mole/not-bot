@@ -76,7 +76,7 @@ void Character::Damage_Calc(int attackValue, Context context)
 
 	calcResult = (int)(calcResult * defenceCoefficient);
 
-	HP_Calc(calcResult, ISDAMAGE);	// 計算結果を引数としてHP計算関数を実行
+	HP_Calc(calcResult, ISDAMAGE, false);	// 計算結果を引数としてHP計算関数を実行
 
 	return;
 }
@@ -1691,7 +1691,7 @@ void Character::StatusProcess_Poisoning()
 
 	if (ailmentPoisoning)
 	{
-		HP_Calc(calcResult, ISDAMAGE);
+		HP_Calc(calcResult, ISDAMAGE, true);
 	}
 
 	return;

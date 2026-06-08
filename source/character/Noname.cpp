@@ -1169,7 +1169,7 @@ void Noname::MagicTentativeHeal()
 		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Enemys, characterName, ActionMagicTentativeHeal);
 	}
 
-	HP_Calc(calcResult, ISHEAL);
+	HP_Calc(calcResult, ISHEAL, false);
 
 	Sound_Play(SE_MagicTentativeHeal);
 

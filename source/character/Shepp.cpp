@@ -1001,7 +1001,7 @@ void Shepp::EndFase_Process()
 	{
 		if (HP < MaxHP)
 		{
-			HP_Calc(30, ISHEAL);
+			HP_Calc(30, ISHEAL, false);
 		}
 
 		TP_Calc(10, ISENHANCE);
@@ -1070,7 +1070,7 @@ void Shepp::MagicNu()
 	}
 
 	MaxHP_Calc(500, ISENHANCE);
-	HP_Calc(500, ISHEAL);
+	HP_Calc(500, ISHEAL, false);
 
 	Sound_Play(SE_MagicNu);
 

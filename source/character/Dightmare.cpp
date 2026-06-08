@@ -1192,7 +1192,7 @@ void Dightmare::MagicDeus()
 	}
 
 	MaxHP_Calc(100, ISENHANCE);
-	HP_Calc(150, ISHEAL);
+	HP_Calc(150, ISHEAL, false);
 
 	Sound_Play(SE_MagicDeus);
 
@@ -1224,7 +1224,7 @@ void Dightmare::MagicEx()
 		Player->Damage_Calc(calcResult, Magical);
 	}
 
-	HP_Calc(100, ISHEAL);
+	HP_Calc(100, ISHEAL, false);
 
 	Sound_Play(SE_MagicEx);
 

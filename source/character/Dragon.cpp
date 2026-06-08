@@ -1192,7 +1192,7 @@ void Dragon::MagicRecover()
 		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Enemys, characterName, ActionMagicRecover);
 	}
 
-	HP_Calc(calcResult, ISHEAL);
+	HP_Calc(calcResult, ISHEAL, false);
 
 	Sound_Play(SE_MagicRecover);
 

@@ -1232,7 +1232,7 @@ void Human::MagicHeal()
 		sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Enemys, characterName, ActionMagicHeal);
 	}
 
-	HP_Calc(calcResult, ISHEAL);
+	HP_Calc(calcResult, ISHEAL, false);
 
 	Sound_Play(SE_MagicHeal);
 
