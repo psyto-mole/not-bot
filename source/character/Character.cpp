@@ -1631,11 +1631,11 @@ void Character::Become_Fine(bool healPoison)
 				/* +++ 1行目に文章を設定 +++ */
 				if (isPlayer)
 				{
-					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s%s", Players, characterName, ParticleHA, ActionFinishParalysis);
+					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s%s", Players, characterName, ActionFinishParalysis);
 				}
 				else
 				{
-					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s%s", Enemys, characterName, ParticleHA, ActionFinishParalysis);
+					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s%s", Enemys, characterName, ActionFinishParalysis);
 				}
 
 				settingMessagePattern = Message2Line;	// 次に文章を設定する行を2行目に設定
@@ -1647,11 +1647,11 @@ void Character::Become_Fine(bool healPoison)
 				/* +++ 2行目に文章を設定 +++ */
 				if (isPlayer)
 				{
-					sprintf_s(battleMessage2, sizeof(battleMessage2), "%s%s%s%s", Players, characterName, ParticleHA, ActionFinishParalysis);
+					sprintf_s(battleMessage2, sizeof(battleMessage2), "%s%s%s%s", Players, characterName, ActionFinishParalysis);
 				}
 				else
 				{
-					sprintf_s(battleMessage2, sizeof(battleMessage2), "%s%s%s%s", Enemys, characterName, ParticleHA, ActionFinishParalysis);
+					sprintf_s(battleMessage2, sizeof(battleMessage2), "%s%s%s%s", Enemys, characterName, ActionFinishParalysis);
 				}
 
 				settingMessagePattern = Message3Line;	// 次に文章を設定する行を3行目に設定
@@ -1663,11 +1663,11 @@ void Character::Become_Fine(bool healPoison)
 				/* +++ 3行目に文章を設定 +++ */
 				if (isPlayer)
 				{
-					sprintf_s(battleMessage3, sizeof(battleMessage3), "%s%s%s%s", Players, characterName, ParticleHA, ActionFinishParalysis);
+					sprintf_s(battleMessage3, sizeof(battleMessage3), "%s%s%s%s", Players, characterName, ActionFinishParalysis);
 				}
 				else
 				{
-					sprintf_s(battleMessage3, sizeof(battleMessage3), "%s%s%s%s", Enemys, characterName, ParticleHA, ActionFinishParalysis);
+					sprintf_s(battleMessage3, sizeof(battleMessage3), "%s%s%s%s", Enemys, characterName, ActionFinishParalysis);
 				}
 
 				settingMessagePattern = Message4Line;	// 次に文章を設定する行を4行目に設定
@@ -1679,11 +1679,11 @@ void Character::Become_Fine(bool healPoison)
 				/* +++ 4行目に文章を設定 +++ */
 				if (isPlayer)
 				{
-					sprintf_s(battleMessage4, sizeof(battleMessage4), "%s%s%s%s", Players, characterName, ParticleHA, ActionFinishParalysis);
+					sprintf_s(battleMessage4, sizeof(battleMessage4), "%s%s%s%s", Players, characterName, ActionFinishParalysis);
 				}
 				else
 				{
-					sprintf_s(battleMessage4, sizeof(battleMessage4), "%s%s%s%s", Enemys, characterName, ParticleHA, ActionFinishParalysis);
+					sprintf_s(battleMessage4, sizeof(battleMessage4), "%s%s%s%s", Enemys, characterName, ActionFinishParalysis);
 				}
 
 				settingMessagePattern = Message1Line;	// 次に文章を設定する行を1行目に設定
@@ -1706,11 +1706,11 @@ void Character::Become_Fine(bool healPoison)
 				/* +++ 1行目に文章を設定 +++ */
 				if (isPlayer)
 				{
-					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s%s", Players, characterName, ParticleHA, ActionFinishSilence);
+					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s%s", Players, characterName, ActionFinishSilence);
 				}
 				else
 				{
-					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s%s", Enemys, characterName, ParticleHA, ActionFinishSilence);
+					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s%s", Enemys, characterName, ActionFinishSilence);
 				}
 
 				settingMessagePattern = Message2Line;	// 次に文章を設定する行を2行目に設定
@@ -1722,11 +1722,11 @@ void Character::Become_Fine(bool healPoison)
 				/* +++ 2行目に文章を設定 +++ */
 				if (isPlayer)
 				{
-					sprintf_s(battleMessage2, sizeof(battleMessage2), "%s%s%s%s", Players, characterName, ParticleHA, ActionFinishSilence);
+					sprintf_s(battleMessage2, sizeof(battleMessage2), "%s%s%s%s", Players, characterName, ActionFinishSilence);
 				}
 				else
 				{
-					sprintf_s(battleMessage2, sizeof(battleMessage2), "%s%s%s%s", Enemys, characterName, ParticleHA, ActionFinishSilence);
+					sprintf_s(battleMessage2, sizeof(battleMessage2), "%s%s%s%s", Enemys, characterName, ActionFinishSilence);
 				}
 
 				settingMessagePattern = Message3Line;	// 次に文章を設定する行を3行目に設定
@@ -1738,11 +1738,11 @@ void Character::Become_Fine(bool healPoison)
 				/* +++ 3行目に文章を設定 +++ */
 				if (isPlayer)
 				{
-					sprintf_s(battleMessage3, sizeof(battleMessage3), "%s%s%s%s", Players, characterName, ParticleHA, ActionFinishSilence);
+					sprintf_s(battleMessage3, sizeof(battleMessage3), "%s%s%s%s", Players, characterName, ActionFinishSilence);
 				}
 				else
 				{
-					sprintf_s(battleMessage3, sizeof(battleMessage3), "%s%s%s%s", Enemys, characterName, ParticleHA, ActionFinishSilence);
+					sprintf_s(battleMessage3, sizeof(battleMessage3), "%s%s%s%s", Enemys, characterName, ActionFinishSilence);
 				}
 
 				settingMessagePattern = Message4Line;	// 次に文章を設定する行を4行目に設定
@@ -1754,11 +1754,11 @@ void Character::Become_Fine(bool healPoison)
 				/* +++ 4行目に文章を設定 +++ */
 				if (isPlayer)
 				{
-					sprintf_s(battleMessage4, sizeof(battleMessage4), "%s%s%s%s", Players, characterName, ParticleHA, ActionFinishSilence);
+					sprintf_s(battleMessage4, sizeof(battleMessage4), "%s%s%s%s", Players, characterName, ActionFinishSilence);
 				}
 				else
 				{
-					sprintf_s(battleMessage4, sizeof(battleMessage4), "%s%s%s%s", Enemys, characterName, ParticleHA, ActionFinishSilence);
+					sprintf_s(battleMessage4, sizeof(battleMessage4), "%s%s%s%s", Enemys, characterName, ActionFinishSilence);
 				}
 
 				settingMessagePattern = Message1Line;	// 次に文章を設定する行を1行目に設定
@@ -1781,11 +1781,11 @@ void Character::Become_Fine(bool healPoison)
 				/* +++ 1行目に文章を設定 +++ */
 				if (isPlayer)
 				{
-					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s%s", Players, characterName, ParticleHA, ActionFinishSlump);
+					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s%s", Players, characterName, ActionFinishSlump);
 				}
 				else
 				{
-					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s%s", Enemys, characterName, ParticleHA, ActionFinishSlump);
+					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s%s", Enemys, characterName, ActionFinishSlump);
 				}
 
 				settingMessagePattern = Message2Line;	// 次に文章を設定する行を2行目に設定
@@ -1797,11 +1797,11 @@ void Character::Become_Fine(bool healPoison)
 				/* +++ 2行目に文章を設定 +++ */
 				if (isPlayer)
 				{
-					sprintf_s(battleMessage2, sizeof(battleMessage2), "%s%s%s%s", Players, characterName, ParticleHA, ActionFinishSlump);
+					sprintf_s(battleMessage2, sizeof(battleMessage2), "%s%s%s%s", Players, characterName, ActionFinishSlump);
 				}
 				else
 				{
-					sprintf_s(battleMessage2, sizeof(battleMessage2), "%s%s%s%s", Enemys, characterName, ParticleHA, ActionFinishSlump);
+					sprintf_s(battleMessage2, sizeof(battleMessage2), "%s%s%s%s", Enemys, characterName, ActionFinishSlump);
 				}
 
 				settingMessagePattern = Message3Line;	// 次に文章を設定する行を3行目に設定
@@ -1813,11 +1813,11 @@ void Character::Become_Fine(bool healPoison)
 				/* +++ 3行目に文章を設定 +++ */
 				if (isPlayer)
 				{
-					sprintf_s(battleMessage3, sizeof(battleMessage3), "%s%s%s%s", Players, characterName, ParticleHA, ActionFinishSlump);
+					sprintf_s(battleMessage3, sizeof(battleMessage3), "%s%s%s%s", Players, characterName, ActionFinishSlump);
 				}
 				else
 				{
-					sprintf_s(battleMessage3, sizeof(battleMessage3), "%s%s%s%s", Enemys, characterName, ParticleHA, ActionFinishSlump);
+					sprintf_s(battleMessage3, sizeof(battleMessage3), "%s%s%s%s", Enemys, characterName, ActionFinishSlump);
 				}
 
 				settingMessagePattern = Message4Line;	// 次に文章を設定する行を4行目に設定
@@ -1829,11 +1829,11 @@ void Character::Become_Fine(bool healPoison)
 				/* +++ 4行目に文章を設定 +++ */
 				if (isPlayer)
 				{
-					sprintf_s(battleMessage4, sizeof(battleMessage4), "%s%s%s%s", Players, characterName, ParticleHA, ActionFinishSlump);
+					sprintf_s(battleMessage4, sizeof(battleMessage4), "%s%s%s%s", Players, characterName, ActionFinishSlump);
 				}
 				else
 				{
-					sprintf_s(battleMessage4, sizeof(battleMessage4), "%s%s%s%s", Enemys, characterName, ParticleHA, ActionFinishSlump);
+					sprintf_s(battleMessage4, sizeof(battleMessage4), "%s%s%s%s", Enemys, characterName, ActionFinishSlump);
 				}
 
 				settingMessagePattern = Message1Line;	// 次に文章を設定する行を1行目に設定
@@ -1856,11 +1856,11 @@ void Character::Become_Fine(bool healPoison)
 				/* +++ 1行目に文章を設定 +++ */
 				if (isPlayer)
 				{
-					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s%s", Players, characterName, ParticleHA, ActionFinishProtection);
+					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s%s", Players, characterName, ActionFinishProtection);
 				}
 				else
 				{
-					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s%s", Enemys, characterName, ParticleHA, ActionFinishProtection);
+					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s%s", Enemys, characterName, ActionFinishProtection);
 				}
 
 				settingMessagePattern = Message2Line;	// 次に文章を設定する行を2行目に設定
@@ -1872,11 +1872,11 @@ void Character::Become_Fine(bool healPoison)
 				/* +++ 2行目に文章を設定 +++ */
 				if (isPlayer)
 				{
-					sprintf_s(battleMessage2, sizeof(battleMessage2), "%s%s%s%s", Players, characterName, ParticleHA, ActionFinishProtection);
+					sprintf_s(battleMessage2, sizeof(battleMessage2), "%s%s%s%s", Players, characterName, ActionFinishProtection);
 				}
 				else
 				{
-					sprintf_s(battleMessage2, sizeof(battleMessage2), "%s%s%s%s", Enemys, characterName, ParticleHA, ActionFinishProtection);
+					sprintf_s(battleMessage2, sizeof(battleMessage2), "%s%s%s%s", Enemys, characterName, ActionFinishProtection);
 				}
 
 				settingMessagePattern = Message3Line;	// 次に文章を設定する行を3行目に設定
@@ -1888,11 +1888,11 @@ void Character::Become_Fine(bool healPoison)
 				/* +++ 3行目に文章を設定 +++ */
 				if (isPlayer)
 				{
-					sprintf_s(battleMessage3, sizeof(battleMessage3), "%s%s%s%s", Players, characterName, ParticleHA, ActionFinishProtection);
+					sprintf_s(battleMessage3, sizeof(battleMessage3), "%s%s%s%s", Players, characterName, ActionFinishProtection);
 				}
 				else
 				{
-					sprintf_s(battleMessage3, sizeof(battleMessage3), "%s%s%s%s", Enemys, characterName, ParticleHA, ActionFinishProtection);
+					sprintf_s(battleMessage3, sizeof(battleMessage3), "%s%s%s%s", Enemys, characterName, ActionFinishProtection);
 				}
 
 				settingMessagePattern = Message4Line;	// 次に文章を設定する行を4行目に設定
@@ -1904,11 +1904,11 @@ void Character::Become_Fine(bool healPoison)
 				/* +++ 4行目に文章を設定 +++ */
 				if (isPlayer)
 				{
-					sprintf_s(battleMessage4, sizeof(battleMessage4), "%s%s%s%s", Players, characterName, ParticleHA, ActionFinishProtection);
+					sprintf_s(battleMessage4, sizeof(battleMessage4), "%s%s%s%s", Players, characterName, ActionFinishProtection);
 				}
 				else
 				{
-					sprintf_s(battleMessage4, sizeof(battleMessage4), "%s%s%s%s", Enemys, characterName, ParticleHA, ActionFinishProtection);
+					sprintf_s(battleMessage4, sizeof(battleMessage4), "%s%s%s%s", Enemys, characterName, ActionFinishProtection);
 				}
 
 				settingMessagePattern = Message1Line;	// 次に文章を設定する行を1行目に設定
@@ -1934,11 +1934,11 @@ void Character::Become_Fine(bool healPoison)
 			/* +++ 1行目に文章を設定 +++ */
 			if (isPlayer)
 			{
-				sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s%s", Players, characterName, ParticleHA, ActionFinishAllStatus);
+				sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s%s", Players, characterName, ActionFinishAllStatus);
 			}
 			else
 			{
-				sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s%s", Enemys, characterName, ParticleHA, ActionFinishAllStatus);
+				sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s%s", Enemys, characterName, ActionFinishAllStatus);
 			}
 
 			settingMessagePattern = Message2Line;	// 次に文章を設定する行を2行目に設定
@@ -1950,11 +1950,11 @@ void Character::Become_Fine(bool healPoison)
 			/* +++ 2行目に文章を設定 +++ */
 			if (isPlayer)
 			{
-				sprintf_s(battleMessage2, sizeof(battleMessage2), "%s%s%s%s", Players, characterName, ParticleHA, ActionFinishAllStatus);
+				sprintf_s(battleMessage2, sizeof(battleMessage2), "%s%s%s%s", Players, characterName, ActionFinishAllStatus);
 			}
 			else
 			{
-				sprintf_s(battleMessage2, sizeof(battleMessage2), "%s%s%s%s", Enemys, characterName, ParticleHA, ActionFinishAllStatus);
+				sprintf_s(battleMessage2, sizeof(battleMessage2), "%s%s%s%s", Enemys, characterName, ActionFinishAllStatus);
 			}
 
 			settingMessagePattern = Message3Line;	// 次に文章を設定する行を3行目に設定
@@ -1966,11 +1966,11 @@ void Character::Become_Fine(bool healPoison)
 			/* +++ 3行目に文章を設定 +++ */
 			if (isPlayer)
 			{
-				sprintf_s(battleMessage3, sizeof(battleMessage3), "%s%s%s%s", Players, characterName, ParticleHA, ActionFinishAllStatus);
+				sprintf_s(battleMessage3, sizeof(battleMessage3), "%s%s%s%s", Players, characterName, ActionFinishAllStatus);
 			}
 			else
 			{
-				sprintf_s(battleMessage3, sizeof(battleMessage3), "%s%s%s%s", Enemys, characterName, ParticleHA, ActionFinishAllStatus);
+				sprintf_s(battleMessage3, sizeof(battleMessage3), "%s%s%s%s", Enemys, characterName, ActionFinishAllStatus);
 			}
 
 			settingMessagePattern = Message4Line;	// 次に文章を設定する行を4行目に設定
@@ -1982,11 +1982,11 @@ void Character::Become_Fine(bool healPoison)
 			/* +++ 4行目に文章を設定 +++ */
 			if (isPlayer)
 			{
-				sprintf_s(battleMessage4, sizeof(battleMessage4), "%s%s%s%s", Players, characterName, ParticleHA, ActionFinishAllStatus);
+				sprintf_s(battleMessage4, sizeof(battleMessage4), "%s%s%s%s", Players, characterName, ActionFinishAllStatus);
 			}
 			else
 			{
-				sprintf_s(battleMessage4, sizeof(battleMessage4), "%s%s%s%s", Enemys, characterName, ParticleHA, ActionFinishAllStatus);
+				sprintf_s(battleMessage4, sizeof(battleMessage4), "%s%s%s%s", Enemys, characterName, ActionFinishAllStatus);
 			}
 
 			settingMessagePattern = Message1Line;	// 次に文章を設定する行を1行目に設定
