@@ -39,7 +39,7 @@ public:
 	void MagicFire();		// ファイア-魔力参照の攻撃(MP:5)
 	void MagicThunder();	// サンダー-魔力参照の先制攻撃(MP:5)
 	void MagicIce();		// アイス-魔力参照の攻撃(MP:10)
-	void MagicHeal();		// ヒール-魔力参照の回復技(MP:10)
+	void MagicHeal();		// ヒール-魔力参照の状態異常も回復する回復技(MP:10)
 
 	void TPCharge();		// 精神統一-TPを回復する(TP:0)
 	void AllHeartSoul();	// 全霊斬り-攻撃力参照の攻撃(TP:0)

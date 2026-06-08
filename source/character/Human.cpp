@@ -1233,6 +1233,7 @@ void Human::MagicHeal()
 	}
 
 	HP_Calc(calcResult, ISHEAL, false);
+	Become_Fine(true);
 
 	Sound_Play(SE_MagicHeal);
 
