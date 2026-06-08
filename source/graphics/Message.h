@@ -103,9 +103,16 @@
 #define BattleEndMessage	"は倒れた"
 
 /* +++ ステータスUI +++ */
-#define StatusHP	"HP: "
-#define StatusMP	"MP: "
-#define StatusTP	"TP: "
+#define UIStatusHP			"HP: "
+#define UIStatusMP			"MP: "
+#define UIStatusTP			"TP: "
+#define UIStatusStatus		"ST: "
+#define UIStatusFine		"なし"
+#define UIStatusParalysis	"マヒ"
+#define UIStatusPoisoning	"どく"
+#define UIStatusSilence		"まふう"
+#define UIStatusSlump		"ふちょう"
+#define UIStatusProtection	"ほご"
 
 
 /* === キャラクター === */

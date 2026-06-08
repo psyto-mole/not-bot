@@ -1492,10 +1492,81 @@ void Character:: DrawStatusUI(bool isPlayer)
 		DrawBoxOnPoint(GameWindowWidth / 2 - 150, 90, 240, 180, Color_White, false, 5);		// UIを表示するボックスを描画
 		DrawBoxOnPoint(GameWindowWidth / 2 - 150, 25, 240, 50, Color_White, false, 5);		// 名前を表示するボックスを描画
 		DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 150, 25, FAlign_AllCenter, Color_White, MSMincho_30_1, "%s", characterName);	// キャラクターの名前を描画
-		DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 210, 60, FAlign_Left, Color_White, MSMincho_30_1, "%s%d", StatusHP, HP);		// 自身のHPを描画
-		DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 210, 90, FAlign_Left, Color_White, MSMincho_30_1, "%s%d", StatusMP, MP);		// 自身のMPを描画
-		DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 210, 120, FAlign_Left, Color_White, MSMincho_30_1, "%s%d", StatusTP, TP);		// 自身のTPを描画
-		DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 210, 150, FAlign_Left, Color_White, MSMincho_30_1, "Any: %d", 0);
+		DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 210, 60, FAlign_Left, Color_White, MSMincho_30_1, "%s%d", UIStatusHP, HP);		// 自身のHPを描画
+		DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 210, 90, FAlign_Left, Color_White, MSMincho_30_1, "%s%d", UIStatusMP, MP);		// 自身のMPを描画
+		DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 210, 120, FAlign_Left, Color_White, MSMincho_30_1, "%s%d", UIStatusTP, TP);		// 自身のTPを描画
+
+		if (ailmentPoisoning)	// 「毒」状態なら
+		{
+			/* +++ 状態に応じて処理を変える +++ */
+			switch (statusAilment)
+			{
+			case Fine:
+				/* +++ 「状態異常なし」なら +++ */
+
+				// 状態「毒」を描画
+				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 210, 150, FAlign_Left, Color_White, MSMincho_30_1, "%s%s", UIStatusPoisoning);
+				break;
+			case Paralysis:
+				/* +++ 「マヒ」状態なら +++ */
+
+				// 状態「マヒ」「毒」を描画
+				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 210, 150, FAlign_Left, Color_White, MSMincho_30_1, "%s%s %s", UIStatusParalysis, UIStatusPoisoning);
+				break;
+			case Silence:
+				/* +++ 「沈黙」状態なら +++ */
+
+				// 状態「沈黙」「毒」を描画
+				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 210, 150, FAlign_Left, Color_White, MSMincho_30_1, "%s%s %s", UIStatusSilence, UIStatusPoisoning);
+				break;
+			case Slump:
+				/* +++ 「不調」状態なら +++ */
+
+				// 状態「不調」「毒」を描画
+				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 210, 150, FAlign_Left, Color_White, MSMincho_30_1, "%s%s %s", UIStatusSlump, UIStatusPoisoning);
+				break;
+			default:
+				break;
+			}
+		}
+		else
+		{
+			switch (statusAilment)
+			{
+			case Fine:
+				/* +++ 「状態なし」なら +++ */
+
+				// 状態「なし」と描画
+				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 210, 150, FAlign_Left, Color_White, MSMincho_30_1, "%s%s", UIStatusFine);
+				break;
+			case Paralysis:
+				/* +++ 「マヒ」状態なら +++ */
+
+				// 状態「マヒ」を描画
+				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 210, 150, FAlign_Left, Color_White, MSMincho_30_1, "%s%s", UIStatusParalysis);
+				break;
+			case Silence:
+				/* +++ 「沈黙」状態なら +++ */
+
+				// 状態「沈黙」を描画
+				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 210, 150, FAlign_Left, Color_White, MSMincho_30_1, "%s%s", UIStatusSilence);
+				break;
+			case Slump:
+				/* +++ 「不調」状態なら +++ */
+
+				// 状態「不調」を描画
+				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 210, 150, FAlign_Left, Color_White, MSMincho_30_1, "%s%s", UIStatusSlump);
+				break;
+			case Protection:
+				/* +++ 「保護」状態なら +++ */
+
+				// 状態「保護」を描画
+				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 210, 150, FAlign_Left, Color_White, MSMincho_30_1, "%s%s", UIStatusProtection);
+				break;
+			default:
+				break;
+			}
+		}
 	}
 	else	// 敵キャラなら
 	{
@@ -1503,10 +1574,81 @@ void Character:: DrawStatusUI(bool isPlayer)
 		DrawBoxOnPoint(GameWindowWidth / 2 + 150, 90, 240, 180, Color_White, false, 5);		// UIを表示するボックスを描画
 		DrawBoxOnPoint(GameWindowWidth / 2 + 150, 25, 240, 50, Color_White, false, 5);		// 名前を表示するボックスを描画
 		DrawFormatStringToHandleAlign(GameWindowWidth / 2 + 150, 25, FAlign_AllCenter, Color_White, MSMincho_30_1, "%s", characterName);	// キャラクターの名前を描画
-		DrawFormatStringToHandleAlign(GameWindowWidth / 2 + 90, 60, FAlign_Left, Color_White, MSMincho_30_1, "%s%d", StatusHP, HP);			// 自身のHPを描画
-		DrawFormatStringToHandleAlign(GameWindowWidth / 2 + 90, 90, FAlign_Left, Color_White, MSMincho_30_1, "%s%d", StatusMP, MP);			// 自身のMPを描画
-		DrawFormatStringToHandleAlign(GameWindowWidth / 2 + 90, 120, FAlign_Left, Color_White, MSMincho_30_1, "%s%d", StatusTP, TP);		// 自身のTPを描画
-		DrawFormatStringToHandleAlign(GameWindowWidth / 2 + 90, 150, FAlign_Left, Color_White, MSMincho_30_1, "Any: %d", 0);
+		DrawFormatStringToHandleAlign(GameWindowWidth / 2 + 90, 60, FAlign_Left, Color_White, MSMincho_30_1, "%s%d", UIStatusHP, HP);		// 自身のHPを描画
+		DrawFormatStringToHandleAlign(GameWindowWidth / 2 + 90, 90, FAlign_Left, Color_White, MSMincho_30_1, "%s%d", UIStatusMP, MP);		// 自身のMPを描画
+		DrawFormatStringToHandleAlign(GameWindowWidth / 2 + 90, 120, FAlign_Left, Color_White, MSMincho_30_1, "%s%d", UIStatusTP, TP);		// 自身のTPを描画
+
+		if (ailmentPoisoning)	// 「毒」状態なら
+		{
+			/* +++ 状態に応じて処理を変える +++ */
+			switch (statusAilment)
+			{
+			case Fine:
+				/* +++ 「状態なし」なら +++ */
+
+				// 状態「毒」を描画
+				DrawFormatStringToHandleAlign(GameWindowWidth / 2 + 90, 150, FAlign_Left, Color_White, MSMincho_30_1, "%s%s", UIStatusStatus, UIStatusPoisoning);
+				break;
+			case Paralysis:
+				/* +++ 「マヒ」状態なら +++ */
+
+				// 状態「マヒ」「毒」を描画
+				DrawFormatStringToHandleAlign(GameWindowWidth / 2 + 90, 150, FAlign_Left, Color_White, MSMincho_30_1, "%s%s %s", UIStatusStatus, UIStatusParalysis, UIStatusPoisoning);
+				break;
+			case Silence:
+				/* +++ 「沈黙」状態なら +++ */
+
+				// 状態「沈黙」「毒」を描画
+				DrawFormatStringToHandleAlign(GameWindowWidth / 2 + 90, 150, FAlign_Left, Color_White, MSMincho_30_1, "%s%s %s", UIStatusStatus, UIStatusSilence, UIStatusPoisoning);
+				break;
+			case Slump:
+				/* +++ 「不調」状態なら +++ */
+
+				// 状態「不調」「毒」を描画
+				DrawFormatStringToHandleAlign(GameWindowWidth / 2 + 90, 150, FAlign_Left, Color_White, MSMincho_30_1, "%s%s %s", UIStatusStatus, UIStatusSlump, UIStatusPoisoning);
+				break;
+			default:
+				break;
+			}
+		}
+		else
+		{
+			switch (statusAilment)
+			{
+			case Fine:
+				/* +++ 「状態なし」なら +++ */
+
+				// 状態「なし」を描画
+				DrawFormatStringToHandleAlign(GameWindowWidth / 2 + 90, 150, FAlign_Left, Color_White, MSMincho_30_1, "%s%s", UIStatusStatus, UIStatusFine);
+				break;
+			case Paralysis:
+				/* +++ 「マヒ」状態なら +++ */
+
+				// 状態「マヒ」を描画
+				DrawFormatStringToHandleAlign(GameWindowWidth / 2 + 90, 150, FAlign_Left, Color_White, MSMincho_30_1, "%s%s", UIStatusStatus, UIStatusParalysis);
+				break;
+			case Silence:
+				/* +++ 「沈黙」状態なら +++ */
+
+				// 状態「沈黙」を描画
+				DrawFormatStringToHandleAlign(GameWindowWidth / 2 + 90, 150, FAlign_Left, Color_White, MSMincho_30_1, "%s%s", UIStatusStatus, UIStatusSilence);
+				break;
+			case Slump:
+				/* +++ 「不調」状態なら +++ */
+
+				// 状態「不調」を描画
+				DrawFormatStringToHandleAlign(GameWindowWidth / 2 + 90, 150, FAlign_Left, Color_White, MSMincho_30_1, "%s%s", UIStatusStatus, UIStatusSlump);
+				break;
+			case Protection:
+				/* +++ 「保護」状態なら +++ */
+
+				// 状態「保護」を描画
+				DrawFormatStringToHandleAlign(GameWindowWidth / 2 + 90, 150, FAlign_Left, Color_White, MSMincho_30_1, "%s%s", UIStatusStatus, UIStatusProtection);
+				break;
+			default:
+				break;
+			}
+		}
 	}
 }
 
