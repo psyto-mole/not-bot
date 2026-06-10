@@ -2158,6 +2158,77 @@ void Character::Become_Paralysis(int probability)
 		{
 			statusAilment = Paralysis;	// 「マヒ」の状態異常を設定
 			ailmentTurn = 1;			// 継続ターンに1をセット
+
+			/* +++ 文章を設定する行数によって処理を変える +++ */
+			switch (settingMessagePattern)
+			{
+			case Message1Line:
+				/* +++ 1行目なら +++ */
+
+				/* +++ 1行目に文章を設定 +++ */
+				if (isPlayer)
+				{
+					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Players, characterName, ActionGrantParalysis);
+				}
+				else
+				{
+					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Enemys, characterName, ActionGrantParalysis);
+				}
+
+				settingMessagePattern = Message2Line;	// 次に文章を設定する行を2行目に設定
+				displayMessagePattern = Message1Line;	// 表示する行数を1行に設定
+				break;
+			case Message2Line:
+				/* +++ 2行目なら +++ */
+
+				/* +++ 2行目に文章を設定 +++ */
+				if (isPlayer)
+				{
+					sprintf_s(battleMessage2, sizeof(battleMessage2), "%s%s%s", Players, characterName, ActionGrantParalysis);
+				}
+				else
+				{
+					sprintf_s(battleMessage2, sizeof(battleMessage2), "%s%s%s", Enemys, characterName, ActionGrantParalysis);
+				}
+
+				settingMessagePattern = Message3Line;	// 次に文章を設定する行を3行目に設定
+				displayMessagePattern = Message2Line;	// 表示する行数を2行に設定
+				break;
+			case Message3Line:
+				/* +++ 3行目なら +++ */
+
+				/* +++ 3行目に文章を設定 +++ */
+				if (isPlayer)
+				{
+					sprintf_s(battleMessage3, sizeof(battleMessage3), "%s%s%s", Players, characterName, ActionGrantParalysis);
+				}
+				else
+				{
+					sprintf_s(battleMessage3, sizeof(battleMessage3), "%s%s%s", Enemys, characterName, ActionGrantParalysis);
+				}
+
+				settingMessagePattern = Message4Line;	// 次に文章を設定する行を4行目に設定
+				displayMessagePattern = Message3Line;	// 表示する行数を3行に設定
+				break;
+			case Message4Line:
+				/* +++ 4行目なら +++ */
+
+				/* +++ 4行目に文章を設定 +++ */
+				if (isPlayer)
+				{
+					sprintf_s(battleMessage4, sizeof(battleMessage4), "%s%s%s", Players, characterName, ActionGrantParalysis);
+				}
+				else
+				{
+					sprintf_s(battleMessage4, sizeof(battleMessage4), "%s%s%s", Enemys, characterName, ActionGrantParalysis);
+				}
+
+				settingMessagePattern = Message1Line;	// 次に文章を設定する行を1行目に設定
+				displayMessagePattern = Message4Line;	// 表示する行数を4行に設定
+				break;
+			default:
+				break;
+			}
 		}
 	}
 
@@ -2176,6 +2247,77 @@ void Character::Become_Poisoning(int probability)
 		if (statusAilment != Protection)	// 「保護」状態でないなら
 		{
 			ailmentPoisoning = true;
+
+			/* +++ 文章を設定する行数によって処理を変える +++ */
+			switch (settingMessagePattern)
+			{
+			case Message1Line:
+				/* +++ 1行目なら +++ */
+
+				/* +++ 1行目に文章を設定 +++ */
+				if (isPlayer)
+				{
+					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Players, characterName, ActionGrantPoisoning);
+				}
+				else
+				{
+					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Enemys, characterName, ActionGrantPoisoning);
+				}
+
+				settingMessagePattern = Message2Line;	// 次に文章を設定する行を2行目に設定
+				displayMessagePattern = Message1Line;	// 表示する行数を1行に設定
+				break;
+			case Message2Line:
+				/* +++ 2行目なら +++ */
+
+				/* +++ 2行目に文章を設定 +++ */
+				if (isPlayer)
+				{
+					sprintf_s(battleMessage2, sizeof(battleMessage2), "%s%s%s", Players, characterName, ActionGrantPoisoning);
+				}
+				else
+				{
+					sprintf_s(battleMessage2, sizeof(battleMessage2), "%s%s%s", Enemys, characterName, ActionGrantPoisoning);
+				}
+
+				settingMessagePattern = Message3Line;	// 次に文章を設定する行を3行目に設定
+				displayMessagePattern = Message2Line;	// 表示する行数を2行に設定
+				break;
+			case Message3Line:
+				/* +++ 3行目なら +++ */
+
+				/* +++ 3行目に文章を設定 +++ */
+				if (isPlayer)
+				{
+					sprintf_s(battleMessage3, sizeof(battleMessage3), "%s%s%s", Players, characterName, ActionGrantPoisoning);
+				}
+				else
+				{
+					sprintf_s(battleMessage3, sizeof(battleMessage3), "%s%s%s", Enemys, characterName, ActionGrantPoisoning);
+				}
+
+				settingMessagePattern = Message4Line;	// 次に文章を設定する行を4行目に設定
+				displayMessagePattern = Message3Line;	// 表示する行数を3行に設定
+				break;
+			case Message4Line:
+				/* +++ 4行目なら +++ */
+
+				/* +++ 4行目に文章を設定 +++ */
+				if (isPlayer)
+				{
+					sprintf_s(battleMessage4, sizeof(battleMessage4), "%s%s%s", Players, characterName, ActionGrantPoisoning);
+				}
+				else
+				{
+					sprintf_s(battleMessage4, sizeof(battleMessage4), "%s%s%s", Enemys, characterName, ActionGrantPoisoning);
+				}
+
+				settingMessagePattern = Message1Line;	// 次に文章を設定する行を1行目に設定
+				displayMessagePattern = Message4Line;	// 表示する行数を4行に設定
+				break;
+			default:
+				break;
+			}
 		}
 	}
 
@@ -2195,6 +2337,77 @@ void Character::Become_Silence(int probability)
 		{
 			statusAilment = Silence;	// 「沈黙」の状態異常を設定
 			ailmentTurn = 3;			// 継続ターンに3をセット
+
+			/* +++ 文章を設定する行数によって処理を変える +++ */
+			switch (settingMessagePattern)
+			{
+			case Message1Line:
+				/* +++ 1行目なら +++ */
+
+				/* +++ 1行目に文章を設定 +++ */
+				if (isPlayer)
+				{
+					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Players, characterName, ActionGrantSilence);
+				}
+				else
+				{
+					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Enemys, characterName, ActionGrantSilence);
+				}
+
+				settingMessagePattern = Message2Line;	// 次に文章を設定する行を2行目に設定
+				displayMessagePattern = Message1Line;	// 表示する行数を1行に設定
+				break;
+			case Message2Line:
+				/* +++ 2行目なら +++ */
+
+				/* +++ 2行目に文章を設定 +++ */
+				if (isPlayer)
+				{
+					sprintf_s(battleMessage2, sizeof(battleMessage2), "%s%s%s", Players, characterName, ActionGrantSilence);
+				}
+				else
+				{
+					sprintf_s(battleMessage2, sizeof(battleMessage2), "%s%s%s", Enemys, characterName, ActionGrantSilence);
+				}
+
+				settingMessagePattern = Message3Line;	// 次に文章を設定する行を3行目に設定
+				displayMessagePattern = Message2Line;	// 表示する行数を2行に設定
+				break;
+			case Message3Line:
+				/* +++ 3行目なら +++ */
+
+				/* +++ 3行目に文章を設定 +++ */
+				if (isPlayer)
+				{
+					sprintf_s(battleMessage3, sizeof(battleMessage3), "%s%s%s", Players, characterName, ActionGrantSilence);
+				}
+				else
+				{
+					sprintf_s(battleMessage3, sizeof(battleMessage3), "%s%s%s", Enemys, characterName, ActionGrantSilence);
+				}
+
+				settingMessagePattern = Message4Line;	// 次に文章を設定する行を4行目に設定
+				displayMessagePattern = Message3Line;	// 表示する行数を3行に設定
+				break;
+			case Message4Line:
+				/* +++ 4行目なら +++ */
+
+				/* +++ 4行目に文章を設定 +++ */
+				if (isPlayer)
+				{
+					sprintf_s(battleMessage4, sizeof(battleMessage4), "%s%s%s", Players, characterName, ActionGrantSilence);
+				}
+				else
+				{
+					sprintf_s(battleMessage4, sizeof(battleMessage4), "%s%s%s", Enemys, characterName, ActionGrantSilence);
+				}
+
+				settingMessagePattern = Message1Line;	// 次に文章を設定する行を1行目に設定
+				displayMessagePattern = Message4Line;	// 表示する行数を4行に設定
+				break;
+			default:
+				break;
+			}
 		}
 	}
 
@@ -2214,6 +2427,77 @@ void Character::Become_Slump(int probability)
 		{
 			statusAilment = Slump;	// 「不調」の状態異常を設定
 			ailmentTurn = 3;		// 継続ターンに3をセット
+
+			/* +++ 文章を設定する行数によって処理を変える +++ */
+			switch (settingMessagePattern)
+			{
+			case Message1Line:
+				/* +++ 1行目なら +++ */
+
+				/* +++ 1行目に文章を設定 +++ */
+				if (isPlayer)
+				{
+					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Players, characterName, ActionGrantSlump);
+				}
+				else
+				{
+					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Enemys, characterName, ActionGrantSlump);
+				}
+
+				settingMessagePattern = Message2Line;	// 次に文章を設定する行を2行目に設定
+				displayMessagePattern = Message1Line;	// 表示する行数を1行に設定
+				break;
+			case Message2Line:
+				/* +++ 2行目なら +++ */
+
+				/* +++ 2行目に文章を設定 +++ */
+				if (isPlayer)
+				{
+					sprintf_s(battleMessage2, sizeof(battleMessage2), "%s%s%s", Players, characterName, ActionGrantSlump);
+				}
+				else
+				{
+					sprintf_s(battleMessage2, sizeof(battleMessage2), "%s%s%s", Enemys, characterName, ActionGrantSlump);
+				}
+
+				settingMessagePattern = Message3Line;	// 次に文章を設定する行を3行目に設定
+				displayMessagePattern = Message2Line;	// 表示する行数を2行に設定
+				break;
+			case Message3Line:
+				/* +++ 3行目なら +++ */
+
+				/* +++ 3行目に文章を設定 +++ */
+				if (isPlayer)
+				{
+					sprintf_s(battleMessage3, sizeof(battleMessage3), "%s%s%s", Players, characterName, ActionGrantSlump);
+				}
+				else
+				{
+					sprintf_s(battleMessage3, sizeof(battleMessage3), "%s%s%s", Enemys, characterName, ActionGrantSlump);
+				}
+
+				settingMessagePattern = Message4Line;	// 次に文章を設定する行を4行目に設定
+				displayMessagePattern = Message3Line;	// 表示する行数を3行に設定
+				break;
+			case Message4Line:
+				/* +++ 4行目なら +++ */
+
+				/* +++ 4行目に文章を設定 +++ */
+				if (isPlayer)
+				{
+					sprintf_s(battleMessage4, sizeof(battleMessage4), "%s%s%s", Players, characterName, ActionGrantSlump);
+				}
+				else
+				{
+					sprintf_s(battleMessage4, sizeof(battleMessage4), "%s%s%s", Enemys, characterName, ActionGrantSlump);
+				}
+
+				settingMessagePattern = Message1Line;	// 次に文章を設定する行を1行目に設定
+				displayMessagePattern = Message4Line;	// 表示する行数を4行に設定
+				break;
+			default:
+				break;
+			}
 		}
 	}
 
@@ -2229,6 +2513,77 @@ void Character::Become_Protection(int continueTurn)
 	if (ailmentPoisoning)	// 「毒」状態なら
 	{
 		ailmentPoisoning = false;	// 「毒」を回復
+	}
+
+	/* +++ 文章を設定する行数によって処理を変える +++ */
+	switch (settingMessagePattern)
+	{
+	case Message1Line:
+		/* +++ 1行目なら +++ */
+
+		/* +++ 1行目に文章を設定 +++ */
+		if (isPlayer)
+		{
+			sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Players, characterName, ActionGrantProtection);
+		}
+		else
+		{
+			sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Enemys, characterName, ActionGrantProtection);
+		}
+
+		settingMessagePattern = Message2Line;	// 次に文章を設定する行を2行目に設定
+		displayMessagePattern = Message1Line;	// 表示する行数を1行に設定
+		break;
+	case Message2Line:
+		/* +++ 2行目なら +++ */
+
+		/* +++ 2行目に文章を設定 +++ */
+		if (isPlayer)
+		{
+			sprintf_s(battleMessage2, sizeof(battleMessage2), "%s%s%s", Players, characterName, ActionGrantProtection);
+		}
+		else
+		{
+			sprintf_s(battleMessage2, sizeof(battleMessage2), "%s%s%s", Enemys, characterName, ActionGrantProtection);
+		}
+
+		settingMessagePattern = Message3Line;	// 次に文章を設定する行を3行目に設定
+		displayMessagePattern = Message2Line;	// 表示する行数を2行に設定
+		break;
+	case Message3Line:
+		/* +++ 3行目なら +++ */
+
+		/* +++ 3行目に文章を設定 +++ */
+		if (isPlayer)
+		{
+			sprintf_s(battleMessage3, sizeof(battleMessage3), "%s%s%s", Players, characterName, ActionGrantProtection);
+		}
+		else
+		{
+			sprintf_s(battleMessage3, sizeof(battleMessage3), "%s%s%s", Enemys, characterName, ActionGrantProtection);
+		}
+
+		settingMessagePattern = Message4Line;	// 次に文章を設定する行を4行目に設定
+		displayMessagePattern = Message3Line;	// 表示する行数を3行に設定
+		break;
+	case Message4Line:
+		/* +++ 4行目なら +++ */
+
+		/* +++ 4行目に文章を設定 +++ */
+		if (isPlayer)
+		{
+			sprintf_s(battleMessage4, sizeof(battleMessage4), "%s%s%s", Players, characterName, ActionGrantProtection);
+		}
+		else
+		{
+			sprintf_s(battleMessage4, sizeof(battleMessage4), "%s%s%s", Enemys, characterName, ActionGrantProtection);
+		}
+
+		settingMessagePattern = Message1Line;	// 次に文章を設定する行を1行目に設定
+		displayMessagePattern = Message4Line;	// 表示する行数を4行に設定
+		break;
+	default:
+		break;
 	}
 
 	return;

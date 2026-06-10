@@ -1247,7 +1247,7 @@ void Noname::TentativePoison()
 
 	calcResult = (int)(Attack * 1.1);	// UŒ‚—Í‚É•â³‚ğ‚Ì‚¹‚é
 
-	settingMessagePattern = Message3Line;
+	settingMessagePattern = Message2Line;
 	displayMessagePattern = Message3Line;
 
 	if (isPlayer)

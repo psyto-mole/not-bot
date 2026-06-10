@@ -9,20 +9,25 @@
 #define ResponseYes	"はい"		// 回答文「はい」
 #define ResponseNo	"いいえ"	// 回答文「いいえ」
 
+
 /* +++ 助詞 +++ */
 #define ParticleHA	"は"
 
+
 /* +++ 「back」ボタン +++ */
 #define BackButtonText	"戻る"	// 「戻る」ボタンのテキスト
+
 
 /* +++ プレイヤー +++ */
 #define NamePlayer	"プレイヤー"
 #define NameEnemy	"エネミー"
 
 
+
 /* === シーンマネージャ === */
 #define FlagStatusTrue		"true"		// 「true」の文字列(デバッグ用)
 #define FlagStatusFalse		"false"		// 「false」の文字列(デバッグ用)
+
 
 
 /* === システムメニュー === */
@@ -39,12 +44,15 @@
 #define DetailCredit		"仕様楽曲などを表示します"
 #define DetailBackMenu		"メニューを閉じゲームに戻ります"
 
+
 /* +++ データ消去画面 +++ */
 #define QuestionDeleteData1		"ゲームデータを消去しますか?"
 #define QuestionDeleteData2		"※消去したデータは戻せません"
 
+
 /* +++ ゲームの終了 +++ */
 #define QuestionGameEnd		"ゲームを終了しますか?"
+
 
 /* +++ クレジット +++ */
 #define MusicUsed		"使用楽曲"
@@ -52,13 +60,16 @@
 #define SoundEffectLab	"効果音ラボ"
 
 
+
 /* === 偽のタイトル画面 === */
 #define FakeTitle	"Desktop Adventure"
+
 
 
 /* === タイトル画面 === */
 #define GameTitle	"Not Bot"		// ゲームのタイトル
 #define PressEnter	"Press Enter"	// Press Enterの文字列
+
 
 
 /* === リザルト画面 === */
@@ -67,8 +78,10 @@
 #define ResultWinMessage		"WIN"				// 勝利タイトル
 
 
+
 /* === ゲームオーバー画面 === */
 #define GameOverTitle	"Game Over"		// ゲームオーバー画面のタイトル
+
 
 
 /* === キャラクターセレクト画面 === */
@@ -79,6 +92,7 @@
 #define PlayerQuestionHead		"あなたは"			// 自キャラについての質問の文章1
 #define PlayerQuestionBottom	"ですか？"			// 自キャラについての質問の文章2
 
+
 /* +++ キャラクター名 +++ */
 #define CharacterNameRobot		"ロボット"		// キャラクター名「ロボット」
 #define CharacterNameHuman		"勇者"			// キャラクター名「勇者」
@@ -87,9 +101,11 @@
 #define CharacterNameNoname		"キュー(仮)"	// キャラクター名「キュー(仮)」
 #define CharacterNameShepp		"Shepp"			// キャラクター名「Shepp」
 
+
 /* +++ 修飾 +++ */
 #define Players		"Playerの"
 #define Enemys		"Enemyの"
+
 
 
 /* === バトル画面 === */
@@ -99,8 +115,10 @@
 #define BattleSceneBattle	"Battle Fase"	// バトルフェイズ
 #define BattleSceneEnd		"End Fase"		// エンドフェイズ
 
+
 /* +++ バトル終了メッセージ +++ */
 #define BattleEndMessage	"は倒れた"
+
 
 /* +++ ステータスUI +++ */
 #define UIStatusHP			"HP: "
@@ -115,12 +133,14 @@
 #define UIStatusProtection	"ほご"
 
 
+
 /* === キャラクター === */
 /* +++ 行動選択肢(共通項目) +++ */
 #define OptionAttack	"攻撃"
 #define OptionMagic		"魔法"
 #define OptionSpecial	"特技"
 #define OptionDefence	"防御"
+
 
 /* +++ 選択肢の詳細(共通項目) +++ */
 #define DetailOfNormalAttack	"通常攻撃を行う"
@@ -136,23 +156,34 @@
 #define DetailUnavilableMaxMP	"MPが最大では使えない"
 #define DetailUnavilableNever	"すでに使用している"
 
+
 /* +++行動の内容(共通項目)  +++ */
 #define ActionNormalAttack		"の攻撃!"
 #define ActionNormalDefence		"は守りを固めている"
 #define ActionAttackMiss		"は攻撃を外した"
+
 #define ActionStatusParalysis	"はマヒして身体が動かない"
 #define ActionStatusSilence		"は魔法を唱えられない"
 #define ActionStatusSlump		"は特技に失敗した"
+
 #define ActionFinishParalysis	"の身体のシビレが消えた"
 #define ActionFinishSilence		"は魔法を唱えられるようになった"
 #define ActionFinishSlump		"は調子を取り戻した"
 #define ActionFinishProtection	"を保護していた守りが消えた"
 #define ActionFinishAllStatus	"の状態が全て戻った"
+
+#define ActionGrantParalysis	"は身体が痺れた"
+#define ActionGrantPoisoning	"は毒に冒された"
+#define ActionGrantSilence		"は魔法の詠唱を封じられた"
+#define ActionGrantSlump		"は特技の不調に陥った"
+#define ActionGrantProtection	"を状態異常を防ぐ衣が包んだ"
+
 #define TakeDamage				"のダメージを受けた"
 #define HealStatus				"回復した"
 #define DamageStatus			"のダメージを受けた"
 #define EnhanceStatus			"アップした"
 #define ReductionStatus			"ダウンした"
+
 #define PhraseMaxHP				"の最大HPが"
 #define PhraseHP				"のHPが"
 #define PhraseMP				"のMPが"
@@ -165,6 +196,7 @@
 #define PhrasePoisoning			"毒により"
 
 
+
 /* === ロボット === */
 /* +++ 技選択肢(ロボット) +++ */
 #define OptionFlameThrower	"火炎放射"
@@ -175,6 +207,7 @@
 #define OptionTripleBarrage	"三連砲撃"
 #define Option33Crossfire	"三三砲撃"	// いったんボツ
 
+
 /* +++ 選択肢の説明(ロボット) +++ */
 #define DetailOfFlameThrower1	"炎を相手に噴射し燃やし尽くす(TP: 10)"
 #define DetailOfFlameThrower2	"TPが50以上のとき追加でTPを30消費し威力アップ"
@@ -182,12 +215,14 @@
 #define DetailOfMagicShut		"魔力を遮断するバリアを張って魔法守備力を50上昇させる(TP: 15)"
 #define DetailOfTripleBarrage	"連続で3発の砲撃を行う(TP: 25)"
 
+
 /* +++行動の内容(ロボット)  +++ */
 #define ActionFlameThrower1		"は赤橙の火炎を噴射した!"
 #define ActionFlameThrower2		"から縹色の大火が噴きあがる!"
 #define ActionSteelization		"は身体を鋼鉄のように硬くした"
 #define ActionMagicShut			"は魔力遮断のバリアを展開した"
 #define ActionTripleBarrage		"の3連続の砲撃!"
+
 
 
 /* === 勇者 === */
@@ -202,6 +237,7 @@
 #define OptionMPCharge			"魔力補給"
 #define OptionGatherEnergy		"気合"
 
+
 /* +++ 選択肢の説明(勇者) +++ */
 #define DetailOfMagicFire		"小さな火の玉を打ち出す(MP: 5)"
 #define DetailOfMagicThunder1	"雷の力で攻撃する魔法(MP: 5)"
@@ -213,6 +249,7 @@
 #define DetailOfAllHeartSoul	"全身全霊で相手に斬りかかる(TP: 10)"
 #define DetailOfMPCharge		"TPをMPに変換して補給する(TP: 15)"
 #define DetailOfGatherEnergy	"気合を込めて攻撃力を上昇させる(TP: 15)"
+
 
 /* +++ 行動の内容(勇者) +++ */
 #define ActionMagicFire		"は小さな火の玉を放った!"
@@ -226,6 +263,7 @@
 #define ActionGatherEnergy	"は気合を込めている"
 
 
+
 /* === ドラゴン === */
 /* +++ 選択肢(ドラゴン) +++ */
 #define OptionMagicPillar	"ピラー"
@@ -237,6 +275,7 @@
 #define OptionDestructBreath	"破壊の息"
 #define OptionAbsorbAtmosphere	"大気吸収"
 
+
 /* +++ 選択肢の説明(ドラゴン) +++ */
 #define DetailOfMagicPillar		"炎の柱を召喚し攻撃する(MP: 15)"
 #define DetailOfMagicFung		"魔力を牙に変えて攻撃する(MP: 20)"
@@ -247,6 +286,7 @@
 #define DetailOfDestructBreath		"全てを破壊するブレス攻撃(TP: 25)"
 #define DetailOfAbsorbAtmosphere	"大気を吸収し魔力を回復する(TP: 40)"
 
+
 /* +++ 行動の内容(ドラゴン) +++ */
 #define ActionMagicPillar	"は燃え盛る火柱を生み出した!"
 #define ActionMagicFung		"は魔力を巨大な牙に変えた!"
@@ -256,6 +296,7 @@
 #define ActionImmortalScale		"の鱗が淡く輝く!"
 #define ActionDestructBreath	"は全てを破壊する息を吐き出した!"
 #define ActionAbsorbAtmosphere	"は周囲の大気を取り込んだ"
+
 
 
 /* === ダイトメア === */
@@ -270,6 +311,7 @@
 #define OptionKebehsenuev	"ケベフス"
 #define OptionDuamtef		"ドゥアムタ"
 
+
 /* +++ 選択肢の説明(ダイトメア) +++ */
 #define DetailOfMagicSaros		"1ターンチャージして放つ魔法攻撃(MP: 15)"
 #define DetailOfMagicDeus		"最大HPを増やし、HPも回復する(MP: 20)"
@@ -280,6 +322,7 @@
 #define DetailOfHarpy			"必ず先制攻撃できる物理攻撃(TP: 15)"
 #define DetailOfKebehsenuev		"魔力参照のブレス攻撃(TP: 15)"
 #define DetailOfDuamtef			"物理、魔法ブレスの同時攻撃(TP: 45)"
+
 
 /* +++ 行動の内容(ダイトメア) +++ */
 #define ActionMagicSaros1	"は魔力を溜めている"
@@ -294,6 +337,7 @@
 #define ActionDuamtef		"は大地を轟かせる!"
 
 
+
 /* === キュー(仮) === */
 /* +++ 選択肢(キュー(仮)) +++ */
 #define OptionMagicTentativeDark	"ダーク(仮)"
@@ -306,6 +350,7 @@
 #define OptionTentativeStance		"構え(仮)"
 #define OptionTentativeSevereBlow	"痛打(仮)"
 
+
 /* +++ 選択肢の説明(キュー(仮)) +++ */
 #define DetailOfMagicTentativeDark		"闇の魔力で攻撃し、たまに相手の魔法を封じるようだ(MP: 10)"
 #define DetailOfMagicTentativeLight		"光の魔力で攻撃し、たまに相手の特技を封じるようだ(MP: 10)"
@@ -317,6 +362,7 @@
 #define DetailOfTentativeStance			"使うほどに守備力が上昇するようだ(TP: 25)"
 #define DetailOfTentativeSevereBlow		"相手に致命の攻撃を叩き込むことがあるようだ(TP: 40)"
 
+
 /* +++ 行動の内容(キュー(仮)) +++ */
 #define ActionMagicTentativeDark	"は闇の魔力を放出した"
 #define ActionMagicTentativeLight	"は光の魔力を放出した"
@@ -327,6 +373,7 @@
 #define ActionTentativePoison		"は毒の刃で斬り込んだ"
 #define ActionTentativeStance		"は構えた"
 #define ActionTentativeSevereBlow	"は腹部と頭部に打撃を叩き込んだ"
+
 
 
 /* === shepp === */
@@ -341,6 +388,7 @@
 #define OptionSigma		"Σ"
 #define OptionEta		"η"
 
+
 /* +++ 選択肢の説明(shepp) +++ */
 #define DetailOfMagicMu			"???(MP: 30)"
 #define DetailOfMagicNu			"???(MP: 30)"
@@ -351,6 +399,7 @@
 #define DetailOfOmega			"???(TP: 25)"
 #define DetailOfSigma			"???(TP: 35)"
 #define DetailOfEta				"???(TP: 100)"
+
 
 /* +++ 行動の内容(shepp) +++ */
 #define ActionMagicMu		"Yu-ARC-is! Gi-indefensible Oh V"
