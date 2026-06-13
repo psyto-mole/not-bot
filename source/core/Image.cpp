@@ -4,10 +4,12 @@
 
 int FakeImageHandle;	// 偽のタイトル画面の背景画像のハンドル
 
-int RobotImageHandle;	// ロボットの画像のハンドル
-int HumanImageHandle;	// 人間の画像のハンドル
-int DragonImageHandle;	// ドラゴンの画像のハンドル
-int SheppImageHandle;	// Sheppの画像のハンドル
+int RobotImageHandle;		// ロボットの画像のハンドル
+int HumanImageHandle;		// 人間の画像のハンドル
+int DragonImageHandle;		// ドラゴンの画像のハンドル
+int DightmareImageHandle;	// ダイトメアの画像のハンドル
+int NonameImageHandle;		// キューの画像のハンドル
+int SheppImageHandle;		// Sheppの画像のハンドル
 
 
 /* --- 画像の初期化関数 --- */
@@ -15,15 +17,33 @@ int Image_Init(void)
 {
 	FakeImageHandle		= LoadGraph(FAKEIMAGEPATH);		// 偽のタイトルシーンの背景画像の読み込み・ハンドル取得
 
-	RobotImageHandle	= LoadGraph(ROBOTIMAGEPATH);	// ロボット画像の読み込み・ハンドル取得
-	HumanImageHandle	= LoadGraph(HUMANIMAGEPATH);	// 人間画像の読み込み・ハンドル取得
-	DragonImageHandle	= LoadGraph(DRAGONIMAGEPATH);	// ドラゴン画像の読み込み・ハンドル取得
-	SheppImageHandle	= LoadGraph(SHEPPIMAGEPATH);	// Shepp画像の読み込み・ハンドル取得
+	RobotImageHandle		= LoadGraph(ROBOTIMAGEPATH);		// ロボット画像の読み込み・ハンドル取得
+	HumanImageHandle		= LoadGraph(HUMANIMAGEPATH);		// 人間画像の読み込み・ハンドル取得
+	DragonImageHandle		= LoadGraph(DRAGONIMAGEPATH);		// ドラゴン画像の読み込み・ハンドル取得
+	DightmareImageHandle	= LoadGraph(DIGHTMAREIMAGEPATH);	// ダイトメア画像の読み込み・ハンドル取得
+	NonameImageHandle		= LoadGraph(NONAMEIMAGEPATH);		// キュー画像の読み込み・ハンドル取得
+	SheppImageHandle		= LoadGraph(SHEPPIMAGEPATH);		// Shepp画像の読み込み・ハンドル取得
 
 	/* +++ 画像の読み込みが成功しなければエラーメッセージを表示し終了させる +++ */
+	if (FakeImageHandle == -1)
+	{
+		// エラーメッセージの表示
+		MessageBox(
+			GetMainWindowHandle(),
+			"Image Error",
+			"Scene Image",
+			MB_OK
+		);
+
+		return -1;	// エラーで終了(-1を返す)
+	}
+
+
 	if (RobotImageHandle == -1
 		|| HumanImageHandle == -1
 		|| DragonImageHandle == -1
+		|| DightmareImageHandle == -1
+		|| NonameImageHandle == -1
 		|| SheppImageHandle == -1
 		)
 	{
@@ -31,7 +51,7 @@ int Image_Init(void)
 		MessageBox(
 			GetMainWindowHandle(),
 			"Image Error",
-			"Error",
+			"Character Image",
 			MB_OK
 		);
 
@@ -49,6 +69,8 @@ void Image_End()
 	DeleteGraph(RobotImageHandle);		// ロボット画像の削除(メモリの解放)
 	DeleteGraph(HumanImageHandle);		// 人間画像の削除(メモリの解放)
 	DeleteGraph(DragonImageHandle);		// ドラゴン画像の削除(メモリの解放)
+	DeleteGraph(DightmareImageHandle);	// ダイトメア画像の削除(メモリの解放)
+	DeleteGraph(NonameImageHandle);		// キュー画像の削除(メモリの解放)
 	DeleteGraph(SheppImageHandle);		// Shepp画像の削除(メモリの解放)
 
 	return;
