@@ -88,7 +88,8 @@
 /* +++ 質問文 +++ */
 #define EnemyQuestionHead		"私は"				// 敵キャラについての質問の文章1
 #define EnemyQuestionBottom		"ではありません"	// 敵キャラについての質問の文章2
-#define BothQuestionNone		"名もなき存在"		// 敵、自キャラ共通の質問文
+#define BothQuestionDightmare	"存在"				// ダイトメアに関する敵、自キャラ共通の質問文
+#define BothQuestionNoname		"名無し"			// キューに関する敵、自キャラ共通の質問文
 #define PlayerQuestionHead		"あなたは"			// 自キャラについての質問の文章1
 #define PlayerQuestionBottom	"ですか？"			// 自キャラについての質問の文章2
 

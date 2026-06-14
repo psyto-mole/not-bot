@@ -12,7 +12,7 @@
 #define GameColor			32					// ゲームに使用するカラー(32bit)
 #define GameFPS				60					// ゲームのFPS
 
-#define CharacterNumber		3	// キャラクターの種類 - 1(???の分を引く)
+#define CharacterNumber		5	// キャラクターの種類 - 1(shepの分を引く)
 
 #define BattleSceneFPS		150		// バトルシーン中のFPS設定(GameFPS / BattleSceneFPSの値がバトルシーン中のFPSとなる)
 

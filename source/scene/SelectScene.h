@@ -14,7 +14,7 @@
 #define SelectBoxInterval		30	// 選択肢を選んでから次のメッセージボックス表示までのインターバル
 
 
-extern int QuestionNumber;		// 質問の番号を格納する変数
+extern int questionNumber;		// 質問の番号を格納する変数
 
 extern char CharacterKind[CharacterNameLength];		// メッセージ用のキャラクターの種類を格納する配列
 

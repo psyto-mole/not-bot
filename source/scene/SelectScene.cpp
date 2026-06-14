@@ -13,7 +13,7 @@
 #include "RectParameter.h"
 
 
-int QuestionNumber;		// 質問の番号を格納する変数
+int questionNumber;		// 質問の番号を格納する変数
 
 char CharacterKind[CharacterNameLength];	// メッセージ用のキャラクターの種類を格納する変数
 
@@ -23,7 +23,7 @@ int SelectScene_Init()
 {
 	int i;
 
-	QuestionNumber = 1;		// 質問番号の初期化
+	questionNumber = 1;		// 質問番号の初期化
 	enemyKindNumber = 0;	// 敵キャラの初期化
 	playerKindNumber = 0;	// 自キャラの初期化
 
@@ -51,7 +51,7 @@ void SelectScene_Process()
 	/* +++ 質問番号に応じ、キャラクターの種類の配列にキャラクター名を格納する +++ */
 	if (enemyKindNumber == 0 || playerKindNumber == 0)	// 敵キャラまたは自キャラが決定していない
 	{
-		switch (QuestionNumber)
+		switch (questionNumber)
 		{
 		case 1:
 			/* +++ 1問目の場合 +++ */
@@ -70,6 +70,18 @@ void SelectScene_Process()
 
 			// 文字列「ドラゴン」を格納
 			sprintf_s(CharacterKind, sizeof(CharacterKind), CharacterNameDragon);
+			break;
+		case 4:
+			/* +++ 4問目の場合 +++ */
+
+			// 文字列「ドラゴン」を格納
+			sprintf_s(CharacterKind, sizeof(CharacterKind), CharacterNameDightmare);
+			break;
+		case 5:
+			/* +++ 5問目の場合 +++ */
+
+			// 文字列「ドラゴン」を格納
+			sprintf_s(CharacterKind, sizeof(CharacterKind), CharacterNameNoname);
 			break;
 		default:
 			break;
@@ -90,19 +102,19 @@ void SelectScene_Process()
 
 			if (enemyKindNumber == 0)	// 敵キャラが決まっていないなら
 			{
-				QuestionNumber += 1;	// 質問番号を1増やす
+				questionNumber += 1;	// 質問番号を1増やす
 
 				// 質問番号がキャラクター数を超えたら
-				if (QuestionNumber > CharacterNumber) 
+				if (questionNumber > CharacterNumber) 
 				{
 					enemyKindNumber = 99;	// 敵キャラの識別番号を99に設定
-					QuestionNumber = 1;		// 質問番号を1にもどす
+					questionNumber = 1;		// 質問番号を1にもどす
 				}
 			}
 			else if (playerKindNumber == 0)	// 自キャラが決まっていないなら
 			{
-				playerKindNumber = QuestionNumber;	// 自キャラの識別番号に質問番号を設定
-				QuestionNumber = 1;					// 質問番号を1に戻す
+				playerKindNumber = questionNumber;	// 自キャラの識別番号に質問番号を設定
+				questionNumber = 1;					// 質問番号を1に戻す
 			}
 
 			elapseFrameCounter = 0;	// 経過時間を0にする
@@ -114,18 +126,18 @@ void SelectScene_Process()
 
 			if (enemyKindNumber == 0)	// 敵キャラが決まっていない
 			{
-				enemyKindNumber = QuestionNumber;	// 敵キャラの識別番号に質問番号を設定
-				QuestionNumber = 1;					// 質問番号を1に戻す
+				enemyKindNumber = questionNumber;	// 敵キャラの識別番号に質問番号を設定
+				questionNumber = 1;					// 質問番号を1に戻す
 			}
 			else if (playerKindNumber == 0)	// 自キャラが決まっていない
 			{
-				QuestionNumber += 1;	// 質問番号を1増やす
+				questionNumber += 1;	// 質問番号を1増やす
 
 				// 質問番号がキャラクターの種類を超えたら
-				if (QuestionNumber > CharacterNumber)
+				if (questionNumber > CharacterNumber)
 				{
 					playerKindNumber = 99;	// 自キャラの識別番号を99に設定
-					QuestionNumber = 1;		// 質問番号を1に戻す
+					questionNumber = 1;		// 質問番号を1に戻す
 				}
 			}
 
@@ -148,19 +160,57 @@ void SelectScene_Draw()
 
 			if (enemyKindNumber == 0)	// 敵キャラが決まっていない
 			{
-				// 敵キャラについての質問の文章を組み合わせて描画
-				DrawFormatStringToHandleAlign(
-					GameWindowWidth / 2, GameWindowHeight / 2 - 40, FAlign_Center, Color_Black,
-					MSMincho_20_1, "%s%s%s", EnemyQuestionHead, CharacterKind, EnemyQuestionBottom
-				);
+				if (questionNumber <= 3)	// 質問番号が3以下なら
+				{
+					// 敵キャラについての質問の文章を組み合わせて描画
+					DrawFormatStringToHandleAlign(
+						GameWindowWidth / 2, GameWindowHeight / 2 - 40, FAlign_Center, Color_Black,
+						MSMincho_20_1, "%s%s%s", EnemyQuestionHead, CharacterKind, EnemyQuestionBottom
+					);
+				}
+				else if (questionNumber == 4)	// 質問番号が4なら
+				{
+					// ダイトメアについての質問の文章を組み合わせて描画
+					DrawFormatStringToHandleAlign(
+						GameWindowWidth / 2, GameWindowHeight / 2 - 40, FAlign_Center, Color_Black,
+						MSMincho_20_1, "%s%s%s", EnemyQuestionHead, BothQuestionDightmare, EnemyQuestionBottom
+					);
+				}
+				else if (questionNumber == 5)	// 質問番号が5なら
+				{
+					// キューについての質問の文章を組み合わせて描画
+					DrawFormatStringToHandleAlign(
+						GameWindowWidth / 2, GameWindowHeight / 2 - 40, FAlign_Center, Color_Black,
+						MSMincho_20_1, "%s%s%s", EnemyQuestionHead, BothQuestionNoname, EnemyQuestionBottom
+					);
+				}
 			}
 			else if (playerKindNumber == 0)	// 自キャラが決まっていない
 			{
-				// 自キャラについての質問の文章を組み合わせて描画
-				DrawFormatStringToHandleAlign(
-					GameWindowWidth / 2, GameWindowHeight / 2 - 40, FAlign_Center, Color_Black,
-					MSMincho_20_1, "%s%s%s", PlayerQuestionHead, CharacterKind, PlayerQuestionBottom
-				);
+				if (questionNumber <= 3)	// 質問番号が3以下なら
+				{
+					// 自キャラについての質問の文章を組み合わせて描画
+					DrawFormatStringToHandleAlign(
+						GameWindowWidth / 2, GameWindowHeight / 2 - 40, FAlign_Center, Color_Black,
+						MSMincho_20_1, "%s%s%s", PlayerQuestionHead, CharacterKind, PlayerQuestionBottom
+					);
+				}
+				else if (questionNumber == 4)
+				{
+					// ダイトメアについての質問の文章を組み合わせて描画
+					DrawFormatStringToHandleAlign(
+						GameWindowWidth / 2, GameWindowHeight / 2 - 40, FAlign_Center, Color_Black,
+						MSMincho_20_1, "%s%s%s", PlayerQuestionHead, BothQuestionDightmare, PlayerQuestionBottom
+					);
+				}
+				else if (questionNumber == 5)
+				{
+					// キューについての質問の文章を組み合わせて描画
+					DrawFormatStringToHandleAlign(
+						GameWindowWidth / 2, GameWindowHeight / 2 - 40, FAlign_Center, Color_Black,
+						MSMincho_20_1, "%s%s%s", PlayerQuestionHead, BothQuestionNoname, PlayerQuestionBottom
+					);
+				}
 			}
 
 			/* +++ 「はい」ボタンの描画処理 +++ */
