@@ -8,8 +8,6 @@
 #include "DxLib.h"
 
 
-#define GameSceneNumber 4		// ゲームシーンの数
-
 #define SceneChangeInterval 60	// シーン切換のインターバルフレーム
 
 
