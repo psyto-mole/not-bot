@@ -13,7 +13,7 @@
 #define ROBOTIMAGEPATH		".\\Image\\Robot_96x96.png"			// ロボットの画像のパス
 #define HUMANIMAGEPATH		".\\Image\\Human_96x96.png"			// 人間の画像のパス
 #define DRAGONIMAGEPATH		".\\Image\\Dragon_96x96.png"		// ドラゴンの画像のパス
-#define DIGHTMAREIMAGEPATH	".\\Image\\Dightmarre_96x96.png"	// ドラゴンの画像のパス
+#define DIGHTMAREIMAGEPATH	".\\Image\\Dightmare_96x96.png"	// ドラゴンの画像のパス
 #define NONAMEIMAGEPATH		".\\Image\\Noname_96x96.png"		// ドラゴンの画像のパス
 #define SHEPPIMAGEPATH		".\\Image\\Shepp_96x96.png"			// Sheppの画像のパス
 

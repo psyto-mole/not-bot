@@ -71,18 +71,6 @@ void SelectScene_Process()
 			// •¶š—ñuƒhƒ‰ƒSƒ“v‚ğŠi”[
 			sprintf_s(CharacterKind, sizeof(CharacterKind), CharacterNameDragon);
 			break;
-		case 4:
-			/* +++ 4–â–Ú‚Ìê‡ +++ */
-
-			// •¶š—ñuƒhƒ‰ƒSƒ“v‚ğŠi”[
-			sprintf_s(CharacterKind, sizeof(CharacterKind), CharacterNameDightmare);
-			break;
-		case 5:
-			/* +++ 5–â–Ú‚Ìê‡ +++ */
-
-			// •¶š—ñuƒhƒ‰ƒSƒ“v‚ğŠi”[
-			sprintf_s(CharacterKind, sizeof(CharacterKind), CharacterNameNoname);
-			break;
 		default:
 			break;
 		}

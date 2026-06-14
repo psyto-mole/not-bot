@@ -30,8 +30,8 @@ int Image_Init(void)
 		// エラーメッセージの表示
 		MessageBox(
 			GetMainWindowHandle(),
-			"Image Error",
 			"Scene Image",
+			"Image Error",
 			MB_OK
 		);
 
@@ -42,16 +42,40 @@ int Image_Init(void)
 	if (RobotImageHandle == -1
 		|| HumanImageHandle == -1
 		|| DragonImageHandle == -1
-		|| DightmareImageHandle == -1
-		|| NonameImageHandle == -1
 		|| SheppImageHandle == -1
 		)
 	{
 		// エラーメッセージの表示
 		MessageBox(
 			GetMainWindowHandle(),
-			"Image Error",
 			"Character Image",
+			"Image Error",
+			MB_OK
+		);
+
+		return -1;	// エラーで終了(-1を返す)
+	}
+
+	if (DightmareImageHandle == -1)
+	{
+		// エラーメッセージの表示
+		MessageBox(
+			GetMainWindowHandle(),
+			"Dightmare Image",
+			"Image Error",
+			MB_OK
+		);
+
+		return -1;	// エラーで終了(-1を返す)
+	}
+
+	if (NonameImageHandle == -1)
+	{
+		// エラーメッセージの表示
+		MessageBox(
+			GetMainWindowHandle(),
+			"Noname Image",
+			"Image Error",
 			MB_OK
 		);
 

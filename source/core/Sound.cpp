@@ -498,7 +498,7 @@ int Sound_Init(void)
 
 	/* +++ ダイトメアの技のSE +++ */
 	SE_MagicSaros1 = Sound_Load(PathSEMagicSaros1, VolumeMax, DX_PLAYTYPE_BACK);
-	if (SE_MagicMu.Handle == -1)
+	if (SE_MagicSaros1.Handle == -1)
 	{
 		MessageBox(
 			GetMainWindowHandle(),		// ウィンドウハンドル
@@ -511,7 +511,7 @@ int Sound_Init(void)
 	}
 
 	SE_MagicSaros2 = Sound_Load(PathSEMagicSaros2, VolumeMax, DX_PLAYTYPE_BACK);
-	if (SE_MagicMu.Handle == -1)
+	if (SE_MagicSaros2.Handle == -1)
 	{
 		MessageBox(
 			GetMainWindowHandle(),		// ウィンドウハンドル
@@ -524,7 +524,7 @@ int Sound_Init(void)
 	}
 
 	SE_MagicDeus = Sound_Load(PathSEMagicDeus, VolumeMax, DX_PLAYTYPE_BACK);
-	if (SE_MagicMu.Handle == -1)
+	if (SE_MagicDeus.Handle == -1)
 	{
 		MessageBox(
 			GetMainWindowHandle(),		// ウィンドウハンドル
@@ -537,7 +537,7 @@ int Sound_Init(void)
 	}
 
 	SE_MagicEx = Sound_Load(PathSEMagicEx, VolumeMax, DX_PLAYTYPE_BACK);
-	if (SE_MagicMu.Handle == -1)
+	if (SE_MagicEx.Handle == -1)
 	{
 		MessageBox(
 			GetMainWindowHandle(),		// ウィンドウハンドル
@@ -550,7 +550,7 @@ int Sound_Init(void)
 	}
 
 	SE_MagicMachina = Sound_Load(PathSEMagicMachina, VolumeMax, DX_PLAYTYPE_BACK);
-	if (SE_MagicMu.Handle == -1)
+	if (SE_MagicMachina.Handle == -1)
 	{
 		MessageBox(
 			GetMainWindowHandle(),		// ウィンドウハンドル
@@ -563,7 +563,7 @@ int Sound_Init(void)
 	}
 
 	SE_Imseti = Sound_Load(PathSEImseti, VolumeMax, DX_PLAYTYPE_BACK);
-	if (SE_MagicMu.Handle == -1)
+	if (SE_Imseti.Handle == -1)
 	{
 		MessageBox(
 			GetMainWindowHandle(),		// ウィンドウハンドル
@@ -576,7 +576,7 @@ int Sound_Init(void)
 	}
 
 	SE_Harpy = Sound_Load(PathSEHarpy, VolumeMax, DX_PLAYTYPE_BACK);
-	if (SE_MagicMu.Handle == -1)
+	if (SE_Harpy.Handle == -1)
 	{
 		MessageBox(
 			GetMainWindowHandle(),		// ウィンドウハンドル
@@ -589,7 +589,7 @@ int Sound_Init(void)
 	}
 
 	SE_Kebehsenuev = Sound_Load(PathSEKebehsenuev, VolumeMax, DX_PLAYTYPE_BACK);
-	if (SE_MagicMu.Handle == -1)
+	if (SE_Kebehsenuev.Handle == -1)
 	{
 		MessageBox(
 			GetMainWindowHandle(),		// ウィンドウハンドル
@@ -602,7 +602,7 @@ int Sound_Init(void)
 	}
 
 	SE_Duamtef1 = Sound_Load(PathSEDuamtef1, VolumeMax, DX_PLAYTYPE_BACK);
-	if (SE_MagicMu.Handle == -1)
+	if (SE_Duamtef1.Handle == -1)
 	{
 		MessageBox(
 			GetMainWindowHandle(),		// ウィンドウハンドル
@@ -615,7 +615,7 @@ int Sound_Init(void)
 	}
 
 	SE_Duamtef2 = Sound_Load(PathSEDuamtef2, VolumeMax, DX_PLAYTYPE_BACK);
-	if (SE_MagicMu.Handle == -1)
+	if (SE_Duamtef2.Handle == -1)
 	{
 		MessageBox(
 			GetMainWindowHandle(),		// ウィンドウハンドル
@@ -628,7 +628,7 @@ int Sound_Init(void)
 	}
 
 	SE_Duamtef3 = Sound_Load(PathSEDuamtef3, VolumeMax, DX_PLAYTYPE_BACK);
-	if (SE_MagicMu.Handle == -1)
+	if (SE_Duamtef3.Handle == -1)
 	{
 		MessageBox(
 			GetMainWindowHandle(),		// ウィンドウハンドル
@@ -643,7 +643,7 @@ int Sound_Init(void)
 
 	/* +++ キューの技のSE +++ */
 	SE_MagicTentativeDark = Sound_Load(PathSEMagicTentativeDark, VolumeMax, DX_PLAYTYPE_BACK);
-	if (SE_MagicMu.Handle == -1)
+	if (SE_MagicTentativeDark.Handle == -1)
 	{
 		MessageBox(
 			GetMainWindowHandle(),		// ウィンドウハンドル
@@ -656,7 +656,7 @@ int Sound_Init(void)
 	}
 
 	SE_MagicTentativeLight = Sound_Load(PathSEMagicTentativeLight, VolumeMax, DX_PLAYTYPE_BACK);
-	if (SE_MagicMu.Handle == -1)
+	if (SE_MagicTentativeLight.Handle == -1)
 	{
 		MessageBox(
 			GetMainWindowHandle(),		// ウィンドウハンドル
@@ -669,7 +669,7 @@ int Sound_Init(void)
 	}
 
 	SE_MagicTentativeHeal = Sound_Load(PathSEMagicTentativeHeal, VolumeMax, DX_PLAYTYPE_BACK);
-	if (SE_MagicMu.Handle == -1)
+	if (SE_MagicTentativeHeal.Handle == -1)
 	{
 		MessageBox(
 			GetMainWindowHandle(),		// ウィンドウハンドル
@@ -682,7 +682,7 @@ int Sound_Init(void)
 	}
 
 	SE_MagicTentativeRock = Sound_Load(PathSEMagicTentativeRock, VolumeMax, DX_PLAYTYPE_BACK);
-	if (SE_MagicMu.Handle == -1)
+	if (SE_MagicTentativeRock.Handle == -1)
 	{
 		MessageBox(
 			GetMainWindowHandle(),		// ウィンドウハンドル
@@ -695,7 +695,7 @@ int Sound_Init(void)
 	}
 
 	SE_TentativeThunder = Sound_Load(PathSETentativeThunder, VolumeMax, DX_PLAYTYPE_BACK);
-	if (SE_MagicMu.Handle == -1)
+	if (SE_TentativeThunder.Handle == -1)
 	{
 		MessageBox(
 			GetMainWindowHandle(),		// ウィンドウハンドル
@@ -708,7 +708,7 @@ int Sound_Init(void)
 	}
 
 	SE_TentativePoison = Sound_Load(PathSETentativePoison, VolumeMax, DX_PLAYTYPE_BACK);
-	if (SE_MagicMu.Handle == -1)
+	if (SE_TentativePoison.Handle == -1)
 	{
 		MessageBox(
 			GetMainWindowHandle(),		// ウィンドウハンドル
@@ -721,7 +721,7 @@ int Sound_Init(void)
 	}
 
 	SE_TentativeStance = Sound_Load(PathSETentativeStance, VolumeMax, DX_PLAYTYPE_BACK);
-	if (SE_MagicMu.Handle == -1)
+	if (SE_TentativeStance.Handle == -1)
 	{
 		MessageBox(
 			GetMainWindowHandle(),		// ウィンドウハンドル
@@ -734,7 +734,7 @@ int Sound_Init(void)
 	}
 
 	SE_TentativeSevereBlow = Sound_Load(PathSETentativeSevereBlow, VolumeMax, DX_PLAYTYPE_BACK);
-	if (SE_MagicMu.Handle == -1)
+	if (SE_TentativeSevereBlow.Handle == -1)
 	{
 		MessageBox(
 			GetMainWindowHandle(),		// ウィンドウハンドル

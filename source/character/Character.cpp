@@ -1537,7 +1537,7 @@ void Character:: DrawStatusUI(bool isPlayer)
 				/* +++ 「状態なし」なら +++ */
 
 				// 状態「なし」と描画
-				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 210, 150, FAlign_Left, Color_White, MSMincho_30_1, "%s%s", UIStatusFine);
+				DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 210, 150, FAlign_Left, Color_White, MSMincho_30_1, "%s", UIStatusFine);
 				break;
 			case Paralysis:
 				/* +++ 「マヒ」状態なら +++ */

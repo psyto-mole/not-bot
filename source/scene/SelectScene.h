@@ -9,7 +9,7 @@
 #include "Geometry.h"
 
 
-#define CharacterNameLength		32	// キャラクターの名称の長さ
+#define CharacterNameLength		128	// キャラクターの名称の長さ
 
 #define SelectBoxInterval		30	// 選択肢を選んでから次のメッセージボックス表示までのインターバル
 
