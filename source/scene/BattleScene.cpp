@@ -14,6 +14,8 @@
 #include "Robbot.h"
 #include "Human.h"
 #include "Dragon.h"
+#include "Dightmare.h"
+#include "Noname.h"
 #include "Shepp.h"
 #include "RectParameter.h"
 #include "Message.h"
@@ -61,6 +63,16 @@ int BattleScene_Init()
 
 		Enemy = &EnDragon;	// 敵キャラをドラゴンに設定
 		break;
+	case 4:
+		/* +++ ダイトメアの場合 +++ */
+
+		Enemy = &EnDightmare;	// 敵キャラをダイトメアに設定
+		break;
+	case 5:
+		/* +++ キューの場合 +++ */
+
+		Enemy = &EnNoname;	// 敵キャラをキューに設定
+		break;
 	case 99:
 		/* +++ Shrppの場合 +++ */
 
@@ -87,6 +99,16 @@ int BattleScene_Init()
 		/* +++ ドラゴンの場合 +++ */
 
 		Player = &PlDragon;		// 自キャラをドラゴンに設定
+		break;
+	case 4:
+		/* +++ ダイトメアの場合 +++ */
+
+		Player = &PlDightmare;		// 自キャラをダイトメアに設定
+		break;
+	case 5:
+		/* +++ キューの場合 +++ */
+
+		Player = &PlNoname;		// 自キャラをキューに設定
 		break;
 	case 99:
 		/* +++ Shrppの場合 +++ */
