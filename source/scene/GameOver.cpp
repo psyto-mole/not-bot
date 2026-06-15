@@ -8,6 +8,7 @@
 #include "GameManager.h"
 #include "Message.h"
 #include "Sound.h"
+#include "SaveLoad.h"
 
 
 /* --- ゲームオーバーシーンの初期化関数 --- */
@@ -31,10 +32,16 @@ void GameOver_Manage()
 void GameOver_Process()
 {
 	// シーン切換からの時間が1秒以上経過しスペースキーが押されたら
-	if (SceneChangeFrameCount >= GameFPS
-		&& Key_Check_Click(KEY_INPUT_RETURN))
+	if (SceneChangeFrameCount >= GameFPS && Key_Check_Click(KEY_INPUT_RETURN))
 	{
-		NextGameScene = Title_Scene;	// 次のシーンにセレクトシーンを設定
+		if (initialized)
+		{
+			NextGameScene = Fake_Scene;
+		}
+		else
+		{
+			NextGameScene = Title_Scene;
+		}
 	}
 
 	return;
