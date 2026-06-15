@@ -149,6 +149,26 @@ int Scene_Process()
 			case Fake_Scene:
 				/* +++ タイトル画面の場合 +++ */
 
+				switch (NowGameScene)
+				{
+				case GameOver_Scene:
+
+					if (GameOver_End() == -1)
+					{
+						return -1;
+					}
+					break;
+				case Result_Scene:
+
+					if (Result_End() == -1)
+					{
+						return -1;
+					}
+					break;
+				default:
+					break;
+				}
+
 				if (Scene_Init(Fake_Scene) == -1)	// FakeSceneの初期化に失敗した
 				{
 					return -1;	// シーンの処理の失敗(-1を返す)
