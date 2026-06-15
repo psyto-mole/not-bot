@@ -17,6 +17,8 @@ int Fake_Init()
 {
 	Sound_Play(BGM_Fake);	// 偽のタイトルのBGMを再生
 
+	Data_Init();
+
 	return 0;	// 偽のタイトルシーンの初期化を終了(0を返す)
 }
 

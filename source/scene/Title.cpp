@@ -8,12 +8,15 @@
 #include "Title.h"
 #include "Message.h"
 #include "Sound.h"
+#include "SaveLoad.h"
 
 
 /* --- タイトルシーンの初期化関数 --- */
 int Title_Init()
 {
 	Sound_Play(BGM_Title);
+
+	Data_Init();
 
 	return 0;	// タイトルシーンの初期化の終了(0を返す)
 }
