@@ -9,6 +9,7 @@
 errno_t errorCode;
 int round_robin[CharacterNumber * CharacterNumber];
 bool alreadySaved;
+bool alreadyConfirmedSave;
 bool initialized;
 
 
@@ -23,6 +24,7 @@ void Data_Init()
 	}
 
 	alreadySaved = false;
+	alreadyConfirmedSave = false;
 	initialized = true;
 
 	Data_Load();

@@ -36,7 +36,7 @@ void Result_Manage()
 /* +++ リザルトシーンの処理関数 +++ */
 void Result_Process()
 {
-	if (alreadySaved != true)
+	if (alreadyConfirmedSave != true)
 	{
 		if (CollisionRectToPoint(resultDialogYes, nowMousePoint) && Mouse_Check_Click(MOUSE_INPUT_LEFT))
 		{
@@ -44,13 +44,13 @@ void Result_Process()
 
 			Data_Update(playerKindNumber, enemyKindNumber);
 
-			alreadySaved = true;
+			alreadyConfirmedSave = true;
 		}
 		else if(CollisionRectToPoint(resultDialogNo, nowMousePoint) && Mouse_Check_Click(MOUSE_INPUT_LEFT))
 		{
 			Sound_Play(SE_Click);
 
-			alreadySaved = true;
+			alreadyConfirmedSave = true;
 		}
 	}
 
@@ -94,18 +94,18 @@ void Result_Draw()
 
 
 	/* +++ セーブダイアログの表示 +++ */
-	if (SceneChangeFrameCount >= GameFPS && alreadySaved != true)
+	if (SceneChangeFrameCount >= GameFPS && alreadyConfirmedSave != true)
 	{
 		DrawRect(resultDialogBackGround, Color_White, true, 1);
-
+	
 		DrawFormatStringToHandleAlign(GameWindowWidth / 2, GameWindowHeight / 2 - 50, FAlign_AllCenter, Color_Black, MSMincho_20_1, "%s", ResultDialogMessage);
-
-
+	
+	
 		if (CollisionRectToPoint(resultDialogYes, nowMousePoint))
 		{
 			DrawRect(resultDialogYes, Color_Green, true, 1);
 			DrawRect(resultDialogNo, Color_Violet, false, 1);
-
+	
 			DrawFormatStringToHandleAlign(ResultDialogYesCenterX, ResultDialogButtonCenterY, FAlign_AllCenter, Color_White, MSMincho_20_1, "%s", ResponseYes);
 			DrawFormatStringToHandleAlign(ResultDialogNoCenterX, ResultDialogButtonCenterY, FAlign_AllCenter, Color_Black, MSMincho_20_1, "%s", ResponseNo);
 		}
@@ -113,7 +113,7 @@ void Result_Draw()
 		{
 			DrawRect(resultDialogYes, Color_Green, false, 1);
 			DrawRect(resultDialogNo, Color_Violet, true, 1);
-
+	
 			DrawFormatStringToHandleAlign(ResultDialogYesCenterX, ResultDialogButtonCenterY, FAlign_AllCenter, Color_Black, MSMincho_20_1, "%s", ResponseYes);
 			DrawFormatStringToHandleAlign(ResultDialogNoCenterX, ResultDialogButtonCenterY, FAlign_AllCenter, Color_White, MSMincho_20_1, "%s", ResponseNo);
 		}
@@ -121,7 +121,7 @@ void Result_Draw()
 		{
 			DrawRect(resultDialogYes, Color_Green, false, 1);
 			DrawRect(resultDialogNo, Color_Violet, false, 1);
-
+	
 			DrawFormatStringToHandleAlign(ResultDialogYesCenterX, ResultDialogButtonCenterY, FAlign_AllCenter, Color_Black, MSMincho_20_1, "%s", ResponseYes);
 			DrawFormatStringToHandleAlign(ResultDialogNoCenterX, ResultDialogButtonCenterY, FAlign_AllCenter, Color_Black, MSMincho_20_1, "%s", ResponseNo);
 		}

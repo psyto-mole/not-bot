@@ -120,6 +120,8 @@ int Game_Init(void)
 
 	Mouse_Init();	// マウス処理の初期化
 
+	Data_Init();
+
 	/* --- サウンド処理の初期化 --- */
 	if (Sound_Init() == -1)		// 初期化失敗
 	{

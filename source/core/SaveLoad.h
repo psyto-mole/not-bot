@@ -8,10 +8,12 @@
 #define PathDataFile	".\\Game_Data\\Game_Data.dat"
 
 
-extern errno_t errorCode;
-extern int round_robin[CharacterNumber * CharacterNumber];
-extern bool alreadySaved;
-extern bool initialized;
+extern errno_t errorCode;									// 
+extern int round_robin[CharacterNumber * CharacterNumber];	// 
+extern bool alreadySaved;									// 
+extern bool alreadyConfirmedSave;							// 
+extern bool initialized;									// 
+
 
 extern void Data_Init();										// ゲームデータの初期化関数
 extern void Data_Save();										// ゲームデータをセーブする関数
