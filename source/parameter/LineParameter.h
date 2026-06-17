@@ -28,33 +28,9 @@
 #define AchievementPlayerLineStartY		(GameWindowHeight / 2 - 300)
 #define AchievementPlayerLineEndY		(GameWindowHeight / 2 + 300)
 
-#define AchievePlayerEdgeLineStartX		(GameWindowWidth / 2 - 200)
-#define AchievePlayerEdgeLineEndX		(GameWindowWidth / 2 + 150)
-#define AchievePlayerEdgeLineY			(GameWindowHeight / 2)
-#define AchieveEnemyEdgeLineX			(GameWindowWidth / 2)
-#define AchieveEnemyEdgeLineStartY		(GameWindowHeight / 2 - 200)
-#define AchieveEnemyEdgeLineEndY		(GameWindowHeight / 2 + 150)
 
-#define AchievePlayerRobotLineStartX	(GameWindowWidth / 2 - 200)
-#define AchievePlayerRobotLineEndX		(GameWindowWidth / 2 + 150)
-#define AchievePlayerRobotLineY			(GameWindowHeight / 2 + 50)
-#define AchieveEnemyRobotLineX			(GameWindowWidth / 2 + 50)
-#define AchieveEnemyRobotLineStartY		(GameWindowHeight / 2 - 200)
-#define AchieveEnemyRobotLineEndY		(GameWindowHeight / 2 + 150)
-
-#define AchievePlayerHumanLineStartX	(GameWindowWidth / 2 - 200)
-#define AchievePlayerHumanLineEndX		(GameWindowWidth / 2 + 150)
-#define AchievePlayerHumanLineY			(GameWindowHeight / 2 + 100)
-#define AchieveEnemyHumanLineX			(GameWindowWidth / 2 + 100)
-#define AchieveEnemyHumanLineStartY		(GameWindowHeight / 2 - 200)
-#define AchieveEnemyHumanLineEndY		(GameWindowHeight / 2 + 150)
-
-#define AchievePlayerDragonLineStartX	(GameWindowWidth / 2 - 200)
-#define AchievePlayerDragonLineEndX		(GameWindowWidth / 2 + 150)
-#define AchievePlayerDragonLineY		(GameWindowHeight / 2 + 150)
-#define AchieveEnemyDragonLineX			(GameWindowWidth / 2 + 150)
-#define AchieveEnemyDragonLineStartY	(GameWindowHeight / 2 - 200)
-#define AchieveEnemyDragonLineEndY		(GameWindowHeight / 2 + 150)
+#define AchievementTableHorizontalY		(GameWindowHeight / 2)
+#define AchievementTableVerticalX		(GameWindowWidth / 2)
 
 
 /* === バトルシーン === */

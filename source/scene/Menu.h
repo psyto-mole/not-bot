@@ -21,4 +21,4 @@ extern void Menu_Manage();		// システムメニューの処理の管理関数
 extern int Menu_Process();		// システムメニューの処理関数
 extern void Menu_Draw();		// システムメニューの描画関数
 
-extern void Show_WinLoseCircle(int circleNumber);	// 勝敗結果の円を描画する関数
+extern void Show_WinLoseCircle();	// 勝敗結果の円を描画する関数

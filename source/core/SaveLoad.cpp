@@ -7,7 +7,7 @@
 
 
 errno_t errorCode;
-int round_robin[CharacterNumber * CharacterNumber];
+int round_robin[CharacterNumber][CharacterNumber];
 bool alreadySaved;
 bool alreadyConfirmedSave;
 bool initialized;
@@ -16,11 +16,14 @@ bool initialized;
 /* --- ゲームデータの初期化関数 --- */
 void Data_Init()
 {
-	int i;
+	int i,j;
 
-	for (i = 0; i < CharacterNumber * CharacterNumber; i++)
+	for (i = 0; i < CharacterNumber; i++)
 	{
-		round_robin[i] = 0;
+		for (j = 0; j < CharacterNumber; j++)
+		{
+			round_robin[i][j] = 0;
+		}
 	}
 
 	alreadySaved = false;
@@ -107,7 +110,7 @@ void Data_Load()
 	size_t dataSize;
 	FILE* fp;
 
-	int i;
+	int i,j;
 
 
 	errorCode = fopen_s(&fp, PathDataFile, "rb");
@@ -118,9 +121,10 @@ void Data_Load()
 
 		if (dataSize != CharacterNumber * CharacterNumber)
 		{
-			for (i = 0; i < CharacterNumber * CharacterNumber; i++)
+			for (i = 0; i < CharacterNumber; i++)
 			{
-				round_robin[i] = 0;
+				for (j = 0; j < CharacterNumber; j++)
+				round_robin[i][j] = 0;
 			}
 		}
 
@@ -135,9 +139,12 @@ void Data_Load()
 	}
 	else
 	{
-		for (i = 0; i < CharacterNumber * CharacterNumber; i++)
+		for (i = 0; i < CharacterNumber; i++)
 		{
-			round_robin[i] = 0;
+			for (j = 0; j < CharacterNumber; j++)
+			{
+				round_robin[i][j] = 0;
+			}
 		}
 	}
 
@@ -149,7 +156,8 @@ void Data_Load()
 /* --- ゲームデータを更新する関数 --- */
 void Data_Update(int playerNumber, int enemyNumber)
 {
-	int targetElement;
+	int targetLine;
+	int targetColumn;
 
 	if (alreadySaved)
 	{
@@ -159,9 +167,10 @@ void Data_Update(int playerNumber, int enemyNumber)
 	{
 		if (enemyNumber <= CharacterNumber && playerNumber <= CharacterNumber)
 		{
-			targetElement = ((playerNumber - 1) * CharacterNumber) + (enemyNumber - 1);
+			targetLine = (playerNumber - 1);
+			targetColumn = (enemyNumber - 1);
 
-			round_robin[targetElement] = 1;
+			round_robin[targetLine][targetColumn] = 1;
 
 			Data_Save();
 		}
@@ -176,7 +185,7 @@ void Data_Delete()
 	size_t dataSize;
 	FILE* fp;
 
-	int i;
+	int i,j;
 
 	
 	errorCode = fopen_s(&fp, PathDataFile, "wb");
@@ -193,9 +202,12 @@ void Data_Delete()
 		return;
 	}
 
-	for (i = 0; i < CharacterNumber * CharacterNumber; i++)
+	for (i = 0; i < CharacterNumber; i++)
 	{
-		round_robin[i] = 0;
+		for (j = 0; j < CharacterNumber; j++)
+		{
+			round_robin[i][j] = 0;
+		}
 	}
 
 	dataSize = fwrite(round_robin, sizeof(int), CharacterNumber * CharacterNumber, fp);

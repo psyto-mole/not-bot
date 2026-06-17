@@ -9,7 +9,7 @@
 
 
 extern errno_t errorCode;									// 
-extern int round_robin[CharacterNumber * CharacterNumber];	// 
+extern int round_robin[CharacterNumber][CharacterNumber];	// 
 extern bool alreadySaved;									// 
 extern bool alreadyConfirmedSave;							// 
 extern bool initialized;									// 

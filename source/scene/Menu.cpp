@@ -184,6 +184,8 @@ int Menu_Process()
 /* --- ƒVƒXƒeƒ€ƒƒjƒ…[‚Ì•`‰æŠÖ” --- */
 void Menu_Draw()
 {
+	int i;
+
 	switch (menuKind)
 	{
 	case MenuOFF:
@@ -316,14 +318,11 @@ void Menu_Draw()
 		DrawRect(achievementTable, Color_White, false, 3);
 		DrawLineWithStruct(enemyLine, Color_White);
 		DrawLineWithStruct(playerLine, Color_White);
-		DrawLineWithStruct(enemyEdgeLine, Color_White);
-		DrawLineWithStruct(playerEdgeLine, Color_White);
-		DrawLineWithStruct(enemyRobotLine, Color_White);
-		DrawLineWithStruct(playerRobotLine, Color_White);
-		DrawLineWithStruct(enemyHumanLine, Color_White);
-		DrawLineWithStruct(playerHumanLine, Color_White);
-		DrawLineWithStruct(enemyDragonLine, Color_White);
-		DrawLineWithStruct(playerDragonLine, Color_White);
+		for (i = 0; i < AllCharacterNumber; i++)
+		{
+			DrawLineWithStruct(tableVerticalLine[i], Color_White);
+			DrawLineWithStruct(tableHorizontalLine[i], Color_White);
+		}
 
 		DrawFormatStringToHandleAlign(GameWindowWidth / 2 + 50, GameWindowHeight / 2 - 250, FAlign_AllCenter, Color_White,  MSMincho_50_1, "%s", NameEnemy);
 		DrawFormatVStringToHandleAlign(GameWindowWidth / 2 - 250, GameWindowHeight / 2 + 50, FAlign_AllCenter, Color_White, VMSMincho_50_1, "%s", NamePlayer);
@@ -348,60 +347,7 @@ void Menu_Draw()
 			DrawFormatStringToHandleAlign(AchievementBackCenterX, AchievementBackCenterY, FAlign_AllCenter, Color_White, MSMincho_30_1, "%s", BackButtonText);
 		}
 
-		Show_WinLoseCircle(1);
-		Show_WinLoseCircle(2);
-		Show_WinLoseCircle(3);
-		Show_WinLoseCircle(4);
-		Show_WinLoseCircle(5);
-		Show_WinLoseCircle(6);
-		Show_WinLoseCircle(7);
-		Show_WinLoseCircle(8);
-		Show_WinLoseCircle(9);
-
-		/*if (round_robin[0] == 1)
-		{
-			DrawCircleWithStruct(winLoseCircle1, Color_White, true, 1);
-		}
-		
-		if (round_robin[1] == 1)
-		{
-			DrawCircleWithStruct(winLoseCircle2, Color_White, true, 1);
-		}
-		
-		if (round_robin[2] == 1)
-		{
-			DrawCircleWithStruct(winLoseCircle3, Color_White, true, 1);
-		}
-		
-		if (round_robin[3] == 1)
-		{
-			DrawCircleWithStruct(winLoseCircle4, Color_White, true, 1);
-		}
-		
-		if (round_robin[4] == 1)
-		{
-			DrawCircleWithStruct(winLoseCircle5, Color_White, true, 1);
-		}
-		
-		if (round_robin[5] == 1)
-		{
-			DrawCircleWithStruct(winLoseCircle6, Color_White, true, 1);
-		}
-		
-		if (round_robin[6] == 1)
-		{
-			DrawCircleWithStruct(winLoseCircle7, Color_White, true, 1);
-		}
-		
-		if (round_robin[7] == 1)
-		{
-			DrawCircleWithStruct(winLoseCircle8, Color_White, true, 1);
-		}
-		
-		if (round_robin[8] == 1)
-		{
-			DrawCircleWithStruct(winLoseCircle9, Color_White, true, 1);
-		}*/
+		Show_WinLoseCircle();
 
 		break;
 	case DeleteData:
@@ -651,22 +597,19 @@ void Menu_Draw()
 }
 
 /* --- Ÿ”sŒ‹‰Ê‚Ì‰~‚ğ•`‰æ‚·‚éŠÖ” --- */
-void Show_WinLoseCircle(int circleNumber)
+void Show_WinLoseCircle()
 {
-	int element;
+	int i,j;
 
-	if (circleNumber <= 0 || circleNumber > CharacterNumber * CharacterNumber)
+	for (i = 0; i < AllCharacterNumber; i++)
 	{
-		return;
-	}
-	else
-	{
-		element = circleNumber - 1;
-	}
-
-	if (round_robin[element] == 1)
-	{
-		DrawCircleWithStruct(winLoseCircle[element], Color_White, true, 1);
+		for (j = 0; j < AllCharacterNumber; j++)
+		{
+			if (round_robin[i][j] == 1)
+			{
+				DrawCircleWithStruct(winLoseCircle[i][j], Color_White, true, 1);
+			}
+		}
 	}
 
 	return;

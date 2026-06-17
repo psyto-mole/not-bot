@@ -60,27 +60,13 @@ extern RECT menuNoButton;	// メニューウィンドウの「いいえ」ボタン
 /* +++ 討伐記録画面 +++ */
 extern RECT achievementBackButton;									// 討伐記録画面の「戻る」ボタン
 extern RECT achievementTable;										// 討伐記録の表
-extern CIRCLE winLoseCircle[CharacterNumber * CharacterNumber];		// 討伐記録を描画する円の配列
-//extern CIRCLE winLoseCircle1;		// 討伐記録を描画する円1
-//extern CIRCLE winLoseCircle2;		// 討伐記録を描画する円2
-//extern CIRCLE winLoseCircle3;		// 討伐記録を描画する円3
-//extern CIRCLE winLoseCircle4;		// 討伐記録を描画する円4
-//extern CIRCLE winLoseCircle5;		// 討伐記録を描画する円5
-//extern CIRCLE winLoseCircle6;		// 討伐記録を描画する円6
-//extern CIRCLE winLoseCircle7;		// 討伐記録を描画する円7
-//extern CIRCLE winLoseCircle8;		// 討伐記録を描画する円8
-//extern CIRCLE winLoseCircle9;		// 討伐記録を描画する円9
-extern LINE achieveDiagonalLine;	// 討伐記録の表の斜め線
-extern LINE enemyLine;				// 討伐記録の「討伐対象」の下側の横線
-extern LINE playerLine;				// 討伐記録の「プレイヤー」の右側の縦線
-extern LINE enemyEdgeLine;			// 討伐記録の表の始めの縦線
-extern LINE playerEdgeLine;			// 討伐記録の表の始めの横線
-extern LINE enemyRobotLine;			// 討伐記録の表の「ロボット」の右側の縦線
-extern LINE playerRobotLine;		// 討伐記録の表の「ロボット」の下側の横線
-extern LINE enemyHumanLine;			// 討伐記録の表の「」の右側の縦線
-extern LINE playerHumanLine;		// 討伐記録の表の「」の下側の横線
-extern LINE enemyDragonLine;		// 討伐記録の表の「」の右側の縦線
-extern LINE playerDragonLine;		// 討伐記録の表の「」の下側の横線
+extern CIRCLE winLoseCircle[AllCharacterNumber][AllCharacterNumber];		// 討伐記録を描画する円の配列
+
+extern LINE achieveDiagonalLine;					// 討伐記録の表の斜め線
+extern LINE enemyLine;								// 討伐記録の「討伐対象」の下側の横線
+extern LINE playerLine;								// 討伐記録の「プレイヤー」の右側の縦線
+extern LINE tableVerticalLine[AllCharacterNumber];		// 討伐記録の表を構成する縦線
+extern LINE tableHorizontalLine[AllCharacterNumber];	// 討伐記録の表を構成する横線
 
 
 /* === セレクトシーン === */

@@ -6,10 +6,6 @@
 
 /* === ÉÅÉjÉÖÅ[ === */
 /* +++ èüîsãLò^ÇÃâÊñ  +++ */
-#define WinLoseCircle1LineX		(GameWindowWidth / 2 + 25)
-#define WinLoseCircle2LineX		(GameWindowWidth / 2 + 75)
-#define WinLoseCircle3LineX		(GameWindowWidth / 2 + 125)
-#define WinLoseCircle1RowY		(GameWindowHeight / 2 + 25)
-#define WinLoseCircle2RowY		(GameWindowHeight / 2 + 75)
-#define WinLoseCircle3RowY		(GameWindowHeight / 2 + 125)
+#define WinLoseCircleStartX		(GameWindowWidth / 2 + 25)
+#define WinLoseCircleStartY		(GameWindowHeight / 2 + 25)
 #define WinLoseCircleRadius		15
