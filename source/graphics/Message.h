@@ -58,6 +58,10 @@
 #define MusicUsed		"使用楽曲"
 #define MaohDamashi		"魔王魂"
 #define SoundEffectLab	"効果音ラボ"
+#define OtoLogic		"OtoLogic"
+
+#define ToolUsed	"使用ツール"
+#define DotArt		"DotArt"
 
 
 

@@ -631,9 +631,15 @@ void Menu_Draw()
 			DrawFormatStringToHandleAlign(AchievementBackCenterX, AchievementBackCenterY, FAlign_AllCenter, Color_White, MSMincho_30_1, "%s", BackButtonText);
 		}
 
+		/* +++ 使用楽曲の表示 +++ */
 		DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 300, GameWindowHeight / 2 - 300, FAlign_AllCenter, Color_SkyBlue, MSMincho_30_1, "%s", MusicUsed);
 		DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 300, GameWindowHeight / 2 - 260, FAlign_AllCenter, Color_White, MSMincho_40_1, "%s", MaohDamashi);
 		DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 300, GameWindowHeight / 2 - 220, FAlign_AllCenter, Color_White, MSMincho_40_1, "%s", SoundEffectLab);
+		DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 300, GameWindowHeight / 2 - 180, FAlign_AllCenter, Color_White, MSMincho_40_1, "%s", OtoLogic);
+
+		/* +++ 使用ツールの表示 +++ */
+		DrawFormatStringToHandleAlign(GameWindowWidth / 2, GameWindowHeight / 2 - 300, FAlign_AllCenter, Color_SkyBlue, MSMincho_30_1, "%s", ToolUsed);
+		DrawFormatStringToHandleAlign(GameWindowWidth / 2, GameWindowHeight / 2 - 260, FAlign_AllCenter, Color_White, MSMincho_40_1, "%s", DotArt);
 
 		break;
 	default:
