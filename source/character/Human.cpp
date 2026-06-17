@@ -648,8 +648,8 @@ void Human::MainFase_Draw()
 				else
 				{
 					/* +++ 選択肢2と3のボタンを白枠で描画 +++ */
-					DrawRect(optionButton1, Color_White, false, 3);
-					DrawRect(optionButton4, Color_White, false, 3);
+					DrawRect(optionButton2, Color_White, false, 3);
+					DrawRect(optionButton3, Color_White, false, 3);
 
 					/* +++ 選択肢2と3のテキストを白で描画 +++ */
 					DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 660, 930, FAlign_AllCenter, Color_White, MSMincho_40_1, OptionMagic);
