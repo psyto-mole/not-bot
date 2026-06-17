@@ -337,6 +337,8 @@ int Scene_Process()
 /* --- ÉVÅ[ÉìÇÃï`âÊä÷êî --- */
 void Scene_Draw()
 {
+	int i,j;
+
 	Menu_Draw();
 
 	if (GameDebug)
@@ -350,23 +352,21 @@ void Scene_Draw()
 			DrawFormatStringToHandleAlign(GameWindowWidth - 1, 45, FAlign_Right, Color_LightGreen, MSMincho_30_1, "Already Saved: %s", FlagStatusFalse);
 		}
 
-		DrawFormatStringToHandleAlign(GameWindowWidth - 1, 75, FAlign_Right, Color_Green, MSMincho_20_1, "Round_Robin[%d]: %d", 1, round_robin[0]);
-		DrawFormatStringToHandleAlign(GameWindowWidth - 1, 95, FAlign_Right, Color_Green, MSMincho_20_1, "Round_Robin[%d]: %d", 2, round_robin[1]);
-		DrawFormatStringToHandleAlign(GameWindowWidth - 1, 115, FAlign_Right, Color_Green, MSMincho_20_1, "Round_Robin[%d]: %d", 3, round_robin[2]);
-		DrawFormatStringToHandleAlign(GameWindowWidth - 1, 135, FAlign_Right, Color_Green, MSMincho_20_1, "Round_Robin[%d]: %d", 4, round_robin[3]);
-		DrawFormatStringToHandleAlign(GameWindowWidth - 1, 155, FAlign_Right, Color_Green, MSMincho_20_1, "Round_Robin[%d]: %d", 5, round_robin[4]);
-		DrawFormatStringToHandleAlign(GameWindowWidth - 1, 175, FAlign_Right, Color_Green, MSMincho_20_1, "Round_Robin[%d]: %d", 6, round_robin[5]);
-		DrawFormatStringToHandleAlign(GameWindowWidth - 1, 195, FAlign_Right, Color_Green, MSMincho_20_1, "Round_Robin[%d]: %d", 7, round_robin[6]);
-		DrawFormatStringToHandleAlign(GameWindowWidth - 1, 215, FAlign_Right, Color_Green, MSMincho_20_1, "Round_Robin[%d]: %d", 8, round_robin[7]);
-		DrawFormatStringToHandleAlign(GameWindowWidth - 1, 235, FAlign_Right, Color_Green, MSMincho_20_1, "Round_Robin[%d]: %d", 9, round_robin[8]);
-
 		if (initialized)
 		{
-			DrawFormatStringToHandleAlign(GameWindowWidth - 1, 260, FAlign_Right, Color_LightGreen, MSMincho_30_1, "Initialized: %s", FlagStatusTrue);
+			DrawFormatStringToHandleAlign(GameWindowWidth - 1, 75, FAlign_Right, Color_LightGreen, MSMincho_30_1, "Initialized: %s", FlagStatusTrue);
 		}
 		else
 		{
-			DrawFormatStringToHandleAlign(GameWindowWidth - 1, 260, FAlign_Right, Color_LightGreen, MSMincho_30_1, "Initialized: %s", FlagStatusFalse);
+			DrawFormatStringToHandleAlign(GameWindowWidth - 1, 75, FAlign_Right, Color_LightGreen, MSMincho_30_1, "Initialized: %s", FlagStatusFalse);
+		}
+
+		for (i = 0; i < AllCharacterNumber; i++)
+		{
+			for (j = 0; j < AllCharacterNumber; j++)
+			{
+				DrawFormatStringToHandleAlign(GameWindowWidth - 1, 100 + 20 * j + 20 * AllCharacterNumber * i, FAlign_Right, Color_Green, MSMincho_20_1, "Round_Robin[%d][%d]: %d", i,j, round_robin[i][j]);
+			}
 		}
 	}
 
