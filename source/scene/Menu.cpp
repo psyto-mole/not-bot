@@ -113,6 +113,7 @@ int Menu_Process()
 		{
 			Sound_Play(SE_Enter);
 			Data_Delete();
+			menuKind = MenuTop;
 		}
 		else if (CollisionRectToPoint(menuNoButton, nowMousePoint) && Mouse_Check_Click(MOUSE_INPUT_LEFT))
 		{
