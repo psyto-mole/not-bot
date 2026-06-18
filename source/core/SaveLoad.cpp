@@ -8,6 +8,7 @@
 
 errno_t errorCode;
 int round_robin[AllCharacterNumber][AllCharacterNumber];
+int total_round_robin;
 bool alreadySaved;
 bool alreadyConfirmedSave;
 bool initialized;
@@ -26,11 +27,20 @@ void Data_Init()
 		}
 	}
 
+	total_round_robin = 0;
 	alreadySaved = false;
 	alreadyConfirmedSave = false;
 	initialized = true;
 
 	Data_Load();
+
+	for (i = 0; i < AllCharacterNumber; i++)
+	{
+		for (j = 0; j < AllCharacterNumber; j++)
+		{
+			total_round_robin = round_robin[i][j];
+		}
+	}
 
 	return;
 }

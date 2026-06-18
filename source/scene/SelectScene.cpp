@@ -10,6 +10,7 @@
 #include "SelectScene.h"
 #include "Message.h"
 #include "Sound.h"
+#include "SaveLoad.h"
 #include "RectParameter.h"
 
 
@@ -92,11 +93,38 @@ void SelectScene_Process()
 			{
 				questionNumber += 1;	// 質問番号を1増やす
 
-				// 質問番号がキャラクター数を超えたら
-				if (questionNumber > CharacterNumber) 
+				if (total_round_robin < 5)
 				{
-					enemyKindNumber = 99;	// 敵キャラの識別番号を99に設定
-					questionNumber = 1;		// 質問番号を1にもどす
+					// 質問番号が3を超えたら
+					if (questionNumber > 3)
+					{
+						questionNumber = 1;		// 質問番号を1にもどす
+					}
+				}
+				else if (total_round_robin < 10)
+				{
+					// 質問番号が4を超えたら
+					if (questionNumber > 4)
+					{
+						questionNumber = 1;		// 質問番号を1にもどす
+					}
+				}
+				else if (total_round_robin < 25)
+				{
+					// 質問番号が5を超えたら
+					if (questionNumber > 5)
+					{
+						questionNumber = 1;		// 質問番号を1にもどす
+					}
+				}
+				else
+				{
+					// 質問番号がキャラクター数を超えたら
+					if (questionNumber > CharacterNumber)
+					{
+						enemyKindNumber = 99;	// 敵キャラの識別番号を99に設定
+						questionNumber = 1;		// 質問番号を1にもどす
+					}
 				}
 			}
 			else if (playerKindNumber == 0)	// 自キャラが決まっていないなら
@@ -121,11 +149,38 @@ void SelectScene_Process()
 			{
 				questionNumber += 1;	// 質問番号を1増やす
 
-				// 質問番号がキャラクターの種類を超えたら
-				if (questionNumber > CharacterNumber)
+				if (total_round_robin < 5)
 				{
-					playerKindNumber = 99;	// 自キャラの識別番号を99に設定
-					questionNumber = 1;		// 質問番号を1に戻す
+					// 質問番号が3を超えたら
+					if (questionNumber > 3)
+					{
+						questionNumber = 1;		// 質問番号を1に戻す
+					}
+				}
+				else if (total_round_robin < 10)
+				{
+					// 質問番号が4を超えたら
+					if (questionNumber > 4)
+					{
+						questionNumber = 1;		// 質問番号を1に戻す
+					}
+				}
+				else if (total_round_robin < 25)
+				{
+					// 質問番号が5を超えたら
+					if (questionNumber > 5)
+					{
+						questionNumber = 1;		// 質問番号を1に戻す
+					}
+				}
+				else
+				{
+					// 質問番号がキャラクターの種類を超えたら
+					if (questionNumber > CharacterNumber)
+					{
+						playerKindNumber = 99;	// 自キャラの識別番号を99に設定
+						questionNumber = 1;		// 質問番号を1に戻す
+					}
 				}
 			}
 
