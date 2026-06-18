@@ -428,13 +428,13 @@ void BattleScene_Process()
 /* +++ バトルシーンの描画関数 +++ */
 void BattleScene_Draw()
 {
-	DrawExtendGraphConditional(100, 100, 869, 869, playerKindNumber, ISPLAYER);										// プレイヤーキャラクターの画像を描画
-	DrawExtendGraphConditional(GameWindowWidth - 100, 100, GameWindowWidth - 867, 869, enemyKindNumber, ISENEMY);		// 敵キャラの画像を描画
+	DrawExtendGraphConditional(0, 100, 769, 869, playerKindNumber, ISPLAYER);									// プレイヤーキャラクターの画像を描画
+	DrawExtendGraphConditional(GameWindowWidth, 100, GameWindowWidth - 767, 869, enemyKindNumber, ISENEMY);		// 敵キャラの画像を描画
 
 	DrawLineWithStruct(devideScreenLine, Color_White);	// 画面を左右に2分割する直線を描画
 
-	DrawFormatStringToHandleAlign(GameWindowWidth/4, 0,FAlign_Center,Color_Green,MSMincho_100_1,"%s", NamePlayer);		// プレイヤーサイドの上部に「Player」の表示をする
-	DrawFormatStringToHandleAlign(GameWindowWidth/4 * 3, 0,FAlign_Center,Color_Violet,MSMincho_100_1,"%s", NameEnemy);	// 敵キャラサイドの上部に「Enemy」の表示をする
+	DrawFormatStringToHandleAlign(GameWindowWidth/4 - 80, 0,FAlign_Center,Color_Green,MSMincho_100_1,"%s", NamePlayer);		// プレイヤーサイドの上部に「Player」の表示をする
+	DrawFormatStringToHandleAlign(GameWindowWidth/4 * 3 + 30, 0,FAlign_Center,Color_Violet,MSMincho_100_1,"%s", NameEnemy);	// 敵キャラサイドの上部に「Enemy」の表示をする
 
 	Enemy->DrawStatusUI(ISENEMY);	// 相手キャラのステータスのUI表示
 
