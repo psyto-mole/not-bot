@@ -1,10 +1,6 @@
 #pragma once
 /* === サウンド処理のヘッダファイル === */
 
-#ifndef SOUND_H	// 2重インクルード防止
-
-#define SOUND_H
-
 #include "DxLib.h"
 
 
@@ -203,5 +199,3 @@ extern void Sound_Stop(Sounds *sound);									// 停止
 extern void Sound_Delete(Sounds sound);									// 削除
 
 void ChangeSoundVolume(Sounds *sound, int volume);	// 音量変更
-
-#endif

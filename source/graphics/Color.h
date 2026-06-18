@@ -1,10 +1,6 @@
 #pragma once
 /* === カラー定義のヘッダファイル === */
 
-#ifndef COLOR_H	// 2重インクルード防止
-
-#define COLOR_H
-
 #include "DxLib.h"
 
 
@@ -42,5 +38,3 @@ extern void Color_Init();
 
 /* --- カラーの処理関数 --- */
 extern void Color_Process();
-
-#endif

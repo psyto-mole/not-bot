@@ -1,10 +1,6 @@
 #pragma once
 /* === ƒV[ƒ“ŠÇ—‚Ìƒwƒbƒ_ƒtƒ@ƒCƒ‹ === */
 
-#ifndef SCENEMANAGER_H	// 2dƒCƒ“ƒNƒ‹[ƒh–h~
-
-#define SCENEMANAGER_H
-
 #include "DxLib.h"
 
 
@@ -36,8 +32,3 @@ extern int Scene_Init(GameScene sceneName);		// ƒV[ƒ“‚Ì‰Šú‰»ŠÖ”(ˆø”‚ÍƒV[ƒ“–
 extern int Scene_Manage();						// ƒV[ƒ“‚Ìˆ—‚ğŠÇ—‚·‚éŠÖ”
 extern int Scene_Process();						// ƒV[ƒ“‚Ìˆ—ŠÖ”
 extern void Scene_Draw();						// ƒV[ƒ“‚Ì•`‰æŠÖ”
-
-
-
-
-#endif

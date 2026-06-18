@@ -1,10 +1,6 @@
 #pragma once
 /* === Šô‰½Šwˆ—‚Ìƒwƒbƒ_ƒtƒ@ƒCƒ‹ === */
 
-#ifndef GEOMETRY_H	// 2dƒCƒ“ƒNƒ‹[ƒh–h~
-
-#define GEOMETRY_H
-
 #include <math.h>
 #include "DxLib.h"
 #include "GameManager.h"
@@ -119,5 +115,3 @@ extern bool CollisionRectToRect(RECT a, RECT b);																				// ‹éŒ`‚Æ‹éŒ
 /* +++ ‰~‚ÉŠÖ‚·‚éŠÖ” +++ */
 extern CIRCLE GetCircle(POINT point, float radius);										// CIRCLEŒ^‚ğæ“¾‚·‚éŠÖ”
 extern void DrawCircleWithStruct(CIRCLE circle, int color,  bool fill, int thickness);	// CIRCLEŒ^‚ğ—p‚¢‚Ä‰~‚ğ•`‰æ‚·‚éŠÖ”
-
-#endif

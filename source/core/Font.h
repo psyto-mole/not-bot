@@ -1,10 +1,6 @@
 #pragma once
 /* === フォント処理のヘッダーファイル === */
 
-#ifndef FONT_H	// 2重インクルード防止
-
-#define FONT_H
-
 #include "DxLib.h"
 
 #define FontAlignStringMax 512	// 文字揃えができる最大長
@@ -46,5 +42,3 @@ extern void DrawFormatStringToHandleAlign(int x, int y, Font_Align align,
 /* --- 文字列を指定フォント・指定の揃えで縦書きする関数 --- */
 extern void DrawFormatVStringToHandleAlign(int x, int y, Font_Align align, 
 								unsigned int color, int fontHandle, const char* formatString, ...);
-
-#endif

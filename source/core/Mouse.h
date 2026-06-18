@@ -1,10 +1,6 @@
 #pragma once
 /* === マウス処理のヘッダファイル === */
 
-#ifndef MOUSE_H	// 2重インクルード防止
-
-#define MOUSE_H
-
 #include "DxLib.h"
 
 
@@ -38,5 +34,3 @@ bool Mouse_Check_Press(int MOUSE_INPUT_);
 
 /* --- マウスが押されたかのチェック関数(引数は入力を調べたいマウスのボタン) --- */
 bool Mouse_Check_Click(int MOUSE_INPUT_);
-
-#endif

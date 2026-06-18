@@ -1,10 +1,6 @@
 #pragma once
 /* === 画像処理のヘッダファイル === */
 
-#ifndef IMAGE_H	// 2重インクルード防止
-
-#define IMAGE_H
-
 #include "DxLib.h"
 
 
@@ -37,5 +33,3 @@ extern void Image_End(void);
 
 /* --- キャラクターの描画関数 --- */
 extern void DrawExtendGraphConditional(int x1, int y1, int x2, int y2, int characterNumber, bool isPlayer);
-
-#endif

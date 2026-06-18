@@ -1,10 +1,6 @@
 #pragma once
 /* === ゲーム処理のヘッダファイル === */
 
-#ifndef GAMEMANAGER_H	// 2重インクルード防止
-
-#define GAMEMANAGER_H
-
 #include "DxLib.h"
 
 #define GameWindowWidth		1920				// ゲームウィンドウの幅
@@ -26,5 +22,3 @@
 
 
 extern void Draw_RuledLine();	// 画面に罫線を引く関数
-
-#endif

@@ -1,10 +1,6 @@
 #pragma once
 /* === キー入力処理のヘッダファイル === */
 
-#ifndef KEY_H	// 2重インクルード防止
-
-#define KEY_H
-
 #include "DxLib.h"
 
 extern int nowKey[256];			// キーの現在の入力状態の格納配列
@@ -22,6 +18,3 @@ extern bool Key_Check_Press(int KEY_INPUT_);
 
 /* --- 特定のキーがクリックされたかのチェック関数 --- */
 extern bool Key_Check_Click(int KEY_INPUT_);
-
-
-#endif
