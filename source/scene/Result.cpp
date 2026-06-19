@@ -40,21 +40,24 @@ void Result_Manage()
 /* +++ リザルトシーンの処理関数 +++ */
 void Result_Process()
 {
-	if (alreadyConfirmedSave != true)
+	if (total_saveArray_Now < 25)
 	{
-		if (CollisionRectToPoint(resultDialogYes, nowMousePoint) && Mouse_Check_Click(MOUSE_INPUT_LEFT))
+		if (alreadyConfirmedSave != true)
 		{
-			Sound_Play(SE_Click);
+			if (CollisionRectToPoint(resultDialogYes, nowMousePoint) && Mouse_Check_Click(MOUSE_INPUT_LEFT))
+			{
+				Sound_Play(SE_Click);
 
-			Data_Update(playerKindNumber, enemyKindNumber);
+				Data_Update(playerKindNumber, enemyKindNumber);
 
-			alreadyConfirmedSave = true;
-		}
-		else if(CollisionRectToPoint(resultDialogNo, nowMousePoint) && Mouse_Check_Click(MOUSE_INPUT_LEFT))
-		{
-			Sound_Play(SE_Click);
+				alreadyConfirmedSave = true;
+			}
+			else if (CollisionRectToPoint(resultDialogNo, nowMousePoint) && Mouse_Check_Click(MOUSE_INPUT_LEFT))
+			{
+				Sound_Play(SE_Click);
 
-			alreadyConfirmedSave = true;
+				alreadyConfirmedSave = true;
+			}
 		}
 	}
 
@@ -64,7 +67,7 @@ void Result_Process()
 		{
 			if (CollisionRectToPoint(resultDialogOK, nowMousePoint) && Mouse_Check_Click(MOUSE_INPUT_LEFT))
 			{
-				Sound_Play(SE_Enter);
+				Sound_Play(SE_Click);
 
 				alreadyDisplayUnlock = true;
 			}
@@ -76,7 +79,7 @@ void Result_Process()
 		{
 			if (CollisionRectToPoint(resultDialogOK, nowMousePoint) && Mouse_Check_Click(MOUSE_INPUT_LEFT))
 			{
-				Sound_Play(SE_Enter);
+				Sound_Play(SE_Click);
 
 				alreadyDisplayUnlock = true;
 			}
@@ -88,7 +91,7 @@ void Result_Process()
 		{
 			if (CollisionRectToPoint(resultDialogOK, nowMousePoint) && Mouse_Check_Click(MOUSE_INPUT_LEFT))
 			{
-				Sound_Play(SE_Enter);
+				Sound_Play(SE_Click);
 
 				alreadyDisplayUnlock = true;
 			}
@@ -122,7 +125,14 @@ void Result_Draw()
 	}
 	
 	/* +++ 勝敗結果 +++ */
-	DrawFormatStringToHandleAlign(GameWindowWidth / 2, GameWindowHeight / 2 - 300, FAlign_AllCenter, Color_White, MSMincho_300_9, "%s", ResultWinMessage);
+	if (enemyKindNumber == 99)
+	{
+		DrawFormatStringToHandleAlign(GameWindowWidth / 2, GameWindowHeight / 2 - 300, FAlign_AllCenter, Color_switching_Rainbow, MSMincho_200_9, "%s", ResultGratulateMessage);
+	}
+	else
+	{
+		DrawFormatStringToHandleAlign(GameWindowWidth / 2, GameWindowHeight / 2 - 300, FAlign_AllCenter, Color_White, MSMincho_300_9, "%s", ResultWinMessage);
+	}
 
 	DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 3, GameWindowHeight / 2 + 297, FAlign_AllCenter, Color_switching_Light, MSMincho_100_9, PressEnter);
 	DrawFormatStringToHandleAlign(GameWindowWidth / 2 + 3, GameWindowHeight / 2 + 303, FAlign_AllCenter, Color_switching_Light, MSMincho_100_9, PressEnter);
@@ -137,34 +147,36 @@ void Result_Draw()
 	/* +++ セーブダイアログの表示 +++ */
 	if (SceneChangeFrameCount >= GameFPS && alreadyConfirmedSave != true)
 	{
-		DrawRect(resultDialogBackGround, Color_White, true, 1);
-	
-		DrawFormatStringToHandleAlign(GameWindowWidth / 2, GameWindowHeight / 2 - 50, FAlign_AllCenter, Color_Black, MSMincho_20_1, "%s", ResultDialogMessage);
-	
-	
-		if (CollisionRectToPoint(resultDialogYes, nowMousePoint))
+		if (total_saveArray_Now < 25)
 		{
-			DrawRect(resultDialogYes, Color_Green, true, 1);
-			DrawRect(resultDialogNo, Color_Violet, false, 1);
-	
-			DrawFormatStringToHandleAlign(ResultDialogYesCenterX, ResultDialogButtonCenterY, FAlign_AllCenter, Color_White, MSMincho_20_1, "%s", ResponseYes);
-			DrawFormatStringToHandleAlign(ResultDialogNoCenterX, ResultDialogButtonCenterY, FAlign_AllCenter, Color_Black, MSMincho_20_1, "%s", ResponseNo);
-		}
-		else if (CollisionRectToPoint(resultDialogNo, nowMousePoint))
-		{
-			DrawRect(resultDialogYes, Color_Green, false, 1);
-			DrawRect(resultDialogNo, Color_Violet, true, 1);
-	
-			DrawFormatStringToHandleAlign(ResultDialogYesCenterX, ResultDialogButtonCenterY, FAlign_AllCenter, Color_Black, MSMincho_20_1, "%s", ResponseYes);
-			DrawFormatStringToHandleAlign(ResultDialogNoCenterX, ResultDialogButtonCenterY, FAlign_AllCenter, Color_White, MSMincho_20_1, "%s", ResponseNo);
-		}
-		else
-		{
-			DrawRect(resultDialogYes, Color_Green, false, 1);
-			DrawRect(resultDialogNo, Color_Violet, false, 1);
-	
-			DrawFormatStringToHandleAlign(ResultDialogYesCenterX, ResultDialogButtonCenterY, FAlign_AllCenter, Color_Black, MSMincho_20_1, "%s", ResponseYes);
-			DrawFormatStringToHandleAlign(ResultDialogNoCenterX, ResultDialogButtonCenterY, FAlign_AllCenter, Color_Black, MSMincho_20_1, "%s", ResponseNo);
+			DrawRect(resultDialogBackGround, Color_White, true, 1);
+
+			DrawFormatStringToHandleAlign(GameWindowWidth / 2, GameWindowHeight / 2 - 50, FAlign_AllCenter, Color_Black, MSMincho_20_1, "%s", ResultDialogMessage);
+
+			if (CollisionRectToPoint(resultDialogYes, nowMousePoint))
+			{
+				DrawRect(resultDialogYes, Color_Green, true, 1);
+				DrawRect(resultDialogNo, Color_Violet, false, 1);
+
+				DrawFormatStringToHandleAlign(ResultDialogYesCenterX, ResultDialogButtonCenterY, FAlign_AllCenter, Color_White, MSMincho_20_1, "%s", ResponseYes);
+				DrawFormatStringToHandleAlign(ResultDialogNoCenterX, ResultDialogButtonCenterY, FAlign_AllCenter, Color_Black, MSMincho_20_1, "%s", ResponseNo);
+			}
+			else if (CollisionRectToPoint(resultDialogNo, nowMousePoint))
+			{
+				DrawRect(resultDialogYes, Color_Green, false, 1);
+				DrawRect(resultDialogNo, Color_Violet, true, 1);
+
+				DrawFormatStringToHandleAlign(ResultDialogYesCenterX, ResultDialogButtonCenterY, FAlign_AllCenter, Color_Black, MSMincho_20_1, "%s", ResponseYes);
+				DrawFormatStringToHandleAlign(ResultDialogNoCenterX, ResultDialogButtonCenterY, FAlign_AllCenter, Color_White, MSMincho_20_1, "%s", ResponseNo);
+			}
+			else
+			{
+				DrawRect(resultDialogYes, Color_Green, false, 1);
+				DrawRect(resultDialogNo, Color_Violet, false, 1);
+
+				DrawFormatStringToHandleAlign(ResultDialogYesCenterX, ResultDialogButtonCenterY, FAlign_AllCenter, Color_Black, MSMincho_20_1, "%s", ResponseYes);
+				DrawFormatStringToHandleAlign(ResultDialogNoCenterX, ResultDialogButtonCenterY, FAlign_AllCenter, Color_Black, MSMincho_20_1, "%s", ResponseNo);
+			}
 		}
 	}
 

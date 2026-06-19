@@ -81,6 +81,7 @@
 #define ResultTitle				"Result Scene"				// リザルト画面のタイトル
 #define ResultDialogMessage		"セーブしますか?"			// セーブするかの質問文
 #define ResultWinMessage		"WIN"						// 勝利タイトル
+#define ResultGratulateMessage	"Congratulation!!"			// お祝いメッセージ
 #define UnlockCharacterMessage	"何か変化が起こったようだ"	// 新キャラクター解放のメッセージ
 
 

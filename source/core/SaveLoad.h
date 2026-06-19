@@ -8,13 +8,13 @@
 #define PathDataFile	".\\Game_Data\\Game_Data.dat"
 
 
-extern errno_t errorCode;										// 
+extern errno_t errorCode;									// 
 extern int saveArray[CharacterNumber][CharacterNumber];		// 
-extern int total_saveArray_Previous;									// 
-extern int total_saveArray_Now;									// 
-extern bool alreadySaved;										// 
-extern bool alreadyConfirmedSave;								// 
-extern bool initialized;										// 
+extern int total_saveArray_Previous;						// 
+extern int total_saveArray_Now;								// 
+extern bool alreadySaved;									// 
+extern bool alreadyConfirmedSave;							// 
+extern bool initialized;									// 
 
 
 extern void Data_Init();										// ゲームデータの初期化関数
