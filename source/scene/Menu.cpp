@@ -318,7 +318,7 @@ void Menu_Draw()
 		DrawRect(achievementTable, Color_White, false, 3);
 		DrawLineWithStruct(enemyLine, Color_White);
 		DrawLineWithStruct(playerLine, Color_White);
-		for (i = 0; i < AllCharacterNumber; i++)
+		for (i = 0; i < CharacterNumber; i++)
 		{
 			DrawLineWithStruct(tableVerticalLine[i], Color_White);
 			DrawLineWithStruct(tableHorizontalLine[i], Color_White);
@@ -334,6 +334,20 @@ void Menu_Draw()
 		DrawFormatVStringToHandleAlign(GameWindowWidth / 2 + 25, GameWindowHeight / 2 - 100, FAlign_AllCenter, Color_White, VMSMincho_30_1, "%s", CharacterNameRobot);
 		DrawFormatVStringToHandleAlign(GameWindowWidth / 2 + 75, GameWindowHeight / 2 - 100, FAlign_AllCenter, Color_White, VMSMincho_30_1, "%s", CharacterNameHuman);
 		DrawFormatVStringToHandleAlign(GameWindowWidth / 2 + 125, GameWindowHeight / 2 - 100, FAlign_AllCenter, Color_White, VMSMincho_30_1, "%s", CharacterNameDragon);
+
+		if (total_round_robin >= 5)
+		{
+			DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 100, GameWindowHeight / 2 + 175, FAlign_AllCenter, Color_White, MSMincho_30_1, "%s", CharacterNameDightmare);
+
+			DrawFormatVStringToHandleAlign(GameWindowWidth / 2 + 175, GameWindowHeight / 2 - 100, FAlign_AllCenter, Color_White, VMSMincho_30_1, "%s", CharacterNameDightmare);
+		}
+
+		if (total_round_robin >= 10)
+		{
+			DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 100, GameWindowHeight / 2 + 225, FAlign_AllCenter, Color_White, MSMincho_30_1, "%s", CharacterNameNoname);
+
+			DrawFormatVStringToHandleAlign(GameWindowWidth / 2 + 225, GameWindowHeight / 2 - 100, FAlign_AllCenter, Color_White, VMSMincho_30_1, "%s", CharacterNameNoname);
+		}
 
 
 		if (CollisionRectToPoint(achievementBackButton, nowMousePoint))
@@ -601,9 +615,9 @@ void Show_WinLoseCircle()
 {
 	int i,j;
 
-	for (i = 0; i < AllCharacterNumber; i++)
+	for (i = 0; i < CharacterNumber; i++)
 	{
-		for (j = 0; j < AllCharacterNumber; j++)
+		for (j = 0; j < CharacterNumber; j++)
 		{
 			if (round_robin[i][j] == 1)
 			{

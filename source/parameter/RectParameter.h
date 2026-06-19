@@ -32,8 +32,8 @@
 /* +++ 勝敗の記録 +++ */
 #define AchievementTableLeft	(GameWindowWidth / 2 - 300)		// 勝敗記録画面の表の左上のX座標
 #define AchievementTableTop		(GameWindowHeight / 2 - 300)	// 勝敗記録画面の表の左上のY座標
-#define AchievementTableRight	(GameWindowWidth / 2 + 300)		// 勝敗記録画面の表の右下のX座標
-#define AchievementTableBottom	(GameWindowHeight / 2 + 300)	// 勝敗記録画面の表の右下のY座標
+#define AchievementTableRight	(GameWindowWidth / 2 + 250)		// 勝敗記録画面の表の右下のX座標
+#define AchievementTableBottom	(GameWindowHeight / 2 + 250)	// 勝敗記録画面の表の右下のY座標
 #define AchievementBackCenterX	(GameWindowWidth / 2 - 450)		// 勝敗の記録画面の「戻る」ボタンの中心のX座標
 #define AchievementBackCenterY	(GameWindowHeight / 2 - 375)	// 勝敗の記録画面の「戻る」ボタンの中心のY座標
 #define AchievementBackWidth	100								// 勝敗の記録画面の「戻る」ボタンの幅

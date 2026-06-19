@@ -33,13 +33,13 @@ RECT menuNoButton;		// メニューウィンドウの「いいえ」ボタン
 /* +++ 勝敗記録画面 +++ */
 RECT achievementBackButton;										// 勝敗記録画面の「戻る」ボタン
 RECT achievementTable;											// 勝敗記録の表
-CIRCLE winLoseCircle[AllCharacterNumber][AllCharacterNumber];	// 勝敗結果を描画する円の配列
+CIRCLE winLoseCircle[CharacterNumber][CharacterNumber];	// 勝敗結果を描画する円の配列
 
 LINE achieveDiagonalLine;						// 討伐記録の表の斜め線
 LINE enemyLine;									// 討伐記録の「討伐対象」の下側の横線
 LINE playerLine;								// 討伐記録の「プレイヤー」の右側の縦線
-LINE tableVerticalLine[AllCharacterNumber];		// 討伐記録の表の始めの縦線
-LINE tableHorizontalLine[AllCharacterNumber];	// 討伐記録の表の始めの横線
+LINE tableVerticalLine[CharacterNumber];		// 討伐記録の表の始めの縦線
+LINE tableHorizontalLine[CharacterNumber];	// 討伐記録の表の始めの横線
 
 
 /* === セレクトシーン === */
@@ -99,9 +99,9 @@ void Geometry_Init(void)
 	/* +++ 勝敗記録画面 +++ */
 	achievementBackButton = GetRectOnPoint(AchievementBackCenterX, AchievementBackCenterY, AchievementBackWidth, AchievementBackHeight);	// 勝敗記録画面の「戻る」ボタン
 	achievementTable = GetRect(AchievementTableLeft, AchievementTableTop, AchievementTableRight, AchievementTableBottom);
-	for (i = 0; i < AllCharacterNumber; i++)
+	for (i = 0; i < CharacterNumber; i++)
 	{
-		for (j = 0; j < AllCharacterNumber; j++)
+		for (j = 0; j < CharacterNumber; j++)
 		{
 			winLoseCircle[i][j] = GetCircle(GetPoint(WinLoseCircleStartX + 50 * j, WinLoseCircleStartY + 50 * i), WinLoseCircleRadius);
 		}
@@ -113,7 +113,7 @@ void Geometry_Init(void)
 	achieveDiagonalLine = GetLine(GetPoint(AchievementTableLeft, AchievementTableTop), GetPoint(GameWindowWidth / 2, GameWindowHeight / 2), 3);
 	enemyLine = GetLine(GetPoint(AchievementEnemyLineStartX, AchievementEnemyLineY), GetPoint(AchievementEnemyLineEndX, AchievementEnemyLineY), 3);
 	playerLine = GetLine(GetPoint(AchievementPlayerLineX, AchievementPlayerLineStartY), GetPoint(AchievementPlayerLineX, AchievementPlayerLineEndY), 3);
-	for (i = 0; i < AllCharacterNumber; i++)
+	for (i = 0; i < CharacterNumber; i++)
 	{
 		tableVerticalLine[i] = GetLine(GetPoint(AchievementTableVerticalX + 50 * i, AchievementEnemyLineY), GetPoint(AchievementTableVerticalX + 50 * i, AchievementPlayerLineEndY), 3);
 		tableHorizontalLine[i] = GetLine(GetPoint(AchievementPlayerLineX, AchievementTableHorizontalY + 50 * i), GetPoint(AchievementEnemyLineEndX, AchievementTableHorizontalY + 50 * i), 3);

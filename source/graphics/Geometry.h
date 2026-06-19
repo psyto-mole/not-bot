@@ -56,13 +56,13 @@ extern RECT menuNoButton;	// メニューウィンドウの「いいえ」ボタン
 /* +++ 討伐記録画面 +++ */
 extern RECT achievementBackButton;									// 討伐記録画面の「戻る」ボタン
 extern RECT achievementTable;										// 討伐記録の表
-extern CIRCLE winLoseCircle[AllCharacterNumber][AllCharacterNumber];		// 討伐記録を描画する円の配列
+extern CIRCLE winLoseCircle[CharacterNumber][CharacterNumber];		// 討伐記録を描画する円の配列
 
 extern LINE achieveDiagonalLine;					// 討伐記録の表の斜め線
 extern LINE enemyLine;								// 討伐記録の「討伐対象」の下側の横線
 extern LINE playerLine;								// 討伐記録の「プレイヤー」の右側の縦線
-extern LINE tableVerticalLine[AllCharacterNumber];		// 討伐記録の表を構成する縦線
-extern LINE tableHorizontalLine[AllCharacterNumber];	// 討伐記録の表を構成する横線
+extern LINE tableVerticalLine[CharacterNumber];		// 討伐記録の表を構成する縦線
+extern LINE tableHorizontalLine[CharacterNumber];	// 討伐記録の表を構成する横線
 
 
 /* === セレクトシーン === */

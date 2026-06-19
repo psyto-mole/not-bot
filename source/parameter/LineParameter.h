@@ -22,11 +22,11 @@
 
 /* +++ èüîsãLò^ +++ */
 #define AchievementEnemyLineStartX		(GameWindowWidth / 2 - 300)
-#define AchievementEnemyLineEndX		(GameWindowWidth / 2 + 300)
+#define AchievementEnemyLineEndX		(GameWindowWidth / 2 + 250)
 #define AchievementEnemyLineY			(GameWindowHeight / 2 - 200)
 #define AchievementPlayerLineX			(GameWindowWidth / 2 - 200)
 #define AchievementPlayerLineStartY		(GameWindowHeight / 2 - 300)
-#define AchievementPlayerLineEndY		(GameWindowHeight / 2 + 300)
+#define AchievementPlayerLineEndY		(GameWindowHeight / 2 + 250)
 
 
 #define AchievementTableHorizontalY		(GameWindowHeight / 2)
