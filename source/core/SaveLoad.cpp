@@ -7,7 +7,7 @@
 
 
 errno_t errorCode;
-int round_robin[AllCharacterNumber][AllCharacterNumber];
+int round_robin[CharacterNumber][CharacterNumber];
 int total_round_robin;
 bool alreadySaved;
 bool alreadyConfirmedSave;
@@ -19,9 +19,9 @@ void Data_Init()
 {
 	int i,j;
 
-	for (i = 0; i < AllCharacterNumber; i++)
+	for (i = 0; i < CharacterNumber; i++)
 	{
-		for (j = 0; j < AllCharacterNumber; j++)
+		for (j = 0; j < CharacterNumber; j++)
 		{
 			round_robin[i][j] = 0;
 		}
@@ -34,11 +34,11 @@ void Data_Init()
 
 	Data_Load();
 
-	for (i = 0; i < AllCharacterNumber; i++)
+	for (i = 0; i < CharacterNumber; i++)
 	{
-		for (j = 0; j < AllCharacterNumber; j++)
+		for (j = 0; j < CharacterNumber; j++)
 		{
-			total_round_robin = round_robin[i][j];
+			total_round_robin += round_robin[i][j];
 		}
 	}
 
@@ -71,9 +71,9 @@ void Data_Save()
 			return;
 		}
 
-		dataSize = fwrite(round_robin, sizeof(int), AllCharacterNumber * AllCharacterNumber, fp);
+		dataSize = fwrite(round_robin, sizeof(int), CharacterNumber * CharacterNumber, fp);
 
-		if (dataSize != AllCharacterNumber * AllCharacterNumber)
+		if (dataSize != CharacterNumber * CharacterNumber)
 		{
 			MessageBox(
 				GetMainWindowHandle(),		// ウィンドウハンドル
@@ -127,13 +127,13 @@ void Data_Load()
 
 	if (errorCode == 0)
 	{
-		dataSize = fread(round_robin, sizeof(int), AllCharacterNumber * AllCharacterNumber, fp);
+		dataSize = fread(round_robin, sizeof(int), CharacterNumber * CharacterNumber, fp);
 
-		if (dataSize != AllCharacterNumber * AllCharacterNumber)
+		if (dataSize != CharacterNumber * CharacterNumber)
 		{
-			for (i = 0; i < AllCharacterNumber; i++)
+			for (i = 0; i < CharacterNumber; i++)
 			{
-				for (j = 0; j < AllCharacterNumber; j++)
+				for (j = 0; j < CharacterNumber; j++)
 				round_robin[i][j] = 0;
 			}
 		}
@@ -149,9 +149,9 @@ void Data_Load()
 	}
 	else
 	{
-		for (i = 0; i < AllCharacterNumber; i++)
+		for (i = 0; i < CharacterNumber; i++)
 		{
-			for (j = 0; j < AllCharacterNumber; j++)
+			for (j = 0; j < CharacterNumber; j++)
 			{
 				round_robin[i][j] = 0;
 			}
@@ -175,7 +175,7 @@ void Data_Update(int playerNumber, int enemyNumber)
 	}
 	else
 	{
-		if (enemyNumber <= AllCharacterNumber && playerNumber <= AllCharacterNumber)
+		if (enemyNumber <= CharacterNumber && playerNumber <= CharacterNumber)
 		{
 			targetLine = (playerNumber - 1);
 			targetColumn = (enemyNumber - 1);
@@ -212,17 +212,17 @@ void Data_Delete()
 		return;
 	}
 
-	for (i = 0; i < AllCharacterNumber; i++)
+	for (i = 0; i < CharacterNumber; i++)
 	{
-		for (j = 0; j < AllCharacterNumber; j++)
+		for (j = 0; j < CharacterNumber; j++)
 		{
 			round_robin[i][j] = 0;
 		}
 	}
 
-	dataSize = fwrite(round_robin, sizeof(int), AllCharacterNumber * AllCharacterNumber, fp);
+	dataSize = fwrite(round_robin, sizeof(int), CharacterNumber * CharacterNumber, fp);
 
-	if (dataSize != AllCharacterNumber * AllCharacterNumber)
+	if (dataSize != CharacterNumber * CharacterNumber)
 	{
 		MessageBox(
 			GetMainWindowHandle(),		// ウィンドウハンドル
