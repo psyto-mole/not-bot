@@ -16,10 +16,14 @@
 #include "Rectparameter.h"
 
 
+bool alreadyDisplayUnlock;	// キャラクター解禁のメッセージが表示されたか管理する変数
+
 /* --- シーンの初期化関数 --- */
 int Result_Init()
 {
 	Sound_Play(BGM_Result);
+
+	alreadyDisplayUnlock = false;
 
 	return 0;	// リザルトシーンの初期化の終了(0を返す)
 }
@@ -51,6 +55,43 @@ void Result_Process()
 			Sound_Play(SE_Click);
 
 			alreadyConfirmedSave = true;
+		}
+	}
+
+	if (total_saveArray_Previous < 5 && total_saveArray_Now >= 5)
+	{
+		if (alreadyDisplayUnlock != true)
+		{
+			if (CollisionRectToPoint(resultDialogOK, nowMousePoint) && Mouse_Check_Click(MOUSE_INPUT_LEFT))
+			{
+				Sound_Play(SE_Enter);
+
+				alreadyDisplayUnlock = true;
+			}
+		}
+	}
+	else if (total_saveArray_Previous < 10 && total_saveArray_Now >= 10)
+	{
+		if (alreadyDisplayUnlock != true)
+		{
+			if (CollisionRectToPoint(resultDialogOK, nowMousePoint) && Mouse_Check_Click(MOUSE_INPUT_LEFT))
+			{
+				Sound_Play(SE_Enter);
+
+				alreadyDisplayUnlock = true;
+			}
+		}
+	}
+	else if (total_saveArray_Previous < 25 && total_saveArray_Now >= 25)
+	{
+		if (alreadyDisplayUnlock != true)
+		{
+			if (CollisionRectToPoint(resultDialogOK, nowMousePoint) && Mouse_Check_Click(MOUSE_INPUT_LEFT))
+			{
+				Sound_Play(SE_Enter);
+
+				alreadyDisplayUnlock = true;
+			}
 		}
 	}
 
@@ -124,6 +165,73 @@ void Result_Draw()
 	
 			DrawFormatStringToHandleAlign(ResultDialogYesCenterX, ResultDialogButtonCenterY, FAlign_AllCenter, Color_Black, MSMincho_20_1, "%s", ResponseYes);
 			DrawFormatStringToHandleAlign(ResultDialogNoCenterX, ResultDialogButtonCenterY, FAlign_AllCenter, Color_Black, MSMincho_20_1, "%s", ResponseNo);
+		}
+	}
+
+	if (total_saveArray_Previous < 5 && total_saveArray_Now >= 5)
+	{
+		if (alreadyDisplayUnlock != true)
+		{
+			DrawRect(resultDialogBackGround, Color_White, true, 1);
+
+			DrawFormatStringToHandleAlign(GameWindowWidth / 2, GameWindowHeight / 2 - 50, FAlign_AllCenter, Color_Black, MSMincho_20_1, "%s", UnlockCharacterMessage);
+
+			if (CollisionRectToPoint(resultDialogOK, nowMousePoint))
+			{
+				DrawRect(resultDialogOK, Color_Green, true, 1);
+
+				DrawFormatStringToHandleAlign(ResultDialogOKCenterX, ResultDialogButtonCenterY, FAlign_AllCenter, Color_White, MSMincho_20_1, "%s", ResponseOK);
+			}
+			else
+			{
+				DrawRect(resultDialogOK, Color_Green, false, 1);
+
+				DrawFormatStringToHandleAlign(ResultDialogOKCenterX, ResultDialogButtonCenterY, FAlign_AllCenter, Color_Black, MSMincho_20_1, "%s", ResponseOK);
+			}
+		}
+	}
+	else if (total_saveArray_Previous < 10 && total_saveArray_Now >= 10)
+	{
+		if (alreadyDisplayUnlock != true)
+		{
+			DrawRect(resultDialogBackGround, Color_White, true, 1);
+
+			DrawFormatStringToHandleAlign(GameWindowWidth / 2, GameWindowHeight / 2 - 50, FAlign_AllCenter, Color_Black, MSMincho_20_1, "%s", UnlockCharacterMessage);
+
+			if (CollisionRectToPoint(resultDialogOK, nowMousePoint))
+			{
+				DrawRect(resultDialogOK, Color_Green, true, 1);
+
+				DrawFormatStringToHandleAlign(ResultDialogOKCenterX, ResultDialogButtonCenterY, FAlign_AllCenter, Color_White, MSMincho_20_1, "%s", ResponseOK);
+			}
+			else
+			{
+				DrawRect(resultDialogOK, Color_Green, false, 1);
+
+				DrawFormatStringToHandleAlign(ResultDialogOKCenterX, ResultDialogButtonCenterY, FAlign_AllCenter, Color_Black, MSMincho_20_1, "%s", ResponseOK);
+			}
+		}
+	}
+	else if (total_saveArray_Previous < 25 && total_saveArray_Now >= 25)
+	{
+		if (alreadyDisplayUnlock != true)
+		{
+			DrawRect(resultDialogBackGround, Color_White, true, 1);
+
+			DrawFormatStringToHandleAlign(GameWindowWidth / 2, GameWindowHeight / 2 - 50, FAlign_AllCenter, Color_Black, MSMincho_20_1, "%s", UnlockCharacterMessage);
+
+			if (CollisionRectToPoint(resultDialogOK, nowMousePoint))
+			{
+				DrawRect(resultDialogOK, Color_Green, true, 1);
+
+				DrawFormatStringToHandleAlign(ResultDialogOKCenterX, ResultDialogButtonCenterY, FAlign_AllCenter, Color_White, MSMincho_20_1, "%s", ResponseOK);
+			}
+			else
+			{
+				DrawRect(resultDialogOK, Color_Green, false, 1);
+
+				DrawFormatStringToHandleAlign(ResultDialogOKCenterX, ResultDialogButtonCenterY, FAlign_AllCenter, Color_Black, MSMincho_20_1, "%s", ResponseOK);
+			}
 		}
 	}
 

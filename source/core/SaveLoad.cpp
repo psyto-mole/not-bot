@@ -7,8 +7,9 @@
 
 
 errno_t errorCode;
-int round_robin[CharacterNumber][CharacterNumber];
-int total_round_robin;
+int saveArray[CharacterNumber][CharacterNumber];
+int total_saveArray_Previous;
+int total_saveArray_Now;
 bool alreadySaved;
 bool alreadyConfirmedSave;
 bool initialized;
@@ -23,11 +24,11 @@ void Data_Init()
 	{
 		for (j = 0; j < CharacterNumber; j++)
 		{
-			round_robin[i][j] = 0;
+			saveArray[i][j] = 0;
 		}
 	}
 
-	total_round_robin = 0;
+	total_saveArray_Now = 0;
 	alreadySaved = false;
 	alreadyConfirmedSave = false;
 	initialized = true;
@@ -38,9 +39,11 @@ void Data_Init()
 	{
 		for (j = 0; j < CharacterNumber; j++)
 		{
-			total_round_robin += round_robin[i][j];
+			total_saveArray_Now += saveArray[i][j];
 		}
 	}
+
+	total_saveArray_Previous = total_saveArray_Now;
 
 	return;
 }
@@ -71,7 +74,7 @@ void Data_Save()
 			return;
 		}
 
-		dataSize = fwrite(round_robin, sizeof(int), CharacterNumber * CharacterNumber, fp);
+		dataSize = fwrite(saveArray, sizeof(int), CharacterNumber * CharacterNumber, fp);
 
 		if (dataSize != CharacterNumber * CharacterNumber)
 		{
@@ -127,14 +130,14 @@ void Data_Load()
 
 	if (errorCode == 0)
 	{
-		dataSize = fread(round_robin, sizeof(int), CharacterNumber * CharacterNumber, fp);
+		dataSize = fread(saveArray, sizeof(int), CharacterNumber * CharacterNumber, fp);
 
 		if (dataSize != CharacterNumber * CharacterNumber)
 		{
 			for (i = 0; i < CharacterNumber; i++)
 			{
 				for (j = 0; j < CharacterNumber; j++)
-				round_robin[i][j] = 0;
+				saveArray[i][j] = 0;
 			}
 		}
 
@@ -153,7 +156,7 @@ void Data_Load()
 		{
 			for (j = 0; j < CharacterNumber; j++)
 			{
-				round_robin[i][j] = 0;
+				saveArray[i][j] = 0;
 			}
 		}
 	}
@@ -166,6 +169,7 @@ void Data_Load()
 /* --- ゲームデータを更新する関数 --- */
 void Data_Update(int playerNumber, int enemyNumber)
 {
+	int i, j;
 	int targetLine;
 	int targetColumn;
 
@@ -180,9 +184,18 @@ void Data_Update(int playerNumber, int enemyNumber)
 			targetLine = (playerNumber - 1);
 			targetColumn = (enemyNumber - 1);
 
-			round_robin[targetLine][targetColumn] = 1;
+			saveArray[targetLine][targetColumn] = 1;
 
 			Data_Save();
+
+			total_saveArray_Now = 0;
+			for (i = 0; i < CharacterNumber; i++)
+			{
+				for (j = 0; j < CharacterNumber; j++)
+				{
+					total_saveArray_Now += saveArray[i][j];
+				}
+			}
 		}
 	}
 
@@ -216,11 +229,11 @@ void Data_Delete()
 	{
 		for (j = 0; j < CharacterNumber; j++)
 		{
-			round_robin[i][j] = 0;
+			saveArray[i][j] = 0;
 		}
 	}
 
-	dataSize = fwrite(round_robin, sizeof(int), CharacterNumber * CharacterNumber, fp);
+	dataSize = fwrite(saveArray, sizeof(int), CharacterNumber * CharacterNumber, fp);
 
 	if (dataSize != CharacterNumber * CharacterNumber)
 	{

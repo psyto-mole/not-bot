@@ -9,8 +9,9 @@
 
 
 extern errno_t errorCode;										// 
-extern int round_robin[CharacterNumber][CharacterNumber];		// 
-extern int total_round_robin;									// 
+extern int saveArray[CharacterNumber][CharacterNumber];		// 
+extern int total_saveArray_Previous;									// 
+extern int total_saveArray_Now;									// 
 extern bool alreadySaved;										// 
 extern bool alreadyConfirmedSave;								// 
 extern bool initialized;										// 

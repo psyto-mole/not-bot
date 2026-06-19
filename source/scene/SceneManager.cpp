@@ -361,12 +361,13 @@ void Scene_Draw()
 			DrawFormatStringToHandleAlign(GameWindowWidth - 1, 75, FAlign_Right, Color_LightGreen, MSMincho_30_1, "Initialized: %s", FlagStatusFalse);
 		}
 
-		DrawFormatStringToHandleAlign(GameWindowWidth - 1, 110, FAlign_Right, Color_Green, MSMincho_20_1, "Total_Round_Robin: %d", total_round_robin);
+		DrawFormatStringToHandleAlign(GameWindowWidth - 1, 110, FAlign_Right, Color_Green, MSMincho_20_1, "total_saveArray_Previous: %d", total_saveArray_Previous);
+		DrawFormatStringToHandleAlign(GameWindowWidth - 1, 130, FAlign_Right, Color_Green, MSMincho_20_1, "total_saveArray_Now: %d", total_saveArray_Now);
 		for (i = 0; i < CharacterNumber; i++)
 		{
 			for (j = 0; j < CharacterNumber; j++)
 			{
-				DrawFormatStringToHandleAlign(GameWindowWidth - 1, 130 + 20 * j + 20 * CharacterNumber * i, FAlign_Right, Color_Green, MSMincho_20_1, "Round_Robin[%d][%d]: %d", i,j, round_robin[i][j]);
+				DrawFormatStringToHandleAlign(GameWindowWidth - 1, 150 + 20 * j + 20 * CharacterNumber * i, FAlign_Right, Color_Green, MSMincho_20_1, "saveArray[%d][%d]: %d", i,j, saveArray[i][j]);
 			}
 		}
 	}

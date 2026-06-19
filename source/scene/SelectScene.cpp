@@ -93,7 +93,7 @@ void SelectScene_Process()
 			{
 				questionNumber += 1;	// ¿–â”Ô†‚ğ1‘‚â‚·
 
-				if (total_round_robin < 5)
+				if (total_saveArray_Now < 5)
 				{
 					// ¿–â”Ô†‚ª3‚ğ’´‚¦‚½‚ç
 					if (questionNumber > 3)
@@ -101,7 +101,7 @@ void SelectScene_Process()
 						questionNumber = 1;		// ¿–â”Ô†‚ğ1‚É‚à‚Ç‚·
 					}
 				}
-				else if (total_round_robin < 10)
+				else if (total_saveArray_Now < 10)
 				{
 					// ¿–â”Ô†‚ª4‚ğ’´‚¦‚½‚ç
 					if (questionNumber > 4)
@@ -109,7 +109,7 @@ void SelectScene_Process()
 						questionNumber = 1;		// ¿–â”Ô†‚ğ1‚É‚à‚Ç‚·
 					}
 				}
-				else if (total_round_robin < 25)
+				else if (total_saveArray_Now < 25)
 				{
 					// ¿–â”Ô†‚ª5‚ğ’´‚¦‚½‚ç
 					if (questionNumber > 5)
@@ -149,7 +149,7 @@ void SelectScene_Process()
 			{
 				questionNumber += 1;	// ¿–â”Ô†‚ğ1‘‚â‚·
 
-				if (total_round_robin < 5)
+				if (total_saveArray_Now < 5)
 				{
 					// ¿–â”Ô†‚ª3‚ğ’´‚¦‚½‚ç
 					if (questionNumber > 3)
@@ -157,7 +157,7 @@ void SelectScene_Process()
 						questionNumber = 1;		// ¿–â”Ô†‚ğ1‚É–ß‚·
 					}
 				}
-				else if (total_round_robin < 10)
+				else if (total_saveArray_Now < 10)
 				{
 					// ¿–â”Ô†‚ª4‚ğ’´‚¦‚½‚ç
 					if (questionNumber > 4)
@@ -165,7 +165,7 @@ void SelectScene_Process()
 						questionNumber = 1;		// ¿–â”Ô†‚ğ1‚É–ß‚·
 					}
 				}
-				else if (total_round_robin < 25)
+				else if (total_saveArray_Now < 25)
 				{
 					// ¿–â”Ô†‚ª5‚ğ’´‚¦‚½‚ç
 					if (questionNumber > 5)

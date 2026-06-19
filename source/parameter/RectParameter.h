@@ -89,7 +89,9 @@
 /* +++ リザルトダイアログのボタン +++ */
 #define ResultDialogYesWidth		80															// リザルトダイアログの「はい」ボタンの幅
 #define ResultDialogNoWidth			100															// リザルトダイアログの「いいえ」ボタンの幅
+#define ResultDialogOKWidth			80															// リザルトダイアログの「OK」ボタンの幅
 #define ResultDialogButtonHeight	40															// リザルトダイアログのボタンの高さ
 #define ResultDialogYesCenterX		(ResultDialogBackCenterX - (SelectBoxYesWidth / 2 + 30))	// リザルトダイアログの「はい」ボタンの中心のX座標
 #define ResultDialogNoCenterX		(ResultDialogBackCenterX + (SelectBoxNoWidth / 2 + 20))		// リザルトダイアログの「いいえ」ボタンの中心のX座標
+#define ResultDialogOKCenterX		ResultDialogBackCenterX										// リザルトダイアログの「OK」ボタンの中心のX座標
 #define ResultDialogButtonCenterY	(ResultDialogBackCenterY + 20)								// リザルトダイアログのボタンの中心のY座標

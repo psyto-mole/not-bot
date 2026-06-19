@@ -335,14 +335,14 @@ void Menu_Draw()
 		DrawFormatVStringToHandleAlign(GameWindowWidth / 2 + 75, GameWindowHeight / 2 - 100, FAlign_AllCenter, Color_White, VMSMincho_30_1, "%s", CharacterNameHuman);
 		DrawFormatVStringToHandleAlign(GameWindowWidth / 2 + 125, GameWindowHeight / 2 - 100, FAlign_AllCenter, Color_White, VMSMincho_30_1, "%s", CharacterNameDragon);
 
-		if (total_round_robin >= 5)
+		if (total_saveArray_Now >= 5)
 		{
 			DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 100, GameWindowHeight / 2 + 175, FAlign_AllCenter, Color_White, MSMincho_30_1, "%s", CharacterNameDightmare);
 
 			DrawFormatVStringToHandleAlign(GameWindowWidth / 2 + 175, GameWindowHeight / 2 - 100, FAlign_AllCenter, Color_White, VMSMincho_30_1, "%s", CharacterNameDightmare);
 		}
 
-		if (total_round_robin >= 10)
+		if (total_saveArray_Now >= 10)
 		{
 			DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 100, GameWindowHeight / 2 + 225, FAlign_AllCenter, Color_White, MSMincho_30_1, "%s", CharacterNameNoname);
 
@@ -619,7 +619,7 @@ void Show_WinLoseCircle()
 	{
 		for (j = 0; j < CharacterNumber; j++)
 		{
-			if (round_robin[i][j] == 1)
+			if (saveArray[i][j] == 1)
 			{
 				DrawCircleWithStruct(winLoseCircle[i][j], Color_White, true, 1);
 			}

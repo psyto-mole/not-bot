@@ -66,6 +66,7 @@ RECT messageWindow;		// メッセージウィンドウ
 RECT resultDialogBackGround;	// リザルトダイアログのバックグラウンド
 RECT resultDialogYes;			// リザルトダイアログの「はい」
 RECT resultDialogNo;			// リザルトダイアログの「いいえ」
+RECT resultDialogOK;			// リザルトダイアログの「OK」
 
 
 /* +++ 幾何学処理の関数 +++ */
@@ -144,6 +145,7 @@ void Geometry_Init(void)
 	resultDialogBackGround = GetRectOnPoint(ResultDialogBackCenterX, ResultDialogBackCenterY, ResultDialogBackWidth, ResultDialogBackHeight);
 	resultDialogYes = GetRectOnPoint(ResultDialogYesCenterX,ResultDialogButtonCenterY, ResultDialogYesWidth, ResultDialogButtonHeight);
 	resultDialogNo = GetRectOnPoint(ResultDialogNoCenterX, ResultDialogButtonCenterY, ResultDialogNoWidth, ResultDialogButtonHeight);
+	resultDialogOK = GetRectOnPoint(ResultDialogOKCenterX, ResultDialogButtonCenterY, ResultDialogOKWidth, ResultDialogButtonHeight);
 
 	return;
 }

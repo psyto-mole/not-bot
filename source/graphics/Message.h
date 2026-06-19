@@ -8,6 +8,7 @@
 /* +++ 回答文 +++ */
 #define ResponseYes	"はい"		// 回答文「はい」
 #define ResponseNo	"いいえ"	// 回答文「いいえ」
+#define ResponseOK	"OK"		// 回答文「OK」
 
 
 /* +++ 助詞 +++ */
@@ -77,9 +78,10 @@
 
 
 /* === リザルト画面 === */
-#define ResultTitle				"Result Scene"		// リザルト画面のタイトル
-#define ResultDialogMessage		"セーブしますか?"	// セーブするかの質問文
-#define ResultWinMessage		"WIN"				// 勝利タイトル
+#define ResultTitle				"Result Scene"				// リザルト画面のタイトル
+#define ResultDialogMessage		"セーブしますか?"			// セーブするかの質問文
+#define ResultWinMessage		"WIN"						// 勝利タイトル
+#define UnlockCharacterMessage	"何か変化が起こったようだ"	// 新キャラクター解放のメッセージ
 
 
 

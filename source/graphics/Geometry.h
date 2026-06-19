@@ -89,6 +89,7 @@ extern RECT messageWindow;		// メッセージウィンドウ
 extern RECT resultDialogBackGround;		// リザルトダイアログのバックグラウンド
 extern RECT resultDialogYes;			// リザルトダイアログの「はい」
 extern RECT resultDialogNo;				// リザルトダイアログの「いいえ」
+extern RECT resultDialogOK;				// リザルトダイアログの「OK」
 
 
 /* +++ 幾何学処理の関数 +++ */
