@@ -448,6 +448,68 @@ void Character::MP_Calc(int Value, bool isEnhance)
 		{
 			MP = MaxMP;		// Å‘åMP‚É‘µ‚¦‚é
 		}
+
+		switch (settingMessagePattern)
+		{
+		case Message1Line:
+
+			if (isPlayer)
+			{
+				sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s%d%s", Players, characterName, PhraseMP, Value, HealStatus);
+			}
+			else
+			{
+				sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s%d%s", Enemys, characterName, PhraseMP, Value, HealStatus);
+			}
+
+			settingMessagePattern = Message2Line;
+			displayMessagePattern = Message1Line;
+			break;
+		case Message2Line:
+
+			if (isPlayer)
+			{
+				sprintf_s(battleMessage2, sizeof(battleMessage1), "%s%s%s%d%s", Players, characterName, PhraseMP, Value, HealStatus);
+			}
+			else
+			{
+				sprintf_s(battleMessage2, sizeof(battleMessage1), "%s%s%s%d%s", Enemys, characterName, PhraseMP, Value, HealStatus);
+			}
+
+			settingMessagePattern = Message3Line;
+			displayMessagePattern = Message2Line;
+			break;
+		case Message3Line:
+
+			if (isPlayer)
+			{
+				sprintf_s(battleMessage3, sizeof(battleMessage1), "%s%s%s%d%s", Players, characterName, PhraseMP, Value, HealStatus);
+			}
+			else
+			{
+				sprintf_s(battleMessage3, sizeof(battleMessage1), "%s%s%s%d%s", Enemys, characterName, PhraseMP, Value, HealStatus);
+			}
+
+			settingMessagePattern = Message4Line;
+			displayMessagePattern = Message3Line;
+			break;
+		case Message4Line:
+
+			if (isPlayer)
+			{
+				sprintf_s(battleMessage4, sizeof(battleMessage1), "%s%s%s%d%s", Players, characterName, PhraseMP, Value, HealStatus);
+			}
+			else
+			{
+				sprintf_s(battleMessage4, sizeof(battleMessage1), "%s%s%s%d%s", Enemys, characterName, PhraseMP, Value, HealStatus);
+			}
+
+			settingMessagePattern = Message1Line;
+			displayMessagePattern = Message4Line;
+			break;
+		default:
+			break;
+		}
 	}
 	else			// Œ¸­‚Ìê‡
 	{
@@ -457,6 +519,68 @@ void Character::MP_Calc(int Value, bool isEnhance)
 		if (MP <= 0)
 		{
 			MP = 0;		// MP‚ğ0‚É‚·‚é
+		}
+
+		switch (settingMessagePattern)
+		{
+		case Message1Line:
+
+			if (isPlayer)
+			{
+				sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s%d%s", Players, characterName, PhraseMP, Value, ReductionStatus);
+			}
+			else
+			{
+				sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s%d%s", Enemys, characterName, PhraseMP, Value, ReductionStatus);
+			}
+
+			settingMessagePattern = Message2Line;
+			displayMessagePattern = Message1Line;
+			break;
+		case Message2Line:
+
+			if (isPlayer)
+			{
+				sprintf_s(battleMessage2, sizeof(battleMessage2), "%s%s%s%d%s", Players, characterName, PhraseMP, Value, ReductionStatus);
+			}
+			else
+			{
+				sprintf_s(battleMessage2, sizeof(battleMessage2), "%s%s%s%d%s", Enemys, characterName, PhraseMP, Value, ReductionStatus);
+			}
+
+			settingMessagePattern = Message3Line;
+			displayMessagePattern = Message2Line;
+			break;
+		case Message3Line:
+
+			if (isPlayer)
+			{
+				sprintf_s(battleMessage3, sizeof(battleMessage3), "%s%s%s%d%s", Players, characterName, PhraseMP, Value, ReductionStatus);
+			}
+			else
+			{
+				sprintf_s(battleMessage3, sizeof(battleMessage3), "%s%s%s%d%s", Enemys, characterName, PhraseMP, Value, ReductionStatus);
+			}
+
+			settingMessagePattern = Message4Line;
+			displayMessagePattern = Message3Line;
+			break;
+		case Message4Line:
+
+			if (isPlayer)
+			{
+				sprintf_s(battleMessage4, sizeof(battleMessage4), "%s%s%s%d%s", Players, characterName, PhraseMP, Value, ReductionStatus);
+			}
+			else
+			{
+				sprintf_s(battleMessage4, sizeof(battleMessage4), "%s%s%s%d%s", Enemys, characterName, PhraseMP, Value, ReductionStatus);
+			}
+
+			settingMessagePattern = Message1Line;
+			displayMessagePattern = Message4Line;
+			break;
+		default:
+			break;
 		}
 	}
 
