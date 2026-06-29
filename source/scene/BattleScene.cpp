@@ -174,6 +174,16 @@ void BattleScene_Process()
 
 					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Players, CharacterNameDragon, BattleEndMessage);
 					break;
+				case 4:
+					/* +++ ダイトメアの場合 +++ */
+
+					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Players, CharacterNameDightmare, BattleEndMessage);
+					break;
+				case 5:
+					/* +++ キュー(仮)の場合 +++ */
+
+					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Players, CharacterNameNoname, BattleEndMessage);
+					break;
 				case 99:
 					/* +++ sheppの場合 +++ */
 
@@ -203,7 +213,6 @@ void BattleScene_Process()
 				displayMessagePattern = Message1Line;	// メッセージを表示する行数を設定
 
 				// メッセージの1行目に「敵の"キャラクター名"は倒れた」を設定
-				// メッセージの1行目に「プレイヤーの"キャラクター名"は倒れた」を設定
 				switch (enemyKindNumber)
 				{
 				case 1:
@@ -220,6 +229,16 @@ void BattleScene_Process()
 					/* +++ ドラゴンの場合 +++ */
 
 					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Enemys, CharacterNameDragon, BattleEndMessage);
+					break;
+				case 4:
+					/* +++ ダイトメアの場合 +++ */
+
+					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Enemys, CharacterNameDightmare, BattleEndMessage);
+					break;
+				case 5:
+					/* +++ キュー(仮)の場合 +++ */
+
+					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Enemys, CharacterNameNoname, BattleEndMessage);
 					break;
 				case 99:
 					/* +++ sheppの場合 +++ */
