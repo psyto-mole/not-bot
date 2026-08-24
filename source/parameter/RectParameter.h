@@ -81,10 +81,10 @@
 
 /* === リザルトシーン === */
 /* +++ リザルトダイアログのバックグラウンド +++ */
-#define ResultDialogBackWidth		500
-#define ResultDialogBackHeight		300
-#define ResultDialogBackCenterX		(GameWindowWidth / 2)
-#define ResultDialogBackCenterY		(GameWindowHeight / 2)
+#define ResultDialogBackWidth		500						// リザルトダイアログのバックグラウンドの幅
+#define ResultDialogBackHeight		300						// リザルトダイアログのバックグラウンドの高さ
+#define ResultDialogBackCenterX		(GameWindowWidth / 2)	// リザルトダイアログのバックグラウンドの中心のX座標
+#define ResultDialogBackCenterY		(GameWindowHeight / 2)	// リザルトダイアログのバックグラウンドの中心のY座標
 
 /* +++ リザルトダイアログのボタン +++ */
 #define ResultDialogYesWidth		80															// リザルトダイアログの「はい」ボタンの幅
