@@ -6,6 +6,6 @@
 
 /* === ƒƒjƒ…[ === */
 /* +++ Ÿ”s‹L˜^‚Ì‰æ–Ê +++ */
-#define WinLoseCircleStartX		(GameWindowWidth / 2 + 25)
-#define WinLoseCircleStartY		(GameWindowHeight / 2 + 25)
-#define WinLoseCircleRadius		15
+#define WinLoseCircleStartX		(GameWindowWidth / 2 + 25)		// Ÿ”s‚ğ‹L˜^‚·‚é‰~‚Ì‚¤‚¿AÅ‚à¶ã‚Ì‰~‚Ì’†S‚ÌXÀ•W
+#define WinLoseCircleStartY		(GameWindowHeight / 2 + 25)		// Ÿ”s‚ğ‹L˜^‚·‚é‰~‚Ì‚¤‚¿AÅ‚à¶ã‚Ì‰~‚Ì’†S‚ÌYÀ•W
+#define WinLoseCircleRadius		15								// Ÿ”s‚ğ‹L˜^‚·‚é‰~‚Ì”¼Œa

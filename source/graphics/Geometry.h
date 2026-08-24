@@ -6,14 +6,6 @@
 #include "GameManager.h"
 
 
-enum Geometry_Align
-{
-	GAlign_Left,
-	GAlign_Center,
-	GAlign_Right,
-	GAlign_AllCenter
-};
-
 /* --- â~ÇÃç\ë¢ëÃ --- */
 typedef struct _CIRCLE
 {
