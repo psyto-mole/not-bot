@@ -35,14 +35,14 @@ Fase NowFase, NextFase;		// フェイズを管理する列挙型の変数
 /* --- シーンの初期化関数 --- */
 int BattleScene_Init()
 {
-	Sound_Play(BGM_Battle);
+	Sound_Play(BGM_Battle);		// 戦闘画面のBGMを再生
 
 	gameEndMode = 1;	// ゲーム終了のモードを1(ゲームを継続)に設定
 
 	NowFase = MainFase;	// 現在のフェイズにメインフェイズを設定
 
-	settingMessagePattern = Message1Line;
-	displayMessagePattern = Message1Line;
+	settingMessagePattern = Message1Line;	// メッセージを格納する行数を1行目に設定
+	displayMessagePattern = Message1Line;	// メッセージを表示する行数を1行目に設定
 
 
 	/* +++ 変数に格納された種類に応じて敵キャラを決定 +++ */
@@ -162,31 +162,37 @@ void BattleScene_Process()
 				case 1:
 					/* +++ ロボットの場合 +++ */
 
+					// メッセージを1行目に設定
 					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Players, CharacterNameRobot, BattleEndMessage);
 					break;
 				case 2:
 					/* +++ 勇者の場合 +++ */
 
+					// メッセージを1行目に設定
 					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Players, CharacterNameHuman, BattleEndMessage);
 					break;
 				case 3:
 					/* +++ ドラゴンの場合 +++ */
 
+					// メッセージを1行目に設定
 					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Players, CharacterNameDragon, BattleEndMessage);
 					break;
 				case 4:
 					/* +++ ダイトメアの場合 +++ */
 
+					// メッセージを1行目に設定
 					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Players, CharacterNameDightmare, BattleEndMessage);
 					break;
 				case 5:
 					/* +++ キュー(仮)の場合 +++ */
 
+					// メッセージを1行目に設定
 					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Players, CharacterNameNoname, BattleEndMessage);
 					break;
 				case 99:
 					/* +++ sheppの場合 +++ */
 
+					// メッセージを1行目に設定
 					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Players, CharacterNameShepp, BattleEndMessage);
 					break;
 				default:
@@ -218,31 +224,37 @@ void BattleScene_Process()
 				case 1:
 					/* +++ ロボットの場合 +++ */
 
+					// メッセージを1行目に設定
 					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Enemys, CharacterNameRobot, BattleEndMessage);
 					break;
 				case 2:
 					/* +++ 勇者の場合 +++ */
 
+					// メッセージを1行目に設定
 					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Enemys, CharacterNameHuman, BattleEndMessage);
 					break;
 				case 3:
 					/* +++ ドラゴンの場合 +++ */
 
+					// メッセージを1行目に設定
 					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Enemys, CharacterNameDragon, BattleEndMessage);
 					break;
 				case 4:
 					/* +++ ダイトメアの場合 +++ */
 
+					// メッセージを1行目に設定
 					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Enemys, CharacterNameDightmare, BattleEndMessage);
 					break;
 				case 5:
 					/* +++ キュー(仮)の場合 +++ */
 
+					// メッセージを1行目に設定
 					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Enemys, CharacterNameNoname, BattleEndMessage);
 					break;
 				case 99:
 					/* +++ sheppの場合 +++ */
 
+					// メッセージを1行目に設定
 					sprintf_s(battleMessage1, sizeof(battleMessage1), "%s%s%s", Enemys, CharacterNameShepp, BattleEndMessage);
 					break;
 				default:
@@ -423,7 +435,7 @@ void BattleScene_Process()
 		}
 	}
 
-
+	/* +++ デバッグモードなら +++ */
 	if (GameDebug)
 	{
 		// シーン切換からの時間が1秒以上経過しエンターキーが押されたら
@@ -517,17 +529,20 @@ void BattleScene_Draw()
 	case Message1Line:
 		/* +++ 1行表示の場合 +++ */
 
+		// 1行目のメッセージのみ表示
 		DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 550, 890,FAlign_Left,Color_White,MSMincho_40_1,"%s",battleMessage1);
 		break;
 	case Message2Line:
 		/* +++ 2行表示の場合 +++ */
 
+		// 1,2行目のメッセージを表示
 		DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 550, 890, FAlign_Left, Color_White, MSMincho_40_1, "%s", battleMessage1);
 		DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 550, 930, FAlign_Left, Color_White, MSMincho_40_1, "%s", battleMessage2);
 		break;
 	case Message3Line:
 		/* +++ 3行表示の場合 +++ */
 
+		// 1～3行目のメッセージを表示
 		DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 550, 890, FAlign_Left, Color_White, MSMincho_40_1, "%s", battleMessage1);
 		DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 550, 930, FAlign_Left, Color_White, MSMincho_40_1, "%s", battleMessage2);
 		DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 550, 970, FAlign_Left, Color_White, MSMincho_40_1, "%s", battleMessage3);
@@ -535,6 +550,7 @@ void BattleScene_Draw()
 	case Message4Line:
 		/* +++ 4行表示の場合 +++ */
 
+		// 1～4行目のメッセージを表示
 		DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 550, 890, FAlign_Left, Color_White, MSMincho_40_1, "%s", battleMessage1);
 		DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 550, 930, FAlign_Left, Color_White, MSMincho_40_1, "%s", battleMessage2);
 		DrawFormatStringToHandleAlign(GameWindowWidth / 2 - 550, 970, FAlign_Left, Color_White, MSMincho_40_1, "%s", battleMessage3);
@@ -544,15 +560,16 @@ void BattleScene_Draw()
 		break;
 	}
 
-
+	/* +++ デバッグモードなら +++ */
 	if (GameDebug)
 	{
-		Player->DrawActionNumber(GameWindowWidth / 2 - 300, 970, Color_Green, MSMincho_30_1);
-		Enemy->DrawActionNumber(GameWindowWidth / 2 - 300, 1000, Color_Purple, MSMincho_30_1);
+		Player->DrawActionNumber(GameWindowWidth / 2 - 300, 970, Color_Green, MSMincho_30_1);	// プレイヤーのアクションナンバーを表示
+		Enemy->DrawActionNumber(GameWindowWidth / 2 - 300, 1000, Color_Purple, MSMincho_30_1);	// 敵キャラのアクションナンバーを表示
 
+		// ゲームの終了時のモードを表示
 		DrawFormatStringToHandleAlign(GameWindowWidth / 2, GameWindowHeight / 2, FAlign_AllCenter, Color_switching_Rainbow, MSMincho_50_1, "GameEndMode: %d", gameEndMode);
 
-		DrawPlayerEnemyNum();
+		DrawPlayerEnemyNum();	// 敵キャラと自キャラの識別番号を表示
 	}
 
 	return;
@@ -561,7 +578,7 @@ void BattleScene_Draw()
 /* --- バトルシーンの終了関数 --- */
 int BattleScene_End()
 {
-	Sound_Stop(&BGM_Battle);
+	Sound_Stop(&BGM_Battle);	// 戦闘画面のBGMを止める
 
 	return 0;
 }
