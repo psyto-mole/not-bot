@@ -4,6 +4,7 @@
 #include "DxLib.h"
 #include "Character.h"
 
+
 /* +++ ロボットキャラのステータス +++ */
 #define RobotHP		500		// ロボットのHP
 #define RobotMP		0		// ロボットのMP

@@ -6,13 +6,13 @@
 #include "Character.h"
 
 
-errno_t errorCode;
-int saveArray[CharacterNumber][CharacterNumber];
-int total_saveArray_Previous;
-int total_saveArray_Now;
-bool alreadySaved;
-bool alreadyConfirmedSave;
-bool initialized;
+errno_t errorCode;									// ファイルの読み出し・書き込みの際のエラーコードを格納する変数
+int saveArray[CharacterNumber][CharacterNumber];	// 勝敗記録を保持する配列
+int total_saveArray_Previous;						// セーブを行う前の勝敗記録の値の合計
+int total_saveArray_Now;							// 現在の勝敗記録の値の合計
+bool alreadySaved;									// セーブ済みかどうかを判定するフラグ
+bool alreadyConfirmedSave;							// セーブするかの確認を行ったかを判定するフラグ
+bool initialized;									// 初期化済みかどうかを判定するフラグ
 
 
 /* --- ゲームデータの初期化関数 --- */
