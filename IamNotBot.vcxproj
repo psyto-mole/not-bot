@@ -135,13 +135,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\woo09\Documents\DXlibrary\DxLib_VC\プロジェクトに追加すべきファイル_VC用;C:\Users\woo09\Desktop\DXlibrary\IamNotBot\source\character;C:\Users\woo09\Desktop\DXlibrary\IamNotBot\source\core;C:\Users\woo09\Desktop\DXlibrary\IamNotBot\source\graphics;C:\Users\woo09\Desktop\DXlibrary\IamNotBot\source\parameter;C:\Users\woo09\Desktop\DXlibrary\IamNotBot\source\scene</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\\DXlibrary\\DxLib_VC\\プロジェクトに追加すべきファイル_VC用;.\\source\\character;.\\source\\core;.\\source\\graphics;.\\source\\parameter;.\\source\\scene</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\woo09\Documents\DXlibrary\DxLib_VC\プロジェクトに追加すべきファイル_VC用</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>.\\DXlibrary\\DxLib_VC\\プロジェクトに追加すべきファイル_VC用</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -167,13 +167,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\woo09\Documents\DXlibrary\DxLib_VC\プロジェクトに追加すべきファイル_VC用;C:\Users\woo09\Desktop\DXlibrary\IamNotBot\source\character;C:\Users\woo09\Desktop\DXlibrary\IamNotBot\source\core;C:\Users\woo09\Desktop\DXlibrary\IamNotBot\source\graphics;C:\Users\woo09\Desktop\DXlibrary\IamNotBot\source\parameter;C:\Users\woo09\Desktop\DXlibrary\IamNotBot\source\scene</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\\DXlibrary\\DxLib_VC\\プロジェクトに追加すべきファイル_VC用;.\\source\\character;.\\source\\core;.\\source\\graphics;.\\source\\parameter;.\\source\\scene</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\woo09\Documents\DXlibrary\DxLib_VC\プロジェクトに追加すべきファイル_VC用</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>.\\DXlibrary\\DxLib_VC\\プロジェクトに追加すべきファイル_VC用</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
